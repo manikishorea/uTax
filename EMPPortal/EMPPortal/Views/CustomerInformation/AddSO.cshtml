@@ -1,0 +1,153 @@
+﻿
+@{
+    ViewBag.Title = "AddSO";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add SO</h2>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label for="inputEmail" class="col-md-3 control-label">Company Name</label>
+                <div class="col-md-9">
+                    <input type="text" id="txt_company" class="form-control" maxlength="49">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail" class="col-md-3 control-label">BusinessOwner FName</label>
+                <div class="col-md-9">
+                    <input type="text" id="txt_FName" class="form-control" maxlength="49">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail" class="col-md-3 control-label">BusinessOwner LName</label>
+                <div class="col-md-9">
+                    <input type="text" id="txt_LName" class="form-control" maxlength="49">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail" class="col-md-3 control-label">Office Phone</label>
+                <div class="col-md-9">
+                    <input type="text" id="txt_Phone" class="form-control" maxlength="49">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail" class="col-md-3 control-label">Primary Email</label>
+                <div class="col-md-9">
+                    <input type="text" id="txt_Email" class="form-control" maxlength="49">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail" class="col-md-3 control-label">EFIN</label>
+                <div class="col-md-3">
+                    <select id="EFINStatus" name="EFINStatus" class="form-control"></select>
+                </div>
+                <div class="col-md-6">
+                    <input type="text" id="EFIN" class="form-control digit" maxlength="6">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="inputEmail" class="col-md-3 control-label">Physical Address1</label>
+                <div class="col-md-9">
+                    <input type="text" id="txt_address1" class="form-control" maxlength="49">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail" class="col-md-3 control-label">Physical Address2</label>
+                <div class="col-md-9">
+                    <input type="text" id="txt_address2" class="form-control" maxlength="49">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail" class="col-md-3 control-label">Physical ZipCode</label>
+                <div class="col-md-9">
+                    <input type="text" id="txt_zip" class="form-control" maxlength="49">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail" class="col-md-3 control-label">Physical City</label>
+                <div class="col-md-9">
+                    <input type="text" id="txt_city" class="form-control" maxlength="49">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail" class="col-md-3 control-label">Physical State</label>
+                <div class="col-md-9">
+                    <input type="text" id="txt_state" class="form-control" maxlength="49">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail" class="col-md-3 control-label">Master Identifier</label>
+                <div class="col-md-9">
+                    <input type="text" id="MasterIdentifier" class="form-control" maxlength="49">
+                </div>
+            </div>
+            @*<div class="form-group">
+                    <label for="inputEmail" class="col-md-3 control-label">Crosslink User Id</label>
+                    <div class="col-md-9">
+                        <input type="text" id="CrossLinkUserId" class="form-control digit" maxlength="7">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-md-3 control-label">Crosslink Password</label>
+                    <div class="col-md-9">
+                        <input type="text" id="CrossLinkPassword" class="form-control" maxlength="49">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-md-3 control-label">MyTaxOffice Portal Url</label>
+                    <div class="col-md-9">
+                        <input type="text" id="OfficePortalUrl" class="form-control" value="https://www.mytaxofficeportal.com" readonly="readonly" maxlength="150">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-md-3 control-label">MyTaxOffice Username</label>
+                    <div class="col-md-9">
+                        <input type="text" id="TaxOfficeUsername" class="form-control" maxlength="100">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-md-3 control-label">MyTaxOffice Password</label>
+                    <div class="col-md-9">
+                        <input type="text" id="TaxOfficePassword" class="form-control" maxlength="49">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-md-3 control-label">Master Identifier Password</label>
+                    <div class="col-md-9">
+                        <input type="text" id="MasterIdentifierPassword" class="form-control" readonly="readonly" maxlength="50">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-md-3 control-label">CrossLink Account ID</label>
+                    <div class="col-md-9">
+                        <input type="text" id="CLAccountId" class="form-control" maxlength="49">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-md-3 control-label">Login</label>
+                    <div class="col-md-9">
+                        <input type="text" id="CLLogin" class="form-control" maxlength="49">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-md-3 control-label">Account ID Password</label>
+                    <div class="col-md-9">
+                        <input type="text" id="CLAccountPassword" class="form-control" maxlength="49">
+                    </div>
+                </div>*@
+            <div class="form-group">
+                <div class="col-md-offset-3 col-md-9">
+                    <input type="button" value="Submit" class="btn btn-default" onclick="SavePartner();" />
+                    <a href="/CustomerInformation/" class="btn btn-back">Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/app/common.js"></script>
+<script src="~/Scripts/app/AddSO.js"></script>

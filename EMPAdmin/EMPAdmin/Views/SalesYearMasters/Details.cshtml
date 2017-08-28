@@ -1,0 +1,90 @@
+﻿@model uTax.EntityFramework.Edmx.SalesYearMaster
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SalesYearMaster</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SalesYear)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SalesYear)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApplicableFromDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplicableFromDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApplicableToDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplicableToDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastUpdatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastUpdatedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastUpdatedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastUpdatedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StatusCodeMaster.StatusCodes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StatusCodeMaster.StatusCodes)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

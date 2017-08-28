@@ -1,0 +1,208 @@
+﻿@{
+    ViewBag.Title = "Log in";
+    Layout = "~/Views/Shared/_AnonymusLayout.cshtml";
+}
+
+@using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { id = "frmLogin", @class = "form-horizontal", role = "form" }))
+{
+    @*@Html.AntiForgeryToken()*@
+    <div class="login_main clearfix">
+        @*<div class="logo-m-1">
+                <a href="@Url.Content("~/Security/Login/Index")">
+                    <img class="img-responsive" src="~/Content/images/florida-logo.png" />
+                </a>
+            </div>*@
+        <div class="card_wrap">
+            <div class="card_main">
+                <h2><span>Login</span></h2>
+            </div>
+            <div class="card_bg">
+                <div class="">
+                    <div class="row">
+                        <div class="col-md-12"><label>User Id@*Email Address*@ <span class="red_txt">*</span></label> </div>
+                        <div class="col-md-12">
+                            <input type="text" id="UserName" name="UserName" class="form-control" maxlength="100" />
+                            <span class="form_icon"><span class="fa fa-user"></span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="row">
+                        <div class="col-md-12"><label>Password <span class="red_txt">*</span></label></div>
+                        <div class="col-md-12">
+                            <input type="password" id="Password" name="Password" class="form-control" maxlength="50" />
+                            @*@Html.PasswordFor(m => m.Password, new { @class = "form-control", @maxlenth = 50 })*@
+                            <span class="form_icon"><span class="fa fa-unlock"></span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <input class="btn btn-default btn-raised" type="submit" name="Index" id="btnSubmit" value="Login" /> &nbsp;
+                        @*<input class="btn btn-default btn-raised" type="button" name="Index" id="btnCancel"
+                            value="Back" />*@
+                        <a href="javascript:void(0)" data-target="#popupfpwd" id="lnkfpwd" class="pull-right forgot_password" data-toggle="modal">
+                            <i class=""></i>Forgot Password
+                        </a>
+                    </div>
+                </div>
+                @if (@TempData["error"] != null)
+                {
+                <div class="alert alert-danger" id="divErrorMessage" role="alert">
+                    @TempData["error"]
+                </div>
+                }
+            </div>
+        </div>
+
+        @*<div class="alert alert-danger" id="divErrorMessage" role="alert">
+            </div>*@
+    </div>
+
+    <div class="modal fade bs-example-modal-lg" id="popupfpwd" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">Forgot Password</h4>
+                </div>
+                <div class="modal-body">
+                    <form role="form">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label for="message-text" class="control-label mandatory">Email Address</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" id="txtEmailID" name="txtEmailID" class="form-control" maxlength="100" />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="btnFpwd">Save</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<script type="text/javascript">
+
+    $('#frmLogin').submit(function () {
+        var cansubmit = ValidateUser();
+        if (cansubmit) {
+            //  $.ajax({
+            //      url: "@Url.Action("Login", "Account")",
+            //      data: { username: $('#UserName').val(), password: $('#Password').val() },
+            //       async: false,
+            //       //cache: false,
+            //       dataType: "json",
+            //       type: 'POST',
+            //        success: function (data) {
+            //            if (data != "")
+            //                cansubmit = true;
+            //           else {
+            //               cansubmit = false;
+            //               $('#divErrorMessage').show().append("Invalid username or password" + "<br>");
+            //                $('#UserName').addClass("error_msg");
+            //                $('#UserName').attr('title', 'Please enter correct user name');
+            //                $('#Password').addClass("error_msg");
+            //                $('#Password').attr('title', 'Please enter correct Password');
+            //            }
+            //        }
+            //  });
+            return true;
+        }
+
+        if (cansubmit) {
+            return true;
+        }
+        else
+            return false;
+    });
+
+    function ValidateUser() {
+        var cansubmit = true;
+        $('#divErrorMessage').text('');
+        if ($.trim($('#UserName').val()) == "") {
+            $('#UserName').addClass("error_msg");
+            $('#UserName').attr('title', 'Please enter User Id');
+            cansubmit = false;
+        }
+        else {
+            $('#UserName').attr('title', '');
+            $('#UserName').removeClass("error_msg");//Noerror_msg
+        }
+        if ($('#Password').val() == "") {
+            $('#Password').addClass("error_msg");
+            $('#Password').attr('title', 'Please enter Password');
+            cansubmit = false;
+        }
+        else {
+            $('#Password').attr('title', '');
+            $('#Password').removeClass("error_msg");//Noerror_msg
+        }
+        return cansubmit;
+    }
+
+
+    $('#lnkfpwd').click(function () {
+        $('*').removeClass("error_msg");
+        $('#txtEmailID').attr('title', '');
+        $('#inputUserId').val('');
+        $('#EmailID').val('');
+        $('#txtEmailID').val('');
+    });
+
+    $('#btnFpwd').click(function () {
+        var cansubmit = true;
+        if ($.trim($('#txtEmailID').val()) == "") {
+            $('#txtEmailID').addClass("error_msg");
+            $('#txtEmailID').attr('title', 'Please enter Email Address');
+            cansubmit = false;
+        }
+        else {
+            var IsValidEmail = IsEmail($('#txtEmailID').val());
+            if (IsValidEmail == false) {
+                $('#txtEmailID').addClass("error_msg");
+                $('#txtEmailID').attr('title', 'Please enter valid Email Address');
+                cansubmit = false;
+            }
+            else
+                $('#txtEmailID').removeClass("error_msg");//Noerror_msg
+        }
+        if (cansubmit) {
+            $.ajax({
+                url: "@Url.Action("ForgotPassword", "Account")",
+                data: { eMail: $('#txtEmailID').val() },
+                dataType: "json",
+                type: 'POST',
+                success: function (data) {
+                    if (data == 'This Email Address is not valid') {
+                        $('#txtEmailID').addClass("error_msg");
+                        $('#txtEmailID').attr('title', data);
+                    }
+                    else {
+                        alert(data);
+                        $('#popupfpwd').modal('hide');
+                    }
+                }
+            });
+        }
+    });
+
+    function IsEmail(value) {
+        var pattern = new RegExp(/^([\w\.\-]+)@@([\w\-]+)((\.(\w){2,3})+)$/i);
+        return pattern.test(value);
+    }
+
+    $('#btnCancel').click(function () {
+        var conf = confirm("Are you sure you want to leave this page?");
+        if (conf) {
+            window.location.href = "@Url.Content("~/Account/Login/Index")";
+        }
+    });
+</script>

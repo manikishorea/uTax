@@ -1,0 +1,8 @@
+﻿{{ContactName}},<br/><br/>
+Your site has been placed on Hold and your transmission access has been temporarily restricted for the following reason:
+<br/>
+{{HoldDesc}}
+<br/><br/>
+Please contact uTax at your earliest convenience to resolve this matter.<br/><br/>
+Regards,<br/>
+uTax Customer Support

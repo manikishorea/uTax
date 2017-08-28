@@ -1,0 +1,402 @@
+﻿@using EMPPortal.Filters;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>EMP Portal</title>
+    <title>
+
+    </title>
+    <mesta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <link rel="shortcut icon" type="image/x-icon" href="~/favicon.ico" />
+    <!--Responsive Start Here -->
+    <link href="~/Content/css/footable-0.1.css" rel="stylesheet" />
+    <!--Mobile Menu Start Here -->
+    <link type="text/css" rel="stylesheet" href="@Url.Content("~/Content/css/jquery.mmenu.all.css")" />
+    <link type="text/css" rel="stylesheet" href="@Url.Content("~/Content/css/menu_m.css")" />
+    <!-- Material Design fonts -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="@Url.Content("~/Content/css/bootstrap-material-design.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/css/ripples.min.css")" rel="stylesheet" />
+    <!-- Page style -->
+    <link href="@Url.Content("~/Content/css/footable.core.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Content/css/footable.metro.css")" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css"
+          rel="stylesheet" />
+    <!-- Dropdown.js -->
+    <link href="@Url.Content("~/Content/css/jquery.dropdown.css")" rel="stylesheet" />
+    <!-- Data Table -->
+    <link href="@Url.Content("~/Content/css/jquery.dataTables.css")" rel="stylesheet" />
+    <!-- My Css Start Here -->
+    @Html.IncludeVersionedCss("/Content/css/custom-style.css")
+
+    @if (Request["entitydisplayid"] != null)
+    {
+        //if (Convert.ToInt32(Request["entitydisplayid"].ToString()) == (int)EMPPortal.Utilities.EMPPortalConstants.BaseEntities.SOME_SubSite | Convert.ToInt32(Request["entitydisplayid"].ToString()) == (int)EMPPortal.Utilities.EMPPortalConstants.BaseEntities.MOSubSite || Convert.ToInt32(Request["entitydisplayid"].ToString()) == (int)EMPPortal.Utilities.EMPPortalConstants.BaseEntities.SVBSubSite)// "2222b1a2-e76d-47ab-a998-078550238427")
+        if (Convert.ToInt32(Request["entitydisplayid"].ToString()) == (int)EMPPortal.Utilities.EMPPortalConstants.BaseEntities.AE_SS || Convert.ToInt32(Request["entitydisplayid"].ToString()) == (int)EMPPortal.Utilities.EMPPortalConstants.BaseEntities.AE)// "2222b1a2-e76d-47ab-a998-078550238427")
+        {
+            @Html.IncludeVersionedCss("/Content/css/gray-theme.css")
+        }
+        else
+        {
+            @Html.IncludeVersionedCss("/Content/css/color-theme.css")
+            @*<link type="text/css" rel="stylesheet" href="@Url.Content("~/Content/css/color-theme.css")" />*@
+        }
+    }
+    else
+    {
+        @Html.IncludeVersionedCss("/Content/css/color-theme.css")
+        @*<link type="text/css" rel="stylesheet" href="@Url.Content("~/Content/css/color-theme.css")" />*@
+    }
+
+    @*<link type="text/css" rel="stylesheet" href="@Url.Content("~/Content/css/color-theme.css")" />*@
+    <!--Responsive Start Here -->
+    <link href="@Url.Content("~/Content/css/responsive.css")" rel="stylesheet" />
+    <script src="@Url.Content("~/Content/js/jquery-1.10.2.min.js")"></script>
+    <script src="~/Content/js/material.js"></script>
+    <script src="~/Content/js/ripples.min.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            if (document.location.href.toLowerCase().indexOf('viewbankenrollment') > 0) {
+                $('.sidebar').hide();
+                $('.main-content-blk').removeClass('col-md-9').addClass('col-md-12');
+            }
+            else {
+                $('.sidebar').show();
+            }
+            var id = getUrlVars()["Id"];
+            var entitydisplayid = getUrlVars()["entitydisplayid"];
+            var entityid = getUrlVars()["entityid"];
+            var ParentId = getUrlVars()["ParentId"];
+            
+            if (!ParentId || ParentId=='undefined')
+                ParentId = '00000000-0000-0000-0000-000000000000';
+
+            $('#myentitydisplayid').val(entitydisplayid);
+            $('#myentityid').val(entityid);
+            $('#myparentid').val(ParentId);
+            $('#myid').val(id);
+
+            //  $(function () {
+            //getSummaryActivation();
+            var Id = getUrlVars()["Id"];
+
+            //if (window.location.href.indexOf('CustomerInformation/Create') > 0)
+            //    Id = window.location.href.split('/').pop();
+
+            getEnrollmentCustomerInformation(Id);
+            //  })
+            
+            if (ParentId != '00000000-0000-0000-0000-000000000000' && ParentId) {
+                var url = '/api/SubSiteOffice/SubSiteOfficeConfig';
+                localStorage.removeItem("EFINOwnerUserId");
+
+                ajaxHelper(url + '?Id=' + id + '&parentId=' + ParentId, 'GET').done(function (data) {
+                    if (data) {
+
+                        //if (data.SiteOwnthisEFIN == false || data.SiteOwnthisEFIN == 'false') {
+                        //    $('#site067c03a3-34f1-4143-beae-35327a8fca44').hide();
+                        //    $('#site0feeb0fe-d0e7-4370-8733-dd5f7d2041fc').hide();
+                        //}
+
+
+                        if (data["EFINListedOtherOffice"] == true || data["EFINListedOtherOffice"] == 'true') {
+                            localStorage.removeItem("EFINOwnerUserId")
+
+                            if (data["SiteOwnthisEFIN"] == true || data["SiteOwnthisEFIN"] == 'true') {
+                                localStorage.removeItem("EFINOwnerUserId");
+                            }
+                            else if (data["SiteOwnthisEFIN"] == false || data["SiteOwnthisEFIN"] == 'false') {
+                                localStorage.setItem("EFINOwnerUserId", true);
+                            }
+
+                        }
+                        else if (data["EFINListedOtherOffice"] == false || data["EFINListedOtherOffice"] == 'false') {
+                            localStorage.removeItem("EFINOwnerUserId")
+                        }
+
+                    }
+                });
+            }
+        });
+    </script>
+</head>
+<body class="">
+    <!-- Header Start here -->
+    <div class="container-fluid main-blk">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <div class="col-md-12">
+                            <div class="col-md-10 pull-right head-right">
+                                <h1>Enrollment : <span id="sp_Head"></span></h1>
+                                <div class="login-blk">
+                                    <ul class="nav navbar-nav navbar-right">
+                                        <li class="dropdown">
+                                            <a href="#" data-target="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                <i class="fa fa-user" aria-hidden="true"></i> @Session["UserName"]
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="body_main">
+        <div class="body_inner page-content">
+            <div class="container-fluid">
+                <div class="main_wrap">
+                    <input type="hidden" id="SalesforceOpportunityID" name="SalesforceOpportunityID" value="" />
+
+                    <input type="hidden" id="uTaxNotCollectingSBFee" value="false" />
+                    <input type="hidden" id="ismsouser" value="@Session["IsMSOUser"].ToString()" />
+                    <input type="hidden" id="ViewName" value="Enrollment" />
+                    <input type="hidden" id="myentitydisplayid" value="" />
+                    <input type="hidden" id="myentityid" value="" />
+                    <input type="hidden" id="myparentid" value="" />
+                    <input type="hidden" id="myid" value="" />
+                    <input type="hidden" id="ActiveMyAccountStatus" value="0" />
+                    <input type="hidden" id="IsVerified" value="false" />
+                    <input type="hidden" id="hdnEFINStatus" />
+
+                    <input type="hidden" id="BaseEntity_uTax" value="@Convert.ToInt32(EMPPortal.Utilities.EMPPortalConstants.BaseEntities.uTax)" />
+                    <input type="hidden" id="BaseEntity_SO" value="@Convert.ToInt32(EMPPortal.Utilities.EMPPortalConstants.BaseEntities.SO)" />
+                    <input type="hidden" id="BaseEntity_SOME" value="@Convert.ToInt32(EMPPortal.Utilities.EMPPortalConstants.BaseEntities.SO_ME)" />
+                    <input type="hidden" id="BaseEntity_MO" value="@Convert.ToInt32(EMPPortal.Utilities.EMPPortalConstants.BaseEntities.MO)" />
+                    <input type="hidden" id="BaseEntity_AE" value="@Convert.ToInt32(EMPPortal.Utilities.EMPPortalConstants.BaseEntities.AE)" />
+                    <input type="hidden" id="BaseEntity_AESS" value="@Convert.ToInt32(EMPPortal.Utilities.EMPPortalConstants.BaseEntities.AE_SS)" />
+
+                    <input type="hidden" id="Entity_uTax" value="@Convert.ToInt32(EMPPortal.Utilities.EMPPortalConstants.Entity.uTax)" />
+                    <input type="hidden" id="Entity_SO" value="@Convert.ToInt32(EMPPortal.Utilities.EMPPortalConstants.Entity.SO)" />
+                    <input type="hidden" id="Entity_SOME" value="@Convert.ToInt32(EMPPortal.Utilities.EMPPortalConstants.Entity.SOME)" />
+                    <input type="hidden" id="Entity_MO" value="@Convert.ToInt32(EMPPortal.Utilities.EMPPortalConstants.Entity.MO)" />
+                    <input type="hidden" id="Entity_SVB" value="@Convert.ToInt32(EMPPortal.Utilities.EMPPortalConstants.Entity.SVB)" />
+                    <input type="hidden" id="Entity_SOME_SS" value="@Convert.ToInt32(EMPPortal.Utilities.EMPPortalConstants.Entity.SOME_SS)" />
+                    <input type="hidden" id="Entity_SVB_MO" value="@Convert.ToInt32(EMPPortal.Utilities.EMPPortalConstants.Entity.SVB_MO)" />
+                    <input type="hidden" id="Entity_SVB_SO" value="@Convert.ToInt32(EMPPortal.Utilities.EMPPortalConstants.Entity.SVB_SO)" />
+                    <input type="hidden" id="Entity_SVB_MO_SO" value="@Convert.ToInt32(EMPPortal.Utilities.EMPPortalConstants.Entity.SVB_MO_SO)" />
+                    <input type="hidden" id="Entity_MO_SO" value="@Convert.ToInt32(EMPPortal.Utilities.EMPPortalConstants.Entity.MO_SO)" />
+
+                    <input type="hidden" id="h_entityid" name="h_entityid" value="" />
+
+                    @if (Session.Count > 0)
+                    { <input type="hidden" id="entityid" value="@Session["entityid"].ToString()" />
+                    <input type="hidden" id="LoginId" value="@Session["LoginId"].ToString()" />
+                    <input type="hidden" id="entitydisplayid" value="@Session["entitydisplayid"].ToString()" />
+                    <input type="hidden" id="UserId" value="@Session["UserId"].ToString()" />
+                    <input type="hidden" id="Token" name="Token" value="@Session["Token"].ToString()" />
+                    }
+                    else
+                    {
+                        <input type="hidden" id="UserId" value="00000000-0000-0000-0000-000000000000" />
+                        <input type="hidden" id="Token" value="00000000-0000-0000-0000-000000000000" />
+                    }
+
+                </div>
+                <div class="col-md-3 padding-left-25 sidebar" style="display:none;">
+                    <div class="mobile-menu"></div>
+                    @*<div class="side-navigation">
+                            <ul>
+                                <li><a href="#" class="vmenu mainmenu spacer" id="sitec333b448-b287-4c08-929b-0797f986ca6f">Enrollment</a></li>
+                                <li><a href="/Enrollment/OfficeInformation?Id=" class="vmenu" id="site7c8aa474-2535-4f69-a2ae-c3794887f92d">Office Information</a></li>
+                                <li><a href="/Enrollment/OfficeConfiguration?Id=" class="vmenu" id="sitefc32db13-6aec-488e-bafe-19acb3399e57">Office Configuration</a></li>
+                                <li><a href="/Enrollment/AffiliateConfiguration?Id=" class="vmenu" id="site2f7d1b90-78aa-4a93-85ec-81cd8b10a545">Affiliate Configuration</a></li>
+                                <li><a href="/Enrollment/BankSelectionFeeDetails?Id=" class="vmenu" id="site067c03a3-34f1-4143-beae-35327a8fca44">Bank Selection</a></li>
+                                <li><a href="/Enrollment/BankEnrollment?Id=" class="vmenu null" id="site0feeb0fe-d0e7-4370-8733-dd5f7d2041fc">Bank Enrollment</a></li>
+                                @if (Request["entitydisplayid"] != null)
+                                {
+                                if (Convert.ToInt32(Request["entitydisplayid"].ToString()) == (int)EMPPortal.Utilities.EMPPortalConstants.BaseEntities.SO)
+                                {
+                                <li id="li_feereim"><a href="/Enrollment/EnrollmentFeeReimbursement?Id=" class="vmenu" id="sitea55334d1-3960-44c4-8cf1-e3ba9901f2be">Fee Reimbursement</a></li>
+                                }
+                                }
+                                <li id="li_summary"><a href="/Enrollment/enrollmentsummary?Id=" class="vmenu" id="site98a706d7-031f-4c5d-8cc4-d32cc7658b69">Enrollment Summary</a></li>
+                            </ul>
+                        </div>*@
+                    <div class="side-navigation" id="divmenu">
+                    </div>
+
+
+                    <div id="divActivityBankStatus" class="phone-support"  style="display:none;">Active Bank Status</div>
+                </div>
+                <div class="col-md-9 main-content-blk">
+                    <div class="alert alert-danger" style="display:none;" id="error"></div>
+                    <div class="alert alert-success" style="display:none;" id="success"></div>
+                    @RenderBody()
+                </div>
+                <!-- Footer Start Here -->
+                <footer>
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <p class="txt-white">© @System.DateTime.Now.Year EMP. All rights reserved.</p>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+            <!-- Footer End Here -->
+        </div>
+    </div>
+
+
+    <div id="popupLogout" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-body" style="height:450px;">
+                    <div class="col-md-12 popup_logout_msg">
+                        <h2>session expired</h2>
+                        <p>It looks like the user login which initiated this action has logged out or the session has expired</p>
+                        <p>This tab or window would need to be closed to proceed further and you will need to login with the appropriate user credentials back again.</p>
+                        <p>Please click on the "Close" button to close this tab and exit this screen.</p>
+                    </div>
+                    <div class="popup_logout_div">
+                        <button type="button" class="btn btn-default btn-confirm cancel-btn" onclick="Closetab()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Start Here -->
+    <div style="display: none;" class="loading_main" id="loading_main"><img src="~/Content/images/loading-img.gif" /></div>
+    <!-- Loading End Here -->
+    <!-- jQuery -->
+    <script src="~/Content/js/jquery-1.10.2.min.js"></script>
+    <script src="~/Content/js/material.js"></script>
+    <script src="~/Content/js/ripples.min.js"></script>
+    @Html.IncludeVersionedJs("/Scripts/app/EnrollmentLayout.js")
+    @Html.IncludeVersionedJs("/Scripts/app/common.js")
+    <script src="~/Scripts/app/vmenu.js"></script>
+    <script src="~/Scripts/bootstrap-multiselect.js"></script>
+    <script src="~/Content/js/jquery.maskedinput.min.js"></script>
+
+
+    <script>
+        $.material.init();
+    </script>
+    <!-- Tooltip -->
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+
+            //var Entity_MOSubSite = $('#Entity_MOSubSite').val();
+            //var Entity_SVBSubSite = $('#Entity_SVBSubSite').val();
+            //var Entity_SOMESubSite = $('#Entity_SOMESubSite').val();
+            var myentityid = $('#myentityid').val();
+            var myentitydisplayid = $('#myentitydisplayid').val();
+
+            if ($('#entityid').val() != $('#Entity_uTax').val()) {
+                $('.sidebar').removeClass('customers-sidebar').addClass('col-md-3 padding-left-25');
+                $('.main-content-blk').removeClass('customers-griid').addClass('col-md-9');
+            }
+
+            getSitemap($('#divmenu'));
+            GetActivityBankStatus($('#divActivityBankStatus'));
+            //if (myentitydisplayid == $('#BaseEntity_AE').val() || myentitydisplayid == $('#BaseEntity_AESS').val()) {
+            //    getSubSiteConfigStatus();
+            //} else {
+            //    getConfigStatus();
+            //}
+        });
+    </script>
+
+    <!-- Dropdown.js -->
+    <script src="https://cdn.rawgit.com/FezVrasta/dropdown.js/master/jquery.dropdown.js"></script>
+    <script>
+        $("#dropdown-menu select").dropdown();
+
+        var selector = '.side-navigation li a';
+
+        $(selector).on('click', function () {
+            $(selector).removeClass('active');
+            $(this).addClass('active');
+        });
+    </script>
+
+    <!-- Twitter Bootstrap -->
+    <script src="@Url.Content("~/Content/js/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Content/js/bootstrap-dialog.min.js")" type="text/javascript"></script>
+    <!-- Twitter Bootstrap Datetimepicker-->
+    <script src="@Url.Content("~/Content/js/moment-with-locales.js")"></script>
+    <script src="@Url.Content("~/Content/js/bootstrap-datepicker.js")"></script>
+    <script src="@Url.Content("~/Content/js/bootstrap-filestyle.js")"></script>
+    @*<script src="@Url.Content("~/Content/js/jquery.fileupload.js")"></script>*@
+
+    <!-- Data Table
+    JS -->
+    <script src="@Url.Content("~/Content/js/jquery.dataTables.js")"></script>
+    <script src="https://cdn.datatables.net/fixedcolumns/3.2.2/js/dataTables.fixedColumns.min.js"></script>
+    <script src="@Url.Content("~/Content/js/shCore.js")"></script>
+    <script src="@Url.Content("~/Content/js/demo.js")"></script>
+    <script src="@Url.Content("~/Content/js/bootstrap-datepicker.js")"></script>
+    <script src="@Url.Content("~/Content/js/bootstrap-datetimepicker.min.js")"></script>
+
+    <!-- Mobile Menu.js -->
+    <script src="@Url.Content("~/Content/js/jquery.mmenu.min.all.js")"></script>
+    <!-- Dropdown.js -->
+    <script src="@Url.Content("~/Content/js/jquery.dropdown.js")"></script>
+    <script src="@Url.Content("~/Content/js/bootstrap-select.min.js")"></script>
+    <script src="@Url.Content("~/Content/js/jquery.ui.widget.js")"></script>
+    <script src="@Url.Content("~/Content/js/tmpl.min.js")"></script>
+    <script src="@Url.Content("~/Content/js/load-image.all.min.js")"></script>
+    <script src="@Url.Content("~/Content/js/jquery.iframe-transport.js")"></script>
+    <script src="@Url.Content("~/Content/js/bootstrap-filestyle.js")"></script>
+    <script src="@Url.Content("~/Content/js/blockUI.js")"></script>
+
+
+    <script src="@Url.Content("~/Content/js/custom.js")"></script>
+
+    <script src="@Url.Content("~/Content/js/jquery.sidr.min.js")"></script>
+    <script src="@Url.Content("~/Content/js/validator.min.js")"></script>
+    <!-- Page jQuery -->
+    @*<script src="~/Content/js/footable.js"></script>
+        <script src="~/Content/js/footable.sort.js"></script>
+        <script src="~/Content/js/footable.filter.js"></script>
+        <script src="~/Content/js/footable.paginate.js"></script>*@
+
+    <script type="text/javascript">
+        $("#dropdown-menu select").dropdown();
+        $(document).ready(function () {
+            $(".date_input").keypress(function (event) {
+                if (event.which != 8 && event.which != 47 && event.which != 0 && isNaN(String.fromCharCode(event.which))) {
+                    event.preventDefault(); //stop characters from entering input
+                }
+            });
+            $(".date_input").attr('maxlength', '10');
+        });
+    </script>
+
+    <script>
+        $.material.init();
+    </script>
+
+    <!-- Dropdown.js -->
+    <script src="https://cdn.rawgit.com/FezVrasta/dropdown.js/master/jquery.dropdown.js"></script>
+    <script>
+        $("#dropdown-menu select").dropdown();
+    </script>
+
+    @*@Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")*@
+    @RenderSection("scripts", required: false)
+</body>
+
+</html>

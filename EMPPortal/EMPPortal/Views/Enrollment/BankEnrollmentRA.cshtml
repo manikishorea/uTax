@@ -1,0 +1,766 @@
+﻿<h2 class="page-title">Bank Enrollment - Refund Advantage</h2>
+<div class="panel panel-default subsite">
+    <div class="utax-tabs new-label">
+        <div class="bs-component">
+            <ul style="margin-bottom: 15px;" class="nav nav-tabs active-tabs bankenroll-ul-tab">
+                <li class="active" id="libOfficeInfo"><a href="#dvefinowner" id="a_efinowner">EFIN Owner Information</a></li>
+                <li id="libOfficeConfig"><a href="#dvero" id="a_ooinfo">Office/Owner Information</a></li>
+                <li id="libOfficeConfig"><a href="#dvfee" id="a_feeinfo">Fee Information</a></li>
+                <li id="liaffiliate"><a href="#dv_bankinfo" id="a_bankinfo">Fee Deposit Bank Account Information</a></li>
+            </ul>
+            <div class="tab-content tab-tpg" id="myTabContent">
+                <div id="dvefinowner" class="tab-pane fade active in">
+                    <div class="col-md-12">
+                        <div class="col-md-4">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">EFIN Owner Business Title</label>
+                                <input type="text" id="txt_ownertitle" class="form-control" maxlength="50" onkeypress="Onlyalphanumaric(event)">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">EFIN Owner First Name</label>
+                                <input type="text" id="txt_ownerFN" class="form-control" maxlength="14" onkeypress="NameRegex(event)" onblur="removeName(this)">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">EFIN Owner Last Name</label>
+                                <input type="text" id="txt_ownerLN" class="form-control" maxlength="20" onkeypress="NameRegex(event)" onblur="removeName(this)">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-4">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">EFIN Owner SSN</label>
+                                <input type="text" id="txt_ownerSSN" class="form-control" maxlength="9" onkeypress="Onlydigit(event)">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">EFIN Owner Date of Birth</label>
+                                <input type="text" id="txt_ownerDOB" class="form-control" maxlength="10" placeholder="MMDDYYYY or MM/DD/YYYY">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">EFIN Owner Email Address</label>
+                                <input type="email" id="txt_owneremail" class="form-control" maxlength="50">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-4">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label">EFIN Owner Mobile Phone</label>
+                                <input type="text" id="txt_ownercell" class="form-control" maxlength="12" onkeypress="Onlydigit(event)">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">EFIN Owner Phone</label>
+                                <input type="text" id="txt_ownerphone" class="form-control" maxlength="12" onkeypress="Onlydigit(event)">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-4">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">EFIN Owner State Issued ID Number</label>
+                                <input type="text" id="txt_ownerissuenumber" class="form-control" maxlength="50" onkeypress="Onlyalphanumaric(event)">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">EFIN Owner ID Issuing State Abbreviation</label>
+                                <select id="ddl_issuestate" name="ddlissuestate" class="form-control"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-3">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">EFIN Issued to Address</label>
+                                <textarea id="txt_ownerAddress" rows="3" class="form-control" maxlength="35" onkeypress="AddressRegex(event)" onblur="removeAddress(this)"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">EFIN Issued to City</label>
+                                <input type="text" id="txt_ownerCity" class="form-control" maxlength="22" onkeypress="CityRegex(event)" onblur="removeCity(this)">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">EFIN Issued to State</label>
+                                <select id="ddl_ownerstate" name="ddlownerstate" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">EFIN Issued to Zip Code</label>
+                                <input type="number" id="txt_ownerzip" class="form-control max_5dig" max="99999" maxlength="5" onkeypress="Onlydigit(event)">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 bankenroll-div-save">
+                        <div class="col-md-12">
+                            <a onclick="RAEONext()" class="btn btn-default btn-info btn-nextprev">Next</a>
+                        </div>
+                    </div>
+                </div>
+                <div id="dvefinownerinsfo" class="tab-pane fade">
+                </div>
+                <div id="dvero" class="tab-pane fade">
+                    <div class="col-md-12">
+                        <div class="col-md-12">
+                            <div class="form-group is-empty">
+                                <label class="control-label"><b>Office/Owner Information</b></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-6">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">Company Name</label>
+                                <input type="text" id="txt_companyname" class="form-control" maxlength="35" onkeypress="CompanyNameRegex(event)" onblur="removeCompanyName(this)">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-3">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">Business Owner First Name</label>
+                                <input type="text" id="txt_mainCntFN" class="form-control" maxlength="50" onkeypress="NameRegex(event)" onblur="removeName(this)">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">Business Owner Last Name</label>
+                                <input type="text" id="txt_mainCntLN" class="form-control" maxlength="50" onkeypress="NameRegex(event)" onblur="removeName(this)">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">Main Contact Phone</label>
+                                <input type="text" id="txt_contactphone" class="form-control" maxlength="12" onkeypress="Onlydigit(event)">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">Office Phone</label>
+                                <input type="text" id="txt_officephone" class="form-control" maxlength="12" onkeypress="Onlydigit(event)">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-3">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">Office Street Address</label>
+                                <textarea id="txt_officeaddress" rows="3" class="form-control" maxlength="50" onkeypress="AddressRegex(event)" onblur="removeAddress(this)"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">Office City</label>
+                                <input type="text" id="txt_officecity" class="form-control" maxlength="50" onkeypress="CityRegex(event)" onblur="removeCity(this)">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">Office State</label>
+                                <select id="ddl_officestate" name="ddlofficestate" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">Office Zip Code</label>
+                                <input type="number" id="txt_officezip" class="form-control max_5dig" max="99999" maxlength="5" onkeypress="Onlydigit(event)">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group is-empty">
+                            <hr />
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-6">
+                            <div class="form-group is-empty checkbox">
+                                <label><input type="checkbox" id="chkMailingAddress" onclick="fnMailingCopy()"><span class="checkbox-material"><span class="check"></span></span><b> Mailing Address Same As Office Address</b></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-3">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">Mailing Address</label>
+                                <textarea id="txt_mailaddress" rows="3" class="form-control" maxlength="50" onkeypress="AddressRegex(event)" onblur="removeAddress(this)"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">Mailing City</label>
+                                <input type="text" id="txt_mailcity" class="form-control" maxlength="50" onkeypress="CityRegex(event)" onblur="removeCity(this)">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">Mailing State</label>
+                                <select id="ddl_mailstate" name="ddlmailstate" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">Mailing Zip Code</label>
+                                <input type="number" id="txt_mailzip" class="form-control max_5dig" max="99999" maxlength="5" onkeypress="Onlydigit(event)">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <hr />
+                        <div class="col-md-6">
+                            <div class="form-group is-empty checkbox">
+                                <label><input type="checkbox" id="chkShippingAddress" onclick="fnShippingCopy()"><span class="checkbox-material"><span class="check"></span></span><b> Shipping Address Same As Office Address</b></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-3">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">Shipping Address</label>
+                                <textarea id="txt_shipaddress" rows="3" class="form-control" maxlength="50" onkeypress="AddressRegex(event)" onblur="removeAddress(this)"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">Shipping City</label>
+                                <input type="text" id="txt_shipcity" class="form-control" maxlength="50" onkeypress="CityRegex(event)" onblur="removeCity(this)">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">Shipping State</label>
+                                <select id="ddl_shipstate" name="ddlshipstate" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">Shipping Zip Code</label>
+                                <input type="number" id="txt_shipzip" class="form-control max_5dig" max="99999" maxlength="5" onkeypress="Onlydigit(event)">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="display:none;">
+                        <div class="col-md-6">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">Street Address ERO used to obtain EFIN from IRS</label>
+                                <textarea id="txt_IRSaddress" rows="3" class="form-control" maxlength="50"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">City of address ERO used to obtain EFIN from IRS</label>
+                                <input type="text" id="txt_IRScity" class="form-control" maxlength="50" onkeypress="onlyAlpha(event)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="display:none;">
+                        <div class="col-md-6">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">State abbreviation of address used to obtain EFIN from IRS</label>
+                                <select id="ddl_IRSstate" name="ddlIRSstate" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">Zip Code of address used to obtain EFIN from IRS</label>
+                                <input type="number" id="txt_IRSzip" class="form-control max_5dig" max="99999" maxlength="5" onkeypress="Onlydigit(event)">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-4">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label">Business EIN</label>
+                                <input type="text" id="txt_businessein" class="form-control" maxlength="9" onkeypress="Onlydigit(event)">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">Corporation Type of the Business.</label>
+                                <select id="ddl_corporationtype" class="form-control submitlock">
+                                    <option value="Sole Proprietorship">Sole Proprietorship</option>
+                                    <option value="Corporation">Corporation</option>
+                                    <option value="Partnership">Partnership</option>
+                                    <option value="LLC">LLC</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label">State of Incorporation</label>
+                                <select id="ddl_incorporatestate" name="ddlincorporatestate" class="form-control submitlock"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-4">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">Prior Year Bank Product Volume</label>
+                                <input type="text" id="txt_pyvolume" class="form-control submitlock" maxlength="8" onkeypress="Onlydigit(event)">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">Expected Current Year Bank Product Volume</label>
+                                <input type="text" id="txt_cyvolume" class="form-control submitlock" maxlength="8" onkeypress="Onlydigit(event)">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">Prior Year Bank Partner</label>
+                                <select id="ddl_prevbank" class="form-control submitlock">
+                                    <option value="Republic">Republic</option>
+                                    <option value="RiverCity">River City</option>
+                                    <option value="SBTPG">SBTPG</option>
+                                    <option value="RefAdvan">Refund Advantage</option>
+                                    <option value="EPSFin">EPSFin</option>
+                                    <option value="Citizens">Citizens</option>
+                                    <option value="Advent">Advent</option>
+                                    <option value="Refundo">Refundo</option>
+                                    <option value="Other">Other</option>
+                                    <option value="None">None</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12" id="dvOwners">
+                        <table id="tbl_EFINOwnerInfo" class="table table-striped footable-loaded footable-tb" style="margin:10px 0;">
+                            <thead>
+                                <tr>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    @*<th>Email</th>*@
+                                    <th>Date of Birth</th>
+                                    <th>SSN</th>
+                                    <th>Home Phone</th>
+                                    @*<th>Mobile Phone</th>*@
+                                    <th>Address</th>
+                                    <th>City</th>
+                                    <th>State</th>
+                                    <th>Zip</th>
+                                    <th>ID Number</th>
+                                    <th>ID State</th>
+                                    <th>Percentage Owned</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                        </table>
+                        <div class="col-md-12 custom-button activate-btn pop-btn">
+                            <a href="javascript:void(0)" class="btn btn-default btn-info" style="cursor:pointer;padding: 7px 15px !important;" data-toggle="modal" id="btnAddEFINOwner" onclick="fnPopupEFINOwnerInfo()">Add Owner</a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="display:none;">
+                        <div class="col-md-6" style="display:none;">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">A collection of business Owners.</label>
+                                <input type="text" id="txt_businessowner" class="form-control" maxlength="50">
+                            </div>
+                        </div>
+                        <div class="col-md-4" style="display:none;">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label">A collection of contacts that are neither the EFIN owner nor the Business Owner.</label>
+                                <input type="text" id="txt_nonbusinessowner" class="form-control" maxlength="50">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-4">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">Years e-Filing</label>
+                                <input type="text" id="txt_noofyears" class="form-control submitlock" maxlength="3" onkeypress="Onlydigit(event)">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group is-empty col-md-8" id="dvlegalissues">
+                            @*<label><input type="checkbox" id="chk_hasassociated" class="><span class="checkbox-material"></span><span class="check"></span></label>*@
+                            <label for="inputDefault" class="control-label width-90">Has anyone associated with this business ever been assessed preparer penalties, convicted of a criminal offense under federal revenue laws, or been barred from practice before the IRS or U.S Tax Court?</label>
+                        </div>
+                        <div class="col-md-4">
+                            <select id="chk_hasassociated" class="form-control submitlock">
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-8">
+                            <div class="form-group is-empty checkbox" id="dvtextmessages">
+                                <label>
+                                    <input type="checkbox" id="chk_textmessages"><span class="checkbox-material"><span class="check"></span></span>
+                                    <b> Please check here if your site wishes to receive a text message status of this bank application.</b>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="display:none;">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">We may be required to issue a 1099 to you at the end of the year.  If you submit a Business Federal ID number, it will be issued to this number.  Otherwise it will be issued to the EFIN owner’s SSN with no dashes</label>
+                                <input type="text" id="txt_federalnumber" class="form-control" maxlength="9" onkeypress="Onlydigit(event)">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="display:none;">
+                        <div class="col-md-4">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">EFIN Owners Title</label>
+                                <input type="text" id="txt_ownerstitle" class="form-control" maxlength="50" onkeypress="Onlyalphanumaric(event)">
+                            </div>
+                        </div>
+                        <div class="col-md-4" style="display:none;">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">Was this user a client of yours last year?  </label>
+                                <select id="ddl_prevclient" class="form-control">
+                                    <option value="Y">Yes</option>
+                                    <option value="N">No</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 bankenroll-div-save">
+                        <div class="col-md-12">
+                            <a onclick="RAOOPPrev()" class="btn btn-default btn-info btn-nextprev">Previous</a>
+                            <a onclick="RAOONext()" class="btn btn-default btn-info btn-nextprev">Next</a>
+                        </div>
+                    </div>
+                </div>
+                <div id="dvfee" class="tab-pane fade">
+                    <div class="col-md-12">
+                        <div class="col-md-12">
+                            <div class="form-group is-empty checkbox" id="dvfeeall">
+                                <label>
+                                    <input type="checkbox" id="chk_feeall"><span class="checkbox-material"><span class="check"></span></span>
+                                    <b>
+                                        Please check the box if you would like the Service Bureau Fee listed below to be added to your billing schedule for EF Only
+                                        and Paper Returns (non-Bank Products)?
+                                    </b>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-4">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label">Transmission Add-On Fee</label>
+                                <span class="cst-tooltip"><a class="ttip" id="ttip18ebc922-193f-45e9-bdc4-d0115883a502" style="display:none;" href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="Tooltip on right"><i class="fa fa-info" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group is-empty">
+                                <input type="text" id="txt_addonfee" class="form-control digit" maxlength="6" onkeypress="Onlydecimal(event,'txt_addonfee')" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-4">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label">Service Bureau Fee</label>
+                                <span class="cst-tooltip"><a class="ttip" id="ttip18ebc922-193f-45e9-bdc4-d0115883a503" style="display:none;" href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="Tooltip on right"><i class="fa fa-info" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group is-empty">
+                                <input type="text" id="txt_sbfee" class="form-control digit" maxlength="8" onkeypress="Onlydecimal(event,'txt_sbfee')" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-4">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">Electronic Filing Fee</label>
+                                <span class="cst-tooltip"><a class="ttip" id="ttipbbccd64d-8b15-4c1a-b192-b44102509682" href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="Tooltip on right"><i class="fa fa-info" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group is-empty">
+                                <input type="text" id="txt_electronicfee" class="form-control" maxlength="8" onkeypress="Onlydecimal(event,'txt_electronicfee')">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-12">
+                            <div class="form-group is-empty checkbox" id="dvtanc">
+                                <label>
+                                    <input type="checkbox" id="chk_agreebank"><span class="checkbox-material"><span class="check"></span></span>
+                                    <b> Agree To Bank <a data-target="#Termsandconditions" data-toggle="modal">Terms and Conditions</a></b>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 bankenroll-div-save">
+                        <div class="col-md-12">
+                            <a onclick="RAFeePPrev()" class="btn btn-default btn-info btn-nextprev">Previous</a>
+                            <a onclick="RAFeeNext()" class="btn btn-default btn-info btn-nextprev">Next</a>
+                        </div>
+                    </div>
+                </div>
+                <div id="dv_bankinfo" class="tab-pane fade">
+                    <div class="col-md-12">
+                        <div class="col-md-3">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">Bank Name</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group is-empty">
+                                <input type="text" id="txt_bankname" class="form-control" maxlength="25" onkeypress="CompanyNameRegex(event)" onblur="removeCompanyName(this)">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">Name on Deposit Account</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group is-empty">
+                                <input type="text" id="txt_accountname" class="form-control" maxlength="35" onkeypress="NameRegex(event)" onblur="removeName(this)">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-3">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">Bank Account Type</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group is-empty">
+                                <select id="ddl_bankaccounttype" class="form-control">
+                                    <option value="C">Checking</option>
+                                    <option value="S">Savings</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-3">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">Bank Routing Number (RTN)</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group is-empty">
+                                <input type="text" id="txt_routingnumber" class="form-control" maxlength="9" onkeypress="Onlydigit(event)">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">Confirm Bank Routing Number (RTN)</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group is-empty">
+                                <input type="text" id="txt_confirmroutingnumber" class="form-control" maxlength="9" onkeypress="Onlydigit(event)">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-3">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">Bank Account Number (DAN)</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group is-empty">
+                                <input type="text" id="txt_bankaccountno" class="form-control" maxlength="17" onkeypress="Onlydigit(event)">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group is-empty">
+                                <label for="inputDefault" class="control-label mandatory">Confirm Bank Account Number (DAN)</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group is-empty">
+                                <input type="text" id="txt_confirmbankaccountno" class="form-control" maxlength="17" onkeypress="Onlydigit(event)">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 bankenroll-div-save">
+                        <div class="col-md-6">
+                            <a onclick="RABankPPrev()" class="btn btn-default btn-info btn-nextprev">Previous</a>
+                            <a onclick="saveRABankEnrollment(1)" class="btn btn-default btn-info">Next</a>
+                        </div>
+                        <div class="col-md-6 text-right" id="dv_saveBank">
+                            <a onclick="saveRABankEnrollment(0)" class="btn btn-default btn-info cst-btn-block">Save</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="BankEnrollRA" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-action">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-12">
+                            <h2>Add Owner Information</h2>
+                            <hr />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body be-ra tab-tpg" style="height:450px;">
+                <div class="col-md-12">
+                    <div class="col-md-6">
+                        <div class="form-group is-empty">
+                            <label for="inputDefault" class="control-label mandatory">First Name</label>
+                            <input type="text" id="txt_modalFN" class="form-control submitlock" maxlength="50" onkeypress="NameRegex(event)" onblur="removeName(this)">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group is-empty">
+                            <label for="inputDefault" class="control-label mandatory">Last Name</label>
+                            <input type="text" id="txt_modalLN" class="form-control submitlock" maxlength="50" onkeypress="NameRegex(event)" onblur="removeName(this)">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-4">
+                        <div class="form-group is-empty">
+                            <label for="inputDefault" class="control-label mandatory">Owner SSN</label>
+                            <input type="text" id="txt_modalSSN" class="form-control submitlock" maxlength="9" onkeypress="Onlydigit(event)">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group is-empty">
+                            <label for="inputDefault" class="control-label mandatory">Date of Birth</label>
+                            <input type="text" id="txt_modalDOB" class="form-control submitlock" maxlength="10" placeholder="MMDDYYYY or MM/DD/YYYY">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group is-empty">
+                            <label for="inputDefault" class="control-label mandatory">Home Phone</label>
+                            <input type="text" id="txt_modalphone" class="form-control" maxlength="12" onkeypress="Onlydigit(event)">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-6">
+                        <div class="form-group is-empty">
+                            <label for="inputDefault" class="control-label mandatory">Address</label>
+                            <textarea id="txt_modalAddress" rows="3" class="form-control" maxlength="50" onkeypress="AddressRegex(event)" onblur="removeAddress(this)"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group is-empty">
+                            <label for="inputDefault" class="control-label mandatory">City</label>
+                            <input type="text" id="txt_modalCity" class="form-control" maxlength="50" onkeypress="CityRegex(event)" onblur="removeCity(this)">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-6">
+                        <div class="form-group is-empty">
+                            <label for="inputDefault" class="control-label mandatory">State</label>
+                            <select id="ddl_modalstate" name="ddlownerstate" class="form-control"></select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group is-empty">
+                            <label for="inputDefault" class="control-label mandatory">Zip Code</label>
+                            <input type="number" id="txt_modalzip" class="form-control max_5dig" max="99999" maxlength="5" onkeypress="Onlydigit(event)">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-6">
+                        <div class="form-group is-empty">
+                            <label for="inputDefault" class="control-label mandatory">ID Number</label>
+                            <input type="text" id="txt_modalidnumber" class="form-control submitlock" maxlength="50" onkeypress="Onlyalphanumaric(event)">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group is-empty">
+                            <label for="inputDefault" class="control-label mandatory">ID State</label>
+                            <select id="ddl_modalidstate" name="ddlissuestate" class="form-control submitlock"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-6">
+                        <div class="form-group is-empty">
+                            <label for="inputDefault" class="control-label mandatory">Percentage Owned</label>
+                            <input type="text" id="txt_ownerpercent" class="form-control submitlock" maxlength="50" onkeypress="Onlydigit(event)">
+                        </div>
+                    </div>
+                </div>
+            </div><hr />
+            <div class="modal-action">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-12 text-right">
+                            <button type="button" class="btn btn-default btn-confirm" onclick="fnPopupEFINOwnerInfo_Save();">Ok</button>
+                            <button type="button" class="btn btn-default btn-confirm cancel-btn" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="Termsandconditions" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body" style="min-height:300px;">
+                <button type="button" class="btn btn-default btn-confirm cancel-btn" data-dismiss="modal" style="margin-top:218px;float:right">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+    $(function () {
+        $('.max_5dig').keyup(function (e) {
+            if ($(this).val().length > 5) {
+                var xp = $(this).val();
+                $(this).val(xp.substr(0, 5));
+            }
+        });
+    })
+
+    function fnShippingCopy() {
+        var ShippingAddressSame = $('#chkShippingAddress').is(':checked');
+        if (ShippingAddressSame) {
+            $('#txt_shipaddress').val($('#txt_officeaddress').val()).attr('disabled', 'disabled');
+            $('#txt_shipcity').val($('#txt_officecity').val()).attr('disabled', 'disabled');
+            $('#ddl_shipstate').val($('#ddl_officestate').val()).attr('disabled', 'disabled');
+            $('#txt_shipzip').val($('#txt_officezip').val()).attr('disabled', 'disabled');
+        } else {
+            $('#txt_shipaddress').removeAttr('disabled');
+            $('#txt_shipcity').removeAttr('disabled');
+            $('#ddl_shipstate').removeAttr('disabled');
+            $('#txt_shipzip').removeAttr('disabled');
+        }
+    }
+    function fnMailingCopy() {
+        var MailingAddressSame = $('#chkMailingAddress').is(':checked');
+        if (MailingAddressSame) {
+            $('#txt_mailaddress').val($('#txt_officeaddress').val()).attr('disabled', 'disabled');
+            $('#txt_mailcity').val($('#txt_officecity').val()).attr('disabled', 'disabled');
+            $('#ddl_mailstate').val($('#ddl_officestate').val()).attr('disabled', 'disabled');
+            $('#txt_mailzip').val($('#txt_officezip').val()).attr('disabled', 'disabled');
+        } else {
+            $('#txt_mailaddress').removeAttr('disabled');
+            $('#txt_mailcity').removeAttr('disabled');
+            $('#ddl_mailstate').removeAttr('disabled');
+            $('#txt_mailzip').removeAttr('disabled');
+        }
+    }
+</script>

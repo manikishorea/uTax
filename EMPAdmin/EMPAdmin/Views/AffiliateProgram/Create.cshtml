@@ -1,0 +1,94 @@
+﻿@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm("CreateUser", "User", FormMethod.Post, new { @id = "CreateUser", @enctype = "multipart/form-data" }))
+{
+    <div class="page-header">
+        @if (ViewBag.Id == "00000000-0000-0000-0000-000000000000")
+        {
+            <h2>Create Affiliate Program</h2>
+        }
+        else
+        {
+            <h2>Edit Affiliate Program</h2>
+        }
+    </div>
+
+    @*@Html.AntiForgeryToken()*@
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <input type="hidden" id="Id" value="@ViewBag.Id" />
+    <input type="hidden" id="UserId" name="UserId" value="@Session["UserId"].ToString()" />
+    <input type="hidden" id="h_docpath" value="" />
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-2">
+                <label for="message-text" class="control-label mandatory">Name</label>
+            </div>
+            <div class="col-md-4">
+                <input type="text" id="Name" name="Name" class="form-control" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <label for="message-text" class="control-label">Cost</label>
+            </div>
+            <div class="col-md-4">
+                <input type="text" id="Cost" name="Cost" class="form-control" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <label for="message-text" class="control-label mandatory">Applicable Entities</label>
+            </div>
+            <div class="col-md-4" id="div_Entity">
+                
+            </div>
+        </div>
+       <div class="row">
+           <div class="col-md-2">
+               <label for="message-text" class="control-label">Upload File (.PDF Only)</label>
+           </div>
+           <div class="col-md-4" id="div_Entity">
+               <input type="file" id="fileToUpload" name="fileToUpload" style="float: left;" />
+           </div>
+       </div>
+        <div class="row">
+            
+            <a id="tcpathabcd" href="#" class="view_upload" target="_blank"><i class="fa fa-cloud-download"></i>View Document</a>
+        </div>
+            <div class="row">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="button" id="btnSave" name="btnSave" value="Submit" class="btn btn-default" onclick="fnSaveAffiliateProgram();" />
+                    <button type="button" class="btn btn-default" id="btnCancel" onclick="GotoListScreen('@Url.Content("~/affiliateprogram/Index")');">Back</button>
+                </div>
+            </div>
+        </div>
+}
+
+
+@section scripts {
+    <script src="~/Scripts/app/common.js"></script>
+    <script src="~/Scripts/app/affiliateprogram.js"></script>
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        getEntityCheckList($('#div_Entity'));
+
+        var Id = $('#Id').val();
+        getAffiliateProgramDetail(Id);
+
+        //$('#tcpath').attr('href', $('#h_termsconditions').val());
+        //$('#DocumentPath').keyup(function () {
+        //    $('#viewImage').attr('src', $(this).val());
+        //    $('#frameSpan').show();
+        //});
+    });
+
+
+
+</script>

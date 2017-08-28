@@ -1,0 +1,82 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<table id="tbAllCustomerInfo" class="table table-striped toggle-circle-filled" data-filter="#filter" data-sort="false" data-paging="true" data-paging-limit="3">
+    <thead>
+        <tr>
+            <th>Status</th>
+            <th data-toggle="true"></th>
+            <th>Company</th>
+            <th>Parent ID</th>
+            <th>Master Identifier</th>
+            <th>User ID</th>
+            <th>Contact</th>
+            <th>EFIN</th>
+            <th>Active Bank</th>
+            <th>Bank App Subm.Date</th>
+            <th>Enrollment Status</th>
+            <th>View/Edit Enrollment</th>
+            <th>Total SVB Fee</th>
+            <th>Total Trans Fee</th>
+            <th>On Boarding Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+    <tfoot class="hide-if-no-paging">
+        <tr>
+            <td colspan="13">
+                <div class="pagination pagination-centered"></div>
+            </td>
+            <td colspan="3">
+                <select id="maxcount">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                </select>
+
+                <select id="pagenumber">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+               
+                <input type="button" id="btnSearch" onclick="fnSearch();" value="Search" />
+            </td>
+        </tr>
+    </tfoot>
+</table>
+<div id="divtest"></div>
+<script src="~/Scripts/app/CustomerSearch.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var maxcount = $('#maxcount').val();
+        var pagenumber = $('#pagenumber').val();
+        getCustomerSearch(pagenumber, maxcount);
+    });
+
+    function fnSearch() {
+        var maxcount = $('#maxcount').val();
+        var pagenumber = $('#pagenumber').val();
+        getCustomerSearch(pagenumber, maxcount);
+    }
+
+    function fnPagesSearch(pagenumber) {
+        var maxcount = $('#maxcount').val();
+        //var pagenumber = $('#pagenumber').val();
+        getCustomerSearch(pagenumber, maxcount);
+    }
+
+</script>

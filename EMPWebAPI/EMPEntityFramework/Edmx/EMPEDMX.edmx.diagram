@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="21b5c86c2cc648a990c6f3568663c11e" Name="Diagram1" ZoomLevel="60">
+        <EntityTypeShape EntityType="EMPDBModel.AccessTypeMaster" Width="1.5" PointX="0.75" PointY="18.25" />
+        <EntityTypeShape EntityType="EMPDBModel.AffiliateProgramMaster" Width="1.5" PointX="6" PointY="42" />
+        <EntityTypeShape EntityType="EMPDBModel.AffiliationProgramEntityMap" Width="1.5" PointX="8.25" PointY="15.625" />
+        <EntityTypeShape EntityType="EMPDBModel.APIIntegration" Width="1.5" PointX="0.75" PointY="2.25" />
+        <EntityTypeShape EntityType="EMPDBModel.AuditLog" Width="1.5" PointX="0.75" PointY="6.25" />
+        <EntityTypeShape EntityType="EMPDBModel.AuditLog_EFIN" Width="1.5" PointX="15.75" PointY="13.25" />
+        <EntityTypeShape EntityType="EMPDBModel.AuditLog_EnrollmentReset" Width="1.5" PointX="15.75" PointY="17.25" />
+        <EntityTypeShape EntityType="EMPDBModel.AudtiLog_DefaultBank" Width="1.5" PointX="17.75" PointY="2.25" />
+        <EntityTypeShape EntityType="EMPDBModel.BankAssociatedCutofDate" Width="1.5" PointX="17.75" PointY="6.25" />
+        <EntityTypeShape EntityType="EMPDBModel.BankEnrollment" Width="1.5" PointX="17.75" PointY="13.25" />
+        <EntityTypeShape EntityType="EMPDBModel.BankEnrollmentEFINOwnersForRA" Width="1.5" PointX="17.75" PointY="18.25" />
+        <EntityTypeShape EntityType="EMPDBModel.BankEnrollmentForRA" Width="1.5" PointX="19.75" PointY="2.25" />
+        <EntityTypeShape EntityType="EMPDBModel.BankEnrollmentForRB" Width="1.5" PointX="12.75" PointY="21.25" />
+        <EntityTypeShape EntityType="EMPDBModel.BankEnrollmentForTPG" Width="1.5" PointX="14.75" PointY="21.25" />
+        <EntityTypeShape EntityType="EMPDBModel.BankEnrollmentHistory" Width="1.5" PointX="19.75" PointY="18.25" />
+        <EntityTypeShape EntityType="EMPDBModel.BankEnrollmentInvalid" Width="1.5" PointX="7.75" PointY="22.25" />
+        <EntityTypeShape EntityType="EMPDBModel.BankEnrollmentStatu" Width="1.5" PointX="9.75" PointY="22.25" />
+        <EntityTypeShape EntityType="EMPDBModel.BankEntityMap" Width="1.5" PointX="5.25" PointY="21.625" />
+        <EntityTypeShape EntityType="EMPDBModel.BankMaster" Width="1.5" PointX="3" PointY="23.25" />
+        <EntityTypeShape EntityType="EMPDBModel.BankSubQuestion" Width="1.5" PointX="5.25" PointY="51.875" />
+        <EntityTypeShape EntityType="EMPDBModel.ContactPersonTitleCustomerMap" Width="1.5" PointX="13" PointY="18.125" />
+        <EntityTypeShape EntityType="EMPDBModel.ContactPersonTitleMaster" Width="1.5" PointX="10.75" PointY="17.375" />
+        <EntityTypeShape EntityType="EMPDBModel.CustomerAssociatedFee" Width="1.5" PointX="21.75" PointY="2.25" />
+        <EntityTypeShape EntityType="EMPDBModel.CustomerConfigurationStatu" Width="1.5" PointX="21.75" PointY="6.25" />
+        <EntityTypeShape EntityType="EMPDBModel.CustomerMaster" Width="1.5" PointX="21.75" PointY="10.25" />
+        <EntityTypeShape EntityType="EMPDBModel.CustomerNote" Width="1.5" PointX="21.75" PointY="14.25" />
+        <EntityTypeShape EntityType="EMPDBModel.CustomerPaymentOption" Width="1.5" PointX="7.5" PointY="28.375" />
+        <EntityTypeShape EntityType="EMPDBModel.CustomerPaymentViaACH" Width="1.5" PointX="21.75" PointY="18.25" />
+        <EntityTypeShape EntityType="EMPDBModel.CustomerPaymentViaCreditCard" Width="1.5" PointX="9.75" PointY="28.125" />
+        <EntityTypeShape EntityType="EMPDBModel.CustomerUnlock" Width="1.5" PointX="19.75" PointY="23.25" />
+        <EntityTypeShape EntityType="EMPDBModel.DocumentMaster" Width="1.5" PointX="21.75" PointY="22.25" />
+        <EntityTypeShape EntityType="EMPDBModel.EmailNotification" Width="1.5" PointX="16.75" PointY="24.25" />
+        <EntityTypeShape EntityType="EMPDBModel.EMP_ActionMaser" Width="1.5" PointX="23.75" PointY="2.25" />
+        <EntityTypeShape EntityType="EMPDBModel.emp_CustomerInformation" Width="1.5" PointX="5.25" PointY="26.75" />
+        <EntityTypeShape EntityType="EMPDBModel.emp_CustomerLoginInformation" Width="1.5" PointX="23.75" PointY="6.25" />
+        <EntityTypeShape EntityType="EMPDBModel.EnrollmentAddonStaging" Width="1.5" PointX="23.75" PointY="12.25" />
+        <EntityTypeShape EntityType="EMPDBModel.EnrollmentAffiliateConfiguration" Width="1.5" PointX="23.75" PointY="17.25" />
+        <EntityTypeShape EntityType="EMPDBModel.EnrollmentBankSelection" Width="1.5" PointX="23.75" PointY="21.25" />
+        <EntityTypeShape EntityType="EMPDBModel.EnrollmentFeeReimbursementConfig" Width="1.5" PointX="21.75" PointY="26.25" />
+        <EntityTypeShape EntityType="EMPDBModel.EnrollmentOfficeConfiguration" Width="1.5" PointX="23.75" PointY="26.25" />
+        <EntityTypeShape EntityType="EMPDBModel.EntityActionPermission" Width="1.5" PointX="9.75" PointY="2.25" />
+        <EntityTypeShape EntityType="EMPDBModel.EntityHierarchy" Width="1.5" PointX="25.75" PointY="2.25" />
+        <EntityTypeShape EntityType="EMPDBModel.EntityMaster" Width="1.5" PointX="3" PointY="17.125" />
+        <EntityTypeShape EntityType="EMPDBModel.Error" Width="1.5" PointX="25.75" PointY="5.25" />
+        <EntityTypeShape EntityType="EMPDBModel.ExceptionLog" Width="1.5" PointX="25.75" PointY="9.25" />
+        <EntityTypeShape EntityType="EMPDBModel.FeeEntityMap" Width="1.5" PointX="5.25" PointY="18.625" />
+        <EntityTypeShape EntityType="EMPDBModel.FeeMaster" Width="1.5" PointX="3" PointY="11.125" />
+        <EntityTypeShape EntityType="EMPDBModel.FeeReimbursementConfig" Width="1.5" PointX="25.75" PointY="12.25" />
+        <EntityTypeShape EntityType="EMPDBModel.GroupMaster" Width="1.5" PointX="5.25" PointY="0.75" />
+        <EntityTypeShape EntityType="EMPDBModel.GroupRoleMap" Width="1.5" PointX="7.5" PointY="3.375" />
+        <EntityTypeShape EntityType="EMPDBModel.MainOfficeConfiguration" Width="1.5" PointX="25.75" PointY="17.25" />
+        <EntityTypeShape EntityType="EMPDBModel.NotificationMaster" Width="1.5" PointX="10.75" PointY="13.375" />
+        <EntityTypeShape EntityType="EMPDBModel.OfficeManagement" Width="1.5" PointX="18.75" PointY="27.25" />
+        <EntityTypeShape EntityType="EMPDBModel.PermissionMaster" Width="1.5" PointX="12.75" PointY="0.875" />
+        <EntityTypeShape EntityType="EMPDBModel.PhoneTypeCustomerMap" Width="1.5" PointX="17" PointY="9.875" />
+        <EntityTypeShape EntityType="EMPDBModel.PhoneTypeMaster" Width="1.5" PointX="14.75" PointY="9.375" />
+        <EntityTypeShape EntityType="EMPDBModel.RoleMaster" Width="1.5" PointX="5.25" PointY="4.5" />
+        <EntityTypeShape EntityType="EMPDBModel.RolePermissionMap" Width="1.5" PointX="15" PointY="3.375" />
+        <EntityTypeShape EntityType="EMPDBModel.Salesforce_Account" Width="1.5" PointX="25.75" PointY="22.25" />
+        <EntityTypeShape EntityType="EMPDBModel.Salesforce_Contact" Width="1.5" PointX="27.75" PointY="2.25" />
+        <EntityTypeShape EntityType="EMPDBModel.Salesforce_Opportunity" Width="1.5" PointX="0.75" PointY="29.25" />
+        <EntityTypeShape EntityType="EMPDBModel.SalesYearEntityMap" Width="1.5" PointX="8.25" PointY="18.625" />
+        <EntityTypeShape EntityType="EMPDBModel.SalesYearMaster" Width="1.5" PointX="6" PointY="47" />
+        <EntityTypeShape EntityType="EMPDBModel.SecurityAnswerUserMap" Width="1.5" PointX="27.75" PointY="6.25" />
+        <EntityTypeShape EntityType="EMPDBModel.SecurityQuestionMaster" Width="1.5" PointX="27.75" PointY="10.25" />
+        <EntityTypeShape EntityType="EMPDBModel.SitemapEntity" Width="1.5" PointX="27.75" PointY="14.25" />
+        <EntityTypeShape EntityType="EMPDBModel.SitemapMaster" Width="1.5" PointX="9.75" PointY="4.75" />
+        <EntityTypeShape EntityType="EMPDBModel.SitemapPermissionMap" Width="1.5" PointX="15" PointY="6.25" />
+        <EntityTypeShape EntityType="EMPDBModel.SiteMapRolePermission" Width="1.5" PointX="12" PointY="5.125" />
+        <EntityTypeShape EntityType="EMPDBModel.StateMaster" Width="1.5" PointX="27.75" PointY="18.25" />
+        <EntityTypeShape EntityType="EMPDBModel.StatusCode" Width="1.5" PointX="27.75" PointY="21.25" />
+        <EntityTypeShape EntityType="EMPDBModel.SubSiteAffiliateProgramConfig" Width="1.5" PointX="9.75" PointY="36.625" />
+        <EntityTypeShape EntityType="EMPDBModel.SubSiteBankConfig" Width="1.5" PointX="9.75" PointY="32.75" />
+        <EntityTypeShape EntityType="EMPDBModel.SubSiteBankFeesConfig" Width="1.5" PointX="27.75" PointY="25.25" />
+        <EntityTypeShape EntityType="EMPDBModel.SubSiteConfiguration" Width="1.5" PointX="7.5" PointY="33.5" />
+        <EntityTypeShape EntityType="EMPDBModel.SubSiteFeeConfig" Width="1.5" PointX="25.75" PointY="30.25" />
+        <EntityTypeShape EntityType="EMPDBModel.SubSiteOfficeBankFeeConfig" Width="1.5" PointX="27.75" PointY="30.25" />
+        <EntityTypeShape EntityType="EMPDBModel.SubSiteOfficeConfig" Width="1.5" PointX="29.75" PointY="2.25" />
+        <EntityTypeShape EntityType="EMPDBModel.TempArchiveCustomerInfo" Width="1.5" PointX="29.75" PointY="8.25" />
+        <EntityTypeShape EntityType="EMPDBModel.TokenMaster" Width="1.5" PointX="29.75" PointY="11.25" />
+        <EntityTypeShape EntityType="EMPDBModel.TooltipMaster" Width="1.5" PointX="12" PointY="8.625" />
+        <EntityTypeShape EntityType="EMPDBModel.UpdateBankEnrollmentStatus_AuditLog" Width="1.5" PointX="29.75" PointY="15.25" />
+        <EntityTypeShape EntityType="EMPDBModel.UserGroupMap" Width="1.5" PointX="7.5" PointY="11.125" />
+        <EntityTypeShape EntityType="EMPDBModel.UserMaster" Width="1.5" PointX="5.25" PointY="9.25" />
+        <EntityTypeShape EntityType="EMPDBModel.UserNotificationsMap" Width="1.5" PointX="13" PointY="13.75" />
+        <EntityTypeShape EntityType="EMPDBModel.UserRolesMap" Width="1.5" PointX="7.5" PointY="8.125" />
+        <EntityTypeShape EntityType="EMPDBModel.UtaxCrosslinkDetail" Width="1.5" PointX="29.75" PointY="19.25" />
+        <EntityTypeShape EntityType="EMPDBModel.ZipCodeMaster" Width="1.5" PointX="20.75" PointY="31.25" />
+        <EntityTypeShape EntityType="EMPDBModel.temp3" Width="1.5" PointX="29.75" PointY="23.25" />
+        <AssociationConnector Association="EMPDBModel.FK_EntityMaster_AccessTypeMaster" />
+        <AssociationConnector Association="EMPDBModel.FK_AffiliationProgramEntityMap_AffiliateProgramMaster" />
+        <AssociationConnector Association="EMPDBModel.FK_AffiliationProgramEntityMap_EntityMaster" />
+        <AssociationConnector Association="EMPDBModel.FK_BankEntityMap_BankMaster" />
+        <AssociationConnector Association="EMPDBModel.FK_BankEntityMap_EntityMaster" />
+        <AssociationConnector Association="EMPDBModel.FK_BankSubQuestions_BankMaster" />
+        <AssociationConnector Association="EMPDBModel.FK_ContactPersonTitleCustomerMap_ContactPersonTitle" />
+        <AssociationConnector Association="EMPDBModel.FK_CustomerPaymentOptions_emp_CustomerInformation" />
+        <AssociationConnector Association="EMPDBModel.FK_CustomerPaymentViaCreditCard_CustomerPaymentOptions" />
+        <AssociationConnector Association="EMPDBModel.FK_emp_CustomerInformation_EntityMaster" />
+        <AssociationConnector Association="EMPDBModel.FK_SubSiteConfiguration_SubSiteConfiguration" />
+        <AssociationConnector Association="EMPDBModel.FK_FeeEntityMap_EntityMaster" />
+        <AssociationConnector Association="EMPDBModel.FK_SalesYearEntityMap_EntityMaster" />
+        <AssociationConnector Association="EMPDBModel.FK_UserMaster_EntityMaster" />
+        <AssociationConnector Association="EMPDBModel.FK_FeeEntityMap_FeeMaster" />
+        <AssociationConnector Association="EMPDBModel.FK_GroupRoleMap_GroupMaster" />
+        <AssociationConnector Association="EMPDBModel.FK_UserGroupMap_GroupMaster" />
+        <AssociationConnector Association="EMPDBModel.FK_GroupRoleMap_RoleMaster" />
+        <AssociationConnector Association="EMPDBModel.FK_UserNotificationsMap_NotificationMaster" />
+        <AssociationConnector Association="EMPDBModel.FK_RolePermissionMap_PermissionMaster" />
+        <AssociationConnector Association="EMPDBModel.FK_SitemapPermissionMap_PermissionMaster" />
+        <AssociationConnector Association="EMPDBModel.FK_PhoneTypeCustomerMap_PhoneTypeMaster" />
+        <AssociationConnector Association="EMPDBModel.FK_RolePermissionMap_RoleMaster" />
+        <AssociationConnector Association="EMPDBModel.FK_SiteMapRolePermission_RoleMaster" />
+        <AssociationConnector Association="EMPDBModel.FK_UserRolesMap_RoleMaster" />
+        <AssociationConnector Association="EMPDBModel.FK_SalesYearEntityMap_SalesYearMaster" />
+        <AssociationConnector Association="EMPDBModel.FK_SitemapPermissionMap_SitemapMaster" />
+        <AssociationConnector Association="EMPDBModel.FK_SiteMapRolePermission_SitemapMaster" />
+        <AssociationConnector Association="EMPDBModel.FK_TooltipMaster_SitemapMaster" />
+        <AssociationConnector Association="EMPDBModel.FK_SubSiteAffiliateProgramConfig_SubSiteConfiguration" />
+        <AssociationConnector Association="EMPDBModel.FK_SubSiteBankConfig_SubSiteConfiguration" />
+        <AssociationConnector Association="EMPDBModel.FK_UserGroupMap_UserMaster" />
+        <AssociationConnector Association="EMPDBModel.FK_UserMaster_UserMaster" />
+        <AssociationConnector Association="EMPDBModel.FK_UserRolesMap_UserMaster" />
+        <EntityTypeShape EntityType="EMPDBModel.uTaxSetting" Width="1.5" PointX="32.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

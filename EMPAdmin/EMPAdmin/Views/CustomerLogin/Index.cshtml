@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+   
+}
+
+ <div class="login_main clearfix">
+    <div class="card_wrap">
+        <div class="card_main">
+            <h2><span>Log in to EMP</span></h2>
+        </div>
+
+        <div class="card_bg">
+            <div class="">
+                <div class="row">
+                    <div class="col-md-12"><label>User Id <span class="red_txt">*</span></label> </div>
+                    <div class="col-md-12">
+                        <input type="text" id="UserID" name="UserID" class="form-control" maxlength="100" />
+                        <span class="form_icon"><span class="fa fa-user"></span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="">
+                <div class="row">
+                    <div class="col-md-12"><label>Password <span class="red_txt">*</span></label></div>
+                    <div class="col-md-12">
+                        <input type="password" id="Password" name="Password" class="form-control" maxlength="50" />
+                        <span class="form_icon"><span class="fa fa-unlock"></span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input class="btn btn-default btn-raised" type="submit" name="Index" id="btnSubmit"
+                           value="Login" /> &nbsp;
+                    <a href="javascript:void(0)" data-target="#popupfpwd" id="lnkfpwd" class="pull-right forgot_password" data-toggle="modal">
+                        <i class=""></i>Forgot your Password
+                    </a>
+                    
+                </div>
+            </div>
+            <div class="alert alert-danger" id="divErrorMessage" role="alert">
+                @TempData["error"]
+            </div>
+        </div>
+    </div>
+     </div>

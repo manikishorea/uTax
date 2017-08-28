@@ -1,0 +1,3874 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.crosslinktax.com/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.crosslinktax.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.crosslinktax.com/">
+      <s:element name="getAccessKey">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAccessKeyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAccessKeyResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="isAuth">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="auth" type="tns:AuthObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="AuthObject">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccessKey" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="isAuthResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="isAuthResult" type="tns:XlinkResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="XlinkResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="message" type="tns:ArrayOfString" />
+          <s:element minOccurs="1" maxOccurs="1" name="success" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getTaxableStateList">
+        <s:complexType />
+      </s:element>
+      <s:element name="getTaxableStateListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getTaxableStateListResult" type="tns:ArrayOfStates" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfStates">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="States" nillable="true" type="tns:States" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="States">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="StateAbbr" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StateName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getStateList">
+        <s:complexType />
+      </s:element>
+      <s:element name="getStateListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getStateListResult" type="tns:ArrayOfStates" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAvailableBanks">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="efinid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAvailableBanksResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAvailableBanksResult" type="tns:ArrayOfBankObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBankObject">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="BankObject" nillable="true" type="tns:BankObject" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BankObject">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="BankID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FeeCap" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="EROMarkUpCap" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="SBMarkUpCap" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="IncludeSBFeeInCap" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getPEIFees">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="bankid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="userid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPEIFeesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getPEIFeesResult" type="tns:FeeObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FeeObject">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="PEIRalTransmitterFee" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="PEITechFee" nillable="true" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getPEIRalTransmitterFee">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="bankid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="userid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPEIRalTransmitterFeeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="getPEIRalTransmitterFeeResult" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPEITechFee">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="bankid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="userid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPEITechFeeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="getPEITechFeeResult" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getBankInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="bankid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getBankInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getBankInfoResult" type="tns:BankObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getContactList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="auth" type="tns:AuthObject" />
+            <s:element minOccurs="0" maxOccurs="1" name="accountid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="franchiseuserid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getContactListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getContactListResult" type="tns:ArrayOfContactObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfContactObject">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ContactObject" nillable="true" type="tns:ContactObject" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ContactObject">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="EfinContactID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ContactDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IDNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IDState" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Zip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mobile" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Fax" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DOB" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="SSN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Response" type="tns:XlinkResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getContact">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="auth" type="tns:AuthObject" />
+            <s:element minOccurs="1" maxOccurs="1" name="contactid" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="accountid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="franchiseuserid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getContactResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getContactResult" type="tns:ContactObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPortalSetting">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="settingname" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPortalSettingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="getPortalSettingResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getSBName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="accountid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getSBNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getSBNameResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateNewUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="auth" type="tns:AuthObject" />
+            <s:element minOccurs="0" maxOccurs="1" name="newuser" type="tns:NewUserObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="NewUserObject">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Account" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Fname" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Lname" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShippingAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShippingCity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShippingState" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShippingZip" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AddBusinessProduct" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Utype" type="s:unsignedByte" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CreateNewUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateNewUserResult" type="tns:XlinkResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getUserIDList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="auth" type="tns:AuthObject" />
+            <s:element minOccurs="0" maxOccurs="1" name="accountid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="franchiseuserid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getUserIDListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getUserIDListResult" type="tns:ArrayOfGetCrosslinkUsers_Result" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGetCrosslinkUsers_Result">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GetCrosslinkUsers_Result" nillable="true" type="tns:GetCrosslinkUsers_Result" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GetCrosslinkUsers_Result">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ComplexObject">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Account" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="UType" type="s:unsignedByte" />
+              <s:element minOccurs="0" maxOccurs="1" name="UtypeDesc" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Fname" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Lname" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="MasterEfin" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="PEIRalTransmitterFee" nillable="true" type="s:decimal" />
+              <s:element minOccurs="0" maxOccurs="1" name="HoldFlag" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="TransmitPassword" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ShippingAddress" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ShippingCity" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ShippingState" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ShippingZip" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="IsFranchiseOwner" nillable="true" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="FranchiseParentID" nillable="true" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="FranchiseName" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="FranchiseSBFee" nillable="true" type="s:decimal" />
+              <s:element minOccurs="0" maxOccurs="1" name="FranchiseSBFeeAll" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="FranchiseSBFeeLock" nillable="true" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="IsActiveFed" nillable="true" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="IsActiveBus" nillable="true" type="s:boolean" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ComplexObject" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:StructuralObject" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="StructuralObject" abstract="true" />
+      <s:element name="hasFiledReturns">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="efin" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="hasFiledReturnsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="hasFiledReturnsResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateContact">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="auth" type="tns:AuthObject" />
+            <s:element minOccurs="0" maxOccurs="1" name="contact" type="tns:ContactObject" />
+            <s:element minOccurs="0" maxOccurs="1" name="accountid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="franchiseuserid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateContactResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="updateContactResult" type="tns:XlinkResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAccountCodeByUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="userid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAccountCodeByUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAccountCodeByUserResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateDocument">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="auth" type="tns:AuthObject" />
+            <s:element minOccurs="0" maxOccurs="1" name="doc" type="tns:DocumentObject" />
+            <s:element minOccurs="0" maxOccurs="1" name="owner" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DocumentObject">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="EFINDocumentID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Owner" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DocumentTypeCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SubTypeValue" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShortDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DocumentImage" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="FileType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SubmittedDate" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="updateDocumentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="updateDocumentResult" type="tns:XlinkResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDocTypes">
+        <s:complexType />
+      </s:element>
+      <s:element name="getDocTypesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getDocTypesResult" type="tns:ArrayOfDocumentTypeObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDocumentTypeObject">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DocumentTypeObject" nillable="true" type="tns:DocumentTypeObject" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DocumentTypeObject">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="DocumentTypeCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShortDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SubType" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getDocumentList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="auth" type="tns:AuthObject" />
+            <s:element minOccurs="0" maxOccurs="1" name="owner" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDocumentListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getDocumentListResult" type="tns:ArrayOfDocumentObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDocumentObject">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DocumentObject" nillable="true" type="tns:DocumentObject" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getDocument">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="auth" type="tns:AuthObject" />
+            <s:element minOccurs="1" maxOccurs="1" name="docid" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="owner" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDocumentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getDocumentResult" type="tns:DocumentObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteDocument">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="auth" type="tns:AuthObject" />
+            <s:element minOccurs="1" maxOccurs="1" name="docid" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="owner" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteDocumentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="deleteDocumentResult" type="tns:XlinkResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="isAddonAgreementComplete">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="accountid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="franchiseuserid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="isAddonAgreementCompleteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="isAddonAgreementCompleteResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="checkMasterAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="accountid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="franchiseuserid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="checkMasterAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="checkMasterAccountResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getEFINbyEFIN">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="auth" type="tns:AuthObject" />
+            <s:element minOccurs="1" maxOccurs="1" name="efin" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="accountid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="franchiseuserid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getEFINbyEFINResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getEFINbyEFINResult" type="tns:EfinObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EfinObject">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="EfinID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Efin" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Master" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="HoldFlag" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HoldBy" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="UserID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="EIN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IDNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IDState" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Zip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mobile" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Fax" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DOB" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="SSN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CheckName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RTN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DAN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AcctType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AcctName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SelectedBank" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdatedDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="UpdatedBy" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreatedDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreatedBy" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccountID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EFINType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ServiceBureau" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="SBFeeAll" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HoldNote" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="HoldDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Deleted" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Locked" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AgreePEITerms" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AgreePEIDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="AllowMultipleBanks" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AgreeFeeOption" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AgreeFeeOptionDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="AgreeToSCO" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AgreeToSCODate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ParticipateSCO" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="FivePlus" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="HasFiledReturns" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="CorporationType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CountryCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IRSTrackingNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Response" type="tns:XlinkResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getEFINID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="efin" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getEFINIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="getEFINIDResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getEFIN">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="auth" type="tns:AuthObject" />
+            <s:element minOccurs="1" maxOccurs="1" name="efinid" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="accountid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="franchiseuserid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getEFINResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getEFINResult" type="tns:EfinObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getEfinStats">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="efin" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="year" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getEfinStatsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getEfinStatsResult" type="tns:EfinStatsObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EfinStatsObject">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Efin" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TotalBankProductsRequested" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TotalReturns" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LossPercentage" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="RacsFunded" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RalsFunded" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PriorYearBank" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="hasMEfinBank">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="efin" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="bankcode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="hasMEfinBankResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="hasMEfinBankResult" type="tns:MasterEfinObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="MasterEfinObject">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Value" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Master" nillable="true" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="hasMEfinBankAck">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="efin" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="bankcode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="hasMEfinBankAckResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="hasMEfinBankAckResult" type="tns:MasterEfinObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getEFINCompleteStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="efin" type="tns:EfinObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getEFINCompleteStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getEFINCompleteStatusResult" type="tns:EfinCompleteResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EfinCompleteResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="EfinID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Efin" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="eSecComplete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="dSecComplete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="cSecComplete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="rSecComplete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="EfinComplete" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="updateEFIN">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="auth" type="tns:AuthObject" />
+            <s:element minOccurs="0" maxOccurs="1" name="efin" type="tns:EfinObject" />
+            <s:element minOccurs="0" maxOccurs="1" name="accountid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="franchiseuserid" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="finalupdate" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateEFINResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="updateEFINResult" type="tns:XlinkResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="validateEfinObject">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="eo" type="tns:EfinObject" />
+            <s:element minOccurs="1" maxOccurs="1" name="final" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="validateEfinObjectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="validateEfinObjectResult" type="tns:XlinkResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="verifyMasterEFIN">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="efin" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="bankcode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="verifyMasterEFINResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="verifyMasterEFINResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getFivePlusAddOn">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="auth" type="tns:AuthObject" />
+            <s:element minOccurs="1" maxOccurs="1" name="season" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ownerid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getFivePlusAddOnResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="getFivePlusAddOnResult" nillable="true" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCustomerOwner">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="season" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="childid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCustomerOwnerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getCustomerOwnerResult" type="tns:tblCustomerHierarchy" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="tblCustomerHierarchy">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityObject">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="season" type="s:short" />
+              <s:element minOccurs="0" maxOccurs="1" name="parentAccount" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="childAccount" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="createDate" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="createdBy" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="minSBFee" nillable="true" type="s:decimal" />
+              <s:element minOccurs="0" maxOccurs="1" name="editedBy" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="editedDate" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="allowBankEnrollment" type="s:boolean" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EntityObject" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:StructuralObject">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="EntityKey" type="tns:EntityKey" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EntityKey">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="EntitySetName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EntityContainerName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EntityKeyValues" type="tns:ArrayOfEntityKeyMember" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEntityKeyMember">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EntityKeyMember" nillable="true" type="tns:EntityKeyMember" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EntityKeyMember">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getEFINSummaryList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="auth" type="tns:AuthObject" />
+            <s:element minOccurs="0" maxOccurs="1" name="accountid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="userid" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="franchiseuserid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EfinSummaryObject">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Efin" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="EfinType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccountID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Registered" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RegisteredDescription" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="EfinID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="UserID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorDescription" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Deleted" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Delivered" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="DeliveredDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="AppBank" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AppBankName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AppRegistered" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AppRegisteredDescription" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AppID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="AllowMultipleBanks" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="SelectedBank" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SelectedBankName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AddOnFee" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="SBFee" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="AnyDeliveredApp" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="SystemHold" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Hidden" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="DepositFeeError" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="EFINMasterError" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="SBFeeError" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="SBFeeMinError" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="FivePlus" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="HasFiledReturns" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEfinSummaryObject">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EfinSummaryObject" nillable="true" type="tns:EfinSummaryObject" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getEFINSummaryListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getEFINSummaryListResult" type="tns:ArrayOfEfinSummaryObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="checkFees">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="bankid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="SBFee" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="AddOnFee" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="userid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="checkFeesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="checkFeesResult" type="tns:XlinkResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllAppStats">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="auth" type="tns:AuthObject" />
+            <s:element minOccurs="1" maxOccurs="1" name="efinid" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="appid" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="bankid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="currentefinsection" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="currentappsection" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="AppStatsObject">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IsEfinComplete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsEfinSectionComplete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsbankDepositInfoLocked" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsEfinCustomerServiceLocked" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="HasFiledReturns" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="ThisAppStatus" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ThisAppStatusDescription" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsThisAppDelivered" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsThisAppPending" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsThisAppAccepted" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsThisAppRejected" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsAppComplete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsAppSectionComplete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsAnyAppDelivered" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsAnyAppPending" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsAnyAppAccepted" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsAddonComplete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="LatestSBTPGAppID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="LatestSBTPGAppStatus" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LatestSBTPGAppDelivered" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsAnySBTPGAppAccepted" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="LatestAdventAppID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="LatestAdventAppStatus" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LatestAdventAppDelivered" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsAnyAdventAppAccepted" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsAnyAdventAppDeclined" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="LatestRefundoAppID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="LatestRefundoAppStatus" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LatestRefundoAppDelivered" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsAnyRefundoAppAccepted" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="LatestRepublicAppID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="LatestRepublicAppStatus" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LatestRepublicAppDelivered" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsAnyRepublicAppAccepted" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="LatestRAAppID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="LatestRAAppStatus" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LatestRAAppDelivered" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsAnyRAAppAccepted" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="EfinStats" type="tns:EfinStatsObject" />
+          <s:element minOccurs="0" maxOccurs="1" name="Response" type="tns:XlinkResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAllAppStatsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllAppStatsResult" type="tns:AppStatsObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getBankApps">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="auth" type="tns:AuthObject" />
+            <s:element minOccurs="1" maxOccurs="1" name="efinid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="AppObject">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="AccountID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="UserID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EFINID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BankAppID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Delivered" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Sent" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="DeliveredDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="SentDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdatedDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Deleted" nillable="true" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Registered" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RegisteredDescription" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AllowMultipleBanks" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Response" type="tns:XlinkResponse" />
+          <s:element minOccurs="1" maxOccurs="1" name="AgreeBank" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AgreeDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="AgreeFeeOption" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AgreeFeeOptionDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="AgreeRushCard" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AgreeRushCardDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="FeeRoutingNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FeeAccountNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FeeAccountType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FeeAccountName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Master" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EROTranFee" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SBPrepFee" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PEIRALTransmitterFee" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PEITechFee" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsSystemHold" nillable="true" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="MailingStreet" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MailingCity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MailingState" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MailingZip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PhysicalStreet" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PhysicalCity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PhysicalState" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PhysicalZip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShippingStreet" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShippingCity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShippingState" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShippingZip" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfAppObject">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="AppObject" nillable="true" type="tns:AppObject" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getBankAppsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getBankAppsResult" type="tns:ArrayOfAppObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getLatestAppbyBank">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="auth" type="tns:AuthObject" />
+            <s:element minOccurs="1" maxOccurs="1" name="efinid" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="bankid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getLatestAppbyBankResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getLatestAppbyBankResult" type="tns:AppObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getLatestApp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="auth" type="tns:AuthObject" />
+            <s:element minOccurs="1" maxOccurs="1" name="efinid" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="bankid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getLatestAppResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getLatestAppResult" type="tns:AppObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="submitBankApplication">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="auth" type="tns:AuthObject" />
+            <s:element minOccurs="1" maxOccurs="1" name="bankappid" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="efinid" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="accountid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="bankcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="updatedby" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="submitBankApplicationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="submitBankApplicationResult" type="tns:XlinkResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="validateAppObject">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="app" />
+            <s:element minOccurs="1" maxOccurs="1" name="final" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="validateAppObjectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="validateAppObjectResult" type="tns:XlinkResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateOwner">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="auth" type="tns:AuthObject" />
+            <s:element minOccurs="0" maxOccurs="1" name="owner" />
+            <s:element minOccurs="1" maxOccurs="1" name="final" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateOwnerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="updateOwnerResult" type="tns:XlinkResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteOwner">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="auth" type="tns:AuthObject" />
+            <s:element minOccurs="0" maxOccurs="1" name="owner" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteOwnerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="deleteOwnerResult" type="tns:XlinkResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateApp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="auth" type="tns:AuthObject" />
+            <s:element minOccurs="0" maxOccurs="1" name="app" />
+            <s:element minOccurs="1" maxOccurs="1" name="final" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateAppResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="updateAppResult" type="tns:XlinkResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="validateSBTPGApp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sbtpgapp" type="tns:SBTPGAppObject" />
+            <s:element minOccurs="1" maxOccurs="1" name="final" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SBTPGAppObject">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="SBTPGBankAppID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EfinID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ManagerFName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ManagerLName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OfficeAddr" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OfficeCity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OfficeState" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OfficeZip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OfficePhone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShipAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShipCity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShipState" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShipZip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ManagerEmail" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OwnerEIN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OwnerSSN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OwnerFName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OwnerLName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OwnerAddr" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OwnerCity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OwnerState" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OwnerZip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OwnerPhone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OwnerEmail" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="OwnerDOB" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="RalBankLY" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="VolumeLY" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EFINLY" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="OfficeFax" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BankProductsLY" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Delivered" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Sent" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="DeliveredDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="SentDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="AgreeBank" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AgreeDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="UpdatedBy" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdatedDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Deleted" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="SBPrepFee" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="EROTranFee" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="DocPrepFee" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="SecureDocumentStorage" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="SecureStorage" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="LockedWhenVacant" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="SecureLogin" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AntiVirus" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Firewall" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="SystemHold" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Hidden" nillable="true" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="CheckPrint" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SuperSBid" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Response" type="tns:XlinkResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="validateSBTPGAppResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="validateSBTPGAppResult" type="tns:XlinkResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateSBTPGApp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="auth" type="tns:AuthObject" />
+            <s:element minOccurs="0" maxOccurs="1" name="sbtpgapp" type="tns:SBTPGAppObject" />
+            <s:element minOccurs="1" maxOccurs="1" name="final" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateSBTPGAppResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="updateSBTPGAppResult" type="tns:XlinkResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getSBTPGApp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="auth" type="tns:AuthObject" />
+            <s:element minOccurs="1" maxOccurs="1" name="appid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getSBTPGAppResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getSBTPGAppResult" type="tns:SBTPGAppObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getSBTPGAppCompleteStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="appid" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="accountid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SBTPGAppCompleteResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="lSecComplete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="aSecComplete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="oSecComplete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="hSecComplete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="fSecComplete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="sSecComplete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="tSecComplete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AppComplete" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getSBTPGAppCompleteStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getSBTPGAppCompleteStatusResult" type="tns:SBTPGAppCompleteResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="validateRefundAdvantageApp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="raapp" type="tns:RefundAdvantageAppObject" />
+            <s:element minOccurs="1" maxOccurs="1" name="final" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RefundAdvantageAppObject">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="RefundAdvantageBankAppID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EfinID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="EFINOwnerHomePhone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EFINOwnerIDNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EFINOwnerIDState" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EFINOwnerTitle" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EFINAddressStreet" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EFINAddressCity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EFINAddressState" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EFINAddressZip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OfficeName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OfficeAddressStreet" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OfficeAddressCity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OfficeAddressState" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OfficeAddressZip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OfficePhone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OfficeFax" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MailingAddressStreet" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MailingAddressCity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MailingAddressState" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MailingAddressZip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShippingAddressStreet" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShippingAddressCity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShippingAddressState" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShippingAddressZip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ContactFirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ContactLastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ContactPhone" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PriorYearVolume" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CurrentYearVolume" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PriorYearBank" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CorporationType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExperienceFiling" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ClientLastYear" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="LegalIssues" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="SBFee" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="EROTranFee" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="EFilingFee" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Delivered" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Sent" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="DeliveredDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="SentDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="AgreeBank" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AgreeDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="UpdatedBy" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdatedDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Deleted" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="SystemHold" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Hidden" nillable="true" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="StateofIncorporation" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TextMessage" nillable="true" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Response" type="tns:XlinkResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="validateRefundAdvantageAppResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="validateRefundAdvantageAppResult" type="tns:XlinkResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateRefundAdvantageOwner">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="auth" type="tns:AuthObject" />
+            <s:element minOccurs="0" maxOccurs="1" name="raowner" type="tns:RefundAdvantageOwnerObject" />
+            <s:element minOccurs="1" maxOccurs="1" name="final" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RefundAdvantageOwnerObject">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Refund_Advantage_Business_OwnerID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Refund_Advantage_BankAppID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DOB" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Zip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SSN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdState" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PercentOwned" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Response" type="tns:XlinkResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="updateRefundAdvantageOwnerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="updateRefundAdvantageOwnerResult" type="tns:XlinkResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateRefundAdvantageApp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="auth" type="tns:AuthObject" />
+            <s:element minOccurs="0" maxOccurs="1" name="raapp" type="tns:RefundAdvantageAppObject" />
+            <s:element minOccurs="1" maxOccurs="1" name="final" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateRefundAdvantageAppResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="updateRefundAdvantageAppResult" type="tns:XlinkResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="isOwner100">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="appid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="isOwner100Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="isOwner100Result" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getRefundAdvantageApp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="auth" type="tns:AuthObject" />
+            <s:element minOccurs="1" maxOccurs="1" name="appid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getRefundAdvantageAppResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getRefundAdvantageAppResult" type="tns:RefundAdvantageAppObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getRefundAdvantageAppCompleteStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="appid" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="accountid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RefundAdvantageAppCompleteResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="lSecComplete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="aSecComplete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="oSecComplete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="hSecComplete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="fSecComplete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="sSecComplete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="tSecComplete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AppComplete" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getRefundAdvantageAppCompleteStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getRefundAdvantageAppCompleteStatusResult" type="tns:RefundAdvantageAppCompleteResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getRefundAdvantageOwners">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="auth" type="tns:AuthObject" />
+            <s:element minOccurs="1" maxOccurs="1" name="appid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfRefundAdvantageOwnerObject">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RefundAdvantageOwnerObject" nillable="true" type="tns:RefundAdvantageOwnerObject" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getRefundAdvantageOwnersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getRefundAdvantageOwnersResult" type="tns:ArrayOfRefundAdvantageOwnerObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="isRepublicPrepaidDebitAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="accountid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="isRepublicPrepaidDebitAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="isRepublicPrepaidDebitAccountResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="validateRepublicApp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="republicapp" type="tns:RepublicAppObject" />
+            <s:element minOccurs="1" maxOccurs="1" name="final" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RepublicAppObject">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="RepublicBankAppID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EfinID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MasterID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="OfficeName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OfficePhysicalStreet" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OfficePhysicalCity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OfficePhysicalState" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OfficePhysicalZip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OfficeContactFirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OfficeContactLastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OfficePhoneNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CellPhoneNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FaxNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmailAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OwnerFirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OwnerLastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OwnerSSN" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="OwnerDOB" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="EfinOwnerFirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EfinOwnerLastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OwnerHomePhone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OwnerAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OwnerCity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OwnerState" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OwnerZip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IRSTransmittingOfficeInd" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ComplianceWithLawInd" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="YearsInBusiness" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastYearBankProducts" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankProductFacilitator" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CardProgram" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MultiOffice" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TaxPrepLicensing" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ActualNumberBankProducts" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DocumentStorageInd" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CheckCardStorageInd" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EfinOwnerSSN" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TransmitterFeeDefault" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="OfficeDoorInd" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DocumentAccessInd" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SensitiveDocumentDestInd" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LoginPassInd" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AntiVirusInd" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirewallInd" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProductTrainingInd" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WirelessInd" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PreviousViolationFineInd" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NumOfPersonnel" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="LegalEntityStatusInd" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LLCMembershipRegistration" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FulfillmentShippingStreet" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FulfillmentShippingCity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FulfillmentShippingState" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FulfillmentShippingZip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OfficeManagerFirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OfficeManagerLastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OfficeManagerSSN" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="OfficeManagerDOB" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="MailingAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MailingCity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MailingState" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MailingZip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OfficeContactSSN" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="EFINOwnerDOB" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="PTINInd" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AdvertisingInd" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WebsiteAddress" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Delivered" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Sent" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AgreeBank" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AgreeDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="DeliveredDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="SentDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="UpdatedBy" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdatedDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Deleted" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Roll" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PEITechFee" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PEIRALTransmitterFee" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EROTranFee" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="SBPrepFee" nillable="true" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="Response" type="tns:XlinkResponse" />
+          <s:element minOccurs="0" maxOccurs="1" name="CheckStockID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DebitProgramInd" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EIN" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SystemHold" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Hidden" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PriorYearEFIN" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="SupportedOsInd" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="validateRepublicAppResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="validateRepublicAppResult" type="tns:XlinkResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateRepublicApp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="auth" type="tns:AuthObject" />
+            <s:element minOccurs="0" maxOccurs="1" name="republicapp" type="tns:RepublicAppObject" />
+            <s:element minOccurs="1" maxOccurs="1" name="final" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateRepublicAppResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="updateRepublicAppResult" type="tns:XlinkResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getRepublicApp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="auth" type="tns:AuthObject" />
+            <s:element minOccurs="1" maxOccurs="1" name="appid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getRepublicAppResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getRepublicAppResult" type="tns:RepublicAppObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getRepublicAppCompleteStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="appid" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="accountid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RepublicAppCompleteResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="eSecComplete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="lSecComplete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="aSecComplete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="oSecComplete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="hSecComplete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="fSecComplete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="sSecComplete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="tSecComplete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AppComplete" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getRepublicAppCompleteStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getRepublicAppCompleteStatusResult" type="tns:RepublicAppCompleteResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="isRefundoPrepaidDebitAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="accountid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="isRefundoPrepaidDebitAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="isRefundoPrepaidDebitAccountResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="validateRefundoApp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="refundoapp" type="tns:RefundoAppObject" />
+            <s:element minOccurs="1" maxOccurs="1" name="final" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RefundoAppObject">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="RefundoBankAppID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EfinID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MasterID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="OfficeName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OfficePhysicalStreet" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OfficePhysicalCity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OfficePhysicalState" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OfficePhysicalZip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OfficeContactFirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OfficeContactLastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OfficePhoneNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CellPhoneNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FaxNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmailAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OwnerFirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OwnerLastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OwnerSSN" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="OwnerDOB" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="EfinOwnerFirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EfinOwnerLastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OwnerHomePhone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OwnerAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OwnerCity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OwnerState" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OwnerZip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IRSTransmittingOfficeInd" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ComplianceWithLawInd" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="YearsInBusiness" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastYearBankProducts" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankProductFacilitator" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CardProgram" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MultiOffice" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TaxPrepLicensing" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ActualNumberBankProducts" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DocumentStorageInd" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CheckCardStorageInd" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EfinOwnerSSN" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TransmitterFeeDefault" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="OfficeDoorInd" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DocumentAccessInd" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SensitiveDocumentDestInd" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LoginPassInd" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AntiVirusInd" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirewallInd" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProductTrainingInd" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PreviousViolationFineInd" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NumOfPersonnel" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="LegalEntityStatusInd" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LLCMembershipRegistration" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FulfillmentShippingStreet" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FulfillmentShippingCity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FulfillmentShippingState" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FulfillmentShippingZip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OfficeManagerFirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OfficeManagerLastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OfficeManagerSSN" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="OfficeManagerDOB" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="MailingAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MailingCity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MailingState" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MailingZip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OfficeContactSSN" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="EFINOwnerDOB" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="PTINInd" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AdvertisingInd" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WebsiteAddress" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Delivered" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Sent" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AgreeBank" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AgreeDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="DeliveredDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="SentDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="UpdatedBy" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdatedDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Deleted" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Roll" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PEITechFee" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PEIRALTransmitterFee" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EROTranFee" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="SBPrepFee" nillable="true" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="Response" type="tns:XlinkResponse" />
+          <s:element minOccurs="0" maxOccurs="1" name="CheckStockID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DebitProgramInd" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EIN" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SystemHold" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Hidden" nillable="true" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="validateRefundoAppResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="validateRefundoAppResult" type="tns:XlinkResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateRefundoApp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="auth" type="tns:AuthObject" />
+            <s:element minOccurs="0" maxOccurs="1" name="refundoapp" type="tns:RefundoAppObject" />
+            <s:element minOccurs="1" maxOccurs="1" name="final" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateRefundoAppResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="updateRefundoAppResult" type="tns:XlinkResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getRefundoApp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="auth" type="tns:AuthObject" />
+            <s:element minOccurs="1" maxOccurs="1" name="appid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getRefundoAppResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getRefundoAppResult" type="tns:RefundoAppObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getRefundoAppCompleteStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="appid" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="accountid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RefundoAppCompleteResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="eSecComplete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="lSecComplete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="aSecComplete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="oSecComplete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="hSecComplete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="fSecComplete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="sSecComplete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="tSecComplete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AppComplete" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getRefundoAppCompleteStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getRefundoAppCompleteStatusResult" type="tns:RefundoAppCompleteResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getFranchise">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="userid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getFranchiseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getFranchiseResult" type="tns:FranchiseOwner" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FranchiseOwner">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EntityObject">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="FranchiseName" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="FranchiseSBFee" type="s:decimal" />
+              <s:element minOccurs="0" maxOccurs="1" name="SBFeeAll" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="SBFeeLock" type="s:boolean" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="getAccessKeySoapIn">
+    <wsdl:part name="parameters" element="tns:getAccessKey" />
+  </wsdl:message>
+  <wsdl:message name="getAccessKeySoapOut">
+    <wsdl:part name="parameters" element="tns:getAccessKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="isAuthSoapIn">
+    <wsdl:part name="parameters" element="tns:isAuth" />
+  </wsdl:message>
+  <wsdl:message name="isAuthSoapOut">
+    <wsdl:part name="parameters" element="tns:isAuthResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTaxableStateListSoapIn">
+    <wsdl:part name="parameters" element="tns:getTaxableStateList" />
+  </wsdl:message>
+  <wsdl:message name="getTaxableStateListSoapOut">
+    <wsdl:part name="parameters" element="tns:getTaxableStateListResponse" />
+  </wsdl:message>
+  <wsdl:message name="getStateListSoapIn">
+    <wsdl:part name="parameters" element="tns:getStateList" />
+  </wsdl:message>
+  <wsdl:message name="getStateListSoapOut">
+    <wsdl:part name="parameters" element="tns:getStateListResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAvailableBanksSoapIn">
+    <wsdl:part name="parameters" element="tns:getAvailableBanks" />
+  </wsdl:message>
+  <wsdl:message name="getAvailableBanksSoapOut">
+    <wsdl:part name="parameters" element="tns:getAvailableBanksResponse" />
+  </wsdl:message>
+  <wsdl:message name="getPEIFeesSoapIn">
+    <wsdl:part name="parameters" element="tns:getPEIFees" />
+  </wsdl:message>
+  <wsdl:message name="getPEIFeesSoapOut">
+    <wsdl:part name="parameters" element="tns:getPEIFeesResponse" />
+  </wsdl:message>
+  <wsdl:message name="getPEIRalTransmitterFeeSoapIn">
+    <wsdl:part name="parameters" element="tns:getPEIRalTransmitterFee" />
+  </wsdl:message>
+  <wsdl:message name="getPEIRalTransmitterFeeSoapOut">
+    <wsdl:part name="parameters" element="tns:getPEIRalTransmitterFeeResponse" />
+  </wsdl:message>
+  <wsdl:message name="getPEITechFeeSoapIn">
+    <wsdl:part name="parameters" element="tns:getPEITechFee" />
+  </wsdl:message>
+  <wsdl:message name="getPEITechFeeSoapOut">
+    <wsdl:part name="parameters" element="tns:getPEITechFeeResponse" />
+  </wsdl:message>
+  <wsdl:message name="getBankInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:getBankInfo" />
+  </wsdl:message>
+  <wsdl:message name="getBankInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:getBankInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getContactListSoapIn">
+    <wsdl:part name="parameters" element="tns:getContactList" />
+  </wsdl:message>
+  <wsdl:message name="getContactListSoapOut">
+    <wsdl:part name="parameters" element="tns:getContactListResponse" />
+  </wsdl:message>
+  <wsdl:message name="getContactSoapIn">
+    <wsdl:part name="parameters" element="tns:getContact" />
+  </wsdl:message>
+  <wsdl:message name="getContactSoapOut">
+    <wsdl:part name="parameters" element="tns:getContactResponse" />
+  </wsdl:message>
+  <wsdl:message name="getPortalSettingSoapIn">
+    <wsdl:part name="parameters" element="tns:getPortalSetting" />
+  </wsdl:message>
+  <wsdl:message name="getPortalSettingSoapOut">
+    <wsdl:part name="parameters" element="tns:getPortalSettingResponse" />
+  </wsdl:message>
+  <wsdl:message name="getSBNameSoapIn">
+    <wsdl:part name="parameters" element="tns:getSBName" />
+  </wsdl:message>
+  <wsdl:message name="getSBNameSoapOut">
+    <wsdl:part name="parameters" element="tns:getSBNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateNewUserSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateNewUser" />
+  </wsdl:message>
+  <wsdl:message name="CreateNewUserSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateNewUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="getUserIDListSoapIn">
+    <wsdl:part name="parameters" element="tns:getUserIDList" />
+  </wsdl:message>
+  <wsdl:message name="getUserIDListSoapOut">
+    <wsdl:part name="parameters" element="tns:getUserIDListResponse" />
+  </wsdl:message>
+  <wsdl:message name="hasFiledReturnsSoapIn">
+    <wsdl:part name="parameters" element="tns:hasFiledReturns" />
+  </wsdl:message>
+  <wsdl:message name="hasFiledReturnsSoapOut">
+    <wsdl:part name="parameters" element="tns:hasFiledReturnsResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateContactSoapIn">
+    <wsdl:part name="parameters" element="tns:updateContact" />
+  </wsdl:message>
+  <wsdl:message name="updateContactSoapOut">
+    <wsdl:part name="parameters" element="tns:updateContactResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAccountCodeByUserSoapIn">
+    <wsdl:part name="parameters" element="tns:getAccountCodeByUser" />
+  </wsdl:message>
+  <wsdl:message name="getAccountCodeByUserSoapOut">
+    <wsdl:part name="parameters" element="tns:getAccountCodeByUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateDocumentSoapIn">
+    <wsdl:part name="parameters" element="tns:updateDocument" />
+  </wsdl:message>
+  <wsdl:message name="updateDocumentSoapOut">
+    <wsdl:part name="parameters" element="tns:updateDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDocTypesSoapIn">
+    <wsdl:part name="parameters" element="tns:getDocTypes" />
+  </wsdl:message>
+  <wsdl:message name="getDocTypesSoapOut">
+    <wsdl:part name="parameters" element="tns:getDocTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentListSoapIn">
+    <wsdl:part name="parameters" element="tns:getDocumentList" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentListSoapOut">
+    <wsdl:part name="parameters" element="tns:getDocumentListResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentSoapIn">
+    <wsdl:part name="parameters" element="tns:getDocument" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentSoapOut">
+    <wsdl:part name="parameters" element="tns:getDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteDocumentSoapIn">
+    <wsdl:part name="parameters" element="tns:deleteDocument" />
+  </wsdl:message>
+  <wsdl:message name="deleteDocumentSoapOut">
+    <wsdl:part name="parameters" element="tns:deleteDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="isAddonAgreementCompleteSoapIn">
+    <wsdl:part name="parameters" element="tns:isAddonAgreementComplete" />
+  </wsdl:message>
+  <wsdl:message name="isAddonAgreementCompleteSoapOut">
+    <wsdl:part name="parameters" element="tns:isAddonAgreementCompleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="checkMasterAccountSoapIn">
+    <wsdl:part name="parameters" element="tns:checkMasterAccount" />
+  </wsdl:message>
+  <wsdl:message name="checkMasterAccountSoapOut">
+    <wsdl:part name="parameters" element="tns:checkMasterAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="getEFINbyEFINSoapIn">
+    <wsdl:part name="parameters" element="tns:getEFINbyEFIN" />
+  </wsdl:message>
+  <wsdl:message name="getEFINbyEFINSoapOut">
+    <wsdl:part name="parameters" element="tns:getEFINbyEFINResponse" />
+  </wsdl:message>
+  <wsdl:message name="getEFINIDSoapIn">
+    <wsdl:part name="parameters" element="tns:getEFINID" />
+  </wsdl:message>
+  <wsdl:message name="getEFINIDSoapOut">
+    <wsdl:part name="parameters" element="tns:getEFINIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="getEFINSoapIn">
+    <wsdl:part name="parameters" element="tns:getEFIN" />
+  </wsdl:message>
+  <wsdl:message name="getEFINSoapOut">
+    <wsdl:part name="parameters" element="tns:getEFINResponse" />
+  </wsdl:message>
+  <wsdl:message name="getEfinStatsSoapIn">
+    <wsdl:part name="parameters" element="tns:getEfinStats" />
+  </wsdl:message>
+  <wsdl:message name="getEfinStatsSoapOut">
+    <wsdl:part name="parameters" element="tns:getEfinStatsResponse" />
+  </wsdl:message>
+  <wsdl:message name="hasMEfinBankSoapIn">
+    <wsdl:part name="parameters" element="tns:hasMEfinBank" />
+  </wsdl:message>
+  <wsdl:message name="hasMEfinBankSoapOut">
+    <wsdl:part name="parameters" element="tns:hasMEfinBankResponse" />
+  </wsdl:message>
+  <wsdl:message name="hasMEfinBankAckSoapIn">
+    <wsdl:part name="parameters" element="tns:hasMEfinBankAck" />
+  </wsdl:message>
+  <wsdl:message name="hasMEfinBankAckSoapOut">
+    <wsdl:part name="parameters" element="tns:hasMEfinBankAckResponse" />
+  </wsdl:message>
+  <wsdl:message name="getEFINCompleteStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:getEFINCompleteStatus" />
+  </wsdl:message>
+  <wsdl:message name="getEFINCompleteStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:getEFINCompleteStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateEFINSoapIn">
+    <wsdl:part name="parameters" element="tns:updateEFIN" />
+  </wsdl:message>
+  <wsdl:message name="updateEFINSoapOut">
+    <wsdl:part name="parameters" element="tns:updateEFINResponse" />
+  </wsdl:message>
+  <wsdl:message name="validateEfinObjectSoapIn">
+    <wsdl:part name="parameters" element="tns:validateEfinObject" />
+  </wsdl:message>
+  <wsdl:message name="validateEfinObjectSoapOut">
+    <wsdl:part name="parameters" element="tns:validateEfinObjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="verifyMasterEFINSoapIn">
+    <wsdl:part name="parameters" element="tns:verifyMasterEFIN" />
+  </wsdl:message>
+  <wsdl:message name="verifyMasterEFINSoapOut">
+    <wsdl:part name="parameters" element="tns:verifyMasterEFINResponse" />
+  </wsdl:message>
+  <wsdl:message name="getFivePlusAddOnSoapIn">
+    <wsdl:part name="parameters" element="tns:getFivePlusAddOn" />
+  </wsdl:message>
+  <wsdl:message name="getFivePlusAddOnSoapOut">
+    <wsdl:part name="parameters" element="tns:getFivePlusAddOnResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCustomerOwnerSoapIn">
+    <wsdl:part name="parameters" element="tns:getCustomerOwner" />
+  </wsdl:message>
+  <wsdl:message name="getCustomerOwnerSoapOut">
+    <wsdl:part name="parameters" element="tns:getCustomerOwnerResponse" />
+  </wsdl:message>
+  <wsdl:message name="getEFINSummaryListSoapIn">
+    <wsdl:part name="parameters" element="tns:getEFINSummaryList" />
+  </wsdl:message>
+  <wsdl:message name="getEFINSummaryListSoapOut">
+    <wsdl:part name="parameters" element="tns:getEFINSummaryListResponse" />
+  </wsdl:message>
+  <wsdl:message name="checkFeesSoapIn">
+    <wsdl:part name="parameters" element="tns:checkFees" />
+  </wsdl:message>
+  <wsdl:message name="checkFeesSoapOut">
+    <wsdl:part name="parameters" element="tns:checkFeesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllAppStatsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllAppStats" />
+  </wsdl:message>
+  <wsdl:message name="GetAllAppStatsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllAppStatsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getBankAppsSoapIn">
+    <wsdl:part name="parameters" element="tns:getBankApps" />
+  </wsdl:message>
+  <wsdl:message name="getBankAppsSoapOut">
+    <wsdl:part name="parameters" element="tns:getBankAppsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getLatestAppbyBankSoapIn">
+    <wsdl:part name="parameters" element="tns:getLatestAppbyBank" />
+  </wsdl:message>
+  <wsdl:message name="getLatestAppbyBankSoapOut">
+    <wsdl:part name="parameters" element="tns:getLatestAppbyBankResponse" />
+  </wsdl:message>
+  <wsdl:message name="getLatestAppSoapIn">
+    <wsdl:part name="parameters" element="tns:getLatestApp" />
+  </wsdl:message>
+  <wsdl:message name="getLatestAppSoapOut">
+    <wsdl:part name="parameters" element="tns:getLatestAppResponse" />
+  </wsdl:message>
+  <wsdl:message name="submitBankApplicationSoapIn">
+    <wsdl:part name="parameters" element="tns:submitBankApplication" />
+  </wsdl:message>
+  <wsdl:message name="submitBankApplicationSoapOut">
+    <wsdl:part name="parameters" element="tns:submitBankApplicationResponse" />
+  </wsdl:message>
+  <wsdl:message name="validateAppObjectSoapIn">
+    <wsdl:part name="parameters" element="tns:validateAppObject" />
+  </wsdl:message>
+  <wsdl:message name="validateAppObjectSoapOut">
+    <wsdl:part name="parameters" element="tns:validateAppObjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateOwnerSoapIn">
+    <wsdl:part name="parameters" element="tns:updateOwner" />
+  </wsdl:message>
+  <wsdl:message name="updateOwnerSoapOut">
+    <wsdl:part name="parameters" element="tns:updateOwnerResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteOwnerSoapIn">
+    <wsdl:part name="parameters" element="tns:deleteOwner" />
+  </wsdl:message>
+  <wsdl:message name="deleteOwnerSoapOut">
+    <wsdl:part name="parameters" element="tns:deleteOwnerResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateAppSoapIn">
+    <wsdl:part name="parameters" element="tns:updateApp" />
+  </wsdl:message>
+  <wsdl:message name="updateAppSoapOut">
+    <wsdl:part name="parameters" element="tns:updateAppResponse" />
+  </wsdl:message>
+  <wsdl:message name="validateSBTPGAppSoapIn">
+    <wsdl:part name="parameters" element="tns:validateSBTPGApp" />
+  </wsdl:message>
+  <wsdl:message name="validateSBTPGAppSoapOut">
+    <wsdl:part name="parameters" element="tns:validateSBTPGAppResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateSBTPGAppSoapIn">
+    <wsdl:part name="parameters" element="tns:updateSBTPGApp" />
+  </wsdl:message>
+  <wsdl:message name="updateSBTPGAppSoapOut">
+    <wsdl:part name="parameters" element="tns:updateSBTPGAppResponse" />
+  </wsdl:message>
+  <wsdl:message name="getSBTPGAppSoapIn">
+    <wsdl:part name="parameters" element="tns:getSBTPGApp" />
+  </wsdl:message>
+  <wsdl:message name="getSBTPGAppSoapOut">
+    <wsdl:part name="parameters" element="tns:getSBTPGAppResponse" />
+  </wsdl:message>
+  <wsdl:message name="getSBTPGAppCompleteStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:getSBTPGAppCompleteStatus" />
+  </wsdl:message>
+  <wsdl:message name="getSBTPGAppCompleteStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:getSBTPGAppCompleteStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="validateRefundAdvantageAppSoapIn">
+    <wsdl:part name="parameters" element="tns:validateRefundAdvantageApp" />
+  </wsdl:message>
+  <wsdl:message name="validateRefundAdvantageAppSoapOut">
+    <wsdl:part name="parameters" element="tns:validateRefundAdvantageAppResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateRefundAdvantageOwnerSoapIn">
+    <wsdl:part name="parameters" element="tns:updateRefundAdvantageOwner" />
+  </wsdl:message>
+  <wsdl:message name="updateRefundAdvantageOwnerSoapOut">
+    <wsdl:part name="parameters" element="tns:updateRefundAdvantageOwnerResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateRefundAdvantageAppSoapIn">
+    <wsdl:part name="parameters" element="tns:updateRefundAdvantageApp" />
+  </wsdl:message>
+  <wsdl:message name="updateRefundAdvantageAppSoapOut">
+    <wsdl:part name="parameters" element="tns:updateRefundAdvantageAppResponse" />
+  </wsdl:message>
+  <wsdl:message name="isOwner100SoapIn">
+    <wsdl:part name="parameters" element="tns:isOwner100" />
+  </wsdl:message>
+  <wsdl:message name="isOwner100SoapOut">
+    <wsdl:part name="parameters" element="tns:isOwner100Response" />
+  </wsdl:message>
+  <wsdl:message name="getRefundAdvantageAppSoapIn">
+    <wsdl:part name="parameters" element="tns:getRefundAdvantageApp" />
+  </wsdl:message>
+  <wsdl:message name="getRefundAdvantageAppSoapOut">
+    <wsdl:part name="parameters" element="tns:getRefundAdvantageAppResponse" />
+  </wsdl:message>
+  <wsdl:message name="getRefundAdvantageAppCompleteStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:getRefundAdvantageAppCompleteStatus" />
+  </wsdl:message>
+  <wsdl:message name="getRefundAdvantageAppCompleteStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:getRefundAdvantageAppCompleteStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="getRefundAdvantageOwnersSoapIn">
+    <wsdl:part name="parameters" element="tns:getRefundAdvantageOwners" />
+  </wsdl:message>
+  <wsdl:message name="getRefundAdvantageOwnersSoapOut">
+    <wsdl:part name="parameters" element="tns:getRefundAdvantageOwnersResponse" />
+  </wsdl:message>
+  <wsdl:message name="isRepublicPrepaidDebitAccountSoapIn">
+    <wsdl:part name="parameters" element="tns:isRepublicPrepaidDebitAccount" />
+  </wsdl:message>
+  <wsdl:message name="isRepublicPrepaidDebitAccountSoapOut">
+    <wsdl:part name="parameters" element="tns:isRepublicPrepaidDebitAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="validateRepublicAppSoapIn">
+    <wsdl:part name="parameters" element="tns:validateRepublicApp" />
+  </wsdl:message>
+  <wsdl:message name="validateRepublicAppSoapOut">
+    <wsdl:part name="parameters" element="tns:validateRepublicAppResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateRepublicAppSoapIn">
+    <wsdl:part name="parameters" element="tns:updateRepublicApp" />
+  </wsdl:message>
+  <wsdl:message name="updateRepublicAppSoapOut">
+    <wsdl:part name="parameters" element="tns:updateRepublicAppResponse" />
+  </wsdl:message>
+  <wsdl:message name="getRepublicAppSoapIn">
+    <wsdl:part name="parameters" element="tns:getRepublicApp" />
+  </wsdl:message>
+  <wsdl:message name="getRepublicAppSoapOut">
+    <wsdl:part name="parameters" element="tns:getRepublicAppResponse" />
+  </wsdl:message>
+  <wsdl:message name="getRepublicAppCompleteStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:getRepublicAppCompleteStatus" />
+  </wsdl:message>
+  <wsdl:message name="getRepublicAppCompleteStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:getRepublicAppCompleteStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="isRefundoPrepaidDebitAccountSoapIn">
+    <wsdl:part name="parameters" element="tns:isRefundoPrepaidDebitAccount" />
+  </wsdl:message>
+  <wsdl:message name="isRefundoPrepaidDebitAccountSoapOut">
+    <wsdl:part name="parameters" element="tns:isRefundoPrepaidDebitAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="validateRefundoAppSoapIn">
+    <wsdl:part name="parameters" element="tns:validateRefundoApp" />
+  </wsdl:message>
+  <wsdl:message name="validateRefundoAppSoapOut">
+    <wsdl:part name="parameters" element="tns:validateRefundoAppResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateRefundoAppSoapIn">
+    <wsdl:part name="parameters" element="tns:updateRefundoApp" />
+  </wsdl:message>
+  <wsdl:message name="updateRefundoAppSoapOut">
+    <wsdl:part name="parameters" element="tns:updateRefundoAppResponse" />
+  </wsdl:message>
+  <wsdl:message name="getRefundoAppSoapIn">
+    <wsdl:part name="parameters" element="tns:getRefundoApp" />
+  </wsdl:message>
+  <wsdl:message name="getRefundoAppSoapOut">
+    <wsdl:part name="parameters" element="tns:getRefundoAppResponse" />
+  </wsdl:message>
+  <wsdl:message name="getRefundoAppCompleteStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:getRefundoAppCompleteStatus" />
+  </wsdl:message>
+  <wsdl:message name="getRefundoAppCompleteStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:getRefundoAppCompleteStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="getFranchiseSoapIn">
+    <wsdl:part name="parameters" element="tns:getFranchise" />
+  </wsdl:message>
+  <wsdl:message name="getFranchiseSoapOut">
+    <wsdl:part name="parameters" element="tns:getFranchiseResponse" />
+  </wsdl:message>
+  <wsdl:portType name="CrosslinkWS17Soap">
+    <wsdl:operation name="getAccessKey">
+      <wsdl:input message="tns:getAccessKeySoapIn" />
+      <wsdl:output message="tns:getAccessKeySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="isAuth">
+      <wsdl:input message="tns:isAuthSoapIn" />
+      <wsdl:output message="tns:isAuthSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getTaxableStateList">
+      <wsdl:input message="tns:getTaxableStateListSoapIn" />
+      <wsdl:output message="tns:getTaxableStateListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getStateList">
+      <wsdl:input message="tns:getStateListSoapIn" />
+      <wsdl:output message="tns:getStateListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAvailableBanks">
+      <wsdl:input message="tns:getAvailableBanksSoapIn" />
+      <wsdl:output message="tns:getAvailableBanksSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getPEIFees">
+      <wsdl:input message="tns:getPEIFeesSoapIn" />
+      <wsdl:output message="tns:getPEIFeesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getPEIRalTransmitterFee">
+      <wsdl:input message="tns:getPEIRalTransmitterFeeSoapIn" />
+      <wsdl:output message="tns:getPEIRalTransmitterFeeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getPEITechFee">
+      <wsdl:input message="tns:getPEITechFeeSoapIn" />
+      <wsdl:output message="tns:getPEITechFeeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getBankInfo">
+      <wsdl:input message="tns:getBankInfoSoapIn" />
+      <wsdl:output message="tns:getBankInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getContactList">
+      <wsdl:input message="tns:getContactListSoapIn" />
+      <wsdl:output message="tns:getContactListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getContact">
+      <wsdl:input message="tns:getContactSoapIn" />
+      <wsdl:output message="tns:getContactSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getPortalSetting">
+      <wsdl:input message="tns:getPortalSettingSoapIn" />
+      <wsdl:output message="tns:getPortalSettingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getSBName">
+      <wsdl:input message="tns:getSBNameSoapIn" />
+      <wsdl:output message="tns:getSBNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateNewUser">
+      <wsdl:input message="tns:CreateNewUserSoapIn" />
+      <wsdl:output message="tns:CreateNewUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserIDList">
+      <wsdl:input message="tns:getUserIDListSoapIn" />
+      <wsdl:output message="tns:getUserIDListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="hasFiledReturns">
+      <wsdl:input message="tns:hasFiledReturnsSoapIn" />
+      <wsdl:output message="tns:hasFiledReturnsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateContact">
+      <wsdl:input message="tns:updateContactSoapIn" />
+      <wsdl:output message="tns:updateContactSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAccountCodeByUser">
+      <wsdl:input message="tns:getAccountCodeByUserSoapIn" />
+      <wsdl:output message="tns:getAccountCodeByUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateDocument">
+      <wsdl:input message="tns:updateDocumentSoapIn" />
+      <wsdl:output message="tns:updateDocumentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDocTypes">
+      <wsdl:input message="tns:getDocTypesSoapIn" />
+      <wsdl:output message="tns:getDocTypesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentList">
+      <wsdl:input message="tns:getDocumentListSoapIn" />
+      <wsdl:output message="tns:getDocumentListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDocument">
+      <wsdl:input message="tns:getDocumentSoapIn" />
+      <wsdl:output message="tns:getDocumentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteDocument">
+      <wsdl:input message="tns:deleteDocumentSoapIn" />
+      <wsdl:output message="tns:deleteDocumentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="isAddonAgreementComplete">
+      <wsdl:input message="tns:isAddonAgreementCompleteSoapIn" />
+      <wsdl:output message="tns:isAddonAgreementCompleteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="checkMasterAccount">
+      <wsdl:input message="tns:checkMasterAccountSoapIn" />
+      <wsdl:output message="tns:checkMasterAccountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getEFINbyEFIN">
+      <wsdl:input message="tns:getEFINbyEFINSoapIn" />
+      <wsdl:output message="tns:getEFINbyEFINSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getEFINID">
+      <wsdl:input message="tns:getEFINIDSoapIn" />
+      <wsdl:output message="tns:getEFINIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getEFIN">
+      <wsdl:input message="tns:getEFINSoapIn" />
+      <wsdl:output message="tns:getEFINSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getEfinStats">
+      <wsdl:input message="tns:getEfinStatsSoapIn" />
+      <wsdl:output message="tns:getEfinStatsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="hasMEfinBank">
+      <wsdl:input message="tns:hasMEfinBankSoapIn" />
+      <wsdl:output message="tns:hasMEfinBankSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="hasMEfinBankAck">
+      <wsdl:input message="tns:hasMEfinBankAckSoapIn" />
+      <wsdl:output message="tns:hasMEfinBankAckSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getEFINCompleteStatus">
+      <wsdl:input message="tns:getEFINCompleteStatusSoapIn" />
+      <wsdl:output message="tns:getEFINCompleteStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateEFIN">
+      <wsdl:input message="tns:updateEFINSoapIn" />
+      <wsdl:output message="tns:updateEFINSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="validateEfinObject">
+      <wsdl:input message="tns:validateEfinObjectSoapIn" />
+      <wsdl:output message="tns:validateEfinObjectSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="verifyMasterEFIN">
+      <wsdl:input message="tns:verifyMasterEFINSoapIn" />
+      <wsdl:output message="tns:verifyMasterEFINSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getFivePlusAddOn">
+      <wsdl:input message="tns:getFivePlusAddOnSoapIn" />
+      <wsdl:output message="tns:getFivePlusAddOnSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCustomerOwner">
+      <wsdl:input message="tns:getCustomerOwnerSoapIn" />
+      <wsdl:output message="tns:getCustomerOwnerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getEFINSummaryList">
+      <wsdl:input message="tns:getEFINSummaryListSoapIn" />
+      <wsdl:output message="tns:getEFINSummaryListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="checkFees">
+      <wsdl:input message="tns:checkFeesSoapIn" />
+      <wsdl:output message="tns:checkFeesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAppStats">
+      <wsdl:input message="tns:GetAllAppStatsSoapIn" />
+      <wsdl:output message="tns:GetAllAppStatsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getBankApps">
+      <wsdl:input message="tns:getBankAppsSoapIn" />
+      <wsdl:output message="tns:getBankAppsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getLatestAppbyBank">
+      <wsdl:input message="tns:getLatestAppbyBankSoapIn" />
+      <wsdl:output message="tns:getLatestAppbyBankSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getLatestApp">
+      <wsdl:input message="tns:getLatestAppSoapIn" />
+      <wsdl:output message="tns:getLatestAppSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="submitBankApplication">
+      <wsdl:input message="tns:submitBankApplicationSoapIn" />
+      <wsdl:output message="tns:submitBankApplicationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="validateAppObject">
+      <wsdl:input message="tns:validateAppObjectSoapIn" />
+      <wsdl:output message="tns:validateAppObjectSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateOwner">
+      <wsdl:input message="tns:updateOwnerSoapIn" />
+      <wsdl:output message="tns:updateOwnerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteOwner">
+      <wsdl:input message="tns:deleteOwnerSoapIn" />
+      <wsdl:output message="tns:deleteOwnerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateApp">
+      <wsdl:input message="tns:updateAppSoapIn" />
+      <wsdl:output message="tns:updateAppSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="validateSBTPGApp">
+      <wsdl:input message="tns:validateSBTPGAppSoapIn" />
+      <wsdl:output message="tns:validateSBTPGAppSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateSBTPGApp">
+      <wsdl:input message="tns:updateSBTPGAppSoapIn" />
+      <wsdl:output message="tns:updateSBTPGAppSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getSBTPGApp">
+      <wsdl:input message="tns:getSBTPGAppSoapIn" />
+      <wsdl:output message="tns:getSBTPGAppSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getSBTPGAppCompleteStatus">
+      <wsdl:input message="tns:getSBTPGAppCompleteStatusSoapIn" />
+      <wsdl:output message="tns:getSBTPGAppCompleteStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="validateRefundAdvantageApp">
+      <wsdl:input message="tns:validateRefundAdvantageAppSoapIn" />
+      <wsdl:output message="tns:validateRefundAdvantageAppSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateRefundAdvantageOwner">
+      <wsdl:input message="tns:updateRefundAdvantageOwnerSoapIn" />
+      <wsdl:output message="tns:updateRefundAdvantageOwnerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateRefundAdvantageApp">
+      <wsdl:input message="tns:updateRefundAdvantageAppSoapIn" />
+      <wsdl:output message="tns:updateRefundAdvantageAppSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="isOwner100">
+      <wsdl:input message="tns:isOwner100SoapIn" />
+      <wsdl:output message="tns:isOwner100SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getRefundAdvantageApp">
+      <wsdl:input message="tns:getRefundAdvantageAppSoapIn" />
+      <wsdl:output message="tns:getRefundAdvantageAppSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getRefundAdvantageAppCompleteStatus">
+      <wsdl:input message="tns:getRefundAdvantageAppCompleteStatusSoapIn" />
+      <wsdl:output message="tns:getRefundAdvantageAppCompleteStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getRefundAdvantageOwners">
+      <wsdl:input message="tns:getRefundAdvantageOwnersSoapIn" />
+      <wsdl:output message="tns:getRefundAdvantageOwnersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="isRepublicPrepaidDebitAccount">
+      <wsdl:input message="tns:isRepublicPrepaidDebitAccountSoapIn" />
+      <wsdl:output message="tns:isRepublicPrepaidDebitAccountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="validateRepublicApp">
+      <wsdl:input message="tns:validateRepublicAppSoapIn" />
+      <wsdl:output message="tns:validateRepublicAppSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateRepublicApp">
+      <wsdl:input message="tns:updateRepublicAppSoapIn" />
+      <wsdl:output message="tns:updateRepublicAppSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getRepublicApp">
+      <wsdl:input message="tns:getRepublicAppSoapIn" />
+      <wsdl:output message="tns:getRepublicAppSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getRepublicAppCompleteStatus">
+      <wsdl:input message="tns:getRepublicAppCompleteStatusSoapIn" />
+      <wsdl:output message="tns:getRepublicAppCompleteStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="isRefundoPrepaidDebitAccount">
+      <wsdl:input message="tns:isRefundoPrepaidDebitAccountSoapIn" />
+      <wsdl:output message="tns:isRefundoPrepaidDebitAccountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="validateRefundoApp">
+      <wsdl:input message="tns:validateRefundoAppSoapIn" />
+      <wsdl:output message="tns:validateRefundoAppSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateRefundoApp">
+      <wsdl:input message="tns:updateRefundoAppSoapIn" />
+      <wsdl:output message="tns:updateRefundoAppSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getRefundoApp">
+      <wsdl:input message="tns:getRefundoAppSoapIn" />
+      <wsdl:output message="tns:getRefundoAppSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getRefundoAppCompleteStatus">
+      <wsdl:input message="tns:getRefundoAppCompleteStatusSoapIn" />
+      <wsdl:output message="tns:getRefundoAppCompleteStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getFranchise">
+      <wsdl:input message="tns:getFranchiseSoapIn" />
+      <wsdl:output message="tns:getFranchiseSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CrosslinkWS17Soap" type="tns:CrosslinkWS17Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getAccessKey">
+      <soap:operation soapAction="http://www.crosslinktax.com/getAccessKey" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isAuth">
+      <soap:operation soapAction="http://www.crosslinktax.com/isAuth" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTaxableStateList">
+      <soap:operation soapAction="http://www.crosslinktax.com/getTaxableStateList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getStateList">
+      <soap:operation soapAction="http://www.crosslinktax.com/getStateList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAvailableBanks">
+      <soap:operation soapAction="http://www.crosslinktax.com/getAvailableBanks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPEIFees">
+      <soap:operation soapAction="http://www.crosslinktax.com/getPEIFees" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPEIRalTransmitterFee">
+      <soap:operation soapAction="http://www.crosslinktax.com/getPEIRalTransmitterFee" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPEITechFee">
+      <soap:operation soapAction="http://www.crosslinktax.com/getPEITechFee" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBankInfo">
+      <soap:operation soapAction="http://www.crosslinktax.com/getBankInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getContactList">
+      <soap:operation soapAction="http://www.crosslinktax.com/getContactList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getContact">
+      <soap:operation soapAction="http://www.crosslinktax.com/getContact" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPortalSetting">
+      <soap:operation soapAction="http://www.crosslinktax.com/getPortalSetting" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSBName">
+      <soap:operation soapAction="http://www.crosslinktax.com/getSBName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateNewUser">
+      <soap:operation soapAction="http://www.crosslinktax.com/CreateNewUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserIDList">
+      <soap:operation soapAction="http://www.crosslinktax.com/getUserIDList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="hasFiledReturns">
+      <soap:operation soapAction="http://www.crosslinktax.com/hasFiledReturns" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateContact">
+      <soap:operation soapAction="http://www.crosslinktax.com/updateContact" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAccountCodeByUser">
+      <soap:operation soapAction="http://www.crosslinktax.com/getAccountCodeByUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateDocument">
+      <soap:operation soapAction="http://www.crosslinktax.com/updateDocument" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocTypes">
+      <soap:operation soapAction="http://www.crosslinktax.com/getDocTypes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentList">
+      <soap:operation soapAction="http://www.crosslinktax.com/getDocumentList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocument">
+      <soap:operation soapAction="http://www.crosslinktax.com/getDocument" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteDocument">
+      <soap:operation soapAction="http://www.crosslinktax.com/deleteDocument" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isAddonAgreementComplete">
+      <soap:operation soapAction="http://www.crosslinktax.com/isAddonAgreementComplete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkMasterAccount">
+      <soap:operation soapAction="http://www.crosslinktax.com/checkMasterAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEFINbyEFIN">
+      <soap:operation soapAction="http://www.crosslinktax.com/getEFINbyEFIN" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEFINID">
+      <soap:operation soapAction="http://www.crosslinktax.com/getEFINID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEFIN">
+      <soap:operation soapAction="http://www.crosslinktax.com/getEFIN" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEfinStats">
+      <soap:operation soapAction="http://www.crosslinktax.com/getEfinStats" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="hasMEfinBank">
+      <soap:operation soapAction="http://www.crosslinktax.com/hasMEfinBank" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="hasMEfinBankAck">
+      <soap:operation soapAction="http://www.crosslinktax.com/hasMEfinBankAck" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEFINCompleteStatus">
+      <soap:operation soapAction="http://www.crosslinktax.com/getEFINCompleteStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateEFIN">
+      <soap:operation soapAction="http://www.crosslinktax.com/updateEFIN" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validateEfinObject">
+      <soap:operation soapAction="http://www.crosslinktax.com/validateEfinObject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="verifyMasterEFIN">
+      <soap:operation soapAction="http://www.crosslinktax.com/verifyMasterEFIN" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFivePlusAddOn">
+      <soap:operation soapAction="http://www.crosslinktax.com/getFivePlusAddOn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCustomerOwner">
+      <soap:operation soapAction="http://www.crosslinktax.com/getCustomerOwner" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEFINSummaryList">
+      <soap:operation soapAction="http://www.crosslinktax.com/getEFINSummaryList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkFees">
+      <soap:operation soapAction="http://www.crosslinktax.com/checkFees" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAppStats">
+      <soap:operation soapAction="http://www.crosslinktax.com/GetAllAppStats" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBankApps">
+      <soap:operation soapAction="http://www.crosslinktax.com/getBankApps" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLatestAppbyBank">
+      <soap:operation soapAction="http://www.crosslinktax.com/getLatestAppbyBank" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLatestApp">
+      <soap:operation soapAction="http://www.crosslinktax.com/getLatestApp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submitBankApplication">
+      <soap:operation soapAction="http://www.crosslinktax.com/submitBankApplication" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validateAppObject">
+      <soap:operation soapAction="http://www.crosslinktax.com/validateAppObject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateOwner">
+      <soap:operation soapAction="http://www.crosslinktax.com/updateOwner" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteOwner">
+      <soap:operation soapAction="http://www.crosslinktax.com/deleteOwner" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateApp">
+      <soap:operation soapAction="http://www.crosslinktax.com/updateApp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validateSBTPGApp">
+      <soap:operation soapAction="http://www.crosslinktax.com/validateSBTPGApp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateSBTPGApp">
+      <soap:operation soapAction="http://www.crosslinktax.com/updateSBTPGApp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSBTPGApp">
+      <soap:operation soapAction="http://www.crosslinktax.com/getSBTPGApp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSBTPGAppCompleteStatus">
+      <soap:operation soapAction="http://www.crosslinktax.com/getSBTPGAppCompleteStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validateRefundAdvantageApp">
+      <soap:operation soapAction="http://www.crosslinktax.com/validateRefundAdvantageApp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateRefundAdvantageOwner">
+      <soap:operation soapAction="http://www.crosslinktax.com/updateRefundAdvantageOwner" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateRefundAdvantageApp">
+      <soap:operation soapAction="http://www.crosslinktax.com/updateRefundAdvantageApp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isOwner100">
+      <soap:operation soapAction="http://www.crosslinktax.com/isOwner100" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRefundAdvantageApp">
+      <soap:operation soapAction="http://www.crosslinktax.com/getRefundAdvantageApp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRefundAdvantageAppCompleteStatus">
+      <soap:operation soapAction="http://www.crosslinktax.com/getRefundAdvantageAppCompleteStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRefundAdvantageOwners">
+      <soap:operation soapAction="http://www.crosslinktax.com/getRefundAdvantageOwners" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isRepublicPrepaidDebitAccount">
+      <soap:operation soapAction="http://www.crosslinktax.com/isRepublicPrepaidDebitAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validateRepublicApp">
+      <soap:operation soapAction="http://www.crosslinktax.com/validateRepublicApp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateRepublicApp">
+      <soap:operation soapAction="http://www.crosslinktax.com/updateRepublicApp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRepublicApp">
+      <soap:operation soapAction="http://www.crosslinktax.com/getRepublicApp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRepublicAppCompleteStatus">
+      <soap:operation soapAction="http://www.crosslinktax.com/getRepublicAppCompleteStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isRefundoPrepaidDebitAccount">
+      <soap:operation soapAction="http://www.crosslinktax.com/isRefundoPrepaidDebitAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validateRefundoApp">
+      <soap:operation soapAction="http://www.crosslinktax.com/validateRefundoApp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateRefundoApp">
+      <soap:operation soapAction="http://www.crosslinktax.com/updateRefundoApp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRefundoApp">
+      <soap:operation soapAction="http://www.crosslinktax.com/getRefundoApp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRefundoAppCompleteStatus">
+      <soap:operation soapAction="http://www.crosslinktax.com/getRefundoAppCompleteStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFranchise">
+      <soap:operation soapAction="http://www.crosslinktax.com/getFranchise" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CrosslinkWS17Soap12" type="tns:CrosslinkWS17Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getAccessKey">
+      <soap12:operation soapAction="http://www.crosslinktax.com/getAccessKey" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isAuth">
+      <soap12:operation soapAction="http://www.crosslinktax.com/isAuth" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTaxableStateList">
+      <soap12:operation soapAction="http://www.crosslinktax.com/getTaxableStateList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getStateList">
+      <soap12:operation soapAction="http://www.crosslinktax.com/getStateList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAvailableBanks">
+      <soap12:operation soapAction="http://www.crosslinktax.com/getAvailableBanks" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPEIFees">
+      <soap12:operation soapAction="http://www.crosslinktax.com/getPEIFees" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPEIRalTransmitterFee">
+      <soap12:operation soapAction="http://www.crosslinktax.com/getPEIRalTransmitterFee" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPEITechFee">
+      <soap12:operation soapAction="http://www.crosslinktax.com/getPEITechFee" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBankInfo">
+      <soap12:operation soapAction="http://www.crosslinktax.com/getBankInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getContactList">
+      <soap12:operation soapAction="http://www.crosslinktax.com/getContactList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getContact">
+      <soap12:operation soapAction="http://www.crosslinktax.com/getContact" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPortalSetting">
+      <soap12:operation soapAction="http://www.crosslinktax.com/getPortalSetting" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSBName">
+      <soap12:operation soapAction="http://www.crosslinktax.com/getSBName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateNewUser">
+      <soap12:operation soapAction="http://www.crosslinktax.com/CreateNewUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserIDList">
+      <soap12:operation soapAction="http://www.crosslinktax.com/getUserIDList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="hasFiledReturns">
+      <soap12:operation soapAction="http://www.crosslinktax.com/hasFiledReturns" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateContact">
+      <soap12:operation soapAction="http://www.crosslinktax.com/updateContact" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAccountCodeByUser">
+      <soap12:operation soapAction="http://www.crosslinktax.com/getAccountCodeByUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateDocument">
+      <soap12:operation soapAction="http://www.crosslinktax.com/updateDocument" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocTypes">
+      <soap12:operation soapAction="http://www.crosslinktax.com/getDocTypes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentList">
+      <soap12:operation soapAction="http://www.crosslinktax.com/getDocumentList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocument">
+      <soap12:operation soapAction="http://www.crosslinktax.com/getDocument" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteDocument">
+      <soap12:operation soapAction="http://www.crosslinktax.com/deleteDocument" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isAddonAgreementComplete">
+      <soap12:operation soapAction="http://www.crosslinktax.com/isAddonAgreementComplete" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkMasterAccount">
+      <soap12:operation soapAction="http://www.crosslinktax.com/checkMasterAccount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEFINbyEFIN">
+      <soap12:operation soapAction="http://www.crosslinktax.com/getEFINbyEFIN" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEFINID">
+      <soap12:operation soapAction="http://www.crosslinktax.com/getEFINID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEFIN">
+      <soap12:operation soapAction="http://www.crosslinktax.com/getEFIN" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEfinStats">
+      <soap12:operation soapAction="http://www.crosslinktax.com/getEfinStats" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="hasMEfinBank">
+      <soap12:operation soapAction="http://www.crosslinktax.com/hasMEfinBank" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="hasMEfinBankAck">
+      <soap12:operation soapAction="http://www.crosslinktax.com/hasMEfinBankAck" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEFINCompleteStatus">
+      <soap12:operation soapAction="http://www.crosslinktax.com/getEFINCompleteStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateEFIN">
+      <soap12:operation soapAction="http://www.crosslinktax.com/updateEFIN" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validateEfinObject">
+      <soap12:operation soapAction="http://www.crosslinktax.com/validateEfinObject" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="verifyMasterEFIN">
+      <soap12:operation soapAction="http://www.crosslinktax.com/verifyMasterEFIN" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFivePlusAddOn">
+      <soap12:operation soapAction="http://www.crosslinktax.com/getFivePlusAddOn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCustomerOwner">
+      <soap12:operation soapAction="http://www.crosslinktax.com/getCustomerOwner" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEFINSummaryList">
+      <soap12:operation soapAction="http://www.crosslinktax.com/getEFINSummaryList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkFees">
+      <soap12:operation soapAction="http://www.crosslinktax.com/checkFees" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAppStats">
+      <soap12:operation soapAction="http://www.crosslinktax.com/GetAllAppStats" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBankApps">
+      <soap12:operation soapAction="http://www.crosslinktax.com/getBankApps" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLatestAppbyBank">
+      <soap12:operation soapAction="http://www.crosslinktax.com/getLatestAppbyBank" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLatestApp">
+      <soap12:operation soapAction="http://www.crosslinktax.com/getLatestApp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submitBankApplication">
+      <soap12:operation soapAction="http://www.crosslinktax.com/submitBankApplication" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validateAppObject">
+      <soap12:operation soapAction="http://www.crosslinktax.com/validateAppObject" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateOwner">
+      <soap12:operation soapAction="http://www.crosslinktax.com/updateOwner" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteOwner">
+      <soap12:operation soapAction="http://www.crosslinktax.com/deleteOwner" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateApp">
+      <soap12:operation soapAction="http://www.crosslinktax.com/updateApp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validateSBTPGApp">
+      <soap12:operation soapAction="http://www.crosslinktax.com/validateSBTPGApp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateSBTPGApp">
+      <soap12:operation soapAction="http://www.crosslinktax.com/updateSBTPGApp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSBTPGApp">
+      <soap12:operation soapAction="http://www.crosslinktax.com/getSBTPGApp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSBTPGAppCompleteStatus">
+      <soap12:operation soapAction="http://www.crosslinktax.com/getSBTPGAppCompleteStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validateRefundAdvantageApp">
+      <soap12:operation soapAction="http://www.crosslinktax.com/validateRefundAdvantageApp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateRefundAdvantageOwner">
+      <soap12:operation soapAction="http://www.crosslinktax.com/updateRefundAdvantageOwner" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateRefundAdvantageApp">
+      <soap12:operation soapAction="http://www.crosslinktax.com/updateRefundAdvantageApp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isOwner100">
+      <soap12:operation soapAction="http://www.crosslinktax.com/isOwner100" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRefundAdvantageApp">
+      <soap12:operation soapAction="http://www.crosslinktax.com/getRefundAdvantageApp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRefundAdvantageAppCompleteStatus">
+      <soap12:operation soapAction="http://www.crosslinktax.com/getRefundAdvantageAppCompleteStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRefundAdvantageOwners">
+      <soap12:operation soapAction="http://www.crosslinktax.com/getRefundAdvantageOwners" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isRepublicPrepaidDebitAccount">
+      <soap12:operation soapAction="http://www.crosslinktax.com/isRepublicPrepaidDebitAccount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validateRepublicApp">
+      <soap12:operation soapAction="http://www.crosslinktax.com/validateRepublicApp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateRepublicApp">
+      <soap12:operation soapAction="http://www.crosslinktax.com/updateRepublicApp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRepublicApp">
+      <soap12:operation soapAction="http://www.crosslinktax.com/getRepublicApp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRepublicAppCompleteStatus">
+      <soap12:operation soapAction="http://www.crosslinktax.com/getRepublicAppCompleteStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isRefundoPrepaidDebitAccount">
+      <soap12:operation soapAction="http://www.crosslinktax.com/isRefundoPrepaidDebitAccount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validateRefundoApp">
+      <soap12:operation soapAction="http://www.crosslinktax.com/validateRefundoApp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateRefundoApp">
+      <soap12:operation soapAction="http://www.crosslinktax.com/updateRefundoApp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRefundoApp">
+      <soap12:operation soapAction="http://www.crosslinktax.com/getRefundoApp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRefundoAppCompleteStatus">
+      <soap12:operation soapAction="http://www.crosslinktax.com/getRefundoAppCompleteStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFranchise">
+      <soap12:operation soapAction="http://www.crosslinktax.com/getFranchise" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CrosslinkWS17">
+    <wsdl:port name="CrosslinkWS17Soap" binding="tns:CrosslinkWS17Soap">
+      <soap:address location="https://devws.petzent.com/CrosslinkWS/WS/crosslinkws17.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CrosslinkWS17Soap12" binding="tns:CrosslinkWS17Soap12">
+      <soap12:address location="https://devws.petzent.com/CrosslinkWS/WS/crosslinkws17.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,127 @@
+﻿
+@{
+    ViewBag.Title = "xlink";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-header">
+    <h2>uTax Master Account Credentials</h2>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title" id="AddLink" data-target="#popupNewUser" data-toggle="modal" onclick="NewUser()" style="cursor:pointer;"><a><i class="fa fa-plus" aria-hidden="true" title="Add New Account"></i> Add New Account</a></h2>
+            </div>
+            <div class="panel-body">
+                <div class="row cst-search-table search-table">
+                    <button type="button" class="search_icon"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    <div class="search-block">
+                        Search:
+                        <input id="filter" type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="office-table">
+                    <table id="table_MasterAccount" class="table table-striped toggle-circle-filled" data-filter="#filter">
+                        <thead>
+                            <tr>
+                                <th style="width:35%">Master Identifier</th>
+                                <th style="width:35%">Crosslink Account Login ID</th>
+                                <th style="width:15%">Status</th>
+                                <th class="no-sort" data-sort-ignore="true" style="width:15%"></th>
+                            </tr>
+                        </thead>
+                        <tfoot class="hide-if-no-paging">
+                            <tr>
+                                <td colspan="4" class="text-center">
+                                    <ul class="pagination"></ul>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="modal fade bs-example-modal-lg" id="popupNewUser" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <div class="panel-heading" id="Phonetype_popup">
+                    <h2 class="panel-title">Add New Account</h2>
+                </div>
+            </div>
+            <div class="alert-success" style="display:none;" id="popup_success"><p></p></div>
+            <div class="alert-danger" style="display:none;" id="popup_error"><p></p></div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <div class="row" style="display:none;">
+                        <div class="col-md-4">
+                            <label for="message-text" class="control-label mandatory">Master Identifier</label>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" id="txt_masterId" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="row" style="display:none;">
+                        <div class="col-md-4">
+                            <label for="message-text" class="control-label mandatory">Password</label>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="password" id="txt_password" class="form-control" />
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="message-text" class="control-label mandatory">Master Identifier</label>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" id="txt_claccountid" class="form-control" maxlength="49" />
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="message-text" class="control-label mandatory">CrossLink Login Account ID</label>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" id="txt_cllogin" class="form-control"  maxlength="49" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="message-text" class="control-label mandatory">CrossLink Account ID Password</label>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" id="txt_claccountpassword" class="form-control"  maxlength="49" />
+                        </div>
+                    </div>
+
+                    <div class="row margin-20">
+                        <div class="col-md-offset-2 col-md-10">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer clearfix">
+                <button type="button" class="btn btn-default" id="btnSave" onclick="fnUpdatexlink();">Update</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="btnCancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+<script src="~/Scripts/app/MasterAccountDetails.js"></script>
+}

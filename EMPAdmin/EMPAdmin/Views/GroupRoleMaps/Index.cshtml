@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-header">
+    <h2>Manage Group</h2>
+</div>
+@if (Session.Count > 0)
+{
+    <input type="hidden" id="UserId" name="UserId" value="@Session["UserId"].ToString()" />
+    <input type="hidden" id="UserRoleId" name="UserRoleId" value="@Session["UserRoleId"].ToString()" />
+    <input type="hidden" id="SiteMapID" name="SiteMapID" value="c7c11456-d77c-4625-b67b-24b0714888b5" />
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                &nbsp;
+                <h2 class="panel-title" id="AddLink">
+                    <a href="~/grouprolemaps/create"><i class="fa fa-plus" aria-hidden="true" title="Add Group Roles"></i> Add Group Roles</a>
+                </h2>
+            </div>
+            <div class="panel-body">
+                <div class="row cst-search-table search-table">
+                    <button type="button" class="search_icon"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    <div class="search-block">
+                        Search:
+                        <input id="filter" type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="office-table">
+                    <table id="table_grouprole" class="table table-striped toggle-circle-filled" data-filter="#filter">
+                        <thead>
+                            <tr>
+                                <th style="width:45%;">Group</th>
+                                <th style="width:45%;">Roles</th>
+                                <th>Status</th>
+                                <th style="width:10%;" class="no-sort" data-sort-ignore="true"></th>
+                            </tr>
+                        </thead>
+                        <tfoot class="hide-if-no-paging">
+                            <tr>
+                                <td colspan="6" class="text-center">
+                                    <ul class="pagination"></ul>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script src="~/Scripts/app/common.js"></script>
+    <script src="~/Scripts/app/grouprole.js"></script>
+}
+
+<script>
+    $(document).ready(function () {
+        jQuery(".office-table .table").footable();
+        $(".search_icon").click(function () {
+            $(".search-block").slideToggle();
+        });
+
+        getAllGroupRoles();
+        GridFunctionality();
+    });
+
+    function GridFunctionality() {
+        var userId = $("#UserId").val();
+        var roleId = $("#UserRoleId").val();
+
+        ctrlAddLink = $("#AddLink");
+        ctrlEditLink = $("table#table_grouprole .EditLink");
+        ctrlActiveInactiveLink = $("table#table_grouprole .ActiveInactiveLink");
+        getScreenPermissions(ctrlAddLink, ctrlEditLink, ctrlActiveInactiveLink, '', userId, roleId);
+    }
+</script>

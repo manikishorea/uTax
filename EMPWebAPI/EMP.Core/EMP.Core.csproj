@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BAFD8DED-1321-4D67-8FF9-1D7C850AAC6E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EMPPortal.Core</RootNamespace>
+    <AssemblyName>EMPPortal.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AuditLogs\DTO\AuditLogDTO.cs" />
+    <Compile Include="AuditLogs\IAuditLogService.cs" />
+    <Compile Include="AuditLogs\AuditLogService.cs" />
+    <Compile Include="DataMigration\DTO\DataMigrationDTO.cs" />
+    <Compile Include="DataMigration\DTO\SalesYearDTO.cs" />
+    <Compile Include="DataMigration\IDataMigrationService.cs" />
+    <Compile Include="DataMigration\DataMigrationService.cs" />
+    <Compile Include="Documents\DocumentMasterService.cs" />
+    <Compile Include="Documents\DTO\DocumentMasterDTO.cs" />
+    <Compile Include="Documents\IDocumentMasterService.cs" />
+    <Compile Include="ExceptionHandle\DTO\ExceptionModel.cs" />
+    <Compile Include="ExceptionHandle\IExceptionHandleService.cs" />
+    <Compile Include="ExceptionHandle\ExceptionHandleService.cs" />
+    <Compile Include="Models\ZipCodeModel.cs" />
+    <Compile Include="Models\CoreModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Token\DTO\TokenDTO.cs" />
+    <Compile Include="Token\ITokenService.cs" />
+    <Compile Include="Token\TokenService.cs" />
+    <Compile Include="Utilities\AuditLogger.cs" />
+    <Compile Include="Utilities\ExceptionLogger.cs" />
+    <Compile Include="Utilities\PasswordManager.cs" />
+    <Compile Include="Utilities\EMPConstants.cs" />
+    <Compile Include="ZipCode\ZipCodeService.cs" />
+    <Compile Include="ZipCode\IZipCodeService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Session\" />
+    <Folder Include="Token\Localization\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EMPEntityFramework\EMPEntityFramework.csproj">
+      <Project>{b73760b3-2cf9-4b27-99ca-a83cd959295e}</Project>
+      <Name>EMPEntityFramework</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

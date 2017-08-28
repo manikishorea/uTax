@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="form-horizontal">
+    <h4>Reset Password</h4>
+    <hr />
+    <div class="form-group">
+        <div class="alert-success" style="display:none;" id="popup_success"><p></p></div>
+        <div class="row">
+            <div class="col-md-2">
+                <label for="message-text" class="control-label mandatory">Enter New Password</label>
+            </div>
+            <div class="col-md-4">
+                <input type="password" class="form-control" id="EMPPassword" />
+                <input type="text" id="Id" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <label for="message-text" class="control-label">Conform Password</label>
+            </div>
+            <div class="col-md-4">
+                <input type="password" class="form-control" id="ConformPassword" />
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="button" value="Save" class="btn btn-default" onclick="fnSaveResetPassword();" />
+            <input type="button" value="Cancle" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/Scripts/app/common.js"></script>
+    <script src="~/Scripts/app/ResetPassword.js"></script>
+}

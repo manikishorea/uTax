@@ -1,0 +1,72 @@
+﻿@using EMPPortal.Filters;
+@{
+    ViewBag.Title = "Last Login Report ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/css/buttons.dataTables.min.css" rel="stylesheet" />
+<input type="hidden" id="formid" name="formid" value="active" formid="site0aaba58f-f16c-4ed4-a38e-ce3334c40be1" sitemapid="0aaba58f-f16c-4ed4-a38e-ce3334c40be1" />
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 style="padding:10px 0;">Open Enrollment Cases</h3>
+            </div>
+            <div class="table-responsive panel-body">
+                <table id="table_NewEnrollment" class="table table-striped table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Master ID</th>
+                            <th>Efin</th>
+                            <th>User ID</th>
+                            <th>Parent User ID</th>
+                            <th>Company</th>
+                            <th>Account Status</th>
+                            <th>ERO Type</th>
+                            <th>Case Orgin</th>
+                            <th>Product</th>
+                            <th>Funtional Area</th>
+                            <th>Module</th>
+                            <th>Issue</th>
+                            <th>Status</th>
+                            <th>Case number</th>
+                            <th>MSO User</th>
+                            <th>Dt. Opened</th>
+                            <th>Dt. Modified</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/app/Rpt_FeeSetupReport.js"></script>
+<script>
+    var today = new Date();
+    var Current_Date = today.getDate() + '/' + today.getMonth() + '/' + today.getFullYear() + '  ' + today.getHours() + ':' + today.getMinutes();
+    $(document).ready(function () {
+        $('#table_NewEnrollment').DataTable({
+            "bSort": false,
+            dom: 'Bfrtip',
+            buttons: [
+                {
+                    extend: "excel",
+                    text: '<i class="fa fa-file-excel-o"></i> EXCEL',
+                }, {
+                    extend: "print",
+                    text: '<i class="fa fa-print"></i> Print'
+                }, {
+                    extend: "csv",
+                    text: '<i class="fa fa-file-excel-o"></i> CSV'
+                }, {
+                    extend: "pdf",
+                    text: '<i class="fa fa-file-pdf-o"></i> PDF',
+                    orientation: 'landscape',
+                    pageSize: 'LEGAL',
+                    title: 'All New Enrollment Cases',
+                    message: 'Date Time : ' + Current_Date
+                }
+            ]
+        });
+        Fn_NewEnrollmentCases($('#UserId').val());
+    });
+</script>

@@ -1,0 +1,136 @@
+﻿@using EMPPortal.Filters;
+@*@{
+        // Layout = "~/Views/Shared/_SubSiteLayout.cshtml";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }*@
+<div id="error_bank" class="alert alert-danger" style="display: none;"></div>
+<input type="hidden" id="formid" name="formid" value="active" formid="site067c03a3-34f1-4143-beae-35327a8fca44" sitemapid="067c03a3-34f1-4143-beae-35327a8fca44" />
+<div class="row bank-blk">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-body fee-blk">
+                <h3>Service Bureau & Transmitter Fees</h3>
+                <input type="hidden" id="h_BankID" name="h_BankID" value="00000000-0000-0000-0000-000000000000" />
+                <input type="hidden" id="h_dvService" name="h_dvService" />
+                <input type="hidden" id="h_Trasnmission" name="h_Trasnmission" />
+                <input type="hidden" id="TotalBankProductFees" name="TotalBankProductFees" value="0" />
+                <input type="hidden" id="TotaleFileFees" name="TotaleFileFees" value="0" />
+                <div id="dvFees"></div>
+                <div class="table-responsive cst-edit-tb col-md-6">
+                    <table class="table table-striped table-hover table-bordered " id="tdFeeFixed"></table>
+                </div>
+
+                <div class="table-responsive cst-edit-tb col-md-6">
+                    <table class="table table-striped table-hover table-bordered" id="tdFeeUser"></table>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default" id="dv_bankSelection">
+            <div class="panel-body">
+                <div class="form-group" style="padding:0;">
+                    <label>Which bank would you like to partner with for this tax season?</label>
+                    <span class="cst-tooltip"><a class="ttip" id="ttipd0a895ae-fd9a-438c-80a4-c6b336a78d10" style="display:none;" href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="Tooltip on right"><i class="fa fa-info" aria-hidden="true"></i></a></span>
+                    <div class="radio cst-label col-md-12 bank no-border" id="divBanks" style="margin-bottom:0;padding-bottom:10px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="alert alert-danger" id="dvNotDataPageSVB" style="display:none;">No Bank(s) have been configured as available for this sub-site. </div>
+    </div>
+    <div class="col-md-12">
+        <div class="panel panel-default" id="dv_bankfees" style="display:none;">
+            <div class="panel-body">
+                <div class="col-md-6" id="dv_ServiceBureu">
+                    <h3>Service Bureau Fees</h3>
+                    <div class="form-group" id="dvServiceBVal" style="margin-bottom:0;">
+                        <label>Would you like to add an additional fee that will be combined with the SVB fee above?</label>
+                        <span class="cst-tooltip"><a class="ttip" id="ttip8e2f1f6b-5614-4294-b53e-f9c6b60ec010" style="display:none;" href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="Tooltip on right"><i class="fa fa-info" aria-hidden="true"></i></a></span>
+                        <div class="radio" id="lblYesSubmis">
+                            <label>
+                                <input type="radio" id="rbServiceBureauYes" name="rbServiceBureau" value="option3" onchange="fnRBSVB(1);">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="radio" style="margin-bottom:0;">
+                            <label>
+                                <input type="radio" id="rbServiceBureauNo" name="rbServiceBureau" value="option3" onchange="fnRBSVB(0);">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row" id="divsvbfees">
+                        <div class="col-md-12 padding-left-50">
+                            <p>How much would you like to add on?:<span id="spn_svblimit"></span></p>                            
+                            <div id="dvBankServiceInfo" class="pull-left"></div>
+                        </div>
+                        <p id="p_stagingsvb" class="bank-selection-staging-addon"></p>
+                    </div>
+                </div>
+                <div class="col-md-6" id="dv_Transmission" style="margin-bottom:0;">
+                    <h3>Transmitter Fees</h3>
+                    <div class="form-group" id="dvTransmVal">
+                        <label>Would you like to add an additional fee that will be combined with the Transmitter fee above?</label>
+                        <span class="cst-tooltip"><a class="ttip" id="ttip8e2f1f6b-5614-4294-b53e-f9c6b60ec011" style="display:none;" href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="Tooltip on right"><i class="fa fa-info" aria-hidden="true"></i></a></span>
+                        <div class="radio" id="lblYesTrans">
+                            <label>
+                                <input type="radio" id="rbTransmissionYes" name="rbTransmission" value="option2" onchange="fnRBTRANS(1);">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="radio" style="margin-bottom:0;">
+                            <label>
+                                <input type="radio" id="rbTransmissionNo" name="rbTransmission" value="option2" onchange="fnRBTRANS(0);">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row" id="divtransfees">
+                        <div class="col-md-12 padding-left-50">
+                            <p>How much would you like to add on?:<span id="spn_translimit"></span></p>                            
+                            <div id="dvBankTransmissionInfo" class="pull-left"></div>
+                        </div>
+                        <p id="p_stagingtrans" class="bank-selection-staging-addon"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix"> </div>
+        <div class="col-md-12" id="dv_save">
+            <a href="javascript:void(0)" class="btn btn-default btn-info" onclick="fnSaveEnrollmentBankSelection(0)">Save</a>
+            <a href="javascript:void(0)" class="btn btn-default btn-info" id="btnBankSelSaveNext" onclick="fnSaveEnrollmentBankSelection(1)">Save &amp; Next</a>
+        </div>
+        <div class="col-md-12" id="dv_aprsave" style="display:none;">
+            <a class="btn btn-default btn-info" onclick="EnableAddon()">edit</a>
+            <a class="btn btn-default btn-info" onclick="SubmitEnrollmentBankFee()" id="btn_submitenr">Submit Enrollment</a>
+        </div>
+    </div>
+</div>
+
+
+@section scripts {
+    @Html.IncludeVersionedJs("/Scripts/app/customerInformation.js")
+    @Html.IncludeVersionedJs("/Scripts/app/EnrollmentBankSelection.js")
+}
+
+<script>
+    $(document).ready(function () {
+
+        getTooltip();
+        getEnrollmentFees($('#tdFeeFixed'), $('#tdFeeUser'));
+        getBankQuestions($('#divBanks'));
+        // getIsSalesYearCheckBankDates_Enrollment();
+
+        var bankid = getUrlVars()["bankid"];
+        if (bankid) {
+            GetEnrollmentBankSelection(bankid);
+        } else {
+             GetEnrollmentBankSelection('');
+        }
+        //var bankid = getUrlVars()["bankid"];
+        //getBankQuestionsShow_Enroll(bankid);
+       
+    });
+
+
+</script>

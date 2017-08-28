@@ -1,0 +1,84 @@
+﻿@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("CreateUser", "User", FormMethod.Post, new { @id = "CreateUser" }))
+{
+    <div class="page-header">
+        @if (ViewBag.Id == "00000000-0000-0000-0000-000000000000")
+        {
+            <h2>Create Group Information</h2>
+        }
+        else
+        {
+            <h2>Edit Group Information</h2>
+        }
+    </div>
+
+    <div class="form-grop">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <input type="hidden" id="Id" name="Id" value="@ViewBag.Id" />
+        <input type="hidden" id="UserId" name="UserId" value="@Session["UserId"].ToString()" />
+       
+         <div class="row">
+            <div class="col-md-2">
+                <label for="message-text" class="control-label mandatory">Group</label>
+            </div>
+            <div class="col-md-4">
+                <input type="text" id="GroupName" class="form-control" maxlength="100" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <label for="message-text" class="control-label mandatory">Roles</label>
+            </div>
+            <div class="col-md-4">
+                <div id="RoleIds">
+                </div>
+            </div>
+        </div>
+
+        <div class="row margin-20">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button"  class="btn btn-default" id="btnSave" value="Submit" onclick="fnSaveGroupRole();" />
+                <button type="button" class="btn btn-default" id="btnCancel" onclick="GotoListScreen('@Url.Content("~/GroupRoleMaps/Index")');">Back</button>
+            </div>
+        </div>
+    </div>
+}
+
+@section scripts {
+    <script src="~/Scripts/app/common.js"></script>
+    <script src="~/Scripts/app/grouprole.js"></script>
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        getRoleMaster($('#RoleIds'));
+        var Id = $('#Id').val();
+
+        if (Id != '' && Id != null && Id != '00000000-0000-0000-0000-000000000000') {
+            getGroupRolesByGroupId(Id);
+        }
+
+
+        var initial_form_state = $('#CreateUser').serialize();
+        $('#CreateUser').submit(function () {
+            initial_form_state = $('#CreateUser').serialize();
+        });
+        $(window).bind('beforeunload', function (e) {
+            var form_state = $('#CreateUser').serialize();
+            if (initial_form_state != form_state) {
+                var message = "You have unsaved changes on this page. Do you want to leave this page and discard your changes or stay on this page?";
+                e.returnValue = message;
+                return message;
+            }
+        });
+    });
+
+</script>

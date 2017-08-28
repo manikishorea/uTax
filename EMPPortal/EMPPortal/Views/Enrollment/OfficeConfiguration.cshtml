@@ -1,0 +1,174 @@
+﻿@using EMPPortal.Filters;
+
+<input type="hidden" id="formid" name="formid" value="active" formid="sitefc32db13-6aec-488e-bafe-19acb3399e57" sitemapid="fc32db13-6aec-488e-bafe-19acb3399e57" />
+<h2 class="page-title">Office Configuration Details</h2>
+<input type="hidden" id="Id" name="Id" />
+
+<div id="divEnrollOfficeConfigForm">
+    <div class="panel panel-default cst-panel">
+        <div class="panel-body">
+            <div class="multi-question support-language">
+                <!-- if (Request["entitydisplayid"] != null)
+                    {
+                        if (Convert.ToInt32(Request["entitydisplayid"].ToString()) == (int)EMPPortal.Utilities.EMPPortalConstants.BaseEntities.AE && Convert.ToInt32(Request["entitydisplayid"].ToString()) != (int)EMPPortal.Utilities.EMPPortalConstants.BaseEntities.AE_SS)// "2222b1a2-e76d-47ab-a998-078550238427")
+                        {
+                            <div class="question-block" id="divBankProduct">
+                                <div class="form-group">
+                                    <label>Will the main site transmit tax returns? <span id="IsMainSiteTransmitTaxReturn1" style="font-weight:600;"></span></label>
+                                    <input type="hidden" id="IsMainSiteTransmitTaxReturn" value="" />
+                                    <div class="radio" id="dvSec">
+                                            <label>
+                                                <input type="radio" name="IsMainSiteTransmitTaxReturn" value="1" id="IsMainSiteTransmitTaxReturn1" class="yesbox" >
+                                                Yes
+                                            </label>
+                                            <label>
+                                                <input type="radio" name="IsMainSiteTransmitTaxReturn" value="2" id="IsMainSiteTransmitTaxReturn2" class="nobox">
+                                                No
+                                            </label>
+                                        </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                    else if (Convert.ToInt32(Session["entitydisplayid"].ToString()) == (int)EMPPortal.Utilities.EMPPortalConstants.BaseEntities.AE && Convert.ToInt32(Session["entitydisplayid"].ToString()) != (int)EMPPortal.Utilities.EMPPortalConstants.BaseEntities.AE_SS)// "2222b1a2-e76d-47ab-a998-078550238427")
+                    {
+                        <div class="question-block" id="divBankProduct">
+                            <div class="form-group">
+                                <label>Will the main site transmit tax returns? <span id="IsMainSiteTransmitTaxReturn1" style="font-weight:600;"></span></label>
+                                <input type="hidden" id="IsMainSiteTransmitTaxReturn" value="" />
+                                <div class="radio" id="dvSec">
+                                        <label>
+                                            <input type="radio" name="IsMainSiteTransmitTaxReturn" value="1" id="IsMainSiteTransmitTaxReturn1" class="yesbox" >
+                                            Yes
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="IsMainSiteTransmitTaxReturn" value="2" id="IsMainSiteTransmitTaxReturn2" class="nobox">
+                                            No
+                                        </label>
+                                    </div>
+                            </div>
+                        </div>
+                    }
+                    -->
+                <div class="form-group">
+                    <div class="col-md-5 no-padding-left">
+                        <label for="i5" class="control-label">How many tax professionals are in your office?  (1 to 50)</label>
+                        <input type="number" class="form-control digit" id="NoofTaxProfessionals" min="1" max="50" maxlength="2">
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="form-group">
+                    <label>Will the software be installed on the network?</label>
+                    <div class="radio" id="dvThird">
+                        <label>
+                            <input type="radio" name="IsSoftwareOnNetwork" value="1" id="IsSoftwareOnNetwork1">
+                            Yes
+                        </label>
+                        <label>
+                            <input type="radio" name="IsSoftwareOnNetwork" value="2" id="IsSoftwareOnNetwork2">
+                            No
+                        </label>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="form-group">
+                    <div class="col-md-5 no-padding-left">
+                        <label for="i5" class="control-label">How many computers will run the software? (1 to 99)</label>
+                        <input type="number" class="form-control digit" id="NoofComputers" min="1" max="99" maxlength="2">
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="form-group">
+                    <label>What is your preferred support language?</label>
+                    <div class="radio" id="dvFourth">
+                        <label>
+                            <input type="radio" name="PreferredLanguage" value="1" id="PreferredLanguage1">
+                            English
+                        </label>
+                        <label>
+                            <input type="radio" name="PreferredLanguage" value="2" id="PreferredLanguage2">
+                            Spanish
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfix"> </div>
+    <div class="col-md-10">
+        <a href="javascript:void(0)" class="btn btn-default" onclick="fnSaveEnrollOfficeConfig(0)">Save</a>
+        <a href="javascript:void(0)" class="btn btn-default" onclick="fnSaveEnrollOfficeConfig(1)">Save &amp; Next</a>
+    </div>
+</div>
+@section scripts {
+    @Html.IncludeVersionedJs("/Scripts/app/EnrollAffiliateConfig.js")
+}
+
+<script>
+    $(document).ready(function () {
+        var UserId = $('#UserId').val();
+        var ParentId = $('#parentid').val();
+        if ($('#entityid').val() != $('#myentityid').val()) {
+            UserId = $('#myid').val();
+            ParentId = $('#myparentid').val();
+        }
+
+        var erotype = getEroType($('#entityid').val());
+        if (erotype) {
+            if (erotype == 'Single Office') {
+                $('#divBankProduct').hide();
+            }
+        }
+
+        fnGetEnrollOfficeConfig(UserId);
+       // fnGetEnrollOfficeMainConfig(ParentId);
+
+        //    if ($('#entityid').val() != $('#myentityid').val()) {
+
+        //        var erotype = getEroType($('#myentityid').val());
+        //        if (erotype == 'Single Office') {
+        //            $('#divBankProduct').hide();
+        //        }
+
+        //        fnGetEnrollOfficeConfig(myid);
+        //        fnGetEnrollOfficeMainConfig(myid);
+
+        //        //if ($('#myentitydisplayid').val() == $('#Entity_MO').val() || $('#myentitydisplayid').val() == $('#Entity_SVB').val()) {
+        //        //    var myid = $('#myid').val();
+        //        //    fnGetEnrollOfficeConfig(myid);
+        //        //    fnGetEnrollOfficeMainConfig(myid);
+
+        //        //}
+        //        //else {
+        //        //    var myid = $('#myid').val();
+        //        //    var myparentid = $('#myparentid').val();
+        //        //    fnGetEnrollOfficeConfig(myid);
+        //        //    fnGetEnrollOfficeMainConfig(myparentid);
+        //        //}
+        //    }
+        //    else {
+        //        //var erotype = getEroType($('#entitydisplayid').val());
+        //        //if (erotype) {
+        //        //    if (erotype == 'Single Office') {
+        //        //        $('#divBankProduct').hide();
+        //        //    }
+        //        //}
+
+        //        //fnGetEnrollOfficeConfig($('#UserId').val());
+
+        //        //if ($('#myentitydisplayid').val() == $('#Entity_MO').val() || $('#myentitydisplayid').val() == $('#Entity_SVB').val()) {
+        //        //    fnGetEnrollOfficeMainConfig($('#UserId').val());
+        //        //} else {
+        //        //    if ($('#myentitydisplayid').val() == $('#Entity_SOMESubSite').val()) {
+
+        //        //        fnGetEnrollOfficeMainConfig($('#supparentid').val());
+        //        //    } else
+        //        //    {
+        //        //        fnGetEnrollOfficeMainConfig($('#parentid').val());
+        //        //    }
+
+        //        //}
+        //    }
+    });
+</script>

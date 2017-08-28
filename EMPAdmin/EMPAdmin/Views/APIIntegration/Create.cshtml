@@ -1,0 +1,85 @@
+﻿@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-header">
+    @if (ViewBag.Id == "00000000-0000-0000-0000-000000000000")
+    {
+        <h2>Integrations Management/Create Integrations</h2>
+    }
+    else
+    {
+        <h2>Integrations Management/Edit Integrations</h2>
+    }
+</div>
+
+<script src="~/Scripts/app/common.js"></script>
+<script src="~/Scripts/app/apiintergration.js"></script>
+
+@using (Html.BeginForm("CreateUser", "User", FormMethod.Post, new { @id = "CreateUser" }))
+{
+    @*@Html.AntiForgeryToken()*@
+    <input type="hidden" id="Id" value="@ViewBag.Id" />
+    <input type="hidden" id="UserId" name="UserId" value="@Session["UserId"].ToString()" />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-2">
+                <label for="message-text" class="control-label">Application Name:</label>
+            </div>
+            <div class="col-md-4">
+                <label for="message-text" class="control-label">SalesForce</label>
+                <input type="hidden" id="Name"  value="SalesForce" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <label for="message-text" class="control-label mandatory">API Access URL</label>
+            </div>
+            <div class="col-md-4">
+                <input type="text" id="URL" class="form-control" maxlength="200" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <label for="message-text" class="control-label mandatory">Access User Name</label>
+            </div>
+            <div class="col-md-4">
+                <input type="text" id="UserName" class="form-control" maxlength="30" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <label for="message-text" class="control-label mandatory">Access Password   </label>
+            </div>
+            <div class="col-md-4">
+                <input type="text" id="Password" class="form-control" maxlength="30" />
+            </div>
+        </div>
+        @*<div class="row">
+            <div class="col-md-2">
+                <label for="message-text" class="control-label mandatory">Confirm Password   </label>
+            </div>
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Password" } })
+            </div>
+        </div>*@
+
+        <div class="row">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" value="Submit" class="btn btn-default" onclick="fnSaveAPIIntegration();" />
+                <button type="button" class="btn btn-default" id="btnCancel" onclick="GotoListScreen('@Url.Content("~/apiintegration/Index")');">Back</button>
+            </div>
+        </div>
+    </div>
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var Id = $('#Id').val();
+        getAPIIntegrationDetail(Id);
+    });
+
+</script>

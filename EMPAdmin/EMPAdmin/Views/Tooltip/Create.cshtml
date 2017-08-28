@@ -1,0 +1,113 @@
+﻿@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@using (Html.BeginForm("CreateUser", "User", FormMethod.Post, new { @id = "CreateUser" }))
+{
+    <div class="page-header">
+        <h2>Tooltip Master/Edit Tooltip Master</h2>
+    </div>
+
+    <input type="hidden" id="Id" value="@ViewBag.Id" />
+    <input type="hidden" id="UserId" name="UserId" value="@Session["UserId"].ToString()" />
+    <input type="hidden" id="SitemapId" name="SitemapId" value="" />
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+
+        <div class="row">
+            <div class="col-md-2">
+                <label for="message-text" class="control-label">Sitemap Title Name</label>
+            </div>
+            <div class="col-md-4">
+                <label id="lblSitemapTitle" for="message-text" class="control-label"></label>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-2">
+                <label for="message-text" class="control-label">Field Name</label>
+            </div>
+            <div class="col-md-4">
+                <label id="lblField" for="message-text" class="control-label" MaxLength="50"></label>
+                <input type="hidden" id="Field" name="Field" value="" />
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-2">
+                <label for="message-text" class="control-label mandatory">Tooltip Text</label>
+            </div>
+            <div class="col-md-4">
+                <input type="text" id="ToolTipText" class="form-control" maxlength="500" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <label for="message-text" class="control-label">Description</label>
+            </div>
+            <div class="col-md-4">
+                <textarea type="text" id="Description" class="form-control" maxlength="100" ></textarea>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <label for="message-text" class="control-label">Displayed On Front End</label>
+            </div>
+            <div class="col-md-4">
+                <input type="checkbox" id="IsUIVisible" name="IsUIVisible" />
+               
+                @*@Html.EditorFor(model => model.IsUIVisible)*@
+            </div>
+        </div>
+        @*<div class="row">
+            <div class="col-md-2">
+                <label for="message-text" class="control-label">Displayed On Front End</label>
+            </div>
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.IsUIVisible, new { @class = "form-control" })
+                
+            </div>
+        </div>*@
+
+        <div class="row margin-20">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" value="Submit" class="btn btn-default" onclick="fnSaveTooltip();" />
+                <button type="button" class="btn btn-default" id="btnCancel" onclick="GotoListScreen('@Url.Content("~/tooltip/Index")');">Back</button>
+            </div>
+        </div>
+    </div>
+}
+
+@section scripts {
+    <script src="~/Scripts/app/common.js"></script>
+    <script src="~/Scripts/app/tooltip.js"></script>
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        var Id = $('#Id').val();
+        getTooltipDetail(Id);
+    });
+
+
+    var initial_form_state = $('#CreateUser').serialize();
+    $('#CreateUser').submit(function () {
+        initial_form_state = $('#CreateUser').serialize();
+    });
+    $(window).bind('beforeunload', function (e) {
+        var form_state = $('#CreateUser').serialize();
+        if (initial_form_state != form_state) {
+            var message = "You have unsaved changes on this page. Do you want to leave this page and discard your changes or stay on this page?";
+            e.returnValue = message;
+            return message;
+        }
+    });
+</script>

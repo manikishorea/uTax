@@ -1,0 +1,466 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B73760B3-2CF9-4B27-99CA-A83CD959295E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EMPEntityFramework</RootNamespace>
+    <AssemblyName>EMPEntityFramework</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Edmx\AccessTypeMaster.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\AffiliateProgramMaster.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\AffiliationProgramEntityMap.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\APIIntegration.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\AuditLog.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\AuditLog_EFIN.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\AuditLog_EnrollmentReset.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\AuditTrailFactory.cs" />
+    <Compile Include="Edmx\AudtiLog_DefaultBank.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\BankAssociatedCutofDate.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\BankEnrollment.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\BankEnrollmentEFINOwnersForRA.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\BankEnrollmentForRA.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\BankEnrollmentForRB.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\BankEnrollmentForTPG.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\BankEnrollmentHistory.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\BankEnrollmentInvalid.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\BankEnrollmentStatu.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\BankEntityMap.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\BankMaster.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\BankSubQuestion.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\ContactPersonTitleCustomerMap.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\ContactPersonTitleMaster.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\CustomerAssociatedFee.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\CustomerConfigurationStatu.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\CustomerMaster.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\CustomerNote.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\CustomerPaymentOption.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\CustomerPaymentViaACH.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\CustomerPaymentViaCreditCard.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\CustomerUnlock.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\DatabaseArcEntities.cs" />
+    <Compile Include="Edmx\DatabaseEntities.cs" />
+    <Compile Include="Edmx\DatabaseLogger.cs" />
+    <Compile Include="Edmx\DocumentMaster.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\EmailNotification.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\EMPARCEDMX.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EMPARCEDMX.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\EMPARCEDMX.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EMPARCEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\EMPARCEDMX.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EMPARCEDMX.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\EMPCSREDMX.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EMPCSREDMX.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\EMPCSREDMX.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EMPCSREDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\EMPCSREDMX.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EMPCSREDMX.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\EMPEDMX.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EMPEDMX.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\EMPEDMX.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\EMPEDMX.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EMPEDMX.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\EMP_ActionMaser.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\emp_CustomerInformation.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\emp_CustomerLoginInformation.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\EnrollmentAddonStaging.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\EnrollmentAffiliateConfiguration.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\EnrollmentBankSelection.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\EnrollmentFeeReimbursementConfig.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\EnrollmentOfficeConfiguration.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\EntityActionPermission.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\EntityHierarchy.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\EntityMaster.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\Error.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\ExceptionLog.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\FeeEntityMap.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\FeeMaster.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\FeeReimbursementConfig.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\GroupMaster.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\GroupRoleMap.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\MainOfficeConfiguration.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\NewCustomerSignupGrid_SP_Result.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\NotificationMaster.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\OfficeManagement.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\OfficeManagementGridFilter_Result.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\OfficeManagementGridRecord_Result.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\OfficeManagementGridSearch_Result.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\Onboarding.cs">
+      <DependentUpon>EMPCSREDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\PermissionMaster.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\PhoneTypeCustomerMap.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\PhoneTypeMaster.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\RoleMaster.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\RolePermissionMap.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\Salesforce_Account.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\Salesforce_Contact.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\Salesforce_Opportunity.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\SalesYearEntityMap.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\SalesYearMaster.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\SecurityAnswerUserMap.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\SecurityQuestionMaster.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\SitemapEntity.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\SitemapMaster.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\SitemapPermissionMap.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\SiteMapRolePermission.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\StateMaster.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\StatusCode.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\SubSiteAffiliateProgramConfig.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\SubSiteBankConfig.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\SubSiteBankFeesConfig.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\SubSiteConfiguration.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\SubSiteFeeConfig.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\SubSiteOfficeBankFeeConfig.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\SubSiteOfficeConfig.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\tblCase.cs">
+      <DependentUpon>EMPCSREDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\tblUser.cs">
+      <DependentUpon>EMPCSREDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\temp3.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\TempArchiveCustomerInfo.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\TokenMaster.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\TooltipMaster.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\UpdateBankEnrollmentStatus_AuditLog.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\UserGroupMap.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\UserMaster.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\UserNotificationsMap.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\UserRolesMap.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\UtaxCrosslinkDetail.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\uTaxSetting.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Edmx\ZipCodeMaster.cs">
+      <DependentUpon>EMPEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="Edmx\EMPEDMX.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EMPEDMX.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="Edmx\EMPCSREDMX.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EMPCSREDMX.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="Edmx\EMPARCEDMX.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EMPARCEDMX.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Edmx\EMPARCEDMX.edmx.diagram">
+      <DependentUpon>EMPARCEDMX.edmx</DependentUpon>
+    </None>
+    <None Include="Edmx\EMPCSREDMX.edmx.diagram">
+      <DependentUpon>EMPCSREDMX.edmx</DependentUpon>
+    </None>
+    <None Include="Edmx\EMPEDMX.edmx.diagram">
+      <DependentUpon>EMPEDMX.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Edmx\EMPARCEDMX.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EMPARCEDMX.edmx</DependentUpon>
+      <LastGenOutput>EMPARCEDMX.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Edmx\EMPARCEDMX.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EMPARCEDMX.edmx</DependentUpon>
+      <LastGenOutput>EMPARCEDMX.cs</LastGenOutput>
+    </Content>
+    <Content Include="Edmx\EMPCSREDMX.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EMPCSREDMX.edmx</DependentUpon>
+      <LastGenOutput>EMPCSREDMX.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Edmx\EMPCSREDMX.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EMPCSREDMX.edmx</DependentUpon>
+      <LastGenOutput>EMPCSREDMX.cs</LastGenOutput>
+    </Content>
+    <Content Include="Edmx\EMPEDMX.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EMPEDMX.edmx</DependentUpon>
+      <LastGenOutput>EMPEDMX.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Edmx\EMPEDMX.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EMPEDMX.edmx</DependentUpon>
+      <LastGenOutput>EMPEDMX.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,123 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-header">
+    <h2>Manage Role</h2>
+</div>
+<input type="hidden" id="SiteMapID" name="SiteMapID" value="4cb5a175-b7b0-4e0f-a9eb-21dd4cf02b40" />
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                &nbsp;
+                <h2 class="panel-title" id="AddLink">
+                    <a data-target="#popup" data-toggle="modal" id="btnCreate" href="javascript:void(0)">
+                        <i class="fa fa-plus" aria-hidden="true" title="Add Role"></i> Add Role
+                    </a>
+                </h2>
+            </div>
+            <div class="panel-body">
+                <div class="row cst-search-table search-table">
+                    <button type="button" class="search_icon"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    <div class="search-block">
+                        Search:
+                        <input id="filter" type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="office-table">
+                    <table id="table_role" class="table table-striped toggle-circle-filled" data-filter="#filter">
+                        <thead>
+                            <tr>
+                                <th style="width:40%;">Name</th>
+                                <th style="width:15%;">Stats</th>
+                                <th style="width:10%;" class="no-sort" data-sort-ignore="true"></th>
+                            </tr>
+                        </thead>
+                        <tfoot class="hide-if-no-paging">
+                            <tr>
+                                <td colspan="6" class="text-center">
+                                    <ul class="pagination"></ul>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <!-- books -->
+                </div>
+                <div class="modal fade bs-example-modal-lg" id="popup" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <input type="hidden" id="Id" value="00000000-0000-0000-0000-000000000000" />
+
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+
+                                <div class="panel-heading" id="Role_popup">
+                                    <h2 class="panel-title">Create Role</h2>
+                                </div>
+                            </div>
+                            @using (Html.BeginForm())
+                            {
+                                <div class="alert-success" style="display:none;" id="popup_success"><p></p></div>
+                                <div class="alert-danger" style="display:none;" id="popup_error"><p></p></div>
+                                <div class="modal-body">
+                                    <form role="form">
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label for="message-text" class="control-label mandatory">Role</label>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <input type="text" id="Name" class="form-control" maxlength="30" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <input type="button" value="Submit" class="btn btn-default" onclick="fnSaveRole();" />
+                                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="fnCancel()">Cancel</button>
+                                </div>
+                            }
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <!-- ko if:detail() -->
+</div>
+
+@section scripts {
+    <script src="~/Scripts/app/common.js"></script>
+    <script src="~/Scripts/app/role.js"></script>
+}
+
+<script>
+    $(document).ready(function () {
+        jQuery(".office-table .table").footable();
+        $(".search_icon").click(function () {
+            $(".search-block").slideToggle();
+        });
+        getAllRole();
+
+        var userId = $("#UserId").val();
+        var roleId = $("#UserRoleId").val();
+
+        ctrlAddLink = $("#AddLink");
+        ctrlEditLink = $("table#table_role .EditLink");
+        ctrlActiveInactiveLink = $("table#table_role .ActiveInactiveLink");
+        ctrlEditPermissionLink = $("table#table_role .EditPermissionLink");
+        getScreenPermissions(ctrlAddLink, ctrlEditLink, ctrlActiveInactiveLink, ctrlEditPermissionLink, userId, roleId);
+    });
+
+    $('#btnCreate').click(function () {
+        fnCancel();
+    });
+</script>

@@ -1,0 +1,434 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>uTax Portal</title>
+    @*@Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")*@
+    <title>Florida Sheriffs Association </title>
+    <!-- Mobile support - @ViewBag.Title-->
+    <mesta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    @* <meta http-equiv="CACHE-CONTROL" content="NO-CACHE">*@
+    <!-- Fav Icon -->
+    <link rel="shortcut icon" type="image/x-icon" href="~/favicon.ico" />
+    <!--Responsive Start Here -->
+    <link href="~/Content/css/footable.core.css" rel="stylesheet" />
+    <link href="~/Content/css/footable.metro.css" rel="stylesheet" />
+    <!--Mobile Menu Start Here -->
+    <link type="text/css" rel="stylesheet" href="@Url.Content("~/Content/css/jquery.mmenu.all.css")" />
+    <link type="text/css" rel="stylesheet" href="@Url.Content("~/Content/css/menu_m.css")" />
+    <!-- Twitter Bootstrap -->
+    @*<link href="@Url.Content("~/Content/css/telerik.css")" rel="stylesheet" type="text/css" />*@
+    <link href="@Url.Content("~/Content/css/bootstrap.min.css")" rel="stylesheet" />
+    @*<link href="@Url.Content("~/Content/css/bootstrap-multiselect.css")" rel="stylesheet" type="text/css" />*@
+    @*<link href="@Url.Content("~/Content/css/bootstrap-dialog.min.css")" rel="stylesheet" type="text/css" />*@
+    <!-- Material Design for Bootstrap -->
+    @*<link href="@Url.Content("~/Content/css/material-wfont.min.css")" rel="stylesheet" />*@
+    @*<link href="@Url.Content("~/Content/css/ripples.min.css")" rel="stylesheet" />*@
+    <!-- Font Awesome -->
+    <!-- link href="@Url.Content("~/Content/css/font-awesome.min.css")" rel="stylesheet"/ -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css"
+          rel="stylesheet" />
+    <!-- Dropdown.js -->
+    <link href="@Url.Content("~/Content/css/jquery.dropdown.css")" rel="stylesheet" />
+    <!-- Data Table -->
+    <link href="@Url.Content("~/Content/css/jquery.dataTables.css")" rel="stylesheet" />
+    @* <link href="@Url.Content("~/Content/css/shCore.css")" rel="stylesheet" />
+        <link href="@Url.Content("~/Content/css/demo.css")" rel="stylesheet" />
+        <link href="@Url.Content("~/Content/css/bootstrap-select.min.css")" rel="stylesheet" />
+        <link href="@Url.Content("~/Content/css/editor.css")" rel="stylesheet" />
+        <link href="@Url.Content("~/Content/css/jquery.fileupload.css")" rel="stylesheet" />
+        <link href="@Url.Content("~/Content/css/jquery.fileupload-ui.css")" rel="stylesheet" />*@
+    <!-- Footable Css Start Here -->
+    @*<link href="@Url.Content("~/Content/css/footable.core.bootstrap.css")" rel="stylesheet" />
+        <link href="@Url.Content("~/Content/css/footable.core.standalone.css")" rel="stylesheet" />
+        <link href="@Url.Content("~/Content/css/footable.filtering.min.css")" rel="stylesheet" />
+        <link href="@Url.Content("~/Content/css/footable.paging.min.css")" rel="stylesheet" />
+        <link href="@Url.Content("~/Content/css/footable.sorting.min.css")" rel="stylesheet" />
+        <link href="@Url.Content("~/Content/css/footable.editing.min.css")" rel="stylesheet" />*@
+
+    <link href="@Url.Content("~/Content/css/footable.core.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Content/css/footable.metro.css")" rel="stylesheet" />
+    <!-- My Css Start Here -->
+    <link href="@Url.Content("~/Content/css/style.css")" rel="stylesheet" />
+    <!--Responsive Start Here -->
+    <link href="@Url.Content("~/Content/css/responsive.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/css/datepicker3.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/css/bootstrap-datetimepicker.min.css")" rel="stylesheet" />
+
+
+    <script src="@Url.Content("~/Content/js/jquery-1.10.2.min.js")"></script>
+    <script src="~/Content/js/footable.js"></script>
+    <script src="~/Content/js/footable.paginate.js"></script>
+    <script src="~/Content/js/footable.sort.js"></script>
+    <script src="~/Content/js/footable.filter.js"></script>
+    <script src="~/Content/js/jquery.maskedinput.min.js"></script>
+
+    <!-- CSS adjustments for browsers with JavaScript disabled -->
+    @*<noscript>
+            <link rel="stylesheet" href="css/jquery.fileupload-noscript.css">
+        </noscript>
+        <noscript>
+            <link rel="stylesheet" href="css/jquery.fileupload-ui-noscript.css">
+        </noscript>*@
+
+</head>
+<body class="">
+    <!-- Header Start here -->
+    <div class="header_main">
+        <div class="header">
+            <a href="#menu"></a>
+        </div>
+        <div class="page-sidebar hidden-xs" id="main-menu">
+            <div class="page-sidebar-wrapper" id="main-menu-wrapper">
+                <!-- BEGIN SIDEBAR MENU -->
+                <div class="menu_spacer">
+                </div>
+                <ul>
+                    <li id="Userselect_Management">
+                        <a href="javascript:void(0)" class="menu_icon process_link">
+                            <span class="menu_icon user_management"
+                                  data-toggle="tooltip" data-placement="bottom" title="Administration"></span><span class="title">
+                                Administration
+                            </span> <i class="fa fa-angle-right right-arrow pull-right">
+                            </i>
+                        </a>
+
+                        <div id="div-sub-menu">
+
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="logo">
+                    <a href="@Url.Content("/")">
+                        <img class="img-responsive" src="@Url.Content("~/Content/images/utax-logo.png")">
+                    </a>
+                </div>
+                <div class="header_right">
+                    <div class="pull-left header_m_left">
+                        <div class="head_drop">
+                            <span class="menu_toggle hidden-xs">
+                                <a id="layout-condensed-toggle" href="javascript:void(0)">
+                                    <i class="fa fa-bars"></i>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="pro_log flt_right">
+                        <a href="@Url.Content("/")">
+                            <i class="fa fa-home">
+                            </i>
+                        </a>
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown">
+                                @if (Session.Count > 0)
+                                {
+                                    <a title="@Session["DisplayName"].ToString()" href="javascript:void(0)"
+                                       data-target="#" class="dropdown-toggle" data-toggle="dropdown"><span>@Session["UserName"].ToString()</span><b class="caret"></b></a>
+
+                                    <ul class="dropdown-menu">
+                                        <li><a href="@Url.Content("~/user/myprofile/" + @Session["UserId"])">My Profile</a></li>
+                                        <li><a href="@Url.Content("~/Account/ResetPassword")">Change Password</a></li>
+                                    </ul>
+                                }
+
+                            </li>
+                        </ul>
+                        <a href="@Url.Content("/Account/Login")">
+                            <i class="fa fa-sign-out" data-toggle="tooltip"
+                               data-placement="left" title="Logout"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="body_main">
+        <div class="body_inner page-content">
+            <div class="container-fluid">
+                <div class="main_wrap_t">
+                    <!-- Top Nav End Here -->
+
+                    @if (Session.Count > 0)
+                    {
+                        <input type="hidden" id="UserId" value="@Session["UserId"].ToString()" />
+                        <input type="hidden" id="UserName" name="UserName" value="@Session["UserName"].ToString()" />
+                        <input type="hidden" id="Token" name="Token" value="@Session["Token"].ToString()" />
+                        <input type="hidden" id="UserPermissions" value="@Session["UserPermissions"].ToString()" />
+                        <input type="hidden" id="UserRoles" value="@Session["UserRoles"].ToString()" />
+                    }
+                    else
+                    {
+                        <input type="hidden" id="UserId" value="00000000-0000-0000-0000-000000000000" />
+                        <input type="hidden" id="Token" value="00000000-0000-0000-0000-000000000000" />
+                        <input type="hidden" id="UserRoles" value="" />
+                        <input type="hidden" id="UserPermissions" value="" />
+                    }
+                    <div class="alert alert-danger" style="display:none;" id="error"><p></p></div>
+                    <div class="alert-success" style="display:none;" id="success"><p></p></div>
+                    @RenderBody()
+                </div>
+                <!-- Footer Start Here -->
+                <footer>
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <p class="txt-white">© @System.DateTime.Now.Year uTax Software. All rights reserved.</p>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+            <!-- Footer End Here -->
+        </div>
+    </div>
+    <!-- Loading Start Here -->
+    <div style="display: none;" class="loading_main" id="loading_main"><img src="~/Content/images/loading-img.gif" /></div>
+
+
+    <div class="modal fade bs-example-modal-lg" id="popupHelp" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">Help</h4>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer validation_text_remove">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Loading End Here -->
+    <script src="~/Scripts/app/common.js"></script>
+    <script type="text/javascript">
+        var userId = $('#UserId').val();
+        if ($('#UserName').val().toLowerCase() == "admin")
+        { getScreensAdmin($('#div-sub-menu'), userId); }
+        else {
+            getScreens($('#div-sub-menu'), userId);
+        }
+
+        $(document).ready(function () {
+            $('.helpicon').on('click', function () {
+                var content = $(this).siblings('.desc').html();
+                $('#popupHelp').find('.modal-body').html(content);
+                $('#popupHelp').modal('show');
+            });
+        });
+
+        $('#layout-condensed-toggle').on('click', function () {
+            setTimeout(function () {
+                var menu_class = $('#main-menu').attr('class');
+                var body_class = $('.body_inner').attr('class');
+                $('div.sub-menu').hide();
+                @*$.ajax({
+                    url: "@Url.Content("~/FSA/ManageUsers/SetCSSVariable")",
+                    data: {
+                        Body: body_class,
+                        LeftMenu: menu_class
+                    },
+                    async: false,
+                    cache: false,
+                    success: function () {
+
+                    }
+                });*@
+            }, 1000);
+        });
+
+        $(window).resize(function () {
+            var win_height = $(window).height();
+            $('.main_wrap_t').css('min-height', win_height - 140);
+        });
+        window.page = window.location.hash || "#about";
+        $(document).ready(function () {
+
+
+            if (window.page !== "#about") {
+                $(".menu").find("li[data-target=" + window.page + "]").trigger("click");
+            }
+        });
+
+        $(window).on("resize", function () {
+            $("html, body").height($(window).height());
+            $(".main, .menu").height($(window).height() - $(".header-panel").outerHeight());
+            $(".pages").height($(window).height());
+        }).trigger("resize");
+
+        $(".menu li").click(function () {
+            // Menu
+            if (!$(this).data("target")) return;
+            if ($(this).is(".active")) return;
+            $(".menu li").not($(this)).removeClass("active");
+            var page;
+            $(".page").not(page).removeClass("active").hide();
+            window.page = $(this).data("target");
+            page = $(window.page);
+            window.location.hash = window.page;
+            $(this).addClass("active");
+
+
+            page.show();
+
+            var totop = setInterval(function () {
+                $(".pages").animate({ scrollTop: 0 }, 0);
+            }, 1);
+
+            setTimeout(function () {
+                page.addClass("active");
+                setTimeout(function () {
+                    clearInterval(totop);
+                }, 1000);
+            }, 100);
+        });
+
+        function cleanSource(html) {
+            var lines = html.split(/\n/);
+
+            lines.shift();
+            lines.splice(-1, 1);
+
+            var indentSize = lines[0].length - lines[0].trim().length,
+            re = new RegExp(" {" + indentSize + "}");
+
+            lines = lines.map(function (line) {
+                if (line.match(re)) {
+                    line = line.substring(indentSize);
+                }
+
+                return line;
+            });
+
+            lines = lines.join("\n");
+
+            return lines;
+        }
+
+        $("#opensource").click(function () {
+            $.get(window.location.href, function (data) {
+                var html = $(data).find(window.page).html();
+                html = cleanSource(html);
+                $("#source-modal pre").text(html);
+                $("#source-modal").modal();
+            });
+        });
+    </script>
+
+    <!-- Twitter Bootstrap -->
+    <script src="@Url.Content("~/Content/js/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Content/js/bootstrap-dialog.min.js")" type="text/javascript"></script>
+    @*<script src="@Url.Content("~/Content/js/bootstrap-multiselect.js")" type="text/javascript"></script>*@
+    <!-- Twitter Bootstrap Datetimepicker-->
+    <script src="@Url.Content("~/Content/js/moment-with-locales.js")"></script>
+    @*<script src="@Url.Content("~/Content/js/bootstrap-datetimepicker.min.js")"></script>*@
+    <script src="@Url.Content("~/Content/js/bootstrap-datepicker.js")"></script>
+    <script src="@Url.Content("~/Content/js/bootstrap-filestyle.js")"></script>
+    @*<script src="@Url.Content("~/Content/js/jquery.fileupload.js")"></script>*@
+    <!-- Material
+    Design for Bootstrap -->
+    <script src="@Url.Content("~/Content/js/material.min.js")"></script>
+    <script src="@Url.Content("~/Content/js/ripples.min.js")"></script>
+    <!-- Data Table
+    JS -->
+    <script src="@Url.Content("~/Content/js/jquery.dataTables.js")"></script>
+    <script src="https://cdn.datatables.net/fixedcolumns/3.2.2/js/dataTables.fixedColumns.min.js"></script>
+    <script src="@Url.Content("~/Content/js/shCore.js")"></script>
+    <script src="@Url.Content("~/Content/js/demo.js")"></script>
+    <script src="@Url.Content("~/Content/js/bootstrap-datepicker.js")"></script>
+
+    <!-- Slim
+    Scroll -->
+    <script src="@Url.Content("~/Content/js/bootstrap-datetimepicker.min.js")"></script>
+    <script src="@Url.Content("~/Content/js/jquery.slimscroll.min.js")"></script>
+    <script>
+        //$.material.init(); $(document).ready(function () {
+        //    $('#example').dataTable({
+        //        "aoColumns": [null, null, null, null, null, null, null]
+        //    });
+        //});
+    </script>
+    <!--
+    Sliders -->
+    <script src="@Url.Content("~/Content/js/jquery.nouislider.min.js")"></script>
+    <!-- Responsive Table -->
+    @*<script src="@Url.Content("~/Content/js/footable.core.min.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Content/js/footable.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Content/js/footable.min.js")" type="text/javascript"></script>
+        @*<script src="@Url.Content("~/Content/js/footable.sort.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Content/js/footable.filter.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Content/js/footable.paginate.js")" type="text/javascript"></script>*@
+  @*<script src="@Url.Content("~/Content/js/footable.core.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/js/footable.editing.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/js/footable.filtering.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/js/footable.paging.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/js/footable.sorting.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/js/footable.state.min.js")" type="text/javascript"></script>*@
+
+      
+
+    <!-- Mobile Menu.js -->
+    <script src="@Url.Content("~/Content/js/jquery.mmenu.min.all.js")"></script>
+    <!-- Dropdown.js -->
+    <script src="@Url.Content("~/Content/js/jquery.dropdown.js")"></script>
+    <script src="@Url.Content("~/Content/js/editor.js")"></script>
+    <script src="@Url.Content("~/Content/js/bootstrap-select.min.js")"></script>
+    <script src="@Url.Content("~/Content/js/jquery.ui.widget.js")"></script>
+    <script src="@Url.Content("~/Content/js/tmpl.min.js")"></script>
+    <script src="@Url.Content("~/Content/js/load-image.all.min.js")"></script>
+    <script src="@Url.Content("~/Content/js/jquery.iframe-transport.js")"></script>
+    <script src="@Url.Content("~/Content/js/bootstrap-filestyle.js")"></script>
+    <script src="@Url.Content("~/Content/js/blockUI.js")"></script>
+
+
+    <script src="@Url.Content("~/Content/js/custom.js")"></script>
+
+    <script src="@Url.Content("~/Content/js/jquery.sidr.min.js")"></script>
+    <script src="@Url.Content("~/Content/js/validator.min.js")"></script>
+    <script type="text/javascript">
+        $("#dropdown-menu select").dropdown();
+        $(document).ready(function () {
+            $(".date_input").keypress(function (event) {
+                if (event.which != 8 && event.which != 47 && event.which != 0 && isNaN(String.fromCharCode(event.which))) {
+                    event.preventDefault(); //stop characters from entering input
+                }
+            });
+            $(".date_input").attr('maxlength', '10');
+            $(":file").filestyle();
+        }); </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(":file").filestyle();
+        });
+
+        //$('#main-menu').addClass('');
+        //$('.body_inner').addClass('');
+        $(document).ready(function () {
+            $('.menu_toggle').click(function () {
+                if (!$('#main-menu').hasClass('mini')) {
+                    $('#main-menu-wrapper ul > li.open div.sub-menu').toggle();
+                }
+            });
+        });
+
+        function ClearHistory() {
+            var backlen = history.length;
+            history.go(-(history.length - 1));
+            window.location.href = '../../../Account/Login'
+        }
+
+    </script>
+    @*@Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")*@
+    @RenderSection("scripts", required: false)
+</body>
+
+</html>

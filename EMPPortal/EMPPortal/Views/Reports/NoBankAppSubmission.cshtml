@@ -1,0 +1,196 @@
+﻿@using EMPPortal.Filters;
+@{
+    ViewBag.Title = "No Bank App Submission";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/css/buttons.dataTables.min.css" rel="stylesheet" />
+<input type="hidden" id="formid" name="formid" value="active" formid="siteabb91b1e-53fd-49fb-bdf7-4f180c0edc65" sitemapid="abb91b1e-53fd-49fb-bdf7-4f180c0edc65" />
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 style="padding:10px 0;">No Bank App Submission</h3>
+            </div>
+            <div class="col-md-12" style="padding-top:8px;">
+                <div class="col-md-4 drop-select" id="dvMain">
+                    <label>Main Customers</label>
+                    <select id="CustomerID" name="CustomerID" onchange="fnCustomerChange()" multiple="multiple"></select>
+                </div>
+                <div class="col-md-4 drop-select" id="dvSub" style="display:none;">
+                    <label>Sub Site Customers</label>
+                    <select id="subCustomerID" name="subCustomerID" class="multiselect-btn" multiple="multiple"></select>
+                </div>
+                <div class="col-md-4 margin-top-20" id="dvSub1" style="display:none;">
+                    <a href="javascript:void(0)" class="btn btn-default filter-btn customer-btn btn-info" onclick="fn_Search()">Search</a>
+                    <a href="javascript:void(0)" class="btn btn-default filter-btn customer-btn btn-info" onclick="fn_Reset()">Reset</a>
+                </div>
+            </div>
+            <div class="table-responsive panel-body">
+                <table id="table_NoBankSubmission" class="table table-striped table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th width="8%">Sl.No.</th>
+                            <th width="15%">Master ID</th>
+                            <th width="15%">User ID</th>
+                            <th width="15%">Parent User ID</th>
+                            <th width="17%">Company Name</th>
+                            <th width="15%">EFIN</th>
+                            <th width="15%">Account Owner</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/app/Rpt_FeeSetupReport.js"></script>
+<script>
+    var today = new Date();
+    var Current_Date = today.getDate() + '/' + today.getMonth() + '/' + today.getFullYear() + '  ' + today.getHours() + ':' + today.getMinutes();
+    $(document).ready(function () {
+        $('#dvSub').hide();
+        $('#dvSub1').hide();
+        getNoSubmissionMainCustomer($('#CustomerID'));
+        $('#CustomerID').multiselect({
+            includeSelectAllOption: true,
+            selectAllNumber: false,
+            enableCaseInsensitiveFiltering: true,
+            buttonWidth: '400px'
+        });
+        if ($('#myentityid').val() != 1) {
+            $('#table_NoBankSubmission').DataTable({
+                "bSort": false,
+                dom: 'Bfrtip',
+                buttons: [
+                    //{
+                    //extend: "excel",
+                    //exportOptions: {
+                    //    columns: ':visible'
+                    //},
+                    //text: '<i class="fa fa-file-excel-o"></i> EXCEL',
+                    //orientation: 'landscape'
+                    //},
+                {
+                    extend: "print",
+                    exportOptions: {
+                        columns: ':visible'
+                    },
+                    text: '<i class="fa fa-print"></i> Print',
+                    orientation: 'landscape'
+                }, {
+                    extend: "csv",
+                    exportOptions: {
+                        columns: ':visible'
+                    },
+                    text: '<i class="fa fa-file-excel-o"></i> CSV',
+                    orientation: 'landscape'
+                }, {
+                    extend: "pdf",
+                    exportOptions: {
+                        columns: ':visible'
+                    },
+                    text: '<i class="fa fa-file-pdf-o"></i> PDF',
+                    title: 'No Bank App Submission ',
+                    message: 'Date Time: ' + Current_Date
+                    //orientation: 'landscape'
+                }],
+                "columnDefs": [
+                {
+                    "targets": [1],
+                    "visible": false,
+                    "searchable": false
+                },
+                {
+                    "targets": [6],
+                    "visible": false
+                }]
+            });
+        }
+        else {
+            $('#table_NoBankSubmission').DataTable({
+                "bSort": false,
+                dom: 'Bfrtip',
+                buttons: [
+                        //{
+                    //    extend: "excel",
+                    //    text: '<i class="fa fa-file-excel-o"></i> EXCEL',
+                    //},
+                    {
+                        extend: "print",
+                        text: '<i class="fa fa-print"></i> Print'
+                    }, {
+                        extend: "csv",
+                        text: '<i class="fa fa-file-excel-o"></i> CSV'
+                    }, {
+                        extend: "pdf",
+                        text: '<i class="fa fa-file-pdf-o"></i> PDF',
+                        title: 'No Bank App Submission ',
+                        message: 'Date Time: ' + Current_Date
+                    }
+                ]
+            });
+        }
+        Fn_NoBankAppSubmissionReport($('#UserId').val());
+
+        if ($('#myentityid').val() != 1) {
+            $('#CustomerID').val($('#UserId').val());
+            $("#CustomerID").multiselect("refresh");
+            fnCustomerChange();
+            $('#dvMain').css('pointer-events', 'none');
+        }
+    });
+
+    function fn_Search() {
+        if ($('#CustomerID').val() == "") {
+            $('#CustomerID').addClass("error_msg");
+            $('#CustomerID').attr('title', 'Please Select Customers');
+        } else {
+            if ($('#subCustomerID').val() != "") {
+                Fn_NoBankAppSubmissionReport($('#subCustomerID').val());
+            }
+            else {
+                Fn_NoBankAppSubmissionReport($('#CustomerID').val());
+            }
+        }
+    }
+
+    function fnCustomerChange() {
+        $('#dvSub').hide();
+        $('#dvSub1').hide();
+        if ($('#CustomerID').val()) {
+            var custid = $('#CustomerID').val();
+            if (custid) {
+                $('#dvSub').show();
+                $('#dvSub1').show();
+                getSubCustomer($('#subCustomerID'), custid);
+                $('#subCustomerID').multiselect('destroy');
+                $('#subCustomerID').multiselect({
+                    includeSelectAllOption: true,
+                    selectAllNumber: false,
+                    enableCaseInsensitiveFiltering: true,
+                    buttonWidth: '400px'
+                });
+            }
+        }
+    }
+
+    function fn_Reset() {
+        $('#CustomerID').val(0);
+        $('#CustomerID').multiselect('destroy');
+        $('#CustomerID').multiselect({
+            includeSelectAllOption: true,
+            selectAllNumber: false,
+            enableCaseInsensitiveFiltering: true,
+            buttonWidth: '400px'
+        });
+        $('#subCustomerID').val(0);
+        $('#subCustomerID').multiselect('destroy');
+        $('#subCustomerID').multiselect({
+            includeSelectAllOption: true,
+            selectAllNumber: false,
+            enableCaseInsensitiveFiltering: true,
+            buttonWidth: '400px'
+        });
+        fn_Search();
+    }
+</script>

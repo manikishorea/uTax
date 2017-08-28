@@ -1,0 +1,180 @@
+﻿@using EMPPortal.Filters;
+@{
+    ViewBag.Title = "CreateSubSiteInfo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="office-pg">
+        <h2>Create Sub-Site Information</h2>
+        <input type="hidden" id="ParentID" name="ParentID" value="@ViewBag.ParentId" />
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="block-border panel panel-default">
+                    <div class="panel-body">
+                        <div class="form-group is-empty">
+                            <label class="col-md-4 control-label">EFIN:</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control digit" id="txtEFIN" maxlength="6" />
+                            </div>
+                        </div>
+                        <div class="form-group is-empty">
+                            <label class="col-md-4 control-label">Company Name:</label>
+                            <div class="col-md-8">
+                                <input type="text" id="txtCompanyName" class="form-control alphanumaric" maxlength="30">
+                            </div>
+                        </div>
+                        <div class="form-group is-empty">
+                            <label for="inputEmail" class="col-md-4 control-label">Owner Name:</label>
+                            <div class="col-md-8">
+                                <input type="text" id="txtOwnerName" class="form-control" maxlength="30">
+                            </div>
+                        </div>
+                        <div class="form-group is-empty">
+                            <label for="inputEmail" class="col-md-4 control-label">Primary Email:</label>
+                            <div class="col-md-8">
+                                <input type="text" id="txtPrimaryEmail" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group is-empty">
+                            <label for="inputEmail" class="col-md-4 control-label">Office Phone:</label>
+                            <div class="col-md-8">
+                                <input type="text" id="txtOfficePhone" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group is-empty">
+                            <label for="inputEmail" class="col-md-4 control-label">Alternate Phone:</label>
+                            <div class="col-md-8">
+                                <input type="text" id="txtAlternatePhone" class="form-control">
+                            </div>
+                        </div>
+                       
+                        <div class="form-group is-empty">
+                            <label for="inputEmail" class="col-md-4 control-label">Physical Address:</label>
+                            <div class="col-md-8">
+                                <input type="text" id="txtPhysicalAdd" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group is-empty">
+                            <label for="inputEmail" class="col-md-4 control-label">Zip:</label>
+                            <div class="col-md-8">
+                                <input type="text" id="txtZip" class="form-control digit" maxlength="5">
+                            </div>
+                        </div>
+                        <div class="form-group is-empty">
+                            <label for="inputEmail" class="col-md-4 control-label">City:</label>
+                            <div class="col-md-8">
+                                <input type="text" id="txtCity" class="form-control" readonly="readonly">
+                            </div>
+                        </div>
+                        <div class="form-group is-empty">
+                            <label for="inputEmail" class="col-md-4 control-label">State:</label>
+                            <div class="col-md-8">
+                                @*<input type="text" id="txtState" class="form-control" readonly="readonly">*@
+                                <select id="StateCode" name="StateCode" class="form-control"></select>
+                            </div>
+                        </div>
+
+                        <div class="form-group is-empty">
+                            <label for="inputEmail" class="col-md-4 control-label">Alternate Contact:</label>
+                            <div class="col-md-8">
+                                <input type="text" id="txtAlternateContact" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group is-empty">
+                            <input type="button" value="Submit" class="btn btn-default" onclick="fnSaveSubSiteInformation();" />
+                            <a class="btn btn-back" href="/CustomerInformation/AllCustomerInfo"> Back <div class="ripple-container"></div></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="block-border panel panel-default">
+                    <div class="panel-body">
+                        <h4>Software Identification Information</h4>
+                        <div class="form-group is-empty">
+                            <label class="col-md-6 control-label" for="inputEmail"><b>User ID:</b></label>
+                            <div class="col-md-6">
+                                <label class="control-label" id="UserID">N/A</label>
+                            </div>
+                            <div class="form-group is-empty">
+                                <label for="inputEmail" class="col-md-6 control-label"><b>Transmission Password:</b></label>
+                                <div class="col-md-6">
+                                    <label class="control-label" id="TransPwd">N/A</label>
+                                </div>
+                            </div>
+                            <div class="form-group is-empty">
+                                <label for="inputEmail" class="col-md-6 control-label"><b>Master ID:</b></label>
+                                <div class="col-md-6">
+                                    <label class="control-label" id="MasterID">N/A</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="block-border panel panel-default">
+                    <div class="panel-body">
+                        <h4>Parent Identification Information</h4>
+                        <div class="form-group is-empty">
+                            <label for="inputEmail" class="col-md-6 control-label"><b>Company Name:</b></label>
+                            <div class="col-md-6">
+                                <label class="control-label" id="lblCompanyName"></label>
+                            </div>
+                            <div class="form-group is-empty">
+                                <label class="col-md-6 control-label" for="inputEmail"><b>User ID:</b></label>
+                                <div class="col-md-6">
+                                    <label class="control-label" id="lblUserID"></label>
+                                </div>
+                            </div>
+                            <div class="form-group is-empty">
+                                <label for="inputEmail" class="col-md-6 control-label"><b>Transmission Password:</b></label>
+                                <div class="col-md-6">
+                                    <label class="control-label" id="lblTransPwd"></label>
+                                </div>
+                            </div>
+                            <div class="form-group is-empty">
+                                <label for="inputEmail" class="col-md-6 control-label"><b>Master ID:</b></label>
+                                <div class="col-md-6">
+                                    <label class="control-label" id="lblMasterID"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<input type="hidden" id="MasterIdentifier" />
+<input type="hidden" id="SFParentId" />
+
+@section scripts {
+    @*<script src="~/Scripts/app/common.js"></script>
+    <script src="~/Scripts/app/customerInformation.js"></script>*@
+@Html.IncludeVersionedJs("/Scripts/app/common.js")
+@Html.IncludeVersionedJs("/Scripts/app/customerInformation.js")
+}
+<script>
+    $(document).ready(function () {
+        $("#txtOfficePhone").mask("999-999-9999");
+        $("#txtAlternatePhone").mask("999-999-9999");
+        getStateMasterCode($('#StateCode'));
+        fnSubSiteInformation();
+        
+    });
+
+    $('#txtZip').keyup(function (e) {       
+        if ($(this).val().length == 5) {
+            $('#StateCode').val(0);
+            var value = $(this).val();
+            var custmorUri = '/api/ZipCode?id=' + value;
+            ajaxHelper(custmorUri, 'GET').done(function (data) {
+                //$('#txtState').val(data["State"]);
+                $('#txtCity').val(data["City"]);
+                $('#StateCode').val(data["State"]);
+            });
+        }
+    });
+</script>

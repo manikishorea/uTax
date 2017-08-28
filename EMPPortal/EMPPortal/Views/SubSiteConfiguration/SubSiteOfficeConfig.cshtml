@@ -1,0 +1,172 @@
+﻿
+@{
+    ViewBag.Title = "SubSiteOfficeConfig";
+    Layout = "~/Views/Shared/_SubSiteLayout.cshtml";
+}
+<input type="hidden" id="formid" name="formid" value="active" formid="site2639fb0a-0caa-47cf-b315-587e7ce86aef" />
+<h2 class="page-title">Office Configuration</h2>
+<input type="hidden" id="ID" name="ID" />
+
+<div class="panel panel-default cst-panel">
+    <div class="panel-body">
+        <div class="multi-question">
+            <div class="question-block cst-radio-blk">
+                <div class="form-group">
+                    <label>Will this site be sharing the EFIN listed above with any other Office?</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rbEFINlisted" checked="" id="rbEFINlistedYes" class="yesbox">
+                            Yes
+                        </label>
+                        <label>
+                            <input type="radio" name="rbEFINlisted" value="option1" id="rbEFINlistedNo" class="nobox">
+                            No
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="sub-question" id="dbsubquestions">
+                <div class="question-block">
+                    <div class="form-group">
+                        <label>Does this site own this EFIN?</label>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="rbEFIN" value="option2" id="rEFINYes" onclick="funEFINInfo()" checked="" class="yesbox">
+                                Yes (This site will complete the Bank Enrollment application)
+                            </label>
+                            <label>
+                                <input type="radio" name="rbEFIN" value="option2" id="rbEFINNo" class="nobox" onclick="funEFINInfo()">
+                                No (The EFIN owner's site will complete  the Bank Enrollment application)
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group" id="dvEFINOwner">
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-5">
+                                <label>Please enter the User ID of the EFIN owner's site</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-5">
+                                <input type="text" id="txtEFINOwnerSite" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- sub-question-end -->
+            <div class="support-language">
+                <div class="form-group">
+                    @if (ViewBag.IsSubSiteEFIN)
+                    {
+                        <label>Is this sub-site a new single office or a main site with new sub-site, or simply an additional EFIN ?</label>
+                    }
+                    else
+                    {
+                        <label>Is this sub-site a new single office or a main site with new sub-site ?</label>
+                    }
+
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rbSOorSSorEFIN" value="1" id="rbNewSO" checked="">
+                            Single Office
+                        </label>
+                        <label>
+                            <input type="radio" name="rbSOorSSorEFIN" value="2" id="rbNewSS">
+                            Main Site with Sub-site
+                        </label>
+                        @if (ViewBag.IsSubSiteEFIN)
+                        {
+                            <label>
+                                <input type="radio" name="rbSOorSSorEFIN" value="3" id="rbAdditionalEFIN">
+                                Additional EFIN
+                            </label>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="support-language">
+                <div class="form-group">
+                    <label>How will this sub-site send tax return data?</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="rbTaxreturn" value="option3" id="rbTaxreturnYes" checked="">
+                            Directly to the IRS (Transmitter)
+                        </label>
+                        <label>
+                            <input type="radio" name="rbTaxreturn" value="option3" id="rbTaxreturnNo">
+                            To the Main Site for review (Feeder)
+                        </label>
+                    </div>
+                </div>
+                <div class="question-block">
+                    <div class="form-group">
+                        <label>Is this site an MSO location?</label>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="rbMSO" value="option2" id="rbMSOYes" checked="" class="yesbox">
+                                Yes
+                            </label>
+                            <label>
+                                <input type="radio" name="rbMSO" value="option2" id="rbMSONo" class="nobox">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clearfix"> </div>
+<div class="col-md-10">
+    <a href="javascript:void(0)" class="btn btn-default" onclick="fnSavesubsiteOfficeConfig()">Save</a>
+</div>
+@section scripts {
+    <script src="~/Scripts/app/common.js"></script>
+    <script src="~/Scripts/app/subsiteofficeconfig.js"></script>
+}
+
+<script>
+    $(document).ready(function () {
+        getSubsiteOfficeInformation($('#UserId').val());
+        funEFINInfo();
+    });
+</script>
+<script>
+    $(function () {
+        $(".yesbox").each(function () {
+            var isChecked = $(this).is(":checked");
+            if (isChecked) {
+                $(this).closest('.question-block').siblings(".sub-question").show();
+            }
+        });
+
+        /* on change function */
+
+        $(".yesbox").change(function () {
+            var isChecked = $(this).is(":checked");
+            if (isChecked) {
+                $(this).closest('.question-block').siblings(".sub-question").show();
+            }
+        });
+
+        $(".nobox").change(function () {
+            var isChecked = $(this).is(":checked");
+            if (isChecked) {
+                $(this).closest('.question-block').siblings(".sub-question").hide();
+            }
+        });
+    });
+
+    function funEFINInfo() {
+        if ($('#rbEFINNo').is(':checked')) {
+            $('#dvEFINOwner').show();
+        }
+        else {
+            $('#dvEFINOwner').hide();
+        }
+    }
+</script>
+

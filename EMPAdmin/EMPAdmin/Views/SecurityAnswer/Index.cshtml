@@ -1,0 +1,97 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div class="form-horizontal">
+    <h4>Security Questions</h4>
+    <hr />
+    <div class="form-group">
+        <div class="alert-success" style="display:none;" id="popup_success"><p></p></div>
+        <div class="row">
+            <div class="col-md-2">
+                <label for="message-text" class="control-label mandatory">Security Questions 1: </label>
+            </div>
+            <div class="col-md-4">
+                <div class="col-md-4">
+                    <select id="QuestionId1" name="QuestionId1" class="btn dropdown-btn"></select> @*onchange="return getGroupRoleMap(this);"*@
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <label for="message-text" class="control-label">Your Answer</label>
+            </div>
+            <div class="col-md-4">
+               <input type="text" class="form-control" id="Answer1"/>
+                
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <label for="message-text" class="control-label mandatory">Security Questions 2: </label>
+            </div>
+            <div class="col-md-4">
+                <div class="col-md-4">
+                    <select id="QuestionId2" name="QuestionId2" class="btn dropdown-btn control-label"></select> @*onchange="return getGroupRoleMap(this);"*@
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <label for="message-text" class="control-label">Your Answer</label>
+            </div>
+            <div class="col-md-4">
+                <input type="text" class="form-control" id="Answer2" />
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <label for="message-text" class="control-label mandatory">Security Questions 3: </label>
+            </div>
+            <div class="col-md-4">
+                <div class="col-md-4">
+                    <select id="QuestionId3" name="QuestionId3" class="btn dropdown-btn"></select> @*onchange="return getGroupRoleMap(this);"*@
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <label for="message-text" class="control-label">Your Answer</label>
+            </div>
+            <div class="col-md-4">
+                <input type="text" class="form-control" id="Answer3" />
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="button" value="Update Sequirity Question" class="btn btn-default" onclick="fnSaveSecurityAnswer();" />
+        </div>
+    </div>
+</div>
+
+@section scripts {
+<script src="~/Scripts/app/common.js"></script>
+<script src="~/Scripts/app/SecurityAnswer.js"></script>
+}
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        getQuestionMaster($('#QuestionId1'));
+        //getQuestionMaster($('#QuestionId2'));
+        //getQuestionMaster($('#QuestionId3'));
+       // getAllQuestions();
+    });
+
+
+</script>

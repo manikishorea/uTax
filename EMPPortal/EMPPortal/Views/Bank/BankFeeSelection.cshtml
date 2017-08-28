@@ -1,0 +1,95 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row bank-blk">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3>Service Bureau Fees</h3>
+                <div class="form-group">
+                    <label>Would you like to add an additional fee that will be combined with the SVB fee above?</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="sample1" value="option3" checked="">
+                            Yes
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="sample1" value="option3">
+                            No
+                        </label>
+                    </div>
+                </div>
+               
+                <div class="row">
+                    <div class="col-md-12 padding-left-50">
+                        <label>How much would you like to add on?:</label>
+                        <div class="clearfix"></div>
+                        <div class="col-md-4"><div class="form-group"><label>TPG</label><input type="text" id="inputDefault" class="form-control"></div></div>
+                        <div class="col-md-4"><div class="form-group"><label>Refund Advantage</label><input type="text" id="inputDefault" class="form-control"></div></div>
+                        <div class="col-md-4"><div class="form-group"><label>Republic Bank</label><input type="text" id="inputDefault" class="form-control"></div></div>
+                       
+                    </div>
+                </div>
+
+              
+            </div>
+
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3>Transmission Fees</h3>
+                <div class="form-group">
+                    <label>Would you like to add an additional fee that will be combined with the Transmitter fee above?</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="sample2" value="option2" checked="">
+                            Yes
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="sample2" value="option2">
+                            No
+                        </label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 padding-left-50">
+                        <label>How much would you like to add on?:</label>
+                        <div class="clearfix"></div>
+                        <div class="col-md-4"><div class="form-group"><label>TPG</label><input type="text" id="inputDefault" class="form-control"></div></div>
+                        <div class="col-md-4"><div class="form-group"><label>Refund Advantage</label><input type="text" id="inputDefault" class="form-control"></div></div>
+                        <div class="col-md-4"><div class="form-group"><label>Republic Bank</label><input type="text" id="inputDefault" class="form-control"></div></div>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+        <div class="clearfix"> </div>
+        <div class="col-md-12">
+            <a href="javascript:void(0)" class="btn btn-default btn-info">Save</a>
+        </div>
+    </div>
+
+</div>
+
+
+@section scripts {
+    <script src="~/Scripts/app/common.js"></script>
+    <script src="~/Scripts/app/customerInformation.js"></script>
+}
+
+<script>
+    $(document).ready(function () {
+        getAllCustomerInformation();
+    });
+</script>

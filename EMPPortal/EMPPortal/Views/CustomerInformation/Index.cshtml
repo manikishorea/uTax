@@ -1,0 +1,104 @@
+﻿@using EMPPortal.Filters;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<input type="hidden" id="formid" name="formid" value="active" formid="site6ed791bd-1909-4e7a-b6b1-b76983faef30" sitemapid="6ed791bd-1909-4e7a-b6b1-b76983faef30" />
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3>New Service Bureau/Multi-Office Partner Setup</h3>  @*<h2 class="panel-title" id="AddLink" style="display:none;"><a href="~/user/create"><i class="fa fa-plus" aria-hidden="true" title="Add New User"></i> Add New User</a></h2>*@&nbsp;
+            </div>
+            <div class="col-md-12">
+                <div>
+                    <input type="text" id="txt_sarch" class="form-control pull-right" style="margin:10px 0;" placeholder="Search" />
+                </div>
+            </div>
+            <div class="panel-body" id="div_user">
+                <table id="table_CustomerInformation" class="table table-striped table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th style="width:25%;">Type</th>
+                            <th style="width:25%;">Company Name</th>
+                            <th style="width:15%;">Contact Name</th>
+                            <th style="width:25%;">Phone Number</th>
+                            <th style="width:25%;">Email</th>
+                            <th style="width:10%;" class="no-sort">Action</th>
+                        </tr>
+                    </thead>
+
+                </table>
+                <!-- books -->
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3>Error Resolution – Manual Partner Setup</h3>  @*<h2 class="panel-title" id="AddLink" style="display:none;"><a href="~/user/create"><i class="fa fa-plus" aria-hidden="true" title="Add New User"></i> Add New User</a></h2>*@&nbsp;
+            </div>
+            <div class="col-md-12">
+                <div>
+                    <input type="text" id="txt_sarch2" class="form-control pull-right" style="margin:10px 0;" placeholder="Search" />
+                </div>
+            </div>
+            <div class="panel-body" id="div_user">
+                <table id="table_ManualCustomer" class="table table-striped table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th style="width:25%;">Type</th>
+                            <th style="width:25%;">Company Name</th>
+                            <th style="width:15%;">Contact Name</th>
+                            <th style="width:25%;">Phone Number</th>
+                            <th style="width:25%;">Email</th>
+                            <th style="width:10%;" class="no-sort">Action</th>
+                        </tr>
+                    </thead>
+
+                </table>
+                <!-- books -->
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+@section scripts {
+@Html.IncludeVersionedJs("/Scripts/app/common.js")
+@Html.IncludeVersionedJs("/Scripts/app/customerInformation.js")
+}
+
+<script type="text/javascript">
+        history.forward();
+</script>
+
+<script>
+    $(document).ready(function () {
+        getPermissions();
+        getAllCustomerInformation();
+    });
+
+    $('#txt_sarch').keyup(function(){
+        var val=$(this).val().toLowerCase();    
+        $('#table_CustomerInformation tbody tr').hide();
+        var trs=$('table tbody tr').filter(function(d){
+            return $(this).text().toLowerCase().indexOf(val)!=-1;
+        });
+        trs.show();   
+    });
+    $('#txt_sarch2').keyup(function () {
+        var val = $(this).val().toLowerCase();
+        $('#table_ManualCustomer tbody tr').hide();
+        var trs = $('table tbody tr').filter(function (d) {
+            return $(this).text().toLowerCase().indexOf(val) != -1;
+        });
+        trs.show();
+    });
+</script>

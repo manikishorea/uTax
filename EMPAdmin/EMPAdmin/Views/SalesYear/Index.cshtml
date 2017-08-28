@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+ 
+
+<div class="page-header">
+    <h2> Sales Year Management</h2>
+</div>
+@if (Session.Count > 0)
+{
+    <input type="hidden" id="UserId" name="UserId" value="@Session["UserId"].ToString()" />
+    <input type="hidden" id="UserRoleId" name="UserRoleId" value="@Session["UserRoleId"].ToString()" />
+    <input type="hidden" id="SiteMapID" name="SiteMapID" value="663c9d19-24e2-4db6-9fe8-877c65bf48b1" />
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                &nbsp;
+                <h2 class="panel-title" id="AddLink"><a href="~/SalesYear/create"><i class="fa fa-plus" aria-hidden="true" title="Add SalesYsear"></i> Activate New Sales Year</a></h2>
+            </div>
+            <div class="panel-body">
+                <table id="table_SalesYear" class="table">
+                    <thead>
+                        <tr>
+                            <th style="width:40%">Sales Year</th>
+                            <th style="width:30%">Applicable From</th>
+                            <th style="width:30%">Applicable Till</th> 
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                </table>
+                <!-- books -->
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <!-- ko if:detail() -->
+</div>
+
+@section scripts {
+    <script src="~/Scripts/app/common.js"></script>
+    <script src="~/Scripts/app/SalesYear.js"></script>
+}
+
+<script>
+    $(document).ready(function () {
+        getAllSalesYear();
+        GridFunctionality();
+    });
+    function GridFunctionality() {
+        var userId = $("#UserId").val();
+        var roleId = $("#UserRoleId").val();
+
+        ctrlAddLink = $("#AddLink");
+        ctrlEditLink = $("table#table_SalesYear .EditLink");
+        ctrlActiveInactiveLink = $("table#table_SalesYear .ActiveInactiveLink");
+        ctrlEditSubQuestionsLink = $("table#table_SalesYear .EditSubQuestionsLink");
+        getScreenPermissions(ctrlAddLink, ctrlEditLink, ctrlActiveInactiveLink, ctrlEditSubQuestionsLink, userId, roleId);
+    }
+</script>

@@ -1,0 +1,20 @@
+﻿body {background-color: #e8f5ff;}
+/*.help-section {background: #e8f5ff none repeat scroll 0 0;}*/
+.panel > .panel-heading, .panel.panel-default > .panel-heading {background-color: #1b75bc;}
+.nav-tabs {border-bottom: 2px solid #7bb135;}
+.utax-tabs .nav {background: #79aa47;border-top-left-radius: 7px;border-top-right-radius: 7px;}
+.utax-tabs .nav li a{color: #fff!important;}
+.utax-tabs .nav .active {background: #577736 none repeat scroll 0 0;border-top-left-radius: 5px;border-top-right-radius: 5px;}
+.utax-tabs .nav .active > a {color: #fff !important;}
+.utax-tabs .nav .active a:hover,.utax-tabs .nav .active a:active,.utax-tabs .nav .active a:link,.utax-tabs .nav .active a:focus{outline: 0px none}
+.utax-tabs .form-group {margin-top: 10px;}
+.form-group:after{display: block; height: 1px;width: 1px; content: " "; clear: both;}
+/*.new-label .form-group label.control-label{color: #777; font-size: 16px;font-weight: 500;margin: 10px 0 0;}*/
+.utax-tabs .form-group .control-label {padding-left: 0;}
+.utax-tabs .tab-content {margin-top: 25px;}
+.utax-tabs .nav-tabs > li {border-right: 1px solid #7bb135;}
+.col-md-12 h2 {color: #1b75bc;font-size: 23px;font-weight: normal;}
+.cst-panel .panel-body {padding-top: 5px !important;}
+.cst-edit-btn {color: #1b75bc;}
+.sidebar {background: #e8f5ff none repeat scroll 0 0;}
+.sidebar h2::before {color:#1b75bc;}

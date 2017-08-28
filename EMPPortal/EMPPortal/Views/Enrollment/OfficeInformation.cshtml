@@ -1,0 +1,192 @@
+﻿@using EMPPortal.Filters;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<input type="hidden" id="formid" name="formid" value="active" formid="site7c8aa474-2535-4f69-a2ae-c3794887f92d" sitemapid="7c8aa474-2535-4f69-a2ae-c3794887f92d" />
+
+<div class="row" id="divEnrollOfficeInfoForm">
+    <div class="col-md-12 main-office">
+        <h2 class="page-title">Office Information</h2>
+        <div class="col-md-6 main-office-blk-left">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3>Main Office Information</h3>
+
+                    <table class="table table-striped table-bordered table-hover ">
+                        <tbody>
+                            <tr>
+                                <td>Company Name </td>
+                                <td colspan="2"><span id="spCompanyName"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Business Owner First Name </td>
+                                <td colspan="2"><span id="spBusinessOwnerName"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Business Owner Last Name </td>
+                                <td colspan="2"><span id="spBusinessOwnerLastName"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Physical Address </td>
+                                <td colspan="2"><span id="spPhysicalAddress"></span></td>
+                            </tr>
+                            <tr>
+                                <td>City, State, Zip </td>
+                                <td colspan="2"><span id="spCitystatezip"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Office Phone </td>
+                                <td colspan="2"><span id="spOfficePhone"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Primary Email </td>
+                                <td colspan="2"><span id="spPrimaryemail"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Support Notification Email </td>
+                                <td colspan="2"><span id="spSupportemail"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- books -->
+                    <div class="clearfix"> </div>
+                    <div class="col-md-12 text-right">
+                        <a href="javascript:void(0)" class="btn btn-default btn-info" onclick="GetCustomerInfomationForMainOfficeinEDIT()" id="btn_edit"></a>
+                        <a onclick="DashboardNext('enroll')" class="btn btn-default" id="btn_next" style="display:none;">Next</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-6 main-office-blk-right">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3>Software Identification Information</h3>
+
+                    <table class="table table-striped table-bordered table-hover ">
+                        <tbody>
+                            <tr>
+                                <td>EFIN</td>
+                                <td><span id="spEFIN"></span> </td>
+                            </tr>
+                            <tr>
+                                <td>Master Identifier</td>
+                                <td><span id="spMasterident"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Master User ID</td>
+                                <td><span id="spMasterUserID"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Transmitter Password</td>
+                                <td><span id="spTransmissionpwd"></span></td>
+                            </tr>
+                            <tr id="trNoSO1">
+                                <td>MytaxofficePortal.com <br/>(User Name):</td>
+                                <td><span id="spofficeportalusername"></span></td>
+                            </tr>
+                            <tr id="trNoSO2">
+                                <td>MytaxofficePortal.com <br/>(Password):</td>
+                                <td><span id="spoofficeportalpwd"></span></td>
+                            </tr>
+
+                            @*<tr>
+                                    <td>EMP Password:</td>
+                                    <td>
+                                        <span id="spemppwd"></span>
+                                        <a href="javascript:void(0)" class="btn btn-default btn-info">Change Password</a>
+                                    </td>
+                                </tr>*@
+
+                        </tbody>
+                    </table>
+
+                    <h3 class="IsSubmitted" style="display:none;">Bank Status</h3>
+                    <table class="table table-striped table-bordered table-hover IsSubmitted" style="display:none;">
+                        <tbody>
+                            <tr>
+                                <td>Bank</td>
+                                <td><span id="spn_bank"></span> </td>
+                            </tr>
+                            <tr>
+                                <td>Status</td>
+                                <td>
+                                    <span id="spn_bankstatus"></span>
+                                    <a href="../Enrollment/ViewBankEnrollment?Id=@Request.QueryString["Id"]&entitydisplayid=@Request.QueryString["entitydisplayid"]&entityid=@Request.QueryString["entityid"]&bankid=@Request.QueryString["bankid"]&ParentId=@Request.QueryString["ParentId"]" title="View Enrollment" target="_blank" id="a_enrollInfo" style="display:none;"><i class="fa fa-bars"></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Submitted Date</td>
+                                <td><span id="spn_date"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div>
+                        <a class="unlock-enroll" data-target="#popupUnlock" data-toggle="modal" onclick="ClearMessage()" id="dv_unlock" style="display:none;">Unlock Enrollment</a>
+                        <a class="unlock-enroll pull-right fa fa-bars" href="/Enrollment/Bankselection?Id=@Request.QueryString["Id"]&entitydisplayid=@Request.QueryString["entitydisplayid"]&entityid=@Request.QueryString["entityid"]&bankid=@Request.QueryString["bankid"]&ParentId=@Request.QueryString["ParentId"]" id="a_bankselection" style="display:none;"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="popupUnlock" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body" style="min-height:300px;">
+                <div class="col-md-12">
+                    <div class="col-md-4">
+                        Reason to Unlock
+                    </div>
+                    <div class="col-md-8">
+                        <textarea id="txt_unlockreason" class="form-control"></textarea>
+                    </div>
+                </div>
+                <div class="col-md-12 text-center">
+                    <p>
+                        @*By Unlocking this Bank Enrollment, All the data related to Bank Selection and Bank Enrollment will be lost.*@
+                        Unlocking the Bank Enrollment for the current Active, the site will be able to change “non-editable” fields or select another bank.
+                    </p>
+                    <p>
+                        Are you sure you want to unlock this site?
+                    </p>
+                </div>
+                <button type="button" class="btn btn-default btn-confirm" onclick="unlockEnrollment()">Unlock</button>
+                <button type="button" class="btn btn-default btn-confirm cancel-btn" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    @Html.IncludeVersionedJs("/Scripts/app/MoSvbdetails.js")
+}
+
+<script>
+    $(document).ready(function () {
+        getPermissions();
+        GetCustomerInfomationForMainOffice();
+        getEnrollmentStatus();  //GD Comment : 12082016
+
+        var enrconfig = SiteMaps.filter(function (i) { return i.Id == 'fc32db13-6aec-488e-bafe-19acb3399e57' });
+        if (enrconfig.length == 0) {
+            $('#divEnrollOfficeInfoForm #btn_next').hide();
+            $('#divEnrollOfficeInfoForm #btn_next').hide();
+        }
+
+        if ($('#hdn_ishold').val()=='True')
+            $('#btn_edit').attr('disabled', 'disabled').css('pointer-events','none');
+
+    });
+
+    function goNext() {
+        if ($('#btn_edit').text().toUpperCase() == 'VERIFY')
+            return;
+        var nextlink = $('#sitefc32db13-6aec-488e-bafe-19acb3399e57').attr('href');
+        window.location.href = nextlink;
+    }
+</script>

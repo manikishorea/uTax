@@ -1,0 +1,129 @@
+﻿@using EMPPortal.Filters;
+@model uTax.Transactions.ContactPersonTitle.DTO.ContactPersonTitleDTO
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-header">
+    <h2>Contact Person Title Master</h2>
+</div>
+
+<div class="row">
+
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">
+                    <a data-target="#popup" data-toggle="modal" id="btnCreate" href="javascript:void(0)">
+                        <i class="fa fa-plus" aria-hidden="true" title="Add Contact Person Title"></i> Add Contact Person Title
+                    </a>
+                    @*<a href="~/contactpersontitle/create"><i class="fa fa-plus" aria-hidden="true" title="Add Contact Person Title"></i>Add Contact Person Title</a>*@
+                    &nbsp;
+                </h2>
+            </div>
+            <div class="panel-body" id="div_user">
+                <table id="table_contactpersontitle" class="table">
+                    <thead>
+                        <tr>
+
+                            <th style="width:40%;">Name</th>
+                            <th style="width:50%;">Description</th>
+                            @*<th style="width:25%;">ActivatedDate</th>*@
+
+
+                            @*<th>Status</th>*@
+                            <th style="width:10%;"></th>
+                        </tr>
+                    </thead>
+
+                </table>
+                <!-- books -->
+
+                <div class="modal fade bs-example-modal-lg" id="popup" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <input type="hidden" id="Id" value="00000000-0000-0000-0000-000000000000" />
+                    <input type="hidden" id="UserId" name="UserId" value="@Session["UserId"].ToString()" />
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+
+                                <div class="panel-heading">
+                                    <h2 class="panel-title">Create Contact Person Title</h2>
+                                </div>
+                            </div>
+                            @using (Html.BeginForm("CreateUser", "User", FormMethod.Post, new { @id = "CreateUser" }))
+                            {   <div class="alert-success" style="display:none;" id="popup_success"><p></p></div>
+                                <div class="modal-body">
+                                    <form role="form">
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <label for="message-text" class="control-label mandatory">Contact Person Title</label>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    @Html.EditorFor(model => model.ContactPersonTitle, new { htmlAttributes = new { @class = "form-control", @MaxLength="30" } })
+                                                    <input type="hidden" id="Id"  />
+                                                 </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <label for="message-text" class="control-label">Description</label>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    @Html.TextAreaFor(model => model.Description, new { @class = "form-control", @MaxLength = "150" })
+                                                </div>
+                                            </div>
+
+                                            
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <input type="button" value="Submit" class="btn btn-default" onclick="fnSaveContactPersonTitle();" />
+                                   <button type="button" class="btn btn-default" data-dismiss="modal" onclick="fnCancle();">Cancel</button>
+                                  </div>
+                            }
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <!-- ko if:detail() -->
+</div>
+
+@section scripts {
+    @*<script src="~/Scripts/app/common.js"></script>
+    <script src="~/Scripts/app/contactpersontitle.js"></script>*@
+@Html.IncludeVersionedJs("/Scripts/app/common.js")
+@Html.IncludeVersionedJs("/Scripts/app/contactpersontitle.js")
+}
+
+<script>
+    $(document).ready(function () {
+        getAllContactPersonTitle();
+        
+
+        var initial_form_state = $('#popup').serialize();
+        $('#popup').submit(function () {
+            initial_form_state = $('#popup').serialize();
+        });
+        $(window).bind('beforeunload', function (e) {
+            var form_state = $('#popup').serialize();
+            if (initial_form_state != form_state) {
+                var message = "You have unsaved changes on this page. Do you want to leave this page and discard your changes or stay on this page?";
+                e.returnValue = message;
+                return message;
+            }
+        });
+    });
+</script>

@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts {
+    
+<script src="~/Scripts/app/common.js"></script>
+<script src="~/Scripts/app/userrolemap.js"></script>
+}
+<div class="page-header">
+    <h1>Manage User Roles</h1>
+</div>
+
+
+<div class="row">
+
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">User Roles Map</h2> <a href="~/userrolesmap/create">Add User Roles</a>
+            </div>
+            <div class="panel-body" id="div_user">
+                <table id="table_user" class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>User</th>
+                            <th>Roles</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                </table>
+                <!-- books -->
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <!-- ko if:detail() -->
+</div>

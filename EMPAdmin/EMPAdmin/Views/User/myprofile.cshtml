@@ -1,0 +1,113 @@
+﻿@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("CreateUser", "User", FormMethod.Post, new { @id = "CreateUser" }))
+{
+    <div class="page-header">
+        @if (ViewBag.Id == "00000000-0000-0000-0000-000000000000")
+        {
+            <h2>My Profile</h2>
+        }
+        else
+        {
+            <h2>My Profile</h2>
+        }
+    </div>
+
+    @*@Html.AntiForgeryToken()*@
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <input type="hidden" id="Id" value="@ViewBag.Id" />
+    if (Session["UserId"] != null)
+    {
+        <input type="hidden" id="UserId" name="UserId" value="@Session["UserId"].ToString()" />
+    }
+    else
+    {
+        <input type="hidden" id="UserId" name="UserId" value="00000000-0000-0000-0000-000000000000" />
+    }
+
+    <div class="form-group">
+        <input type="hidden" id="EntityId" name="EntityId" value="1" />
+        <input type="hidden" id="CustomerId" name="CustomerId" value="dd87780d-b4de-46c3-a4fd-7f41d21ce7e3" />
+
+        <div class="row">
+            <div class="col-md-2">
+                <label for="message-text" class="control-label mandatory">First Name</label>
+            </div>
+            <div class="col-md-4">
+                <input type="text" id="FirstName" name="FirstName" class="form-control" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <label for="message-text" class="control-label mandatory">Last Name</label>
+            </div>
+            <div class="col-md-4">
+                <input type="text" id="LastName" name="LastName" class="form-control" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <label for="message-text" class="control-label">User Name</label>
+            </div>
+            <div class="col-md-4">
+                <label id="UserName" name="UserName"  class="control-label"></label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <label for="message-text" class="control-label mandatory">Email</label>
+            </div>
+            <div class="col-md-4">
+                <input type="text" id="EmailAddress" name="EmailAddress" class="form-control" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <label for="message-text" class="control-label">Group</label>
+            </div>
+            <div class="col-md-4">
+                <input type="hidden" id="GroupId" name="GroupId" value="0" />
+                <label id="GroupName" name="GroupName" class="control-label"></label>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-2">
+                <label for="message-text" class="control-label">Roles</label>
+            </div>
+            <div class="col-md-4">
+                <input type="hidden" id="RoleId" name="RoleId" value="0" />
+                <label id="Roles" name="Roles" class="control-label"></label>
+            </div>
+        </div>
+
+        <div class="row margin-20">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="button" class="btn btn-default" id="btnSave" onclick="fnSaveMyProfile();">Update</button>
+            </div>
+        </div>
+    </div>
+}
+
+@section scripts {
+    <script src="~/Scripts/app/common.js"></script>
+    <script src="~/Scripts/app/myprofile.js"></script>
+}
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var Id = $('#Id').val();
+        getMyProfile(Id);
+    });
+
+</script>

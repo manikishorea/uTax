@@ -1,0 +1,85 @@
+﻿@using EMPPortal.Filters;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<input type="hidden" id="status" value="2" />
+<input type="hidden" id="IsSECQUE" value="@Session["SECQUE"].ToString()" />
+<h2 class="page-title">My Security Questions</h2>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="intro">
+            In order to assist you with resetting your EMP website password, please choose three security questions below and provide the answer. Should you ever forget your password and need assistance logging in, you will be required to answer these questions before your password is reset. Your answers MUST be at least 3 characters long and cannot be duplicated.
+        </div>
+
+        <div class="select-blk">
+            <div class="form-group is-empty">
+                <label class="col-md-2 control-label padding-top-10" for="i5">Security Question 1</label>
+                <div class="col-md-10">
+                    <select id="QuestionId1" name="QuestionId" class="form-control Question" onchange="fnQuestionSelected(this);"></select> @*onchange="return getGroupRoleMap(this);"*@
+                </div>
+            </div>
+
+            <div class="form-group is-empty">
+                <label class="col-md-2 control-label padding-top-10" for="i5">Answer</label>
+                <div class="col-md-10">
+                    <input type="text" id="Answer1" class="form-control Answer" maxlength="100">
+                    <input type="hidden" id="Id" />
+                    <input type="hidden" id="status" value=@ViewBag.status />
+                </div>
+            </div>
+        </div>
+        <div class="select-blk">
+            <div class="form-group is-empty">
+                <label class="col-md-2 control-label  padding-top-10" for="i5">Security Question 2</label>
+                <div class="col-md-10">
+                    <select id="QuestionId2" name="QuestionId" class="form-control Question" onchange="fnQuestionSelected(this);"></select> @*onchange="return getGroupRoleMap(this);"*@
+                </div>
+
+            </div>
+
+            <div class="form-group is-empty">
+                <label class="col-md-2 control-label padding-top-10" for="i5">Answer</label>
+                <div class="col-md-10">
+                    <input type="text" id="Answer2" class="form-control Answer" maxlength="100">
+                </div>
+            </div>
+        </div>
+        <div class="select-blk">
+            <div class="form-group is-empty">
+                <label class="col-md-2 control-label padding-top-10" for="i5">Security Question 3</label>
+                <div class="col-md-10">
+                    <select id="QuestionId3" name="QuestionId" class="form-control Question" onchange="fnQuestionSelected(this);"></select> @*onchange="return getGroupRoleMap(this);"*@
+                </div>
+
+            </div>
+
+            <div class="form-group is-empty">
+                <label class="col-md-2 control-label padding-top-10" for="i5">Answer</label>
+                <div class="col-md-10">
+                    <input type="text" id="Answer3" class="form-control Answer" maxlength="100">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clearfix"> </div>
+<div class="col-md-0 lgn">
+    <input class="btn btn-default btn-raised btn-info " type="button" name="Index" id="btnSubmit"
+           value="Update Security Questions" onclick="fnSaveSecurityAnswer();" />
+
+</div>
+
+@section scripts {
+@Html.IncludeVersionedJs("/Scripts/app/SecurityAnswer.js")
+}
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        getQuestionMaster($('#QuestionId1'), $('#QuestionId2'), $('#QuestionId3'));
+        //getSecAnswer();
+        fnVerifiedLinksStatus();
+    });
+
+</script>

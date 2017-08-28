@@ -1,0 +1,145 @@
+﻿@model uTax.EntityFramework.Edmx.SalesYearMaster
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Sales Year Master</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.SalesYear, "Sales Year Name:", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SalesYear, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SalesYear, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ApplicableFromDate, "Active Entities Summary", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <table>
+                    <tr>
+                        <th>Entity Type</th>
+                        <th>Active Entities</th>
+                        <th>Action</th>
+                    @*</tr>
+                    @foreach (var item in (List<uTax.EntityFramework.Edmx.EntityMaster>)ViewBag.EntityMaster)
+                    {
+                        <tr>
+                            <td>
+                                 @item.Name 
+                            </td>
+                            <td> </td>
+                            <td></td>
+                        </tr>
+                    }*@
+                </table>
+                @*@Html.EditorFor(model => model.ApplicableFromDate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ApplicableFromDate, "", new { @class = "text-danger" })*@
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ApplicableToDate, "Applicable From", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.ApplicableToDate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ApplicableToDate, "", new { @class = "text-danger" })*@
+                <input type="radio" id="" name="SalesYear" />Immediately <input type="radio" id="" name="SalesYear" /> Scheduled Date
+                @*@Html.EditorFor(model => model.ApplicableToDate, new { htmlAttributes = new { @class = "form-control" } })*@
+                <input type="text" class="date_icon form-control s_datepicker" maxlength="5" id="txt_EndDate" />
+            </div>
+        </div>
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CreatedBy, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CreatedBy, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CreatedBy, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CreatedDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CreatedDate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CreatedDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.LastUpdatedDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.LastUpdatedDate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.LastUpdatedDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.LastUpdatedBy, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.LastUpdatedBy, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.LastUpdatedBy, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.StatusCodeId, "StatusCodeId", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("StatusCodeId", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.StatusCodeId, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+        <div class="form-group">
+            @Html.LabelFor(model => model.StatusCodeId, "Notes", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.Notes, new { htmlAttributes = new { @class = "form-control" } })*@
+
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="button" onclick="location.href='@Url.Action("Index", "SalesYearMasters")';return false;" value="Cancel" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+@*<div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>*@
+<script type="text/javascript">
+    $(document).ready(function () {
+
+
+        $('#txt_EndDate').datepicker({
+            autoclose: true
+        }).on('changeDate', function (e) {
+            var enddtate = e.date;
+            enddtate.setDate(enddtate.getDate() + 1);
+            $('#txt_DueDate').datepicker('setStartDate', enddtate);
+            var settate = e.date;
+            settate.setDate(enddtate.getDate() + 14);
+            $('#txt_DueDate').datepicker('setDate', settate);
+        });
+    });
+
+
+</script>

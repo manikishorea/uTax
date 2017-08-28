@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "CustomerNotes";
+    Layout = "~/Views/Shared/_SubSiteLayout.cshtml";
+}
+<input type="hidden" id="formid" name="formid" value="active" formid="site72d7d15e-3a29-4b3d-80ca-dea13f6fd08e" />
+<h2 class="page-title">Customer Notes</h2>
+<input type="hidden" id="ID" name="ID" />
+<div class="panel-body">
+    <div class="support-language">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-10">
+                    <textarea id="txtNotes" rows="3" class="form-control" placeholder="Enter Notes Here.." style="height: 63px" maxlength="500"></textarea>
+                </div>
+                <div class="col-md-2">
+                    <a href="javascript:void(0)" class="btn btn-default" onclick="fnSaveCustomerNotes()">Save</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="dvcustomernotes">
+                    </div>
+                </div>
+            </div>            
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/Scripts/app/common.js"></script>
+    <script src="~/Scripts/app/subsiteofficeconfig.js"></script>
+}
+<script>
+    $(document).ready(function () {
+        GetCustomerNotesInfo($('#dvcustomernotes'));
+    });
+</script>

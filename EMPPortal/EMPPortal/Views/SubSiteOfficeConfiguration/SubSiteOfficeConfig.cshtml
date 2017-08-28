@@ -1,0 +1,276 @@
+﻿@using EMPPortal.Filters;
+@{ViewBag.Title = "Sub Site Office Config";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<input type="hidden" id="formid" name="formid" value="active" formid="site2639fb0a-0caa-47cf-b315-587e7ce86aef" sitemapid="2639fb0a-0caa-47cf-b315-587e7ce86aef" />
+
+<h2 class="page-title">Sub-site Configuration</h2>
+<input type="hidden" id="ID" name="ID" />
+
+<div id="divSubSiteOfficeConfigForm">
+    <div class="panel panel-default cst-panel">
+        <div class="panel-body">
+            <div class="multi-question">
+                <div class="support-language" id="dvShareEfinQtn">
+                    <div class="form-group">
+                        <label>Will this site be sharing the EFIN with any other site?</label>
+                        <span class="cst-tooltip"><a class="ttip" id="ttip839f45c0-49c0-434f-83f8-cc9d58ad982f" style="display:none;" href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="Tooltip on right"><i class="fa fa-info" aria-hidden="true"></i></a></span>
+                        <div class="radio" id="dvSharingEfin">
+                            <label>
+                                <input type="radio" name="shEfin" id="rbseYes">
+                                Yes
+                            </label>
+                            <label>
+                                <input type="radio" name="shEfin" id="rbseNo">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="question-block cst-radio-blk hide">
+                    <div class="form-group">
+                        <label>Will this site be sharing the EFIN listed above with any other Office?</label>
+                        <span class="cst-tooltip"><a class="ttip" id="ttip7e2f1f6b-5614-4294-b53e-f9c6b60ec0ff" style="display:none;" href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="Tooltip on right"><i class="fa fa-info" aria-hidden="true"></i></a></span>
+                        <div class="radio" id="divEFINlisted">
+                            <label>
+                                <input type="radio" name="rbEFINlisted" value="option1" id="rbEFINlistedNo" class="nobox" checked>
+                                No
+                            </label>
+                            <label>
+                                <input type="radio" name="rbEFINlisted" id="rbEFINlistedYes" class="yesbox">
+                                Yes
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="sub-question hide" id="dbsubquestions1" style="display:none;">
+                    <div class="question-block">
+                        <div class="form-group">
+                            <label>Does this site own this EFIN?</label>
+                            <div class="radio" id="divEFIN">
+                                <label>
+                                    <input type="radio" name="rbEFIN" value="option2" id="rbEFINYes" onclick="funEFINInfo()" class="yesbox">
+                                    Yes (This site will complete the Bank Enrollment application)
+                                </label>
+                                <label>
+                                    <input type="radio" name="rbEFIN" value="option2" id="rbEFINNo" class="nobox" onclick="funEFINInfo()">
+                                    No (The EFIN owner's site will complete  the Bank Enrollment application)
+                                </label>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div> <!-- sub-question-end -->
+                <div class="support-language hide"  id="dvEFINOwner">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <label>Please enter the User ID of the EFIN owner's site</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <input type="text" id="txtEFINOwnerSite" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="support-language">
+                    <div class="form-group">
+                        @if (ViewBag.IsSubSiteEFIN)
+                        {
+                            <label id="lblIsSubSiteEFIN">Is this Sub-site a new single office <span id="spanMainSiteText">or a main site with new sub-site,</span> or simply an additional EFIN ?</label>
+                        }
+                        else
+                        {
+                            <label>Is this Sub-site a new single office <span id="spanMainSiteText">or a main site</span> with new sub-site ?</label>
+                        }
+                        <span class="cst-tooltip"><a class="ttip" id="ttip7e2f1f6b-5614-4294-b53e-f9c6b60ec0f1" style="display:none;" href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="Tooltip on right"><i class="fa fa-info" aria-hidden="true"></i></a></span>
+                        <div class="radio" id="divSOorSSorEFIN">
+                            <label>
+                                <input type="radio" name="rbSOorSSorEFIN" value="1" id="rbNewSO">
+                                Single Office
+                            </label>
+
+                            <label id="MO_SubSite">
+                                <input type="radio" name="rbSOorSSorEFIN" value="2" id="rbNewSS">
+                                Main Site with Sub-site
+                            </label>
+
+                            @if (ViewBag.IsSubSiteEFIN)
+                            {
+                                <label id="lblIsSubSiteEFINRB">
+                                    <input type="radio" name="rbSOorSSorEFIN" value="3" id="rbAdditionalEFIN">
+                                    Additional EFIN
+                                </label>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="support-language">
+                    <div class="form-group">
+                        <label>How will this Sub-site send tax return data?</label>
+                        <div class="radio" id="divTaxreturn">
+                            <label>
+                                <input type="radio" name="rbTaxreturn" value="option3" id="rbTaxreturnYes">
+                                To the IRS via our Central Site (Transmitter)
+                            </label>
+                            <label>
+                                <input type="radio" name="rbTaxreturn" value="option3" id="rbTaxreturnNo">
+                                To the Main Site for review (Feeder)
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-block" id="divSubSiteMSOLoc" style="display:none;">
+                        <div class="form-group">
+                            <label>Is this site an MSO location?</label>
+                            <div class="radio" id="divMSO">
+                                <label>
+                                    <input type="radio" name="rbMSO" value="option2" id="rbMSOYes" class="yesbox">
+                                    Yes
+                                </label>
+                                <label>
+                                    <input type="radio" name="rbMSO" value="option2" id="rbMSONo" class="nobox">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="support-language">
+                    <div class="form-group">
+                        <label>Would you like to add Business Software to this site (additional charges may apply)?</label>
+                        <span class="cst-tooltip"><a class="ttip" id="ttip1aec299d-a211-45e6-a630-f14b3b3ed5b0" style="display:none;" href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="Tooltip on right"><i class="fa fa-info" aria-hidden="true"></i></a></span>
+                        <div class="radio" id="dvBSW">
+                            <label>
+                                <input type="radio" name="rbBusSw" id="rbBSYes">
+                                Yes
+                            </label>
+                            <label>
+                                <input type="radio" name="rbBusSw" id="rbBSNo">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"> </div>
+    <div class="col-md-10">
+        <a href="javascript:void(0)" class="btn btn-default" onclick="fnSavesubsiteOfficeConfig(0)">Save</a>
+        <a href="javascript:void(0)" class="btn btn-default" onclick="fnSavesubsiteOfficeConfig(1)">Save & Next</a>
+    </div>
+</div>
+@section scripts {
+    @Html.IncludeVersionedJs("/Scripts/app/commonconfig.js")
+    @Html.IncludeVersionedJs("/Scripts/app/subsiteofficeconfig.js")
+    @Html.IncludeVersionedJs("/Scripts/app/ManageSubSite.js")
+}
+
+
+<script>
+    $(function () {
+        getTooltip();
+
+        $(".yesbox").each(function () {
+            var isChecked = $(this).is(":checked");
+            if (isChecked) {
+                $(this).closest('.question-block').siblings(".sub-question").show();
+            }
+        });
+
+        $(".nobox").each(function () {
+            var isChecked = $(this).is(":checked");
+            if (isChecked) {
+                $(this).closest('.question-block').siblings(".sub-question").hide();
+            }
+        });
+
+        /* on change function */
+
+        $(".yesbox").change(function () {
+            var isChecked = $(this).is(":checked");
+            if (isChecked) {
+                $(this).closest('.question-block').siblings(".sub-question").show();
+            }
+        });
+
+        $(".nobox").change(function () {
+            var isChecked = $(this).is(":checked");
+            if (isChecked) {
+                $(this).closest('.question-block').siblings(".sub-question").hide();
+            }
+        });
+        setTimeout(function () {
+            fnHideMSOLoc();
+        })
+    });
+
+    function funEFINInfo() {
+        //if ($('#rbEFINNo').is(':checked')) {
+        //    $('#dvEFINOwner').show();
+        //}
+        //else {
+        //    $('#dvEFINOwner').hide();
+        //}
+    }
+
+
+</script>
+
+<script>
+    $(document).ready(function () {     
+
+        getIsEnrollmentSubmit();
+        if ($('#entityid').val() != $('#myentityid').val()) {
+            getSubsiteOfficeInformation($('#myid').val(), $('#myparentid').val());
+        }
+        else {
+            getSubsiteOfficeInformation($('#UserId').val(), $('#parentid').val());            
+        }
+
+        getAccountId();
+
+        $('#MO_SubSite').show();
+        $('#spanMainSiteText').show();
+        if ($('#myentityid').val() == $('#Entity_SVB_MO_SO').val() || $('#myentityid').val() == $('#Entity_MO_SO').val() || $('#myentityid').val() == '7' || $('#myentityid').val() == '8') {
+            $('#MO_SubSite').hide();
+            $('#spanMainSiteText').hide();
+        }
+        if (_myaccountID.toUpperCase() == 'RIVEDG')
+            $('#MO_SubSite').hide();
+
+        if ($('#myentityid').val() == $('#Entity_SO').val() || $('#myentityid').val() == $('#Entity_SOME').val()) {
+            $('#rbNewSS').prop('disabled', true);
+            $('#rbNewSO').prop('disabled', false);
+            $('#rbNewSO').prop('checked', true);
+        }
+
+        var hdnID = $('#ID').val();
+        debugger;
+        if (hdnID == '' || hdnID == null || hdnID == '00000000-0000-0000-0000-000000000000') {
+            var hdnEFINStatus = $('#hdnEFINStatus').val();
+
+            if (hdnEFINStatus == "21" || hdnEFINStatus == "20" || hdnEFINStatus == "17" || hdnEFINStatus == "18") {
+                // $('#rbEFINlistedNo').attr('disabled', 'disabled');
+                //  $("#rbEFINlistedNo").prop("disabled", true);
+                //$("#rbEFINlistedYes").prop("checked", true);
+                //$("#dbsubquestions").show();
+                if ( hdnEFINStatus == "21") {
+                    $('#dvEFINOwner').removeClass('hide');
+                    $('#dvShareEfinQtn').addClass('hide');
+                }
+                if (hdnEFINStatus == "18" || hdnEFINStatus == "20" || hdnEFINStatus == "17") {
+                    $('#dvShareEfinQtn').addClass('hide');
+                }
+            }
+        }
+
+        funEFINInfo();
+    });
+</script>

@@ -1,0 +1,117 @@
+﻿@using EMPPortal.Filters;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_FrontEndLayout.cshtml";
+}
+
+@using (Html.BeginForm("Index", "CustomerLogin", FormMethod.Post, new { id = "frmCustomerLogin", @class = "form-horizontal", role = "form" }))
+{
+<div class="container-fluid main">
+    <div class="row">
+        <div class="col-md-3 padding-left-25 sidebar">
+            <h2>Log In</h2>
+            <p class="frgt"><a href="~/ForgotAccount/Password">Forgot Password</a></p>
+        </div>
+
+        <div class="col-md-9 padding-right-25">
+            <div class="row">
+                <div class="col-md-12">
+
+                    @if (TempData["error"] != null)
+                    {
+                        <div class="alert alert-danger" id="error">@TempData["error"]</div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-danger" style="display:none;" id="error"></div>
+                    }
+                    <div class="alert-success" style="display:none;" id="success"></div>
+                </div>
+            </div>
+
+            <div class="login-pg cst-login">
+                <form class="clearfix">
+                    <h2 class="page-title">Log In to EMP</h2>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="form-group is-empty">
+                                <label class="col-md-2 control-label" for="i5">User Id</label>
+                                <div class="col-md-10">
+                                    <input type="hidden" id="userip" name="userip" />
+                                    <input type="text" id="UserID" name="UserID" class="form-control" maxlength="50" />
+                                </div>
+                            </div>
+                            <div class="form-group is-empty">
+                                <label class="col-md-2 control-label" for="i5">Password</label>
+                                <div class="col-md-10">
+                                    <input type="password" id="Password" name="Password" class="form-control" maxlength="50" />
+                                </div>
+                            </div>
+                            @*<div class="col-md-10 col-md-offset-2">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" id="chkRememberme" name="chkRememberme" /><span class="checkbox-material"></span> Remember me
+                                    </label>
+                                </div>
+                            </div>*@
+                        </div>
+                    </div>
+
+                    <div class="col-md-0 lgn">
+                        <input class="btn btn-default btn-raised btn-info " type="submit" name="Index" id="btnSubmit" value="Login" />
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+}
+@section scripts {
+@*<script src="~/Scripts/app/common.js"></script>
+    <script src="~/Scripts/app/CustomerLogin.js"></script>*@
+@Html.IncludeVersionedJs("/Scripts/app/common.js")
+@Html.IncludeVersionedJs("/Scripts/app/CustomerLogin.js")
+}
+
+<script type="text/javascript">
+
+    $(function () {
+
+        //localStorage.clear();
+
+        //localStorage.setItem("IsLoggedout", "true");
+
+        $('#frmCustomerLogin').submit(function () {
+            var cansubmit = true;
+            var error = $('#error');
+            $('#error').html('');
+            $('#UserID').removeClass("error_msg");
+            if ($.trim($('#UserID').val()) == "") {
+                $('#UserID').addClass("error_msg");
+                $('#UserID').attr('title', 'Please enter User Id');
+               // error.append('<p> Please enter User Id </p>');
+                cansubmit = false;
+            }
+            $('#Password').removeClass("error_msg");
+            if ($.trim($('#Password').val()) == "") {
+                $('#Password').addClass("error_msg");
+                $('#Password').attr('title', 'Please enter Password');
+               // error.append('<p> Please enter Password </p>');
+                cansubmit = false;
+            }
+
+            if (cansubmit) {
+                error.hide();
+                localStorage.clear();
+                return true;
+            } else {
+                error.show();
+                error.append('<p> Please provide the correct data </p>');
+                return false;
+            }
+        })
+    })
+
+</script>

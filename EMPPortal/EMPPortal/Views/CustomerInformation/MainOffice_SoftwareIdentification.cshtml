@@ -1,0 +1,139 @@
+﻿@using EMPPortal.Filters;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-md-12 main-office">
+        <h2 class="page-title">Main Office & Software Identification Information</h2>
+        <div class="col-md-6 main-office-blk-left">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3>Main Office Information</h3>
+
+                    <table class="table table-striped table-hover ">
+                        <tbody>
+                            <tr>
+                                <td>Company Name </td>
+                                <td colspan="2"><span id="spCompanyName"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Business Owner Name </td>
+                                <td colspan="2"><span id="spBusinessOwnerName"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Physical Address </td>
+                                <td colspan="2"><span id="spPhysicalAddress"></span></td>
+                            </tr>
+                            <tr>
+                                <td>City, State, Zip: </td>
+                                <td colspan="2"><span id="spCitystatezip"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Office Phone: </td>
+                                <td colspan="2"><span id="spOfficePhone"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Alternate Phone: </td>
+                                <td><span id="spAlternatePhone"></span></td>
+                                <td><span id="spphoneType"></span> </td>
+                                @*<td><select class="form-control" id="select111">
+                                           <option selected="true" disabled="disabled">-Type-</option>
+                                           <option>2</option>
+                                    </select>
+                                    </td>*@
+                            </tr>
+                            <tr>
+                                <td>Primary email: </td>
+                                <td colspan="2"><span id="spPrimaryemail"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Support Notification email: </td>
+                                <td colspan="2"><span id="spSupportemail"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Alternative contact: </td>
+                                <td><span id="spAlternativeContact"></span></td>
+                                <td><span id="spContactType"></span> </td>
+                                @*<td>
+                                        <select class="form-control" id="select111">
+                                            <option>-Title-</option>
+                                            <option>2</option>
+                                        </select>
+                                    </td>*@
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                    <!-- books -->
+                    <div class="clearfix"> </div>
+                    <div class="col-md-12 text-right">
+                        <a href="javascript:void(0)" class="btn btn-default btn-info" onclick="GetCustomerInfomationForMainOfficeinEDIT()">Edit</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-6 main-office-blk-right">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3>Software Identification Information</h3>
+
+                    <table class="table table-striped table-hover ">
+                        <tbody>
+                            <tr>
+                                <td>EFIN</td>
+                                <td><span id="spEFIN"></span> </td>
+                            </tr>
+                            <tr>
+                                <td>Master Identifier</td>
+                                <td><span id="spMasterident"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Master User ID</td>
+                                <td><span id="spMasterUserID"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Transmission Password</td>
+                                <td><span id="spTransmissionpwd"></span></td>
+                            </tr>
+                            <tr>
+                                <td>MytaxofficePortal.com </br>(User Name):</td>
+                                <td><span id="spofficeportalusername"></span></td>
+                            </tr>
+                            <tr>
+                                <td>MytaxofficePortal.com </br>(Password):</td>
+                                <td><span id="spoofficeportalpwd"></span></td>
+                            </tr>
+
+                            @*<tr>
+                                <td>EMP Password:</td>
+                                <td>
+                                    <span id="spemppwd"></span>
+                                    <a href="javascript:void(0)" class="btn btn-default btn-info">Change Password</a>
+                                </td>
+                            </tr>*@
+
+                        </tbody>
+                    </table>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    @*<script src="~/Scripts/app/common.js"></script>
+    <script src="~/Scripts/app/customerInformation.js"></script>*@
+@Html.IncludeVersionedJs("/Scripts/app/common.js")
+@Html.IncludeVersionedJs("/Scripts/app/customerInformation.js")
+}
+
+<script>
+    $(document).ready(function () {
+        GetCustomerInfomationForMainOffice();
+    });
+</script>

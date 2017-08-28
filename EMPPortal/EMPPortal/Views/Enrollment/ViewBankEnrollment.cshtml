@@ -1,0 +1,18 @@
+﻿@using EMPPortal.Filters;
+@{
+    Layout = "~/Views/Shared/_EnrollmentLayout.cshtml";
+}
+
+<p id="p_pendingmsg" class="pending-service-msg">Pennding for Submitting the Application to CrossLink API from Windows service</p>
+
+<div id="dv_Enrollment">
+</div>
+
+@section scripts {
+    @Html.IncludeVersionedJs("/Scripts/app/CrossLinkBankObjects.js")
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        getBankSelected();
+    });
+</script>

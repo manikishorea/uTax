@@ -1,0 +1,340 @@
+﻿@using EMPPortal.Filters;
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    if (Convert.ToInt32(Session["entitydisplayid"].ToString()) == (int)EMPPortal.Utilities.EMPPortalConstants.BaseEntities.SO)
+    {
+        <input type="hidden" id="formid" name="formid" value="active" formid="site7c8aa474-2535-4f69-a2ae-c3794887f92d" sitemapid="7c8aa474-2535-4f69-a2ae-c3794887f92d" />
+    }
+    else
+    {
+        <input type="hidden" id="formid" name="formid" value="active" formid="site98a706d7-031f-4c5d-8cc4-d32cc7658b63" sitemapid="98a706d7-031f-4c5d-8cc4-d32cc7658b63" />
+    }
+
+    <input type="hidden" id="hdnEntityId" value="@ViewBag.EntityId" />
+    <div class="office-pg">
+        <h2>Office Information</h2>
+        <div class="panel panel-default">
+            <div class="panel-body">
+
+                <div class="form-horizontal">
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <input type="hidden" id="Id" value="@ViewBag.Id" />
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-md-4 control-label mandatory">Company Name</label>
+                                <div class="col-md-8">
+                                    <input type="text" id="CompanyName" class="form-control alphanumaric" maxlength="30" readonly="readonly">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-md-4 control-label">EFIN</label>
+                                <div class="col-md-8">
+                                    <input type="text" id="EFIN" class="form-control digit" maxlength="10" readonly="readonly">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-md-4 control-label mandatory">Business Owner Name</label>
+                                <div class="col-md-8">
+                                    <input type="text" id="BusinessOwnerFirstName" class="form-control alphanumaric" maxlength="30" readonly="readonly">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-md-4 control-label mandatory">Title</label>
+                                <div class="col-md-8">
+                                    <select id="TitleId" name="TitleId" class="form-control"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-md-4 control-label mandatory">Office Phone</label>
+                                <div class="col-md-8">
+                                    <input type="text" id="OfficePhone" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-md-4 control-label">Phone Type</label>
+                                <div class="col-md-8">
+                                    <select id="PhoneTypeId" name="PhoneTypeId" class="form-control"></select>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-md-4 control-label mandatory">Primary Email Address</label>
+                                <div class="col-md-8">
+                                    <input type="text" id="Primaryemail" class="form-control">
+                                    <input type="hidden" id="EROType">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-md-4 control-label">Support Notification Email Address</label>
+                                <div class="col-md-8">
+                                    <input type="text" id="SupportNotificationemail" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-md-4 control-label">Alternate Type</label>
+                                <div class="col-md-8">
+                                    <select id="AlternativeTypeId" name="AlternativeTypeId" class="form-control"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-md-4 control-label">Alternate Contact Name</label>
+                                <div class="col-md-8">
+                                    <input type="text" id="AlternativeContact" maxlength="50" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-md-4 control-label">Alternate Contact No</label>
+                                <div class="col-md-8">
+                                    <input type="text" id="AlternatePhone" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            &nbsp;
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-md-4 control-label mandatory">Physical Address 1</label>
+                                <div class="col-md-8">
+                                    <input type="text" id="PhysicalAddress1" class="form-control alphanumaric" maxlength="30">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-md-4 control-label">Physical Address 2</label>
+                                <div class="col-md-8">
+                                    <input type="text" id="PhysicalAddress2" class="form-control alphanumaric" maxlength="30">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-md-4 control-label mandatory">Physical Zip Code</label>
+                                <div class="col-md-8">
+                                    <input type="number" id="PhysicalZipcode" class="form-control" maxlength="5" max="99999">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-md-4 control-label mandatory">Physical City</label>
+                                <div class="col-md-8">
+                                    <input type="text" id="PhysicalCity" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-md-4 control-label mandatory">Physical State</label>
+                                <div class="col-md-8">
+                                    <select id="PhysicalStateID" name="StateID" class="form-control"></select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="checkbox shipping-address">
+                                    <label>
+                                        <input type="checkbox" id="ShippingAddressSameAsPhysicalAddress" onchange="fnIsShippingSameAsPhysical();"> Shipping Address Same As Physical Address
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-md-4 control-label mandatory">Shipping Address 1</label>
+                                <div class="col-md-8">
+                                    <input type="text" id="ShippingAddress1" class="form-control alphanumaric" maxlength="30">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-md-4 control-label">Shipping Address 2</label>
+                                <div class="col-md-8">
+                                    <input type="text" id="ShippingAddress2" class="form-control alphanumaric" maxlength="30">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-md-4 control-label mandatory">Shipping Zipcode</label>
+                                <div class="col-md-8">
+                                    <input type="number" id="ShippingZipcode" class="form-control" maxlength="5" max="99999">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-md-4 control-label mandatory">Shipping City</label>
+                                <div class="col-md-8">
+                                    <input type="text" id="ShippingCity" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-md-4 control-label mandatory">Shipping State</label>
+                                <div class="col-md-8">
+                                    <select id="ShippingStateID" name="StateID" class="form-control"></select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row margin-top-20">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <a class="btn btn-default" onclick="fnSaveCustomerInformation()" id="btn_save">Save</a>
+                                @if (this.Layout.Contains("_EnrollmentLayout"))
+                                {
+                                    <a class="btn btn-back" id="btnback" href="/Enrollment/OfficeInformation">Back</a>
+                                }
+                                else
+                                {
+                                    <a class="btn btn-back" id="btnback" onclick="goBackButton()">Back</a>
+                                }
+
+                            </div>
+                        </div>
+                        <div class="col-md-12 margin-top-20">
+                            <label class="text-success">For EFIN or Business Owner Name changes, please contact uTax support.</label>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="bank-option cst-create" id="divParentInfo">
+                            <ul>
+                                <li>Master ID :<label id="lblMasterID"></label></li>
+                                <li>Parent Account :<label id="lblParentAccount"></label></li>
+                                <li>MSO Indicator :<label id="lblMSO"></label></li>
+                                <li>EFIN  :<label id="lblEFIN"></label></li>
+                                <li>Transmit Type:<label id="lblTransmitType"></label></li>
+                                <li>
+                                    Bank  :<label id="lblBank"></label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+@section scripts {
+    @Html.IncludeVersionedJs("/Scripts/app/common.js")
+    @Html.IncludeVersionedJs("/Scripts/app/customerInformation.js")
+}
+<script>
+    $(document).ready(function () {
+        //getPermissions();
+        $("#OfficePhone").mask("999-999-9999");
+        $("#AlternatePhone").mask("999-999-9999");
+
+        var entityid = $('#entityid').val();
+        var entitydisplayid = $('#entitydisplayid').val();
+
+        if (entityid == $('#Entity_uTax').val()) {// "8f4fca72-3d3c-4ad3-8f1c-1de3d602fd73") {
+            $('input[type=text]').attr('readonly', 'readonly');
+            $('select').attr('disabled', 'disabled');
+            $('textarea').attr('readonly', 'readonly');
+            $('input[type=checkbox]').attr('disabled', 'disabled');
+        }
+
+        getEFINStatus($('#EFINStatus'), $('#hdnEntityId').val());
+
+        var Id = getUrlVars()["Id"];
+        getStateMasterCode($('#PhysicalStateID'), $('#ShippingStateID'));
+        getCustomerInformation(Id);
+
+        if ($('#entityid').val() == $('#Entity_uTax').val()) {
+            $('#btn_save').hide();
+        }
+        else {
+            $('#btn_save').show();
+        }
+    });
+
+    $('#btnback').click(function () {
+        if ($('#entityid').val() == $('#Entity_uTax').val()) {
+            window.location.href = "/CustomerInformation/Index";
+        }
+        else {
+            window.location.href = "/Enrollment/OfficeInformation";
+        }
+    });
+
+    $(function () {
+        $('#PhysicalZipcode').keyup(function (e) {
+            if ($(this).val().length == 5) {
+                var value = $(this).val();
+                var custmorUri = '/api/ZipCode?id=' + value;
+                ajaxHelper(custmorUri, 'GET').done(function (data) {
+                    $('#PhysicalStateID').val(data["State"]);
+                    $('#PhysicalCity').val(data["City"]);
+                });
+            }
+            else if ($(this).val().length > 5) {
+                var xp = $(this).val();
+                $(this).val(xp.substr(0, 5));
+            }
+        });
+
+        $('#ShippingZipcode').keyup(function (e) {
+
+            if ($(this).val().length == 5) {
+                var value = $(this).val();
+                var custmorUri = '/api/ZipCode?id=' + value;
+                ajaxHelper(custmorUri, 'GET').done(function (data) {
+                    $('#ShippingStateID').val(data["State"]);
+                    $('#ShippingCity').val(data["City"]);
+                });
+            }
+            else if ($(this).val().length > 5) {
+                var xp = $(this).val();
+                $(this).val(xp.substr(0, 5));
+            }
+        });
+    })
+
+</script>

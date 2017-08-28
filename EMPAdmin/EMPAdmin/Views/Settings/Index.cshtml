@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-header">
+    <h2>Settings</h2>
+</div>
+@if (Session.Count > 0)
+{
+    <input type="hidden" id="UserId" name="UserId" value="@Session["UserId"].ToString()" />
+    <input type="hidden" id="UserRoleId" name="UserRoleId" value="@Session["UserRoleId"].ToString()" />
+    <input type="hidden" id="SiteMapID" name="SiteMapID" value="b57367ac-2242-467c-8743-9857c8cb1116" />
+}
+<div class="form-group">
+    <div class="row">
+        <div class="col-md-2">
+            <label for="message-text" class="control-label">Send Account Creation Email</label>
+        </div>
+        <div class="col-md-4" style="margin-top:5px;">
+            <input type="checkbox" id="chk_ActCrt" name="ACtCrtn" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-offset-2 col-md-10" style="margin-top:20px;">
+            <button class="btn btn-default" onclick="saveSettings()">Save</button>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/app/Settings.js"></script>

@@ -1,0 +1,138 @@
+﻿@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("CreateUser", "User", FormMethod.Post, new { @id = "CreateUser" }))
+{
+    <div class="page-header">
+        @if (ViewBag.Id == "00000000-0000-0000-0000-000000000000")
+        {
+            <h2>Create User</h2>
+        }
+        else
+        {
+            <h2>Edit User</h2>
+        }
+    </div>
+
+    @*@Html.AntiForgeryToken()*@
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <input type="hidden" id="Id" value="@ViewBag.Id" />
+    if (Session.Count>0)
+    {
+        <input type="hidden" id="UserId" name="UserId" value="@Session["UserId"].ToString()" />
+    }
+    else
+    {
+        <input type="hidden" id="UserId" name="UserId" value="00000000-0000-0000-0000-000000000000" />
+    }
+
+    <div class="form-group">
+        <input type="hidden" id="EntityId" name="EntityId" value="1" />
+        <input type="hidden" id="CustomerId" name="CustomerId" value="dd87780d-b4de-46c3-a4fd-7f41d21ce7e3" />       
+        <div class="row">
+            <div class="col-md-2">
+                <label for="message-text" class="control-label mandatory">First Name</label>
+            </div>
+            <div class="col-md-4">
+                <input type="text" id="FirstName" class="form-control" maxlength="30" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <label for="message-text" class="control-label mandatory">Last Name</label>
+            </div>
+            <div class="col-md-4">
+                <input type="text" id="LastName" class="form-control" maxlength="30" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <label for="message-text" class="control-label mandatory">User Name</label>
+            </div>
+            <div class="col-md-4">
+                <input type="text" id="txtUserName" name="txtUserName" class="form-control" maxlength="30" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <label for="message-text" class="control-label mandatory">Email</label>
+            </div>
+            <div class="col-md-4">
+                <input type="text" id="EmailAddress" class="form-control" maxlength="256" />
+            </div>
+        </div>
+
+        @*<div class="row">
+                <div class="col-md-2">
+                    <label for="message-text" class="control-label">Is Active</label>
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.IsActive)
+                </div>
+            </div>*@
+
+        <div class="row">
+            <div class="col-md-2">
+                <label for="message-text" class="control-label mandatory">Group</label>
+            </div>
+            <div class="col-md-4">
+                <select id="GroupId" name="GroupId" class="btn dropdown-btn" onchange="return getGroupRoleMap(this);"></select>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-2">
+                <label for="message-text" class="control-label mandatory">Assign Role(s)</label>
+            </div>
+            <div class="col-md-4">
+                <div id="RoleIds">
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row margin-20">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="button" class="btn btn-default" id="btnSave" onclick="fnSaveUser();">Submit</button>
+                <button type="button" class="btn btn-default" id="btnCancel" onclick="GotoListScreen('@Url.Content("~/user/Index")');">Back</button>
+            </div>
+        </div>
+    </div>
+}
+
+@section scripts {
+    <script src="~/Scripts/app/common.js"></script>
+    <script src="~/Scripts/app/users.js"></script>
+}
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var Id = $('#Id').val();
+        getGroupMaster($('#GroupId'));
+        getRoleMaster($('#RoleIds'));
+        getUser(Id);
+
+
+
+
+        var initial_form_state = $('#CreateUser').serialize();
+        $('#CreateUser').submit(function () {
+            initial_form_state = $('#CreateUser').serialize();
+        });
+        $(window).bind('beforeunload', function (e) {
+            var form_state = $('#CreateUser').serialize();
+            if (initial_form_state != form_state) {
+                var message = "You have unsaved changes on this page. Do you want to leave this page and discard your changes or stay on this page?";
+                e.returnValue = message;
+                return message;
+            }
+        });
+    });
+</script>

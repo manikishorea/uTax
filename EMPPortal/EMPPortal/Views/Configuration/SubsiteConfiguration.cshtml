@@ -1,0 +1,325 @@
+﻿@using EMPPortal.Filters;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<input type="hidden" id="formid" name="formid" value="active" formid="site68882c05-5914-4fdb-b284-e33d6c029f5a" sitemapid="68882c05-5914-4fdb-b284-e33d6c029f5a" />
+<input type="hidden" id="Id" name="Id" />
+<input type="hidden" id="refId" name="refId" />
+<div class="row" id="divSubSiteConfigForm">
+    <div class="col-md-12">
+        <h2 class="page-title">Default Sub-site Configuration</h2>
+        <div class="panel panel-default subsite">
+            <div class="utax-tabs new-label">
+                <div class="bs-component">
+                    <ul style="margin-bottom: 15px;" class="nav nav-tabs">
+                        <li class="active" id="libankenrollment_service"><a data-toggle="tab" href="#bankenrollment_service">Bank Enrollment<div class="ripple-container"></div></a></li>
+                        <li id="lionboarding_service"><a data-toggle="tab" href="#onboarding_service">Onboarding Services</a></li>
+                        <li id="lisupport_service"><a data-toggle="tab" href="#support_service">Support Services</a></li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div id="bankenrollment_service" class="tab-pane fade active in">
+                            <p>uTax offers bank enrollment services which requires your Sub-sites to complete their bank enrollment on an unbranded (uTax) web portal.</p>
+                            <p> Please note: uTax will contact each of your Sub-sites directly to assist them in completing the bank enrollment application</p>
+                            <form>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Do you want uTax to manage the process of enrolling your Sub-sites?</label>
+                                        <span class="cst-tooltip"><a class="ttip" id="ttipca37807b-dfef-462e-b1bc-b64fecb2a731" style="display:none;" href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="Tooltip on right"><i class="fa fa-info" aria-hidden="true"></i></a></span>
+                                        <div id="dvFirst">
+                                            <div class="radio radio-primary">
+                                                <label>
+                                                    <input type="radio" value="Yes" id="IsuTaxManageingEnrolling1" onclick="visibleshowhide()" name="IsuTaxManageingEnrolling"><span class="circle"></span><span class="check"></span>
+                                                    Yes, please manage enrollment for my Sub-sites
+                                                </label>
+                                            </div><div class="radio radio-primary">
+                                                <label>
+                                                    <input type="radio" value="No" id="IsuTaxManageingEnrolling2" onclick="visibleshowhide()" name="IsuTaxManageingEnrolling"><span class="circle"></span><span class="check"></span>
+                                                    No, I will manage enrollment for my Sub-sites
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="custom-bg">
+                                        <div class="form-group" id="dvEnrollmentInfo">
+                                            <label>Would you like your Sub-sites to complete their enrollment information online using an unbranded portal managed by uTax?</label>
+                                            <div class="radio" id="dvsecond">
+                                                <label>
+                                                    <input type="radio" id="IsuTaxPortalEnrollment1" name="IsuTaxPortalEnrollment" value="Yes">
+                                                    Yes
+                                                </label>
+                                                <label>
+                                                    <input type="radio" id="IsuTaxPortalEnrollment2" name="IsuTaxPortalEnrollment" value="No">
+                                                    No
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group hide" id="dv_enremail">
+                                        <label>Send enrollment emails to Sub-sites?</label>
+                                        <div class="radio" id="dvsecond">
+                                            <label>
+                                                <input type="radio" id="rdb_enrYes" name="rb_EnrollmentEmails" value="Yes">
+                                                Yes
+                                            </label>
+                                            <label>
+                                                <input type="radio" id="rdb_enrNo" name="rb_EnrollmentEmails" value="No">
+                                                No
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Will you allow your Sub-sites to add additional EFINs per User ID (site)?</label>
+                                        <span class="cst-tooltip"><a class="ttip" id="ttip7e2f1f6b-5614-4294-b53e-f9c6b60ec0fc" style="display:none;" href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="Tooltip on right"><i class="fa fa-info" aria-hidden="true"></i></a></span>
+                                        <div class="radio radio-primary" id="dvthird">
+                                            <label>
+                                                <input type="radio" value="Yes" id="IsSubSiteEFINAllow1" name="IsSubSiteEFINAllow"><span class="circle"></span><span class="check"></span>
+                                                Yes
+                                            </label>
+                                            <label>
+                                                <input type="radio" value="No" id="IsSubSiteEFINAllow2" name="IsSubSiteEFINAllow"><span class="circle"></span><span class="check"></span>
+                                                No
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Which banks will you allow your Sub-sites to partner with?</label>
+                                        <span class="cst-tooltip"><a class="ttip" id="ttipd0a895ae-fd9a-438c-80a4-c6b336a78d10" style="display:none;" href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="Tooltip on right"><i class="fa fa-info" aria-hidden="true"></i></a></span>
+                                        <div class="checkbox cst-label col-md-12 bank" id="divBanks">
+                                        </div>
+                                    </div>
+                                </div> <!-- /col -->
+                            </form>
+                            <div class="clearfix"> </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <a href="javascript:void(0)" class="btn btn-default btn-info" onclick="fnSaveBankService();">Save & Next</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="onboarding_service" class="tab-pane fade">
+                            <p>uTax offers onboarding services which allows the uTax Support team to contact your Sub-sites to assist them with installing and configuring their tax software.</p>
+                            <p>Please note: Your co-branded software will be installed, if applicable.</p>
+                            <form>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Do you want uTax to manage the process of onboarding your Sub-sites?</label>
+                                        <span class="cst-tooltip"><a class="ttip" id="ttipaa499a90-d134-42e5-81cd-25b2ff247d4e" style="display:none;" href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="Tooltip on right"><i class="fa fa-info" aria-hidden="true"></i></a></span>
+                                        <div id="dvFourth">
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" id="IsuTaxManageOnboarding1" name="IsuTaxManageOnboarding" value="Yes">
+                                                    Yes, please manage onboarding for my Sub-sites.
+                                                </label>
+                                            </div><div class="radio">
+                                                <label>
+                                                    <input type="radio" id="IsuTaxManageOnboarding2" name="IsuTaxManageOnboarding" value="No">
+                                                    No, I will manage onboarding for my Sub-sites
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> <!-- /col -->
+                            </form>
+                            <div class="clearfix"> </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <a href="javascript:void(0)" class="btn btn-default btn-info" onclick="fnSaveOnBoarding();">Save & Next</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="support_service" class="tab-pane fade">
+                            <form>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Who will provide customer support to your Sub-sites?</label>
+                                        <div id="dvFifth">
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" id="IsuTaxCustomerSupport1" onclick="mysupportInfo()" name="IsuTaxCustomerSupport" value="Yes">
+                                                    uTax will provide support to my Sub-sites
+                                                </label>
+                                            </div><div class="radio">
+                                                <label>
+                                                    <input type="radio" id="IsuTaxCustomerSupport2" onclick="mysupportInfo()" name="IsuTaxCustomerSupport" value="No">
+                                                    I will provide support to my Sub-sites
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="custom-bg">
+                                        <div id="dvmysupport">
+                                            <div class="form-group">
+                                                <label for="i5" class="control-label">How many of your support staff will be available to take calls? (1 to 20) </label>
+                                                <div class="clearfix"></div>
+                                                <div class="col-md-4">
+                                                    <input type="number" class="form-control digit" id="NoofSupportStaff" name="NoofSupportStaff" maxlength="2" max="20" min="1">
+                                                </div>
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Which days will your customer support be open?</label>
+                                                <div class="checkbox col-md-12 cst-label" id="divSupportDays">
+                                                    <label>
+                                                        <input type="checkbox" class="supportdays" id="mon" value="1"><span class="checkbox-material"></span> Monday
+                                                    </label>
+                                                    <label>
+                                                        <input type="checkbox" class="supportdays" id="tue" value="2"><span class="checkbox-material"></span> Tuesday
+                                                    </label>
+                                                    <label>
+                                                        <input type="checkbox" class="supportdays" id="wed" value="3"><span class="checkbox-material"></span> Wednesday
+                                                    </label>
+                                                    <label>
+                                                        <input type="checkbox" class="supportdays" id="thu" value="4"><span class="checkbox-material"></span> Thursday
+                                                    </label>
+                                                    <label>
+                                                        <input type="checkbox" class="supportdays" id="fri" value="5"><span class="checkbox-material"></span> Friday
+                                                    </label>
+                                                    <label>
+                                                        <input type="checkbox" class="supportdays" id="sat" value="6"><span class="checkbox-material"></span> Saturday
+                                                    </label>
+                                                    <label>
+                                                        <input type="checkbox" class="supportdays" id="sun" value="7"><span class="checkbox-material"></span> Sunday
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label>Please list your opening and closing support hours:</label>
+                                                    <div class="clearfix"></div>
+                                                    <div class="col-md-2">
+                                                        @*<div class="form-group">
+                                                                <input type="text" id="OpenHours" name="OpenHours" class="form-control">
+                                                            </div>*@
+                                                        <div class="form-group">
+                                                            <div class='input-group date' id='OpenHoursTime'>
+                                                                <input type='text' class="form-control" id="OpenHours" name="OpenHours" maxlength="8" />
+                                                                <span class="input-group-addon">
+                                                                    <span class="glyphicon glyphicon-time"></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        @*<div class="form-group">
+                                                                <input type="text" id="CloseHours" name="CloseHours" class="form-control">
+                                                            </div>*@
+                                                        <div class="form-group">
+                                                            <div class='input-group date' id='CloseHoursTime'>
+                                                                <input type='text' class="form-control" id="CloseHours" name="CloseHours" maxlength="8" />
+                                                                <span class="input-group-addon">
+                                                                    <span class="glyphicon glyphicon-time"></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <select id="TimeZone" class="form-control">
+                                                                <option value="">Select</option>
+                                                                <option value="(UTC-05:00) Eastern Time (US & Canada)">Eastern Standard Time</option>
+                                                                <option value="(UTC-06:00) Central Time (US & Canada)">Central Standard Time</option>
+                                                                <option value="(UTC-07:00) Mountain Time (US & Canada)">Mountain Standard Time</option>
+                                                                <option value="(UTC-08:00) Pacific Time (US & Canada)">Pacific Standard Time</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="dvSixth">
+                                        <label>How will your new Sub-sites send tax return data?</label>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" id="SubSiteTaxReturn1" name="SubSiteTaxReturn" value="1">
+                                                All Sub-sites will transmit to the IRS via our Central Site (Transmitter)
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" id="SubSiteTaxReturn2" name="SubSiteTaxReturn" value="2">
+                                                All Sub-sites will transmit to the Main Office (Feeder)
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" id="SubSiteTaxReturn3" name="SubSiteTaxReturn" value="3">
+                                                Mixed – Some Sub-sites will transmit to the IRS via our Central Site (Transmitter) and some will transmit to the Main Office (Feeder)
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Which affiliate programs would you like your Sub-sites to have access to?</label>
+                                        <span class="cst-tooltip"><a class="ttip" id="ttipb430598a-7360-4762-bab9-8ee91d451af8" style="display:none;" href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="Tooltip on right"><i class="fa fa-info" aria-hidden="true"></i></a></span>
+                                        <div class="checkbox cst-label col-md-12" id="divAffiliates">
+                                        </div>
+                                    </div>
+                                    <div class="custom-bg">
+                                        <div class="form-group" id="dvaffiliateInfo">
+                                            <label>Do you want your Sub-sites to have the affiliate programs, you identified above, pre-selected during their enrollment?</label>
+                                            <span class="cst-tooltip"><a class="ttip" id="ttip8e491bd5-3cdc-46b8-bb41-1854ae75958c" style="display:none;" href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="Tooltip on right"><i class="fa fa-info" aria-hidden="true"></i></a></span>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" id="IsAutoEnrollAffiliateProgram1" name="IsAutoEnrollAffiliateProgram" value="Yes" checked="">
+                                                    Yes
+                                                </label>
+                                                <label>
+                                                    <input type="radio" id="IsAutoEnrollAffiliateProgram2" name="IsAutoEnrollAffiliateProgram" value="No">
+                                                    No
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> <!-- /col -->
+                            </form>
+                            <div class="clearfix"> </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <a href="javascript:void(0)" class="btn btn-default btn-info" onclick="fnSaveSupport(0);">Save</a>
+                                    <a href="javascript:void(0)" class="btn btn-default btn-info" onclick="fnSaveSupport(1);">Save & Next</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts {
+    @Html.IncludeVersionedJs("/Scripts/app/SubsiteConfig.js")
+    @Html.IncludeVersionedJs("/Scripts/app/MoSvbdetails.js")
+}
+<script>
+
+    $(function () {
+        getTooltip();
+        visibleshowhide();
+        mysupportInfo();
+
+
+        $('#OpenHoursTime').datetimepicker({
+            format: 'LT'
+        });
+
+        $('#CloseHoursTime').datetimepicker({
+            format: 'LT'
+        });
+    });
+
+    $(document).ready(function () {
+        var UserId = $('#UserId').val();
+
+        if ($('#entityid').val() != $('#myentityid').val()) {
+            var UserId = $('#myid').val();
+            getSubSiteConfig(UserId);
+        } else {
+            getSubSiteConfig(UserId);
+        }
+
+        // var IsEnrolled = getIsEnrollmentSubmit();  //Moved into  getSubSiteConfig(UserId);
+        //chkBelowinfo   //Moved into  getSubSiteConfig(UserId);
+
+    });
+
+</script>

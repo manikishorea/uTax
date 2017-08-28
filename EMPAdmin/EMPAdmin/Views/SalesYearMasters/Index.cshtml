@@ -1,0 +1,81 @@
+﻿@model IEnumerable<uTax.EntityFramework.Edmx.SalesYearMaster>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Sales Year Management</h2>
+
+<p style="float:right;">
+    @Html.ActionLink("Active New Sales Year", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SalesYear)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApplicableFromDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApplicableToDate)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastUpdatedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastUpdatedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StatusCodeMaster.StatusCodes)
+        </th>*@
+        <th>Action</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SalesYear)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApplicableFromDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApplicableToDate)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastUpdatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastUpdatedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StatusCodeMaster.StatusCodes)
+        </td>*@
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

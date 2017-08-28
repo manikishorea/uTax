@@ -1,0 +1,434 @@
+﻿@using EMPPortal.Filters;
+@{
+    ViewBag.Title = "Activate Account";
+    if (Session["SubSiteManage"].ToString() != "")
+    {
+        Layout = "~/Views/Shared/_SubSiteManagementLayout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+}
+<input type="hidden" id="formid" name="formid" value="active" formid="site7a2c166c-c2ef-47c0-aa5f-e4950f9ff369" sitemapid="7a2c166c-c2ef-47c0-aa5f-e4950f9ff369" />
+<input type="hidden" id="ID" name="ID" />
+<h2>Activate My Account</h2>
+<div class="panel panel-default subsite">
+    <div class="utax-tabs new-label">
+        <div class="bs-component">
+            <ul style="margin-bottom: 15px;" class="nav nav-tabs">
+                <li class="active" id="libOfficeInfo"><a data-toggle="tab" href="#dvOfficeInfo">Office Information<div class="ripple-container"></div></a></li>
+                <li id="libOfficeConfig"><a data-toggle="tab" href="#dvOfficeConfig">Office Configuration</a></li>
+                <li id="libankenrollment"><a data-toggle="tab" href="#dvbankenrollment">Service Bureau Fees</a></li>
+                <li id="lionboarding_services"><a data-toggle="tab" href="#dvonboarding_services">Transmission Fees</a></li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div id="dvOfficeInfo" class="tab-pane fade active in">
+                    <!-- books -->
+                    <div class="col-md-6 main-office-blk-left">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <h3>Sub-Site</h3>
+                                <table class="table table-striped table-bordered table-hover ">
+                                    <tbody>
+                                        <tr>
+                                            <td>EFIN</td>
+                                            <td><span id="spEFIN"></span> </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Company Name </td>
+                                            <td colspan="2"><span id="spCompanyName"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Business Owner Name </td>
+                                            <td colspan="2"><span id="spBusinessOwnerName"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Physical Address </td>
+                                            <td colspan="2"><span id="spPhysicalAddress"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>City, State, Zip </td>
+                                            <td colspan="2"><span id="spCitystatezip"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Office Phone </td>
+                                            <td colspan="2"><span id="spOfficePhone"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Alternate Phone </td>
+                                            <td colspan="2"><span id="spAlternatePhone"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Primary email </td>
+                                            <td colspan="2"><span id="spPrimaryemail"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Alternate Contact </td>
+                                            <td colspan="2"><span id="spAlternativeContact"></span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6 main-office-blk-right">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <h3>Software Identification Information</h3>
+                                <div class="soft-blk">
+                                    <table class="table table-striped table-bordered table-hover ">
+                                        <tbody>
+                                            <tr>
+                                                <td style="width:50%">User ID</td>
+                                                <td><span id="spMasterUserID"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Transmission Password</td>
+                                                <td><span id="spTransmissionpwd"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Master ID</td>
+                                                <td><span id="spMasterident"></span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="clearfix"></div>
+                                <h3>Parent Account</h3>
+                                <div class="soft-blk">
+
+                                    <table class="table table-striped table-bordered table-hover ">
+                                        <tbody>
+                                            <tr>
+                                                <td style="width:50%">EFIN</td>
+                                                <td><span id="p_spEFIN"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Company Name</td>
+                                                <td><span id="p_spCompanyName"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Owner First Name</td>
+                                                <td><span id="p_spOwnerName"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Owner Last Name</td>
+                                                <td><span id="p_spOwnerLastName"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Physical Address</td>
+                                                <td><span id="p_spPhysicalAddress"></span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>City, State, Zip</td>
+                                                <td><span id="p_spCityStateZip"></span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 custom-button">
+                        <a href="javascript:void(0)" class="btn btn-default btn-info" onclick="GetCustomerInfomationForSubSiteOffice()">Edit</a>
+                    </div>
+                </div>
+                <div id="dvOfficeConfig" class="tab-pane fade">
+                    <div class="multi-question">
+                        <div class="question-block cst-radio-blk">
+                            <div class="form-group">
+                                <label>Will this site be sharing the EFIN listed above with any other Office?</label>
+                                <div class="radio" id="divEFINlisted">
+                                    <label>
+                                        <input type="radio" name="rbEFINlisted" id="rbEFINlistedYes" class="yesbox">
+                                        Yes
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="rbEFINlisted" value="option1" id="rbEFINlistedNo" class="nobox">
+                                        No
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sub-question" id="dbsubquestions" style="display:none;">
+                            <div class="question-block">
+                                <div class="form-group">
+                                    <label>Does this site own this EFIN?</label>
+                                    <div class="radio" id="divEFIN">
+                                        <label>
+                                            <input type="radio" name="rbEFIN" value="option2" id="rbEFINYes" onclick="funEFINInfo()" class="yesbox">
+                                            Yes (This site will complete the Bank Enrollment application)
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="rbEFIN" value="option2" id="rbEFINNo" class="nobox" onclick="funEFINInfo()">
+                                            No (The EFIN owner's site will complete  the Bank Enrollment application)
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group" id="dvEFINOwner">
+                                    <div class="row">
+                                        <div class="col-md-1"></div>
+                                        <div class="col-md-5">
+                                            <label>Please enter the User ID of the EFIN owner's site</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-1"></div>
+                                        <div class="col-md-5">
+                                            <input type="text" id="txtEFINOwnerSite" class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- sub-question-end -->
+                        <div class="support-language">
+                            <div class="form-group">
+                                @if (ViewBag.IsSubSiteEFIN)
+                                {
+                                    <label>Is this sub-site a new single office or a main site with new sub-site, or simply an additional EFIN ?</label>
+                                }
+                                else
+                                {
+                                    <label>Is this sub-site a new single office or a main site with new sub-site ?</label>
+                                }
+
+                                <div class="radio" id="divSOorSSorEFIN">
+                                    <label>
+                                        <input type="radio" name="rbSOorSSorEFIN" value="1" id="rbNewSO">
+                                        Single Office
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="rbSOorSSorEFIN" value="2" id="rbNewSS">
+                                        Main Site with Sub-site
+                                    </label>
+                                    @if (ViewBag.IsSubSiteEFIN)
+                                    {
+                                        <label>
+                                            <input type="radio" name="rbSOorSSorEFIN" value="3" id="rbAdditionalEFIN">
+                                            Additional EFIN
+                                        </label>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="support-language">
+                            <div class="form-group">
+                                <label>How will this sub-site send tax return data?</label>
+                                <div class="radio" id="divTaxreturn">
+                                    <label>
+                                        <input type="radio" name="rbTaxreturn" value="option3" id="rbTaxreturnYes">
+                                        Directly to the IRS (Transmitter)
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="rbTaxreturn" value="option3" id="rbTaxreturnNo">
+                                        To the Main Site for review (Feeder)
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="question-block"  id="divSubSiteMSOLoc">
+                                <div class="form-group">
+                                    <label>Is this site an MSO location?</label>
+                                    <div class="radio" id="divMSO">
+                                        <label>
+                                            <input type="radio" name="rbMSO" value="option2" id="rbMSOYes" class="yesbox">
+                                            Yes
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="rbMSO" value="option2" id="rbMSONo" class="nobox">
+                                            No
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 custom-button">
+                        <a href="/SubSiteOfficeConfiguration/SubSiteOfficeConfig" class="btn btn-default btn-info">Edit</a>
+                    </div>
+                </div>
+                <div id="dvbankenrollment" class="tab-pane fade">
+                    <input type="hidden" id="hdnTotalSVBFees" name="hdnTotalSVBFees" value="0" />
+                    <input type="hidden" id="hdnTotalTransFees" name="hdnTotalTransFees" value="0" />
+
+                    <input type="hidden" id="hdnSVBNoBank" name="hdnSVBNoBank" value="0" />
+                    <input type="hidden" id="hdnTranNoBank" name="hdnTranNoBank" value="0" />
+                    <div class="form-group">
+                        <div class="alert alert-danger" id="dvNotDataPageSVB" style="display:none;">No Bank(s) have been configured as available for this sub-site. </div>
+                        <div id="divSVB">
+                            <div class="col-md-12">
+                                <label>Please Enter the Service Bureau Fee amount for this sub-site.</label>
+                                <span class="cst-tooltip"><a class="ttip" id="ttipaa8930d3-4d58-4f75-8073-bab006f2ca61" style="display:none;" href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="Tooltip on right"><i class="fa fa-info" aria-hidden="true"></i></a></span>
+                            </div>
+                            <div class="col-md-12">
+                                <div id="dvServiceBureau"></div>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 custom-button">
+                        <a href="/SubSiteOfficeConfiguration/SubSiteOfficeFeeConfig" class="btn btn-default btn-info">Edit</a>
+                    </div>
+                </div>
+                <div id="dvonboarding_services" class="tab-pane fade">
+                    <div class="form-group">
+                        <div class="alert alert-danger" id="dvNotDataPageTrans" style="display:none;"> No Bank(s) have been configured as available for this sub-site. </div>
+                        <div id="divTrans">
+                            <div class="col-md-12">
+                                <label>Please Enter the Transmitter Fee amount for this sub-site.</label>
+                                <span class="cst-tooltip"><a class="ttip" id="ttip635905bf-aa31-4df2-a662-d08b6ded2f93" style="display:none;" href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="Tooltip on right"><i class="fa fa-info" aria-hidden="true"></i></a></span>
+                            </div>
+                            <div class="col-md-12">
+                                <div id="dvTransmitter"></div>
+                            </div>
+
+                            <div class="clearfix"> </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 custom-button">
+                        <a href="/SubSiteOfficeConfiguration/SubSiteOfficeFeeConfig" class="btn btn-default btn-info">Edit</a>
+                    </div>
+                </div>
+
+                <div class="col-md-6 text-right custom-button activate-btn">
+                    <a href="javascript:void(0)" class="btn btn-default btn-info" data-toggle="modal" onclick="fnValidConfigStatus();"  id="btnSubActiveAccount">Activate</a>
+                </div><div class="clearfix"> </div>
+                <div class="col-md-12">
+                    <div id="divSubActiveAccount"></div>
+                </div>
+                <div class="clearfix"> </div>
+
+
+                <div id="bank-confimation" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <p>Are you sure activate your account?</p>
+                                <button type="button" class="btn btn-default btn-confirm" data-dismiss="modal" onclick="fnActiveCuseromerInfo();">Ok</button>
+                                <button type="button" class="btn btn-default btn-confirm cancel-btn" data-dismiss="modal">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts {
+@Html.IncludeVersionedJs("/Scripts/app/subsiteofficeconfig.js")
+@Html.IncludeVersionedJs("/Scripts/app/subsiteofficebankfeeconfig.js")
+@Html.IncludeVersionedJs("/Scripts/app/customerInformation.js")
+@Html.IncludeVersionedJs("/Scripts/app/ManageSubSite.js")
+}
+<script>
+    $(document).ready(function () {
+
+        getTooltip();
+        var parentid = $('#parentid').val();
+        var UserId = $('#UserId').val();
+
+        if ($('#entityid').val() != $('#myentityid').val()) {
+            parentid = $('#myparentid').val();
+            UserId = $('#myid').val();
+        }
+
+
+        if ($('#entityid').val() != $('#myentityid').val()) {
+            GetSubSiteCustomerInfomationForMainOffice(UserId);
+        }
+        else {
+            GetCustomerInfomationForMainOffice();
+            fnParentSubSiteInformation(parentid);
+        }
+
+        if ($('#entityid').val() != $('#myentityid').val()) {
+            getSubsiteOfficeInformation($('#myid').val(), $('#myparentid').val());
+        }
+        else {
+            getSubsiteOfficeInformation($('#UserId').val(), $('#parentid').val());
+        }
+
+
+
+        // Fee & Setup
+
+        getTotalFeeSVBAndTran(UserId);
+
+        //if ($('#entitydisplayid').val() == $('#BaseEntity_SOME').val()) {
+        //    parentid = $('#supparentid').val();
+        //}
+
+        getSubsiteBankAndQuestions($('#dvServiceBureau'), $('#dvTransmitter'));
+        getMainSiteFeeInformation(UserId);
+        GetSubSiteBankFee(UserId)
+
+
+        //getSubsiteBankAndQuestions($('#dvServiceBureau'), $('#dvTransmitter'));
+        //GetSubsiteOfficeBankFee($('#UserId').val());
+
+        funEFINInfo();
+
+
+        $(".yesbox").each(function () {
+            var isChecked = $(this).is(":checked");
+            if (isChecked) {
+                $(this).closest('.question-block').siblings(".sub-question").show();
+            }
+        });
+
+        $(".nobox").each(function () {
+            var isChecked = $(this).is(":checked");
+            if (isChecked) {
+                $(this).closest('.question-block').siblings(".sub-question").hide();
+            }
+        });
+
+        /* on change function */
+
+        $(".yesbox").change(function () {
+            var isChecked = $(this).is(":checked");
+            if (isChecked) {
+                $(this).closest('.question-block').siblings(".sub-question").show();
+            }
+        });
+
+        $(".nobox").change(function () {
+            var isChecked = $(this).is(":checked");
+            if (isChecked) {
+                $(this).closest('.question-block').siblings(".sub-question").hide();
+            }
+        });
+
+
+
+        $('input[type=text]').attr('readonly', 'readonly');
+        $('input[type=radio]').attr('disabled', 'disabled');
+        $('select').attr('disabled', 'disabled');
+        $('textarea').attr('readonly', 'readonly');
+        $('input[type=checkbox]').attr('disabled', 'disabled');
+        fnHideMSOLoc();
+    });
+
+
+    function funEFINInfo() {
+        if ($('#rbEFINNo').is(':checked')) {
+            $('#dvEFINOwner').show();
+        }
+        else {
+            $('#dvEFINOwner').hide();
+        }
+    }
+
+    function IsNextLinkActive() {
+
+        $("#spanNextLink").hide();
+        if (($('#hdnSVBNoBank').val() == '1' || $('#hdnSVBNoBank').val() == 1) && ($('#hdnTranNoBank').val() == '1' || $('#hdnTranNoBank').val() == 1)) {
+            $("#spanNextLink").show();
+        }
+    }
+
+  
+
+</script>

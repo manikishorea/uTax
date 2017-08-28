@@ -1,0 +1,125 @@
+﻿@using EMPPortal.Filters;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_FrontEndLayout.cshtml";
+}
+
+<div class="container-fluid main">
+
+
+    <div class="row">
+        <div class="col-md-3 padding-left-25 sidebar">
+            <h2>Forgot User Id</h2>
+            <p><a href="~/ForgotAccount/Password" class="cst-link">Forgot Password</a></p>
+            <p><a href="~/CustomerLogin/Index" class="cst-link">Back to Login</a></p>
+        </div>
+
+        <div class="col-md-9 padding-right-25">
+
+            <div class="login-pg">
+                <div class="intro">
+                    uTax offers bank enrollment services which requires your sub-sites to complete their bank enrollment on an unbranded web
+                    portal. Please note that uTax will contact each of your sub-sites directly to assist them in completing the bank enrollment
+                    application.
+                </div>
+                @*<div class="form-logo">
+                        <img src="@Url.Content("~/Content/images/logo.png")">
+                    </div>*@
+                <form class="clearfix">
+
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="select-blk">
+
+                                <div class="form-group is-empty">
+                                    <label class="col-md-2 control-label" for="i5">User Id</label>
+                                    <div class="col-md-10">
+                                        <input type="text" id="CrossLinkUserId" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="select-blk">
+                                <div class="form-group is-empty">
+                                    <label class="col-md-2 control-label" for="i5">Security Question</label>
+                                    <div class="col-md-10">
+                                        <select id="QuestionId" name="QuestionId" class="form-control"></select> @*onchange="return getGroupRoleMap(this);"*@
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group is-empty">
+                                    <label class="col-md-2 control-label" for="i5">Answer</label>
+                                    <div class="col-md-10">
+                                        <input type="text" id="Answer" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="select-blk">
+                                <div class="form-group is-empty">
+                                    <label class="col-md-2 control-label" for="i5">Security Question</label>
+                                    <div class="col-md-10">
+                                        <select id="QuestionId2" name="QuestionId" class="form-control"></select> @*onchange="return getGroupRoleMap(this);"*@
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group is-empty">
+                                    <label class="col-md-2 control-label" for="i5">Answer</label>
+                                    <div class="col-md-10">
+                                        <input type="text" id="Answer" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="select-blk">
+                                <div class="form-group is-empty">
+                                    <label class="col-md-2 control-label" for="i5">Security Question</label>
+                                    <div class="col-md-10">
+                                        <select id="QuestionId3" name="QuestionId" class="form-control"></select> @*onchange="return getGroupRoleMap(this);"*@
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group is-empty">
+                                    <label class="col-md-2 control-label" for="i5">Answer</label>
+                                    <div class="col-md-10">
+                                        <input type="text" id="Answer" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-0 lgn">
+                        <input class="btn btn-default btn-raised btn-info " type="button" name="Index" id="btnSubmit"
+                               value="Submit" onclick="fnForgotPassword();" />
+                        @*<input class="btn btn-default btn-raised btn-info " type="button" name="Index" id="btnSubmit"
+                            value="Cancel" onclick="fnCancel();" />*@
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    @*<script src="~/Scripts/app/common.js"></script>
+    <script src="~/Scripts/app/ForgotPassword.js"></script>*@
+@Html.IncludeVersionedJs("/Scripts/app/common.js")
+@Html.IncludeVersionedJs("/Scripts/app/ForgotPassword.js")
+}
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        getQuestionMaster($('#QuestionId'));
+        getQuestionMaster($('#QuestionId2'));
+        getQuestionMaster($('#QuestionId3'));
+    });
+
+
+</script>

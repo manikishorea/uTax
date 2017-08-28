@@ -1,0 +1,11 @@
+﻿.help-section {
+    bottom: 5px;
+}
+
+.side-navigation ul li a.mainmenu::before {
+    color: #444;
+}
+#divmenu .nav > li > a:focus, #divmenu .nav > li > a:hover {
+    background-color: #f2f2f2;
+    text-decoration: none;
+}

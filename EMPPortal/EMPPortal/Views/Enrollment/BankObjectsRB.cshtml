@@ -1,0 +1,541 @@
+﻿<h2>Bank Object - Republic Bank - <span id="spnBankStatus"></span></h2>
+
+<div class="panel panel-default subsite">
+    <div class="utax-tabs new-label">
+        <div class="bs-component">
+            <ul style="margin-bottom: 15px;" class="nav nav-tabs">
+                <li class="active"><a href="#dvoffice" id="a_office" data-toggle="tab">Office Information</a></li>
+                <li><a href="#dvowner" id="a_bowner" data-toggle="tab">Business Owner Information</a></li>
+                <li><a href="#dvefinowner" id="a_eowner" data-toggle="tab">EFIN Object Information</a></li>
+                <li><a href="#dvGeneral" id="a_general" data-toggle="tab">General Questions</a></li>
+                <li><a href="#dvsqus" id="a_secQtns" data-toggle="tab">Security Questions</a></li>
+                <li><a href="#dv_bankinfo" id="a_bank" data-toggle="tab">Fee Deposit Bank Account Information</a></li>
+                <li><a href="#dv_fee" id="a_fee" data-toggle="tab">Fee Information</a></li>
+                <li><a href="#dvRawxml" id="a_dvRawxml" data-toggle="tab">Raw Data</a></li>
+            </ul>
+            <div class="tab-content tab-tpg" id="myTabContent">
+                <div id="dvoffice" class="tab-pane fade active in">
+
+                    <div class="col-md-12">
+                        <div class="col-md-6 main-office-blk-left">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <h3>Office Information</h3>
+                                    <table class="table table-striped table-bordered table-hover ">
+                                        <tbody>
+                                            <tr>
+                                                <td>Office Name (Company)</td>
+                                                <td><span id="txt_officename" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>First Name (OfficeContactFirstName)</td>
+                                                <td><span id="txt_offcntFN" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Last Name (OfficeContactLastName)</td>
+                                                <td><span id="txt_offcntLN" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Email Address (EmailAddress)</td>
+                                                <td><span id="txt_email" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Office Phone Number (OfficePhoneNumber)</td>
+                                                <td><span id="txt_officephone" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Cell Phone Number (CellPhoneNumber)</td>
+                                                <td><span id="txt_cellphone" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Office Contact SSN (OfficeContactSSN)</td>
+                                                <td><span id="txt_offcntSSN" /></td>
+                                            </tr>
+                                            <tr style="display:none;">
+                                                <td>Office Contact DOB ()</td>
+                                                <td><span id="txt_offContactDOB" /></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 main-office-blk-left">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <h3>Office Manager Information</h3>
+                                    <table class="table table-striped table-bordered table-hover ">
+                                        <tbody>
+                                            <tr>
+                                                <td>Office Manager First Name (OfficeManagerFirstName)</td>
+                                                <td><span id="txt_offmngrFN" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Office Manager Last Name (OfficeManagerLastName)</td>
+                                                <td><span id="txt_offmngeLN" /></td>
+                                            </tr>
+                                            <tr style="display:none;">
+                                                <td>Office Manager Email (EmailAddress)</td>
+                                                <td><span id="txt_offManagerEmail" /></td>
+                                            </tr>
+                                            <tr style="display:none;">
+                                                <td>Manager Phone Number ()</td>
+                                                <td><span id="txt_offmngrPhoneNo" /></td>
+                                            </tr>
+                                            <tr style="display:none;">
+                                                <td>Manager Cell Phone Number ()</td>
+                                                <td><span id="txt_offmngeCellPhone" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Office Manager SSN (OfficeManagerSSN)</td>
+                                                <td><span id="txt_offmngrSSN" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Office Manager DOB (OfficeManagerDOB)</td>
+                                                <td><span id="txt_offmngrDOB" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Office Physical Street Address (OfficePhysicalStreet)</td>
+                                                <td><span id="txt_officeaddress" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Office Physical City (OfficePhysicalCity)</td>
+                                                <td><span id="txt_officecity" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Office Physical State (OfficePhysicalState)</td>
+                                                <td><span id="ddl_officestate" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Office Physical Zip Code (OfficePhysicalZip)</td>
+                                                <td><span id="txt_officezip" /></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-6 main-office-blk-left">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <h3>Mailing Information</h3>
+                                    <table class="table table-striped table-bordered table-hover ">
+                                        <tbody>
+
+                                            <tr>
+                                                <td>Mailing Address (MailingAddress)</td>
+                                                <td><span id="txt_mailaddress" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Mailing City (MailingCity)</td>
+                                                <td><span id="txt_mailcity" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Mailing State (MailingState)</td>
+                                                <td><span id="ddl_mailstate" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Mailing Zip (MailingZip)</td>
+                                                <td><span id="txt_mailzip" /></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 main-office-blk-left">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <h3>Shipping Information</h3>
+                                    <table class="table table-striped table-bordered table-hover ">
+                                        <tbody>
+
+                                            <tr>
+                                                <td>Shipping Street Address (FulfillmentShippingStreet)</td>
+                                                <td><span id="txt_fulladdress" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Shipping City (FulfillmentShippingCity)</td>
+                                                <td><span id="txt_fullcity" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Shipping State (FulfillmentShippingState)</td>
+                                                <td><span id="ddl_fullstate" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Shipping Zip Code (FulfillmentShippingZip)</td>
+                                                <td><span id="txt_fullzip" /></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="dvowner" class="tab-pane fade">
+
+                    <div class="col-md-12">
+                        <div class="col-md-6 main-office-blk-left">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <h3>Business Owner Information</h3>
+                                    <table class="table table-striped table-bordered table-hover ">
+                                        <tbody>
+                                            <tr>
+                                                <td>Owner First Name (OwnerFirstName)</td>
+                                                <td><span id="txt_ownerFN" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Owner Last Name (OwnerLastName)</td>
+                                                <td><span id="txt_ownerLN" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Owner SSN (OwnerSSN)</td>
+                                                <td><span id="txt_ownerSSN" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Owner DOB (OwnerDOB)</td>
+                                                <td><span id="txt_ownerDOB" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Owner Home Phone (OwnerHomePhone)</td>
+                                                <td><span id="txt_ownerphone" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Owner Address (OwnerAddress)</td>
+                                                <td><span id="txt_owneraddress" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Owner City (OwnerCity)</td>
+                                                <td><span id="txt_ownercity" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Owner State (OwnerState)</td>
+                                                <td><span id="ddl_ownerstate" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Owner Zip (OwnerZip)</td>
+                                                <td><span id="txt_ownerzip" /></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 main-office-blk-left">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <h3>Legal Entity Information</h3>
+                                    <table class="table table-striped table-bordered table-hover ">
+                                        <tbody>
+                                            <tr>
+                                                <td>Legal Entity Status Indicator (LegalEntityStatusInd)</td>
+                                                <td><span id="ddl_legalentity" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>LLC Membership Registration (LLCMembershipRegistration)</td>
+                                                <td><span id="ddl_llcmembership" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Business EIN (EIN)</td>
+                                                <td><span id="txt_businessEIN" /></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="dvefinowner" class="tab-pane fade">
+                    <div class="col-md-12">
+                        <div class="col-md-6 main-office-blk-left">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <h3>EFIN Owner Information</h3>
+                                    <table class="table table-striped table-bordered table-hover ">
+                                        <tbody>
+                                            <tr>
+                                                <td>EFIN Holder First Name (FName)</td>
+                                                <td><span id="txt_efinownerFN" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>EFIN Holder Last Name (LName)</td>
+                                                <td><span id="txt_efinownerLN" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>EFIN Holder Title (Title)</td>
+                                                <td><span id="txt_efintitle" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>EFIN Owner SSN (SSN)</td>
+                                                <td><span id="txt_efinownerSSN" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>EFIN Owner DOB (DOB)</td>
+                                                <td><span id="txt_efinownerDOB" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Is EFIN part of a multi-office? (MultiOffice)</td>
+                                                <td><span id="ddl_multioffice" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>EFIN Holder Phone (Phone)</td>
+                                                <td><span id="txt_efinownerphone" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>EFIN Holder Mobile (Mobile)</td>
+                                                <td><span id="txt_efinownermobile" /></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 main-office-blk-left">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <h3>Address Information</h3>
+                                    <table class="table table-striped table-bordered table-hover ">
+                                        <tbody>
+                                            <tr>
+                                                <td>EFIN Holder Address (Address)</td>
+                                                <td><span id="txt_efinownerAddress" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>EFIN Holder City (City)</td>
+                                                <td><span id="txt_efinownercity" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>EFIN Holder State (State)</td>
+                                                <td><span id="ddl_efinownerstate" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>EFIN Holder Zip (Zip)</td>
+                                                <td><span id="txt_efinownerZip" /></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>EFIN Holder Email Address (Email)</td>
+                                                <td><span id="txt_efinowneremail" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>EFIN Holder EIN (EIN)</td>
+                                                <td><span id="txt_efinownerein" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>EFIN Holder ID Number (IDNumber)</td>
+                                                <td><span id="txt_efinowneridnumber" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>EFIN Holder ID State (IDState)</td>
+                                                <td><span id="ddl_idstate" /></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div id="dvGeneral" class="tab-pane fade">
+
+
+                    <table class="table table-striped table-bordered table-hover ">
+                        <tbody>
+                            <tr>
+                                <td>What products are you offering? (DebitProgramInd)</td>
+                                <td><span id="ddl_productsoffering" /></td>
+                            </tr>
+                            <tr>
+                                <td>Will you ensure all tax preparers working in your office obtain a Preparer Tax Identification Number (PTIN), as required by the IRS? (PTINInd)</td>
+                                <td><span id="ddl_ptin" /></td>
+                            </tr>
+                            <tr>
+                                <td>If required by state and/or local laws and regulations, will you possess all licenses and/or certifications for preparing and/or facilitating Bank Products? (TaxPrepLicensing)</td>
+                                <td><span id="ddl_processlaw" /></td>
+                            </tr>
+                            <tr>
+                                <td>If required by your state and/or local laws and regulations, will you be in compliance with all posting, written, advertising and/or oral disclosure laws related to tax preparation and/or Bank Products? (ComplianceWithLawInd)</td>
+                                <td><span id="ddl_complaince" /></td>
+                            </tr>
+                            <tr>
+                                <td>Have you been the subject of any fines, corrective actions or official orders related to violations of law or consumer compliance regulations relative to tax preparation or consumer lending? (PreviousViolationFineInd) </td>
+                                <td><span id="ddl_consumerlending" /></td>
+                            </tr>
+                            <tr>
+                                <td>Number of all personnel who will be offering or discussing Republic Bank products or who have access to customer information in conjunction with tax preparation services (NumOfPersonnel)</td>
+                                <td><span id="txt_noofpersoneel" /></td>
+                            </tr>
+                            <tr>
+                                <td>Before using any advertising or marketing of Bank Products, will you first receive approval from Republic Bank?  This includes but is not limited to radio or television scripts, videos, newspaper or magazine ads, internet websites or advertisements, social media websites, point-of-sale materials, direct mail pieces, emails, newsletters, announcements, PowerPoint presentations and/or training manuals (AdvertisingInd)</td>
+                                <td><span id="ddl_advertiseapprvl" /></td>
+                            </tr>
+                            <tr>
+                                <td>Website Address (WebsiteAddress)</td>
+                                <td><span id="txt_website" /></td>
+                            </tr>
+                            <tr>
+                                <td>Years In Business (YearsInBusiness)</td>
+                                <td><span id="txt_yearsinbusiness" /></td>
+                            </tr>
+                            <tr>
+                                <td>Number Of Bank Products Last Year (LastYearBankProducts)</td>
+                                <td><span id="txt_noofbankprdcts" /></td>
+                            </tr>
+                            <tr>
+                                <td>Previous Bank Product Facilitator (BankProductFacilitator)</td>
+                                <td><span id="ddl_prevbank" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="dvsqus" class="tab-pane fade">
+
+                    <table class="table table-striped table-bordered table-hover ">
+                        <tbody>
+                            <tr>
+                                <td>Will you store current year and previous year customer Bank Product documents in a locked room, locked filing cabinet, locked desk drawer or secured electronically when not in use? (DocumentStorageInd)</td>
+                                <td><span id="ddl_lockeddocs" /></td>
+                            </tr>
+                            <tr>
+                                <td>Will you keep printed checks, check stock, and prepaid cards in a locked cabinet, safe or drawer? (CheckCardStorageInd)</td>
+                                <td><span id="ddl_lockedcardschecks" /></td>
+                            </tr>
+                            <tr>
+                                <td>Will you keep all office and access doors locked when no employees are on site? (OfficeDoorInd)</td>
+                                <td><span id="ddl_lockedoffice" /></td>
+                            </tr>
+                            <tr>
+                                <td>Will you limit access to customer documents and information to yourself and your authorized employees? (DocumentAccessInd)</td>
+                                <td><span id="ddl_limitaccess" /></td>
+                            </tr>
+                            <tr>
+                                <td>Will you have and follow a plan to properly dispose of customer information when it is no longer needed? (Acceptable options may include using a shredder in your office, hiring a shredding service or securely incinerating documents.) (SensitiveDocumentDestInd)</td>
+                                <td><span id="ddl_plandispose" /></td>
+                            </tr>
+                            <tr>
+                                <td>Will you require each user to log into the software with a user ID and password unique to each employee for all of the computers used in the preparation of Bank Product Applications? (LoginPassInd)</td>
+                                <td><span id="ddl_logintoemployees" /></td>
+                            </tr>
+                            <tr>
+                                <td>Will you run an anti-virus software program that is regularly updated at least every 30 calendar days on all computers used in preparation of Bank Product Applications? (AntiVirusInd)</td>
+                                <td><span id="ddl_antivirus" /></td>
+                            </tr>
+                            <tr>
+                                <td>Will you protect all computers used in the preparation of Bank Product Applications with a firewall? (FirewallInd)</td>
+                                <td><span id="ddl_firewall" /></td>
+                            </tr>
+                            <tr>
+                                <td>Will you require all of your employees, contractors or affiliates who will offer or discuss Bank Products or who have access to customer information in conjunction with Bank Products to take the online training course required by Republic Bank? (ProductTrainingInd)</td>
+                                <td><span id="ddl_onlinetraining" /></td>
+                            </tr>
+                            <tr>
+                                <td>Will you require a password to access your Wireless Network (wifi)? (If one is used) (WirelessInd)</td>
+                                <td><span id="ddl_pwdrqd" /></td>
+                            </tr>
+                            <tr>
+                                <td>Are you using a supported operating system (i.e. Windows 7, 8, or 10 or MacOS 10.7-10.11)? (SupportedOsInd)</td>
+                                <td><span id="ddl_wifipwd" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <div id="dv_bankinfo" class="tab-pane fade">
+                    <table class="table table-striped table-bordered table-hover ">
+                        <tbody>
+                            <tr>
+                                <td>Name on Checking Account (AcctName)</td>
+                                <td><span id="txt_accountname" /></td>
+                            </tr>
+                            <tr>
+                                <td>Bank Name (BankName)</td>
+                                <td><span id="txt_bankname" /></td>
+                            </tr>
+                            <tr>
+                                <td>Bank Routing Number (RTN)</td>
+                                <td><span id="txt_bankroutingno" /></td>
+                            </tr>
+                            <tr>
+                                <td>Bank Account Number (DAN)</td>
+                                <td><span id="txt_bankaccountno" /></td>
+                            </tr>
+                            <tr>
+                                <td>Bank Account Type (AcctType)</td>
+                                <td><span id="ddl_accounttype" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="dv_fee" class="tab-pane fade">
+                    <table class="table table-striped table-bordered table-hover ">
+                        <tbody>
+                            <tr>
+                                <td>Do you want to charge a SVB fee on EF Only and Paper Returns too ? (SBFeeAll)</td>
+                                <td><span id="chk_fbfee"/></td>
+                            </tr>
+                            <tr>
+                                <td>Service Bureau Fee (SBPrepFee)</td>
+                                <td><span id="txt_sbfee" /></td>
+                            </tr>
+                            <tr>
+                                <td>Transmitter Fee (EROTranFee)</td>
+                                <td><span id="txt_transmitfee" /></td>
+                            </tr>
+                            <tr>
+                                <td>Do you want to offer the NetSpend Visa Prepaid Card to your customers? (CardProgram)</td>
+                                <td><span id="ddl_cardprogram" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="dvRawxml" class="tab-pane fade">
+                    <div class="col-md-12 main-office-blk-left">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <h3>Latest Bank Object</h3>
+                                <div id="dv_latestxml">
+                                    <table id="tbl_app" class="table table-striped table-bordered table-hover">
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 main-office-blk-left">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <h3>RB Bank Object</h3>
+                                <div id="dv_rbxml"><table id="tbl_bank" class="table table-striped table-bordered table-hover"></table></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 main-office-blk-left">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <h3>EFIN Object</h3>
+                                <div id="dv_efinxml"><table id="tbl_efin" class="table table-striped table-bordered table-hover"></table></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 text-right" id="dv_accrej">
+        <a onclick="AcceptBank()" class="btn btn-default btn-info">Approve</a>
+        <a onclick="RejectBank()" class="btn btn-danger-back btn-info">Reject</a>
+    </div>
+</div>

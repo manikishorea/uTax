@@ -1,0 +1,74 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row bank-blk">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3>Balance Due on Account Credit Card</h3>
+
+                <div class="row">
+                    <div class="col-md-6"><div class="form-group"><label>Cardholder’s Name:</label><input type="text" id="inputDefault" class="form-control"></div></div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="radio">
+                                <label><input type="radio" name="sample1" value="option1" checked="">MasterCard</label>
+                                <label><input type="radio" name="sample1" value="option1" checked="">Visa</label>
+                                <label><input type="radio" name="sample1" value="option1" checked="">American Express</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6"><div class="form-group"><label>Billing Address:</label><input type="text" id="inputDefault" class="form-control"></div></div>
+                    <div class="col-md-6"><div class="form-group"><label>City/State/Zip:</label><input type="text" id="inputDefault" class="form-control"></div></div>
+
+
+                </div>
+                <div class="row">
+                    <div class="col-md-6"><div class="form-group"><label>Credit Card Number:</label><input type="text" id="inputDefault" class="form-control"></div></div>
+                    <div class="col-md-6"><div class="form-group"><label>Expiration:</label><input type="text" id="inputDefault" class="form-control"></div></div>
+
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="checkbox authorize">
+                            <label>
+                                <input type="checkbox"><span class="checkbox-material"></span> I authorize uTax Software LLC to charge the Credit Card listed above for any Balance Due on Account carried over from the prior year, as stated above.
+                            </label>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="clearfix"> </div>
+        <div class="col-md-12">
+            <a href="javascript:void(0)" class="btn btn-default btn-info">Save</a>
+        </div>
+
+
+
+
+    </div>
+
+</div>
+
+
+@section scripts {
+    <script src="~/Scripts/app/common.js"></script>
+    <script src="~/Scripts/app/customerInformation.js"></script>
+}
+
+<script>
+    $(document).ready(function () {
+        getAllCustomerInformation();
+    });
+</script>

@@ -1,0 +1,130 @@
+﻿@using EMPPortal.Filters;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="page-title">Main Office Configuration</h2>
+<input type="hidden" id="ID" name="ID" />
+<div class="panel panel-default cst-panel">
+    <div class="panel-body">
+
+        <div class="multi-question">
+            <div class="question-block cst-radio-blk">
+                <p>Will the main site transmit tax returns?</p>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="rbtaxreturns" checked="" id="rbTaxReturnYes" class="yesbox">
+                        Yes
+                    </label>
+                    <label>
+                        <input type="radio" name="rbtaxreturns" value="option1" id="rbTaxReturnNo" class="nobox">
+                        No
+                    </label>
+                </div>
+            </div>
+            <div class="sub-question" id="dbsubquestions">
+                <div class="question-block">
+                    <p>Will the main site offer Bank Products?</p>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="sample2" value="option2" id="rbBankProdYes" checked="" class="yesbox">
+                            Yes
+                        </label>
+                        <label>
+                            <input type="radio" name="sample2" value="option2" id="rbBankProdNo" class="nobox">
+                            No
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-5">
+                        <label for="i5" class="control-label">How many tax professionals in your office?  (1 to 50)</label>
+                        <input type="number" class="form-control digit" id="TaxProfessionals" min="1" max="50" maxlength="2">
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="form-group">
+                    <p>Will the software be installed on the network?</p>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="sample4" value="option4" id="rbsoftwareYes" checked="">
+                            Yes
+                        </label>
+                        <label>
+                            <input type="radio" name="sample4" value="option4" id="rbsoftwareNo">
+                            No
+                        </label>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="form-group">
+                    <div class="col-md-5">
+                        <label for="i5" class="control-label">How many computers will run the software? (1 to 99)</label>
+                        <input type="number" class="form-control digit" id="computersoftware" min="1" max="99" maxlength="2">
+                    </div>
+                </div>
+            </div> <!-- sub-question-end -->
+            <div class="form-group">
+                <p>Whate is you preferred support language?</p>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="sample3" value="option3" id="rbsupportYes" checked="">
+                        Yes
+                    </label>
+                    <label>
+                        <input type="radio" name="sample3" value="option3" id="rbsupportNo">
+                        No
+                    </label>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+<div class="clearfix"> </div>
+<div class="col-md-10">
+    <a href="javascript:void(0)" class="btn btn-default" onclick="fnSaveMainOfficeConfig()">Save</a>
+</div>
+
+
+@section scripts {
+    @*<script src="~/Scripts/app/common.js"></script>
+    <script src="~/Scripts/app/mainofficeconfig.js"></script>*@
+@Html.IncludeVersionedJs("/Scripts/app/common.js")
+@Html.IncludeVersionedJs("/Scripts/app/mainofficeconfig.js")
+}
+
+<script>
+    $(document).ready(function () {
+        getMainOfficeInformation();
+    });
+</script>
+<script>
+    $(function () {
+        $(".yesbox").each(function () {
+            var isChecked = $(this).is(":checked");
+            if (isChecked) {
+                $(this).closest('.question-block').siblings(".sub-question").show();
+            }
+        });
+
+        /* on change function */
+
+        $(".yesbox").change(function () {
+            var isChecked = $(this).is(":checked");
+            if (isChecked) {
+                $(this).closest('.question-block').siblings(".sub-question").show();
+            }
+        });
+
+        $(".nobox").change(function () {
+            var isChecked = $(this).is(":checked");
+            if (isChecked) {
+                $(this).closest('.question-block').siblings(".sub-question").hide();
+            }
+        });
+    });
+
+</script>

@@ -1,0 +1,397 @@
+/*body {background: rgba(0, 0, 0, 0) url("../images/bg-3.jpg") no-repeat scroll center center / cover!important ;}*/
+body { background-color: #f2f2f2;}
+.container-fluid.main {padding: 0;}
+.navbar, .navbar.navbar-default {background-color: #ffffff;box-shadow: 0 0 2px 1px #cccccc;}
+.navbar h1 {color: #333333;font-size: 24px;font-weight: normal;margin-top: 15px;margin-bottom: 18px;padding-right: 25px;text-align: right;}
+.login-pg{ /*width: 450px;*/margin: 10px auto;opacity: 0.9;overflow: auto; padding: 0 10px;}
+.form-logo {text-align: center;}
+.form-logo img {margin: 25px 0;width: 180px;}
+.login-pg .form-group,.office-pg .form-group {margin: 0px 0 0;padding-bottom:0px;} 
+.login-pg .form-group label.control-label,.office-pg .form-group label.control-label{font-size: 14px;margin: 10px 0 0;text-align: left;font-weight:400;color:#444;padding-top: 5px;}
+.form-group .checkbox label, .form-group .radio label, .form-group label {color: #444444;font-size: 14px;}
+.form-control {height: 35px;padding: 7px 0 0;font-size: 14px;color: #444444;}
+.login-pg.cst-login .form-group label.control-label {
+    font-size: 14px;
+    margin-top: 0; padding-top: 0;
+    line-height:34px;
+}
+.login-pg.cst-login .form-control {font-size: 16px;border-bottom: 1px solid #d2d2d2;}
+.form-inp .checkbox-material {margin-right: 5px;}
+.form-inp .pass {color: #bdbdbd;float: right;font-weight: 400;margin-top: 21px;}
+.lgn {margin-top:0px;}
+.footer-txt {color: #bdbdbd;font-weight: 400;margin-top: 20px;padding-top: 15px;border-top: 1px solid #dbdbdb}
+.ph {font-weight: 500;margin-bottom: 2px;}
+.ques, .question {color: #777;font-size: 16px;font-weight: 500;}
+.question select{padding-top: 0px; }
+.upd-ques h4 {color: #0f75bd;font-weight: 600;margin-bottom: 25px; text-align: center;}
+.padding-right-25{padding-right: 25px}
+.padding-left-25{padding-left: 25px}
+.help-section {padding-right: 50px;}
+.btn.btn-default {
+    background-color: #1b75bc!important;
+    color: #ffffff!important;
+     padding: 6px 25px 5px;
+}
+.dropdown-menu li a:hover {
+    color: #1b75bc!important;
+}
+.col-md-12.lgn #btnSubmit {
+    border-radius: 0;
+    font-size: 16px;
+    margin-left: 25px;
+    padding: 10px 40px;
+}
+.sidebar h2 {
+    font-size: 24px;
+    font-weight: normal;
+    margin-top: 10px;
+}
+.frgt {
+    color: #1b75bc;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+/*Inner Page style*/
+.office-pg h2 {
+    font-size: 24px;
+    font-weight: normal;
+    margin-bottom: 25px;
+    margin-top: 10px;
+}
+.btn-save {
+    background: #ffffff none repeat scroll 0 0 !important;
+    color: #000000 !important;
+}
+.side-navigation ul {
+    margin: 0;
+    padding: 0 15px;
+}
+.side-navigation ul li a::before {
+    color: #cccccc;
+    content: "\f0c8";
+    font-family: FontAwesome;
+    font-size: 10px;
+    padding-right: 9px;
+    position: relative;
+    top: -2px;
+}
+.side-navigation ul li {
+    font-size: 15px;
+    font-weight: normal;
+    list-style: outside none none;
+    padding: 5px 0;
+}
+.side-navigation ul li a {
+    color: #444444;
+    outline: medium none;
+    text-decoration: none;
+}
+.side-navigation ul li a.active:before{
+    color: #1b75bc;
+}
+.side-navigation ul li a.active {
+    font-weight: 600;
+}
+.sidebar h3 {
+    font-size: 21px;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+.login-pg .btn,.office-pg .btn {
+    font-size: 18px;
+    margin-right: 15px;
+}
+.intro {
+    padding: 0px 0 15px;
+}
+.fee-blk h3 {
+    font-weight: normal;
+    margin-bottom: 20px;
+    margin-top: 5px;
+    text-align: center;
+}
+.fee-info li:nth-child(2n+1) {
+    border-right: 1px solid #cccccc;
+}
+.fee-info li.gray-bg {
+    background: #eeeeee none repeat scroll 0 0;
+}
+.fee-info {
+    margin: 0;
+    padding: 0;
+}
+.fee-info li {
+    float: left;
+    font-size: 15px;
+    font-weight: normal;
+    list-style: outside none none;
+    padding: 10px 20px;
+    width: 50%;
+}
+.fee-info li span.fee-name {
+    display: inline-block;
+    text-align: left;
+}
+.fee-info li span.fee {
+    display: inline-block;
+    float: right;
+    text-align: right;
+}
+
+/*Report Screen Css*/
+.report table thead {background: #000000 none repeat scroll 0 0;color: #ffffff;}
+.report table thead th {padding: 20px 15px;}
+.report table i {color: #1b75bc;}
+
+/*Office Management Screen Css*/
+.office-management {padding: 0 17px;}
+.office-management .panel-body {padding: 20px 0;}
+.office-management .office-table {margin-top: 20px;}
+.office-management thead {background: #1a1a1a none repeat scroll 0 0;border-top: 5px solid #666666;color: #ffffff;}
+.office-management thead th {
+    padding: 15px !important;
+}
+.office-management .office-table td i {
+    color: #666666;
+    font-size: 19px;
+    text-align: center;
+    width: 100%;
+    padding-right: 25px;
+}
+.office-management tbody td {
+    vertical-align: middle !important;
+}
+.cst-complete {
+    background: #39b54a none repeat scroll 0 0;
+    color: #ffffff;
+    text-align: center;
+}
+.office-management .form-control {
+    background-size: 0 2px, 100% 2px;
+}
+.office-management .form-group .form-control::-moz-placeholder {
+    color: #000000;
+    font-size: 18px;
+}
+.office-management .search .form-control {
+    padding-left: 25px;
+}
+.apply-btn {
+    color: #ffffff !important;
+    font-size: 20px;
+    margin-top: 19px;
+    padding: 8px 50px;
+    background: #1b75bc!important;
+}
+.office-management table thead th {
+    background: #1a1a1a none repeat scroll 0 0!important;
+    border: 1px solid #333333 !important;
+}
+.office-management table {
+    border: medium none;
+    border-collapse: collapse;
+}
+.office-management table tfoot td {
+    background: #1a1a1a none repeat scroll 0 0 !important;
+    border: medium none !important;
+}
+.custom-pagnav {font-size: 18px;font-weight: normal;padding-top: 8px !important;text-align: center;}
+.navbar .navbar-nav > li > a,.navbar .navbar-nav > .active > a, .navbar .navbar-nav > .active > a:hover, .navbar .navbar-nav > .active > a:focus,.navbar .navbar-nav > li > a:hover, .navbar .navbar-nav > li > a:focus {color: #555;}
+.navbar-nav {float: right;}
+.navbar-nav > li {font-size: 18px;font-weight: normal;}
+.navbar-nav > li.active {font-weight: 600;}
+.navbar-nav > li {float: left;padding: 0 15px;}
+.recent-update {padding: 0 20px;}
+.recent-update .panel.panel-primary > .panel-heading {background-color: #1a1a1a;}
+
+/*Forgot Password Screen*/
+.select-blk p { font-size: 15px;margin-bottom: 0;padding-top: 10px;}
+.bkp-login a {color: #1b75bc !important; font-size: 16px;font-weight: normal;}
+.panel-heading h3 {font-weight: 400;line-height: 0;margin: 0;padding: 10px 0 0;}
+.panel-heading {line-height: 10px;}
+.btn-group.dropleft button {font-size: 14px;padding: 4px 8px;position: relative;text-transform: none;}
+.btn-group.dropleft { margin: 0;}
+.container-fluid.main-blk > .row > .col-md-12 {padding-left: 0;padding-right: 0;}
+.sidebar .frgt a,.cst-link {color: #1b75bc;font-weight:normal;font-size: 17px;}
+.alert.alert-danger {background-color: #E84C3D;color: #ffffff;font-size:15px;}
+.alert {padding: 10px 15px;}
+.login-pg .page-title {font-weight: normal;margin-top: 0;margin-bottom: 15px;}
+.checkbox input[type="checkbox"]:checked + .checkbox-material .check, label.checkbox-inline input[type="checkbox"]:checked + .checkbox-material .check {border-color: #1b75bc;}
+.checkbox input[type="checkbox"]:checked + .checkbox-material .check::before, label.checkbox-inline input[type="checkbox"]:checked + .checkbox-material .check::before {color: #1b75bc;}
+.panel > .panel-heading, .panel.panel-default > .panel-heading {background-color: #1b75bc;color: #ffffff;}
+.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {vertical-align: middle;}
+.phone-support {bottom: 10px;margin-bottom: 0;position: fixed;width: 250px;}
+.phone-support span { font-weight: 600;}
+.form-group select {-moz-appearance: button !important;}
+.form-control, .form-group select.form-control {background-position: center bottom, center calc(100% - 0px);border-left: 1px solid #d2d2d2;border-top: 1px solid #d2d2d2;border-bottom: 1px solid #d2d2d2 !important;border-right: 1px solid #d2d2d2;padding-top: 0;}
+.custom-note {clear: both;padding: 10px 15px;}
+.form-group .form-control.error_msg {background-image: linear-gradient(#c1272d, #c1272d), linear-gradient(#d2d2d2, #d2d2d2);background-size: 100% 2px, 100% 1px;box-shadow: none;outline: medium none;transition-duration: 0.3s;}
+.sub-question {
+    background: #ffffff none repeat scroll 0 0;
+    box-shadow: 0 2px 2px 1px #dddddd;
+    margin-left: 24px;
+    padding: 20px;
+}
+.question-block.cst-radio-blk {
+    background: #ffffff none repeat scroll 0 0;
+    padding: 10px 15px;
+}
+.panel.panel-default.cst-panel {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    box-shadow: none;
+    margin-bottom: 1px;
+}
+.panel.panel-default.cst-panel .panel-body {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.multi-question p,.form-group label.control-label{font-size:14px; font-weight: 400;}
+.sub-question .col-md-5 {padding-left: 0;}
+/*.col-md-9.padding-right-25 .alert {margin-left: -15px;}*/
+.page-title {
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+.checkbox.authorize label {
+    font-size: 14px;
+}
+.bank-img {
+    text-align: center;
+}
+.main-office h3 {
+    font-size: 18px;
+    font-weight: 400;
+    margin: 0 0 15px;
+}
+.main-office-blk-left .form-group {
+    margin: 0;
+}   
+.main-office-blk-left .form-group select {
+    margin-bottom: 0;
+    position: relative;
+    top: 3px;
+}
+.col-md-6.main-office-blk-left, .col-md-6.main-office-blk-right {
+    padding-left: 0;
+}
+.btn.btn-default {
+    font-size: 18px;
+}
+
+.utax-tabs .form-group {
+    margin-top: 10px;
+}
+.form-group::after {
+    clear: both;
+    content: " ";
+    display: block;
+    height: 1px;
+    width: 1px;
+}
+.new-label .form-group label.control-label {
+    color: #777777;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 10px 0 0;
+}
+.utax-tabs .tab-content {
+    margin-top: 25px;
+}
+.bs-component {
+    position: relative;
+}
+.utax-tabs .nav {
+    background: #8cc63e none repeat scroll 0 0;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+.nav-tabs {
+    border-bottom: 2px solid #7bb135;
+}
+.utax-tabs.new-label {
+    overflow: auto;
+    padding: 10px;
+}
+.utax-tabs .checkbox label {
+    padding-right: 15px;
+}
+.utax-tabs .nav .active {
+    background: #7bb135 none repeat scroll 0 0;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.utax-tabs .nav .active > a {
+    color: #ffffff !important;
+}
+.utax-tabs .nav{
+    font-size: 16px;
+}
+.radio input[type="radio"]:checked ~ .circle, label.radio-inline input[type="radio"]:checked ~ .circle {
+    border-color: #1b75bc;
+}
+.radio input[type="radio"]:checked ~ .check, label.radio-inline input[type="radio"]:checked ~ .check {
+    background-color: #1b75bc;
+}
+.bank-img img {
+    margin: 0 auto;
+}
+
+
+@media only screen and (min-width : 1000px) {
+    .col-md-3.padding-left-25.sidebar {width: 300px;position: absolute;left:0px;z-index: 9;}
+    .help-section {padding-right: 15px;width: 280px;}
+    .phone-support {width: 265px;}
+    .col-md-9.padding-right-25 {width: 100%;padding-left:300px;}
+}
+
+@media only screen and (min-width : 768px) {
+    /* Make Navigation Toggle on Desktop Hover */
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+}
+
+@media (max-width: 1000px) {
+
+.body_inner { margin-left: 0 !important;}
+.padding-right-25 {padding-right: 15px;}
+.col-md-6.main-office-blk-left, .col-md-6.main-office-blk-right {padding-left: 0;padding-right: 0;}
+.form-group select.form-control {border-right: 1px solid #d2d2d2;}
+
+}
+@media (min-width: 1000px) and (max-width: 1250px) {
+}
+
+@media (max-width: 750px) {
+.col-md-12.main-office { padding: 0;}
+.utax-tabs .nav-tabs > li {
+    float: none;
+}
+.fee-info li {width: 100%; padding: 10px;font-size: 13px;}
+.fee-info li:nth-child(2n+1) {
+    border-right: medium none;
+}
+.fee-info li.gray-bg {
+    background: #fff none repeat scroll 0 0;
+}
+.navbar {
+    margin-bottom: 0!important;
+}
+.login-pg {
+    min-height: 400px;
+}
+footer {
+    bottom: 5px;
+    position: fixed;
+}
+
+}
+
+
+@media (max-width: 380px) {
+.navbar.navbar-default .container-fluid h1 {font-size: 19px;}
+}

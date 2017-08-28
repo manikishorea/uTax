@@ -1,0 +1,72 @@
+﻿@using EMPPortal.Filters;
+@{
+    ViewBag.Title = "Last Login Report ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/css/buttons.dataTables.min.css" rel="stylesheet" />
+<input type="hidden" id="formid" name="formid" value="active" formid="site48618e69-9d83-4ac1-8ccc-62bb7d88dd1f" sitemapid="48618e69-9d83-4ac1-8ccc-62bb7d88dd1f" />
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 style="padding:10px 0;">Closed Enrollment Report</h3>
+            </div>
+            <div class="table-responsive panel-body">
+                <table id="table_CloseEnrollment" class="table table-striped table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Master ID</th>
+                            <th>Efin</th>
+                            <th>User ID</th>
+                            <th>Parent User ID</th>
+                            <th>Company</th>
+                            <th>Account Status</th>
+                            <th>ERO Type</th>
+                            <th>Case Orgin</th>
+                            <th>Product</th>
+                            <th>Funtional Area</th>
+                            <th>Module</th>
+                            <th>Issue</th>
+                            <th>Status</th>
+                            <th>Case number</th>
+                            <th>MSO User</th>
+                            <th>Dt. Opened</th>
+                            <th>Dt. Modified</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/app/Rpt_FeeSetupReport.js"></script>
+<script>
+    var today = new Date();
+    var Current_Date = today.getDate() + '/' + today.getMonth() + '/' + today.getFullYear() + '  ' + today.getHours() + ':' + today.getMinutes();
+    $(document).ready(function () {
+        $('#table_CloseEnrollment').DataTable({
+            "bSort": false,
+            dom: 'Bfrtip',
+            buttons: [
+                {
+                    extend: "excel",
+                    text: '<i class="fa fa-file-excel-o"></i> EXCEL',
+                }, {
+                    extend: "print",
+                    text: '<i class="fa fa-print"></i> Print'
+                }, {
+                    extend: "csv",
+                    text: '<i class="fa fa-file-excel-o"></i> CSV'
+                }, {
+                    extend: "pdf",
+                    text: '<i class="fa fa-file-pdf-o"></i> PDF',
+                    orientation: 'landscape',
+                    pageSize: 'LEGAL',
+                    title: 'All Closed Enrollment Cases',
+                    message: 'Date Time : ' + Current_Date
+                }
+            ]
+        });
+        Fn_CloseEnrollmentCases($('#UserId').val());
+    });
+</script>

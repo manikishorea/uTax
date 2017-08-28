@@ -1,0 +1,170 @@
+﻿@using EMPPortal.Filters;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <input type="hidden" id="formid" name="formid" value="active" formid="site6ed791bd-1909-4e7a-b6b1-b76983faef30" sitemapid="site6ed791bd-1909-4e7a-b6b1-b76983faef30" />
+        <input type="hidden" id="CustomerOfficeId" name="CustomerOfficeId" value="@ViewBag.CustomerOfficeId" />
+        <input type="hidden" id="Id" name="Id" />
+        <input type="hidden" id="hdnEntityId" value="@ViewBag.EntityId" />
+
+        <div class="office-pg">
+
+            @*<div class="form-logo">
+                    <img src="@Url.Content("~/Content/images/logo.png")">
+                </div>*@
+
+            <h2>Customer Software Identification Information</h2>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label for="inputEmail" class="col-md-3 control-label">Company Name</label>
+                            <div class="col-md-9">
+                                <label id="lbCustomerName"></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail" class="col-md-3 control-label">EFIN</label>
+                            <div class="col-md-3">
+                                <select id="EFINStatus" name="EFINStatus" class="form-control"></select>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" id="EFIN" class="form-control digit" maxlength="6">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputEmail" class="col-md-3 control-label">Master Identifier</label>
+                            <div class="col-md-9">
+                                <input type="text" id="MasterIdentifier" class="form-control" maxlength="49">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="inputEmail" class="col-md-3 control-label">Crosslink User Id</label>
+                            <div class="col-md-9">
+                                <input type="text" id="CrossLinkUserId" class="form-control digit" maxlength="7">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputEmail" class="col-md-3 control-label">Crosslink Password</label>
+                            <div class="col-md-9">
+                                <input type="text" id="CrossLinkPassword" class="form-control" maxlength="49">
+                            </div>
+                        </div>
+
+                        @*<div class="form-group">
+                                <label for="inputEmail" class="col-md-3 control-label">Transmission Password</label>
+                                <div class="col-md-9">
+                                    <input type="text" id="EMPPassword" class="form-control">
+                                </div>
+                            </div>*@
+
+                        <div class="form-group">
+                            <label for="inputEmail" class="col-md-3 control-label">MyTaxOffice Portal Url</label>
+                            <div class="col-md-9">
+                                <input type="text" id="OfficePortalUrl" class="form-control" value="https://www.mytaxofficeportal.com" readonly="readonly" maxlength="150">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputEmail" class="col-md-3 control-label">MyTaxOffice Username</label>
+                            <div class="col-md-9">
+                                <input type="text" id="TaxOfficeUsername" class="form-control" maxlength="100">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputEmail" class="col-md-3 control-label">MyTaxOffice Password</label>
+                            <div class="col-md-9">
+                                <input type="text" id="TaxOfficePassword" class="form-control" maxlength="49">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputEmail" class="col-md-3 control-label">Master Identifier Password</label>
+                            <div class="col-md-9">
+                                <input type="text" id="MasterIdentifierPassword" class="form-control" readonly="readonly" maxlength="50">
+                            </div>
+                        </div>
+
+                        @*<div class="form-group">
+                                <label for="inputEmail" class="col-md-3 control-label">CustomerOfficeId</label>
+                                <div class="col-md-9">
+                                    <input type="text" id="CustomerOfficeId" class="form-control">
+                                </div>
+                            </div>*@
+                        <div class="form-group">
+                            <label for="inputEmail" class="col-md-3 control-label">CrossLink Account ID</label>
+                            <div class="col-md-9">
+                                <input type="text" id="CLAccountId" class="form-control" maxlength="49">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail" class="col-md-3 control-label">Login</label>
+                            <div class="col-md-9">
+                                <input type="text" id="CLLogin" class="form-control" maxlength="49">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail" class="col-md-3 control-label">Account ID Password</label>
+                            <div class="col-md-9">
+                                <input type="text" id="CLAccountPassword" class="form-control" maxlength="49">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-3 col-md-9">
+                                <input type="button" value="Submit" class="btn btn-default" onclick="SaveCustomerLoginInformation();" />
+                                <a href="/CustomerInformation/" class="btn btn-back">Back</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    }
+
+</body>
+</html>
+@*<script src="~/Scripts/app/common.js"></script>
+    <script src="~/Scripts/app/customerLoginInformation.js"></script>*@
+@Html.IncludeVersionedJs("/Scripts/app/common.js")
+@Html.IncludeVersionedJs("/Scripts/app/customerLoginInformation.js")
+<script type="text/javascript">
+
+    $(function () {
+        getPermissions();
+        getEFINStatus($('#EFINStatus'), $('#hdnEntityId').val());
+        var CustomerOfficeId = $("#CustomerOfficeId").val();
+        GetCustomerLoginInformation(CustomerOfficeId);
+
+        //$('#CrossLinkUserId').keypress(function (e) {
+        //    var regex = new RegExp("^[a-zA-Z0-9]+$");
+        //   // var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        //    if (regex.test(e)) {
+        //        return true;
+        //    }
+
+        //    e.preventDefault();
+        //    return false;
+        //});
+    });
+
+</script>

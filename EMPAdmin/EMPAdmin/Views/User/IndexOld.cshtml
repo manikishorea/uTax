@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_FootableLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 id="AddLink" class="panel-title">
+                    <a href="/user/create">
+                        <i title="Add New User" aria-hidden="true" class="fa fa-plus"></i> Add New User
+                    </a>
+                </h2>
+            </div>
+            <div id="div_user" class="panel-body">
+                <div class="row cst-search-table search-table">
+                    <button class="search_icon" type="button"><i aria-hidden="true" class="fa fa-search"></i></button>
+                    <div class="search-block" style="display: block;">
+                        Search:
+                        <input type="text" class="form-control" id="filter">
+                    </div>
+                </div>
+                <div class="office-table">
+                    <table data-filter="#filter" class="table table-striped toggle-circle-filled footable footable-2 breakpoint-lg" id="table_user" style="display: table;">
+
+                        <tfoot class="hide-if-no-paging">
+                            <tr>
+                                <td class="text-center" colspan="6">
+                                    <ul class="pagination"></ul>
+                                </td>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            <tr class="odd" role="row">
+                                <td>support support</td>
+                                <td>support@utax.com</td>
+                                <td>support</td>
+                                <td>Admin</td>
+                                <td>Internal</td>
+                                <td>Activate</td>
+                                <td>
+                                    <div class="btn-group dropleft">
+                                        <button data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn dropdown-toggle">
+                                            Actions <span class="caret"></span>
+                                        </button>
+                                        <ul role="menu" aria-labelledby="dropdownMenu" class="dropdown-menu dropdown-menu-right"><li class="EditLink"><a href="/user/create/51d15331-bd6c-4f7f-b82b-a783ec8f25ec"><i title="Edit" aria-hidden="true" class="fa fa-pencil-square-o"></i> Edit</a></li><li class="divider"></li><li class="ActiveInactiveLink"><a onclick="fnSaveStatus('51d15331-bd6c-4f7f-b82b-a783ec8f25ec','INA') " href="javascript:void(0);"> <i title="Inactivated" aria-hidden="true" class="fa fa-circle-o"></i> Deactivate  </a></li></ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="odd" role="row"><td>test1 test2</td><td>test1@test.com</td><td>admin</td><td>Admin</td><td>Internal</td><td>Activate</td><td><div class="btn-group dropleft"><button data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn dropdown-toggle">Actions <span class="caret"></span></button><ul role="menu" aria-labelledby="dropdownMenu" class="dropdown-menu dropdown-menu-right"><li class="EditLink"><a href="/user/create/3bb87f93-9458-409f-b768-a54e02955ea1"><i title="Edit" aria-hidden="true" class="fa fa-pencil-square-o"></i> Edit</a></li><li class="divider"></li><li class="ActiveInactiveLink"><a onclick="fnSaveStatus('3bb87f93-9458-409f-b768-a54e02955ea1','INA') " href="javascript:void(0);"> <i title="Inactivated" aria-hidden="true" class="fa fa-circle-o"></i> Deactivate  </a></li></ul></div></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ko if:detail() -->
+</div>
+
+<script type="text/javascript">
+    jQuery(function ($) {
+     //   $('#table_user').footable();
+    });
+
+    $(document).ready(function () {
+       // jQuery(".office-table .table").footable();
+        $(".search_icon").click(function () {
+            $(".search-block").slideToggle();
+        });
+    });
+</script>

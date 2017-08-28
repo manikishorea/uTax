@@ -1,0 +1,111 @@
+﻿@using EMPPortal.Filters;
+@{
+    Layout = "~/Views/Shared/_SubSiteLayout.cshtml";
+}
+
+
+<div class="row bank-blk">
+    <div class="col-md-12">
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>Balance Due on Account</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group is-empty">
+                            <label>How would you like to pay your Balance Due on Account?</label>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="sample3" value="option3" checked="">
+                                    Credit Card
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="sample3" value="option3">
+                                    Bank Account(Automatic ACH Withdrawal)
+                                </label>
+                            </div>
+
+                        </div>
+                        <div class="bank-sub-opt padding-left-25">
+                            <div class="form-group is-empty">
+                                <label>Would you like to use the same account that you indentified to recieve your add-on fee reimbursement in the Bank Selection section?</label>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="sample3" value="option3" checked="">
+                                        Yes
+                                    </label>
+
+                                    <label>
+                                        <input type="radio" name="sample3" value="option3">
+                                        No
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="table-responsive e-fill-table">
+                            <table class="table table-striped table-hover table-bordered ">
+                                <caption>Balance Due on Account</caption>
+                                <thead>
+                                    <tr>
+                                        <th>Balance Type</th>
+                                        <th>Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Outstanding Balance</td>
+                                        <td>$125.00</td>
+                                    </tr>
+                                    
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+        <div class="clearfix"> </div>
+        <div class="col-md-12">
+            <a href="javascript:void(0)" class="btn btn-default btn-info">Save</a>
+        </div>
+
+    </div>
+
+</div>
+
+
+@section scripts {
+    @*<script src="~/Scripts/app/common.js"></script>
+    <script src="~/Scripts/app/customerInformation.js"></script>*@
+@Html.IncludeVersionedJs("/Scripts/app/common.js")
+@Html.IncludeVersionedJs("/Scripts/app/customerInformation.js")
+}
+
+<script>
+    $(document).ready(function () {
+        getAllCustomerInformation();
+    });
+</script>

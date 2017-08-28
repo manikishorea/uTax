@@ -1,0 +1,105 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row bank-blk">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3>Bank Selection</h3>
+                <div class="form-group">
+                    <label>Which bank would you like to partner with for this tax season? </label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="sample1" value="option1" checked="">
+                            TPG
+                        </label>
+                        <label>
+                            <input type="radio" name="sample1" value="option1">
+                            Refund Advantage
+                        </label>
+                        <label>
+                            <input type="radio" name="sample1" value="option1">
+                            Republic Bank
+                        </label>
+                        <label>
+                            <input type="radio" name="sample1" value="option1">
+                            None
+                        </label>
+                    </div>
+                </div>
+                <div class="cst-help-blk"><p><a href="#">Have questions? Compare Bank Offerings here.</a></p></div>
+                <div class="form-group padding-left-25">
+                    <label>How will you print your TPG checks?</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="sample3" value="option3" checked="">
+                            From TPG’s website
+                        </label>
+                     </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="sample3" value="option3">
+                            From within the Tax Software
+                        </label>
+                    </div>
+                    </div>
+                </div>
+
+            </div>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3>Service Bureau & Transmitter Fees</h3>
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover table-bordered ">
+                        <thead>
+                            <tr>
+                                <th>Fee Type</th>
+                                <th>Amount</th>
+                                <th>Bank Fee</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Service Bureau Fee</td>
+                                <td>See note above</td>
+                                <td>TPG</td>
+                                <td>$34.95</td>
+                            </tr>
+                            <tr>
+                                <td>Transmission Fee</td>
+                                <td>See note above</td>
+                                <td>Refund Advantage</td>
+                                <td>$35.00</td>
+                            </tr>
+                            <tr>
+                                <td>Technology Fee</td>
+                                <td>$25.95</td>
+                                <td>Republic Bank</td>
+                                <td>$39.00</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+        </div>
+
+    </div>
+
+
+@section scripts {
+    <script src="~/Scripts/app/common.js"></script>
+    <script src="~/Scripts/app/customerInformation.js"></script>
+}
+
+<script>
+    $(document).ready(function () {
+        getAllCustomerInformation();
+    });
+</script>

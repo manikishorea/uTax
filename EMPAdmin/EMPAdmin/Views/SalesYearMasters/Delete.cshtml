@@ -1,0 +1,96 @@
+﻿@model uTax.EntityFramework.Edmx.SalesYearMaster
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>SalesYearMaster</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SalesYear)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SalesYear)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApplicableFromDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplicableFromDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApplicableToDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplicableToDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastUpdatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastUpdatedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastUpdatedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastUpdatedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StatusCodeMaster.StatusCodes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StatusCodeMaster.StatusCodes)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

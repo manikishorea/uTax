@@ -1,0 +1,122 @@
+﻿@using EMPPortal.Filters;
+@{
+    Layout = "~/Views/Shared/_SubSiteLayout.cshtml";
+}
+
+
+<div class="row bank-blk">
+    <div class="col-md-12">
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1 text-center">
+                        <h3>Balance Due on Account ACH</h3>
+                        <div class="bank-img"><img src="~/Content/images/bank.jpg" class="img-responsive" /></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5 col-md-offset-1">
+                        <div class="form-group is-empty">
+                            <label for="inputDefault" class="control-label">Name on Account:</label>
+                            <input type="text" id="inputDefault" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group is-empty">
+                            <label for="inputDefault" class="control-label">Bank Name:</label>
+                            <input type="text" id="inputDefault" class="form-control">
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-5 col-md-offset-1">
+                        <div class="form-group is-empty">
+                            <label for="inputDefault" class="control-label">Please enter your 9 digit RTN: </label>
+                            <input type="text" id="inputDefault" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group is-empty">
+                            <label for="inputDefault" class="control-label">Please enter your Bank Account Number: </label>
+                            <input type="text" id="inputDefault" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5 col-md-offset-1">
+                        <div class="form-group is-empty">
+                            <label for="inputDefault" class="control-label">Please confirm your 9 digit RTN:</label>
+                            <input type="text" id="inputDefault" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group is-empty">
+                            <label for="inputDefault" class="control-label">Please confirm your Bank Account Number:</label>
+                            <input type="text" id="inputDefault" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-5 col-md-offset-1">
+                        <div class="form-group is-empty">
+                            <label>Account Type:</label>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="sample3" value="option3" checked="">
+                                    Yes
+                                </label>
+                                <label>
+                                    <input type="radio" name="sample3" value="option3">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="checkbox authorize">
+                            <label>
+                                <input type="checkbox"><span class="checkbox-material"></span> I authorize uTax, LLC to electronically debit my account for any Balance Due on Account incurred in the prior year, as defined above.
+                            </label>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="clearfix"> </div>
+        <div class="col-md-12">
+            <a href="javascript:void(0)" class="btn btn-default btn-info">Save</a>
+        </div>
+
+    </div>
+
+</div>
+
+
+@section scripts {
+    @*<script src="~/Scripts/app/common.js"></script>
+    <script src="~/Scripts/app/customerInformation.js"></script>*@
+@Html.IncludeVersionedJs("/Scripts/app/common.js")
+@Html.IncludeVersionedJs("/Scripts/app/customerInformation.js")
+}
+
+<script>
+    $(document).ready(function () {
+        getAllCustomerInformation();
+    });
+</script>

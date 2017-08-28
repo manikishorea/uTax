@@ -1,0 +1,180 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="page-header">
+    @if (ViewBag.Id == "00000000-0000-0000-0000-000000000000")
+    {
+        <h2>Fees Master/Create Fees</h2>
+    }
+    else
+    {
+        <h2>Fees Master/Edit Fees Detail</h2>
+    }
+</div>
+
+<input type="hidden" id="Id" value="@ViewBag.Id" />
+<input type="hidden" id="UserId" name="UserId" value="@Session["UserId"].ToString()" />
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+<div class="form-group">
+
+    <div class="row">
+        <div class="col-md-3">
+            <label for="message-text" class="control-label mandatory">Fees Name</label>
+        </div>
+        <div class="col-md-4">
+            <input type="text" id="FeesName" class="form-control" maxlength="150" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <label for="message-text" class="control-label mandatory">Fees Category</label>
+        </div>
+        <div class="col-md-4">
+            <input type="radio" name="FEECategroy" value="BankProduct" id="rbBankProduct" /> Bank Product    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="radio" name="FEECategroy" value="e-File" id="rbeFile" checked="checked" /> e-File
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <label for="message-text" class="control-label mandatory">Fees For</label>
+        </div>
+        <div class="col-md-7">
+            <input type="radio" name="FeesFor" value="1" id="Othersfees"  checked="checked"/> Others &nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="radio" name="FeesFor" value="2" id="ServiceBureauFees" /> Service Bureau Fees &nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="radio" name="FeesFor" value="3" id="TransmissionFees" /> Transmission Fees
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <label for="message-text" class="control-label mandatory">Fees Type</label>
+        </div>
+        <div class="col-md-7">
+            <input type="radio" name="FeesType" value="Fixed" id="fixedamount" onclick="rb_Display(1)" /> Fixed Amount &nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="radio" name="FeesType" value="User" id="useramount" checked="checked" onclick="rb_Display(2)" /> Entered by User &nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="radio" name="FeesType" value="SalesForce" id="SalesForce" onclick="rb_Display(3)" /> Salesforce
+            <br />
+            <div class="col-md-4" id="displayshowhide" style="display:none;">
+                <label for="message-text" class="control-label mandatory">Amount</label>
+                <input type="text" id="Amount" class="form-control" maxlength="12" />
+            </div>
+            <div class="col-md-12" id="dvdisplaySalesforce" style="display:none;">
+                <label for="message-text" class="control-label mandatory">Respective Field in Salesforce which indicates this Fee Value for the Customer:</label>
+                <input type="text" id="txtSalesForce" class="form-control cst-check" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <label for="message-text" class="control-label mandatory">Nature of Fees</label>
+        </div>
+        <div class="col-md-4">
+            <input type="radio" name="NatureOfFees" value="Mandatory" id="mandatory" /> Mandatory    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="radio" name="NatureOfFees" value="Optional" id="optional" checked="checked" /> Optional
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <label for="message-text" class="control-label">Available for use by</label>
+        </div>
+        <div class="col-md-4" id="div_Entity">
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-9" id="div_Includemaxbankfeeamt">
+            <label for="message-text" class="control-label">Is this Fee included as a part of the Maximum Bank Fee Amount Calculation:</label>
+            &nbsp;@*<input type="checkbox" name="chkIncludemaxbankfeeamt" id="chkIncludemaxbankfeeamt" />*@ &nbsp;
+            <input type="radio" name="Includemaxbankfeeamt" value="true" id="IncludemaxbankfeeamtYes" /> Yes    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="radio" name="Includemaxbankfeeamt" value="false" id="IncludemaxbankfeeamtNo" /> No
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <label for="message-text" class="control-label mandatory">Notes Displayed to the User</label>
+        </div>
+        <div class="col-md-4">
+            <textarea type="text" id="NoteForUser" class="form-control" maxlength="150"></textarea>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <label for="message-text" class="control-label mandatory">Notes</label>
+        </div>
+        <div class="col-md-4">
+            <textarea type="text" id="Notes" class="form-control" maxlength="150"></textarea>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-4">
+            <input type="button" value="Submit" class="btn btn-default" onclick="fnSaveFeeMaster();" />
+            <button type="button" class="btn btn-default" id="btnCancel" onclick="GotoListScreen('@Url.Content("~/FeeMaster/Index")');">Back</button>
+        </div>
+    </div>
+</div>
+
+
+@section scripts {
+    <script src="~/Scripts/app/common.js"></script>
+    <script src="~/Scripts/app/feemaster.js"></script>
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#useramount').prop('checked', true);
+        $('input[type=radio][name=FeesType]').change(function () {
+            if (this.value == 'Fixed') {
+                $("#displayshowhide").show();
+                $("#dvdisplaySalesforce").hide();
+            }
+            else if (this.value == 'User') {
+                $("#displayshowhide").hide();
+                $("#Amount").val("");
+                $("#dvdisplaySalesforce").hide();
+            }
+        });
+
+        getEntityCheckList($('#div_Entity'));
+        var Id = $('#Id').val();
+        getFeeDetail(Id);
+
+
+        var initial_form_state = $('#CreateUser').serialize();
+        $('#CreateUser').submit(function () {
+            initial_form_state = $('#CreateUser').serialize();
+        });
+        $(window).bind('beforeunload', function (e) {
+            var form_state = $('#CreateUser').serialize();
+            if (initial_form_state != form_state) {
+                var message = "You have unsaved changes on this page. Do you want to leave this page and discard your changes or stay on this page?";
+                e.returnValue = message;
+                return message;
+            }
+        });
+    });
+
+    function rb_Display(i) {
+        if (i == 1) {
+            $("#displayshowhide").show();
+            $("#dvdisplaySalesforce").hide();
+        }
+        else if (i == 2) {
+            $("#displayshowhide").hide();
+            $("#dvdisplaySalesforce").hide();
+        }
+        else {
+
+            $("#displayshowhide").hide();
+            $("#dvdisplaySalesforce").show();
+        }
+    }
+</script>

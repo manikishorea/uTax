@@ -1,0 +1,272 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm())
+{
+    <div class="page-header">
+        <h2>Manage Roles</h2>
+
+    </div>
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title">
+                        <a data-target="#popup" data-toggle="modal" id="btnCreate" href="javascript:void(0)">
+                            @*<span data-toggle="tooltip" data-placement="bottom" title="Add New Role">Add new role</span>*@
+                            <i class="fa fa-plus" aria-hidden="true" title="Add New role"></i> Add new role
+                        </a>
+
+                    </h2>
+                    <div class="right_links">
+                        <a class="search_grid" data-toggle="tooltip" data-placement="bottom" title="Grid Search" href="javascript:void(0)">
+                            <i class="fa fa-binoculars"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <input type="hidden" id="h_RoleID" name="h_RoleID" value="@Model.Id" />
+                    @if (TempData["ReturnMessage"] != null)
+                    {
+                        if (@TempData["ReturnMessage"].ToString().Contains("successfully"))
+                        {
+                            <div id="lblMessage" class="alert-success margin-top-15">@TempData["ReturnMessage"]</div>
+                        }
+                        else
+                        {
+                            <div id="lblMessage" class="alert-danger margin-top-15">@TempData["ReturnMessage"]</div>
+                        }
+                    }
+
+                    <table id="mastermanagement" class="table">
+                        <thead>
+                            <tr>
+                                <th>Role Name</th>
+                                <th style="width:10%;" class="no-sort">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var rv in Model.ManageRoleList)
+                            {
+                                <tr>
+                                    <td>@rv.Name </td>
+                                    <td>
+                                        @if (1 == 1)
+                                        {
+                                            <div class="btn-group dropleft">
+                                                <button class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions <span class="caret"></span></button>
+                                                <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenu">
+                                                    @if (rv.StatusCode == "ACT")
+                                                    {
+                                                        <li><a href="#" onclick="GetPermission('@rv.Id')" title="Manage Permissions"><i class="fa fa-share-alt"></i>Permissions</a></li>
+                                                        <li class="divider"></li>
+                                                                        <li>
+                                                                            <a href="#" onclick="GetRoleValues('@rv.Id')" data-toggle="modal" data-target="#popup" title="Edit" class="mdi-editor-mode-edit">
+                                                                                <i class="fa fa-pencil-square-o"></i>Edit
+                                                                            </a>
+                                                                        </li>
+                                                                        @*<li>
+                                                                            <a href="#" onclick="RemoveValue('@rv.Id', '@rv.Name')" title="Delete"><i class="fa fa-trash"></i>Delete</a>
+                                                                        </li>*@
+                                                                        <li class="divider"></li>
+                                                                        <li>
+                                                                            <a href="#" id="Active_@rv.Id" onclick="ActivateOrDeactivate('@rv.Id','true','@rv.Name','@rv.IsVisible.ToString()')" title="Deactivate"><i class="mdi-av-not-interested devider fa fa-circle-o"></i>Deactivate   </a>
+                                                                        </li>
+                                                    }
+                                                    else
+                                                    {
+                                                        <li>
+                                                            <a href="#" id="Active_@rv.Id" onclick="ActivateOrDeactivate('@rv.Id','false','@rv.Name','@rv.IsVisible.ToString()')" title="Activate">
+                                                                <i class="mdi-navigation-check"></i>Activate
+                                                            </a>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                    <div class="modal fade bs-example-modal-lg" id="popup" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                       
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                        @*<h4 class="modal-title" id="exampleModalLabel"><label id="lblhead"></label> Role</h4>*@
+                                        <div class="panel-heading" id="RolePopup">
+                                            <h2 class="panel-title">Create Role</h2>
+                                        </div>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form role="form">
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <label for="message-text" class="control-label mandatory">Role Name</label>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                                            @Html.HiddenFor(model => model.Id)
+
+                                                            <div class="form-group">
+                                                                <div class="col-md-10">
+                                                                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @MaxLength = "100" } })
+                                                                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" id="btnSave">Submit</button>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="fnCancle();">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <!-- ko if:detail() -->
+    </div>
+}
+<script src="~/Scripts/app/common.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#mastermanagement').dataTable({
+            "aoColumns": [
+                null,
+                null
+            ]
+            , iDisplayLength: 10,
+            columnDefs: [{
+                "targets": 'no-sort',
+                "orderable": false
+            }]
+        });
+    });
+    $('#btnCreate').click(function () {
+        $('#lblhead').text('Add');
+        $('*').removeClass("error_msg");
+        $('#h_RoleID').val(0);
+        $('#Name').val('');
+        $('#IsVisible').attr('checked', false);
+    });
+
+    $('#btnSave').click(function () {
+        var cansubmit = true;
+        if ($.trim($('#Name').val()) == "") {
+            $('#Name').addClass("error_msg");
+            $('#Name').attr('title', 'Please enter Role Name');
+            cansubmit = false;
+        }
+        else {
+            $('#Name').removeClass("error_msg");//Noerror_msg
+        }
+        if (cansubmit) {
+            SaveRole();
+        }
+    });
+
+    function GetRoleValues(i) {
+        fnCancle();
+        var uri = '/api/RoleMasters/';
+        ajaxHelper(uri + i, 'GET').done(function (data) {
+            $('#h_RoleID').val(data["Id"]);
+            $('#Name').val(data["Name"]);
+            $('#IsVisible').attr('checked', data["IsVisible"]);
+            $('#RolePopup').html('Edit Role');
+        });
+    }
+
+    function SaveRole() {
+        var uri = '/api/RoleMasters/';
+        var role = {};
+        var roleId = $('#h_RoleID').val();
+        role.Name = $('#Name').val();
+        role.IsVisible = $('#IsVisible').is(':checked');
+        if (roleId != 0) {
+            role.Id = roleId;
+            ajaxHelper(uri + $('#h_RoleID').val(), 'PUT', role).done(function (data) {
+                reloadGrid();
+            });
+        } else {
+            role.StatusCode = 'ACT';
+            ajaxHelper(uri, 'POST', role).done(function (data) {
+                reloadGrid();
+            });
+        }
+    }
+    function reloadGrid() {
+        $('#h_RoleID').val(0);
+        window.location.href = "@Url.Content("~/RoleMasters/Index")";
+    }
+
+    function RemoveValue(Id, name) {
+        var conf = confirm("Are you sure you want to delete this Role - " + name + " ?");
+        if (conf) {
+            var uri = '/api/RoleMasters/';
+            var role = {};
+            role.Name = name;
+            role.StatusCode = 'DEL';
+            role.Id = Id;
+            ajaxHelper(uri + Id, 'PUT', role).done(function (data) {
+                reloadGrid();
+            });
+        }
+    }
+
+    function GetPermission(i) {
+        window.location.href = "@Url.Content("~/RoleMasters/ScreenPermission?roleId=")" + i;
+    }
+
+    //activate or deactivated the record
+    function ActivateOrDeactivate(Id, status, name, checkStatus) {
+
+        $('#error').hide();
+        $('#error p').html('');
+
+        var smsg = ''; StatusCode = 'INA';
+        if (status == 'true') { smsg = ' deactivate this Role - ' + name + '?'; } else { smsg = ' activate this Role - ' + name + '?'; }
+        if (status != 'true') {
+            StatusCode = 'ACT';
+        }
+        var conf = confirm("Are you sure you want to" + smsg);
+        if (conf) {
+            var uri = '/api/RoleMasters/';
+            var role = {};
+            role.Name = name;
+            role.StatusCode = StatusCode;
+            role.Id = Id;
+            role.IsVisible = checkStatus;
+            ajaxHelper(uri + Id, 'PUT', role).done(function (data, textStatus) {
+                $('#error').show();
+                if (textStatus == 'notmodified') {
+                    $('#error p').html("Role can not be Deactivate. It's used in group or user master");
+                } else {
+                    reloadGrid();
+
+                }
+            });
+        }
+    }
+    function fnCancle()
+    {
+        $('input[type=text]')
+        .removeClass('error_msg')
+        .val('');
+    }
+</script>

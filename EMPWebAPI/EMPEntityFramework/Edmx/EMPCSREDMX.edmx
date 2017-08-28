@@ -1,0 +1,267 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EMPDB_CSRModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Onboarding">
+          <Key>
+            <PropertyRef Name="RowId" />
+          </Key>
+          <Property Name="RowId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CaseId" Type="varchar(max)" Nullable="false" />
+          <Property Name="AdminStatus" Type="int" Nullable="false" />
+          <Property Name="InstallCurrentYearStatus" Type="int" Nullable="false" />
+          <Property Name="BankEnrollmentStatus" Type="int" Nullable="false" />
+          <Property Name="ConversionStatus" Type="int" Nullable="false" />
+          <Property Name="DbConfigurationStatus" Type="int" Nullable="false" />
+          <Property Name="InstallNewYearStatus" Type="int" Nullable="false" />
+          <Property Name="MobileAppStatus" Type="int" Nullable="false" />
+          <Property Name="AdminLastEditedById" Type="varchar" MaxLength="50" />
+          <Property Name="InstallCurrentYearLastEditedById" Type="varchar" MaxLength="50" />
+          <Property Name="BankEnrollmentLastEditedById" Type="varchar" MaxLength="50" />
+          <Property Name="ConversionLastEditedById" Type="varchar" MaxLength="50" />
+          <Property Name="DbConfigurationLastEditedById" Type="varchar" MaxLength="50" />
+          <Property Name="InstallNewYearLastEditedById" Type="varchar" MaxLength="50" />
+          <Property Name="MobileAppLastEditedById" Type="varchar" MaxLength="50" />
+          <Property Name="AdminLastModifiedDate" Type="datetime" />
+          <Property Name="InstallCurrentYearLastModifiedDate" Type="datetime" />
+          <Property Name="BankEnrollmentLastModifiedDate" Type="datetime" />
+          <Property Name="ConversionLastModifiedDate" Type="datetime" />
+          <Property Name="DbConfigurationLastModifiedDate" Type="datetime" />
+          <Property Name="InstallNewYearLastModifiedDate" Type="datetime" />
+          <Property Name="MobileAppLastModifiedDate" Type="datetime" />
+          <Property Name="LastModifiedDate" Type="datetime" />
+          <Property Name="LastModifiedById" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblCase">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="AccountSfdcId" Type="nvarchar" MaxLength="50" />
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AssignedAgentId" Type="varchar" MaxLength="50" />
+          <Property Name="BankEnrollment" Type="bit" />
+          <Property Name="CctSelections" Type="varchar(max)" />
+          <Property Name="ClosedDate" Type="datetime" />
+          <Property Name="CreatedByAgentId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="FunctionalArea" Type="varchar" MaxLength="50" />
+          <Property Name="IsClosed" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="Issue" Type="varchar" MaxLength="50" />
+          <Property Name="LastModifiedByAgentId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastViewedDate" Type="datetime" Nullable="false" />
+          <Property Name="LockedByAgentId" Type="varchar" MaxLength="50" />
+          <Property Name="Module" Type="varchar" MaxLength="50" />
+          <Property Name="Origin" Type="varchar" MaxLength="50" />
+          <Property Name="Priority" Type="varchar" MaxLength="256" />
+          <Property Name="Product" Type="varchar" MaxLength="50" />
+          <Property Name="Reason" Type="varchar" MaxLength="50" />
+          <Property Name="SfdcCaseNumber" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="varchar" MaxLength="256" />
+          <Property Name="Subject" Type="varchar(max)" Nullable="false" />
+          <Property Name="TaxSeason" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="tblUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="szUserName" Type="varchar" MaxLength="50" />
+          <Property Name="szFirstName" Type="varchar" MaxLength="50" />
+          <Property Name="szLastName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="EMPDB_CSRModelStoreContainer">
+          <EntitySet Name="Onboarding" EntityType="Self.Onboarding" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCase" EntityType="Self.tblCase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUsers" EntityType="Self.tblUsers" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EMPDB_CSRModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="EMPDB_CSREntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblCases" EntityType="EMPDB_CSRModel.tblCase" />
+          <EntitySet Name="tblUsers" EntityType="EMPDB_CSRModel.tblUser" />
+          <EntitySet Name="Onboardings" EntityType="EMPDB_CSRModel.Onboarding" />
+        </EntityContainer>
+        <EntityType Name="tblCase">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="AccountSfdcId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="AssignedAgentId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BankEnrollment" Type="Boolean" />
+          <Property Name="CctSelections" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ClosedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedByAgentId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FunctionalArea" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsClosed" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="Issue" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastModifiedByAgentId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastViewedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LockedByAgentId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Module" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Origin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Priority" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="Product" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Reason" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SfdcCaseNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="Subject" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TaxSeason" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="szUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="szFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="szLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Onboarding">
+          <Key>
+            <PropertyRef Name="RowId" />
+          </Key>
+          <Property Name="RowId" Type="Guid" Nullable="false" />
+          <Property Name="CaseId" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AdminStatus" Type="Int32" Nullable="false" />
+          <Property Name="InstallCurrentYearStatus" Type="Int32" Nullable="false" />
+          <Property Name="BankEnrollmentStatus" Type="Int32" Nullable="false" />
+          <Property Name="ConversionStatus" Type="Int32" Nullable="false" />
+          <Property Name="DbConfigurationStatus" Type="Int32" Nullable="false" />
+          <Property Name="InstallNewYearStatus" Type="Int32" Nullable="false" />
+          <Property Name="MobileAppStatus" Type="Int32" Nullable="false" />
+          <Property Name="AdminLastEditedById" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="InstallCurrentYearLastEditedById" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BankEnrollmentLastEditedById" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ConversionLastEditedById" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DbConfigurationLastEditedById" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="InstallNewYearLastEditedById" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MobileAppLastEditedById" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AdminLastModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="InstallCurrentYearLastModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="BankEnrollmentLastModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ConversionLastModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="DbConfigurationLastModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="InstallNewYearLastModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="MobileAppLastModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="LastModifiedById" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EMPDB_CSRModelStoreContainer" CdmEntityContainer="EMPDB_CSREntities">
+          <EntitySetMapping Name="tblCases">
+            <EntityTypeMapping TypeName="EMPDB_CSRModel.tblCase">
+              <MappingFragment StoreEntitySet="tblCase">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="TaxSeason" ColumnName="TaxSeason" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="SfdcCaseNumber" ColumnName="SfdcCaseNumber" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="Product" ColumnName="Product" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="Origin" ColumnName="Origin" />
+                <ScalarProperty Name="Module" ColumnName="Module" />
+                <ScalarProperty Name="LockedByAgentId" ColumnName="LockedByAgentId" />
+                <ScalarProperty Name="LastViewedDate" ColumnName="LastViewedDate" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="LastModifiedByAgentId" ColumnName="LastModifiedByAgentId" />
+                <ScalarProperty Name="Issue" ColumnName="Issue" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsClosed" ColumnName="IsClosed" />
+                <ScalarProperty Name="FunctionalArea" ColumnName="FunctionalArea" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedByAgentId" ColumnName="CreatedByAgentId" />
+                <ScalarProperty Name="ClosedDate" ColumnName="ClosedDate" />
+                <ScalarProperty Name="CctSelections" ColumnName="CctSelections" />
+                <ScalarProperty Name="BankEnrollment" ColumnName="BankEnrollment" />
+                <ScalarProperty Name="AssignedAgentId" ColumnName="AssignedAgentId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AccountSfdcId" ColumnName="AccountSfdcId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUsers">
+            <EntityTypeMapping TypeName="EMPDB_CSRModel.tblUser">
+              <MappingFragment StoreEntitySet="tblUsers">
+                <ScalarProperty Name="szLastName" ColumnName="szLastName" />
+                <ScalarProperty Name="szFirstName" ColumnName="szFirstName" />
+                <ScalarProperty Name="szUserName" ColumnName="szUserName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Onboardings">
+            <EntityTypeMapping TypeName="EMPDB_CSRModel.Onboarding">
+              <MappingFragment StoreEntitySet="Onboarding">
+                <ScalarProperty Name="LastModifiedById" ColumnName="LastModifiedById" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="MobileAppLastModifiedDate" ColumnName="MobileAppLastModifiedDate" />
+                <ScalarProperty Name="InstallNewYearLastModifiedDate" ColumnName="InstallNewYearLastModifiedDate" />
+                <ScalarProperty Name="DbConfigurationLastModifiedDate" ColumnName="DbConfigurationLastModifiedDate" />
+                <ScalarProperty Name="ConversionLastModifiedDate" ColumnName="ConversionLastModifiedDate" />
+                <ScalarProperty Name="BankEnrollmentLastModifiedDate" ColumnName="BankEnrollmentLastModifiedDate" />
+                <ScalarProperty Name="InstallCurrentYearLastModifiedDate" ColumnName="InstallCurrentYearLastModifiedDate" />
+                <ScalarProperty Name="AdminLastModifiedDate" ColumnName="AdminLastModifiedDate" />
+                <ScalarProperty Name="MobileAppLastEditedById" ColumnName="MobileAppLastEditedById" />
+                <ScalarProperty Name="InstallNewYearLastEditedById" ColumnName="InstallNewYearLastEditedById" />
+                <ScalarProperty Name="DbConfigurationLastEditedById" ColumnName="DbConfigurationLastEditedById" />
+                <ScalarProperty Name="ConversionLastEditedById" ColumnName="ConversionLastEditedById" />
+                <ScalarProperty Name="BankEnrollmentLastEditedById" ColumnName="BankEnrollmentLastEditedById" />
+                <ScalarProperty Name="InstallCurrentYearLastEditedById" ColumnName="InstallCurrentYearLastEditedById" />
+                <ScalarProperty Name="AdminLastEditedById" ColumnName="AdminLastEditedById" />
+                <ScalarProperty Name="MobileAppStatus" ColumnName="MobileAppStatus" />
+                <ScalarProperty Name="InstallNewYearStatus" ColumnName="InstallNewYearStatus" />
+                <ScalarProperty Name="DbConfigurationStatus" ColumnName="DbConfigurationStatus" />
+                <ScalarProperty Name="ConversionStatus" ColumnName="ConversionStatus" />
+                <ScalarProperty Name="BankEnrollmentStatus" ColumnName="BankEnrollmentStatus" />
+                <ScalarProperty Name="InstallCurrentYearStatus" ColumnName="InstallCurrentYearStatus" />
+                <ScalarProperty Name="AdminStatus" ColumnName="AdminStatus" />
+                <ScalarProperty Name="CaseId" ColumnName="CaseId" />
+                <ScalarProperty Name="RowId" ColumnName="RowId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

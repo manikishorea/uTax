@@ -1,0 +1,267 @@
+﻿@using EMPPortal.Filters;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <mesta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <link rel="shortcut icon" type="image/x-icon" href="~/favicon.ico" />
+    <!--Responsive Start Here -->
+    @*Manikishore*@
+    <link href="~/Content/css/footable-0.1.css" rel="stylesheet" />
+    @*<link href="~/Content/css/footable.bootstrap.min.css" rel="stylesheet" />*@
+
+    <!--Mobile Menu Start Here -->
+    <link type="text/css" rel="stylesheet" href="@Url.Content("~/Content/css/jquery.mmenu.all.css")" />
+    <link type="text/css" rel="stylesheet" href="@Url.Content("~/Content/css/menu_m.css")" />
+    <!-- Material Design fonts -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="@Url.Content("~/Content/css/bootstrap-material-design.css")" rel="stylesheet" />
+    <link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/css/bootstrap-datetimepicker.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/css/ripples.min.css")" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css"
+          rel="stylesheet" />
+    <!-- Dropdown.js -->
+    <link href="@Url.Content("~/Content/css/jquery.dropdown.css")" rel="stylesheet" />
+    <!-- Data Table -->
+    <link href="@Url.Content("~/Content/css/jquery.dataTables.css")" rel="stylesheet" />
+    <!-- My Css Start Here -->
+    @Html.IncludeVersionedCss("/Content/css/custom-style.css")
+    @if (Convert.ToInt32(Session["entitydisplayid"].ToString()) == (int)EMPPortal.Utilities.EMPPortalConstants.BaseEntities.AE || Convert.ToInt32(Session["entitydisplayid"].ToString()) == (int)EMPPortal.Utilities.EMPPortalConstants.BaseEntities.AE_SS)// "2222b1a2-e76d-47ab-a998-078550238427")
+    {
+        @Html.IncludeVersionedCss("/Content/css/gray-theme.css")
+    }
+    else
+    {
+        @Html.IncludeVersionedCss("/Content/css/color-theme.css")
+    }
+    <link href="@Url.Content("~/Content/css/responsive.css")" rel="stylesheet" />
+    <script src="@Url.Content("~/Content/js/jquery-1.10.2.min.js")"></script>
+    <script src="~/Content/js/blockUI.js"></script>
+    <script src="~/Content/js/material.js"></script>
+    <script src="~/Content/js/ripples.min.js"></script>
+</head>
+<body>
+    <div class="container-fluid main-blk">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <div class="col-md-12">
+                            <div class="col-md-10 pull-right head-right">
+                                <h1>Enterprise Management Portal</h1>
+                                <div class="login-blk">
+                                    <ul class="nav navbar-nav navbar-right">
+                                        <li class="dropdown">
+                                            <a href="#" data-target="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                <i class="fa fa-user" aria-hidden="true"></i> @Session["UserName"]
+                                                <b class="caret"></b>
+                                            </a>
+                                            <div id="divUserProfile">
+                                                @*<ul class="dropdown-menu">
+                                                        <li><a href="javascript:void(0)">Security Questions</a></li>
+                                                        <li><a href="javascript:void(0)">Change Password</a></li>
+                                                    </ul>*@
+                                            </div>
+                                        </li>
+                                        <li class="sign-out" style="cursor:pointer;"><a href="/CustomerLogin/Logout" onclick="SetLogoutSession();"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="body_main">
+        <div class="body_inner page-content">
+            <div class="container-fluid">
+                <div class="main_wrap">
+                    <input type="hidden" id="ActiveMyAccountStatus" value="0" />
+                    @if (Session.Count > 0)
+                    {
+                        <input type="hidden" id="EFINOwnerUserId" value="@Session["EFINOwnerUserId"].ToString()" />
+
+                        <input type="hidden" id="myentitydisplayid" value="@Session["entitydisplayid"].ToString()" />
+                        <input type="hidden" id="ismsouser" value="@Session["IsMSOUser"].ToString()" />
+                        <input type="hidden" id="CanSubSiteLoginToEmp" value="@Session["CanSubSiteLoginToEmp"].ToString()" />
+
+                        <input type="hidden" id="myentitydisplayid" value="@Session["entitydisplayid"].ToString()" />
+                        <input type="hidden" id="myentityid" value="@Session["entityid"].ToString()" />
+                        <input type="hidden" id="hdn_ishold" value="@Session["IsHold"].ToString()" />
+
+                        if (Convert.ToInt32(Session["entitydisplayid"].ToString()) == (int)EMPPortal.Utilities.EMPPortalConstants.BaseEntities.AE || Convert.ToInt32(Session["entitydisplayid"].ToString()) == (int)EMPPortal.Utilities.EMPPortalConstants.BaseEntities.AE_SS)// "2222b1a2-e76d-47ab-a998-078550238427")
+                        {
+                            <input type="hidden" id="parentid" value="@Session["PARENTID"].ToString()" />
+                            <input type="hidden" id="entityid" value="@Session["entityid"].ToString()" />
+                            <input type="hidden" id="entitydisplayid" value="@Session["entitydisplayid"].ToString()" />
+                            <input type="hidden" id="UserName" value="@Session["UserName"].ToString()" />
+                            <input type="hidden" id="SalesYear" value="@Session["SalesYear"].ToString()" />
+
+                            @*if (Convert.ToInt32(Session["entitydisplayid"].ToString()) == (int)EMPPortal.Utilities.EMPPortalConstants.BaseEntities.SOME)
+                                {
+                                    <input type="hidden" id="supparentid" value="@Session["SUPPARENTID"].ToString()" />
+                                }
+                                else
+                                {
+                                    <input type="hidden" id="supparentid" value="" />
+                                }*@
+                        }
+                        else
+                        {
+                            <input type="hidden" id="parentid" value="00000000-0000-0000-0000-000000000000" />
+                            <input type="hidden" id="entityid" value="@Session["entityid"].ToString()" />
+                            <input type="hidden" id="entitydisplayid" value="@Session["entitydisplayid"].ToString()" />
+                            <input type="hidden" id="UserName" value="@Session["UserName"].ToString()" />
+                            <input type="hidden" id="SalesYear" value="" />
+                            @*<input type="hidden" id="supparentid" value="" />*@
+
+                        }
+                    }
+                    <input type="hidden" id="BaseEntity_uTax" value="@Convert.ToInt32(EMPPortal.Utilities.EMPPortalConstants.BaseEntities.uTax)" />
+                    <input type="hidden" id="BaseEntity_SO" value="@Convert.ToInt32(EMPPortal.Utilities.EMPPortalConstants.BaseEntities.SO)" />
+                    <input type="hidden" id="BaseEntity_SOME" value="@Convert.ToInt32(EMPPortal.Utilities.EMPPortalConstants.BaseEntities.SO_ME)" />
+                    <input type="hidden" id="BaseEntity_MO" value="@Convert.ToInt32(EMPPortal.Utilities.EMPPortalConstants.BaseEntities.MO)" />
+                    <input type="hidden" id="BaseEntity_AE" value="@Convert.ToInt32(EMPPortal.Utilities.EMPPortalConstants.BaseEntities.AE)" />
+                    <input type="hidden" id="BaseEntity_AESS" value="@Convert.ToInt32(EMPPortal.Utilities.EMPPortalConstants.BaseEntities.AE_SS)" />
+                    <input type="hidden" id="Entity_uTax" value="@Convert.ToInt32(EMPPortal.Utilities.EMPPortalConstants.Entity.uTax)" />
+                    <input type="hidden" id="Entity_SO" value="@Convert.ToInt32(EMPPortal.Utilities.EMPPortalConstants.Entity.SO)" />
+                    <input type="hidden" id="Entity_SOME" value="@Convert.ToInt32(EMPPortal.Utilities.EMPPortalConstants.Entity.SOME)" />
+                    <input type="hidden" id="Entity_MO" value="@Convert.ToInt32(EMPPortal.Utilities.EMPPortalConstants.Entity.MO)" />
+                    <input type="hidden" id="Entity_SVB" value="@Convert.ToInt32(EMPPortal.Utilities.EMPPortalConstants.Entity.SVB)" />
+                    <input type="hidden" id="Entity_SOME_SS" value="@Convert.ToInt32(EMPPortal.Utilities.EMPPortalConstants.Entity.SOME_SS)" />
+                    @if (Session.Count > 0)
+                    {
+                        <input type="hidden" id="UserId" value="@Session["UserId"].ToString()" />
+                        <input type="hidden" id="LoginId" value="@Session["LoginId"].ToString()" />
+                        <input type="hidden" id="Token" name="Token" value="@Session["Token"].ToString()" />
+                        <input type="hidden" id="IsVerified" name="IsVerified" value="@Session["IsVerified"].ToString()" />
+                    }
+                    else
+                    {
+                        <input type="hidden" id="UserId" value="00000000-0000-0000-0000-000000000000" />
+                        <input type="hidden" id="LoginId" value="00000000-0000-0000-0000-000000000000" />
+                        <input type="hidden" id="Token" value="00000000-0000-0000-0000-000000000000" />
+                        <input type="hidden" id="IsVerified" name="IsVerified" value="false" />
+                    }
+                </div>
+                <div class="customers-sidebar sidebar">
+                    <div class="mobile-menu"></div>
+                    <div class="side-navigation" id="divmenu">
+                    </div>
+                    @if (Convert.ToBoolean(Session["IsHold"]))
+                    {
+                        <div class="phone-support" id="dv_holdmessage">Your site has been placed on Hold.  Please contact uTax Software.</div>
+                    }
+                </div>
+                <div class="customers-griid main-content-blk">
+                    <div class="alert alert-danger" style="display:none;" id="error"></div>
+                    <div class="alert alert-success" style="display:none;" id="success"></div>
+                    @RenderBody()
+                </div>
+                <!-- Footer Start Here -->
+                <footer>
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <p class="txt-white">© @System.DateTime.Now.Year EMP. All rights reserved.</p>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+            <!-- Footer End Here -->
+        </div>
+    </div>
+
+    <div class="modal fade bs-example-modal-lg" id="popupHelp" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">Help</h4>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer validation_text_remove">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="popupLogout" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-body" style="height:450px;">
+                    <div class="col-md-12 popup_logout_msg">
+                        <h2>session expired</h2>
+                        <p>It looks like the user login which initiated this action has logged out or the session has expired</p>
+                        <p>This tab or window would need to be closed to proceed further and you will need to login with the appropriate user credentials back again.</p>
+                        <p>Please click on the "Close" button to close this tab and exit this screen.</p>
+                    </div>
+                    <div class="popup_logout_div">
+                        <button type="button" class="btn btn-default btn-confirm cancel-btn" onclick="Closetab()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+@*<script>
+            $(function () {
+
+                var Entity_MOSubSite = $('#Entity_MOSubSite').val();
+                var Entity_SVBSubSite = $('#Entity_SVBSubSite').val();
+                var Entity_SOMESubSite = $('#Entity_SOMESubSite').val();
+
+                var entityid = $('#entityid').val();
+                var entitydisplayid = $('#entitydisplayid').val();
+
+                if (entityid != $('#Entity_uTax').val()) {
+                    $('.sidebar').removeClass('customers-sidebar').addClass('col-md-3 padding-left-25');
+                    $('.main-content-blk').removeClass('customers-griid').addClass('col-md-9');
+                }
+                getPermissions();
+                getSitemap($('#divmenu'));
+
+                if (entitydisplayid == $('#BaseEntity_AE').val() || entitydisplayid == $('#BaseEntity_AESS').val()) {
+                    getSubSiteConfigStatus();
+                } else {
+                    getConfigStatus();
+                }
+
+                if ($('#ActiveMyAccountStatus').val() == 1 || $('#ActiveMyAccountStatus').val() == '1') {
+                    $('#spanSaveNext').hide();
+                }
+                else {
+                    $('#spanSaveNext').show();
+                }
+
+                if ($('#ActiveMyAccountStatus').val() == '1' || $('#ActiveMyAccountStatus').val() == 1) {
+                    var sitemapid = $('#formid').attr('sitemapid');
+                    if (sitemapid == "60025459-7568-4a77-b152-f81904aaaa63") {
+                        $('#divSVBFeeReimNoteActive').show();
+                    }
+                }
+
+            });
+    </script>*@
+<script src="~/Scripts/bootstrap-multiselect.js"></script>
+<script src="@Url.Content("~/Content/js/bootstrap.min.js")"></script>
+<script>
+    $("#dropdown-menu select").dropdown();
+</script>

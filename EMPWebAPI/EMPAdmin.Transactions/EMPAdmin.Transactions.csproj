@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{838FBD31-652D-45BA-BE05-45FD9D102808}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EMPAdmin.Transactions</RootNamespace>
+    <AssemblyName>EMPAdmin.Transactions</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Fees\FeesService.cs" />
+    <Compile Include="Fees\DTO\FeeEntityMapDTO.cs" />
+    <Compile Include="Fees\DTO\FeesDTO.cs" />
+    <Compile Include="Fees\IFeesService.cs" />
+    <Compile Include="AffiliateProgram\DTO\AffiliateEntityMapDTO.cs" />
+    <Compile Include="Bank\BankMasterService.cs" />
+    <Compile Include="Bank\BankSubQuestionService.cs" />
+    <Compile Include="Bank\DTO\BankMasterDTO.cs" />
+    <Compile Include="Bank\DTO\BankSubQuestionDTO.cs" />
+    <Compile Include="Bank\IBankMasterService.cs" />
+    <Compile Include="Bank\IBankSubQuestionService.cs" />
+    <Compile Include="ContactPersonTitle\DTO\ContactPersonTitle.cs" />
+    <Compile Include="ContactPersonTitle\IContactPersonTitleService.cs" />
+    <Compile Include="ContactPersonTitle\ContactPersonTitleService.cs" />
+    <Compile Include="Customer\DTO\CustomerDetailDTO.cs" />
+    <Compile Include="Customer\DTO\CustomerDTO.cs" />
+    <Compile Include="Customer\CustomerService.cs" />
+    <Compile Include="Customer\ICustomerService.cs" />
+    <Compile Include="Entity\DTO\EntityDetailDTO.cs" />
+    <Compile Include="Entity\DTO\EntityDTO.cs" />
+    <Compile Include="Entity\IEntityService.cs" />
+    <Compile Include="Entity\EntityService.cs" />
+    <Compile Include="Group\DTO\GroupDTO.cs" />
+    <Compile Include="Group\DTO\GroupRoleDTO.cs" />
+    <Compile Include="Group\GroupRoleService.cs" />
+    <Compile Include="Group\IGroupRoleService.cs" />
+    <Compile Include="Group\GroupService.cs" />
+    <Compile Include="Group\IGroupService.cs" />
+    <Compile Include="AffiliateProgram\DTO\AffiliateProgramDTO.cs" />
+    <Compile Include="AffiliateProgram\IAffiliateProgramService.cs" />
+    <Compile Include="AffiliateProgram\AffiliateProgramService.cs" />
+    <Compile Include="PermissionMaster\DTO\PermissionMasterDTO.cs" />
+    <Compile Include="PermissionMaster\PermissionMasterService.cs" />
+    <Compile Include="Role\DTO\RoleDetailDTO.cs" />
+    <Compile Include="SalesYear\DTO\SalesYearDTO.cs" />
+    <Compile Include="SalesYear\DTO\SalesYearEntityMapDTO.cs" />
+    <Compile Include="SalesYear\SalesYearService.cs" />
+    <Compile Include="SalesYear\ISalesYearService.cs" />
+    <Compile Include="SecurityQuestion\DTO\SecurityQuestionDTO.cs" />
+    <Compile Include="SecurityQuestion\ISecurityQuestionService.cs" />
+    <Compile Include="SecurityQuestion\SecurityQuestionService.cs" />
+    <Compile Include="APIIntegrationMaster\DTO\APIIntegrationDTO.cs" />
+    <Compile Include="APIIntegrationMaster\IAPIIntegrationService.cs" />
+    <Compile Include="APIIntegrationMaster\APIIntegrationService.cs" />
+    <Compile Include="Role\DTO\RoleSaveDTO.cs" />
+    <Compile Include="Settings\DTO\SettingsDTO.cs" />
+    <Compile Include="Settings\SettingsService.cs" />
+    <Compile Include="SiteMapMaster\DTO\SiteMapMasterDTO.cs" />
+    <Compile Include="SiteMapMaster\SiteMapMasterService.cs" />
+    <Compile Include="SitePermissions\DTO\SiteRolePermissionsDTO.cs" />
+    <Compile Include="SitePermissions\DTO\SitePermissionsDTO.cs" />
+    <Compile Include="SitePermissions\SitePermissionsService.cs" />
+    <Compile Include="Tooltip\DTO\TooltipDTO.cs" />
+    <Compile Include="Tooltip\ITooltipService.cs" />
+    <Compile Include="Tooltip\TooltipService.cs" />
+    <Compile Include="PhoneType\PhoneTypeService.cs" />
+    <Compile Include="PhoneType\DTO\PhoneTypeDTO.cs" />
+    <Compile Include="PhoneType\IPhoneTypeService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Role\DTO\RoleDTO.cs" />
+    <Compile Include="Role\IRoleService.cs" />
+    <Compile Include="Role\RoleService.cs" />
+    <Compile Include="Account\DTO\AccountDTO.cs" />
+    <Compile Include="Account\DTO\AccountDetailDTO.cs" />
+    <Compile Include="Account\IAccountService.cs" />
+    <Compile Include="Account\AccountService.cs" />
+    <Compile Include="User\DTO\LoginDTO.cs" />
+    <Compile Include="User\DTO\RegisterDTO.cs" />
+    <Compile Include="User\DTO\UserGroupMapDTO.cs" />
+    <Compile Include="User\DTO\UserRolesDTO.cs" />
+    <Compile Include="User\DTO\UserRoleMapSaveDTO.cs" />
+    <Compile Include="User\DTO\UserRoleMapDTO.cs" />
+    <Compile Include="User\IUserGroupMapService.cs" />
+    <Compile Include="User\IUserRoleMapService.cs" />
+    <Compile Include="User\UserGroupMapService.cs" />
+    <Compile Include="User\UserRoleMapService.cs" />
+    <Compile Include="User\DTO\UserDTO.cs" />
+    <Compile Include="User\DTO\UserDetailDTO.cs" />
+    <Compile Include="User\IUserService.cs" />
+    <Compile Include="User\UserService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EMP.Core\EMP.Core.csproj">
+      <Project>{bafd8ded-1321-4d67-8ff9-1d7c850aac6e}</Project>
+      <Name>EMP.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EMPEntityFramework\EMPEntityFramework.csproj">
+      <Project>{b73760b3-2cf9-4b27-99ca-a83cd959295e}</Project>
+      <Name>EMPEntityFramework</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,169 @@
+﻿@using EMPPortal.Filters;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<input type="hidden" id="formid" name="formid" value="active" formid="site0eda5d25-591c-4e01-a845-fb580572ade8" sitemapid="0eda5d25-591c-4e01-a845-fb580572ade8" />
+<h2 class="page-title">Main Office Configuration</h2>
+<input type="hidden" id="ID" name="ID" />
+<div id="divMainOfficeConfigForm">
+    <div class="panel panel-default cst-panel">
+        <div class="panel-body">
+            <div class="multi-question">
+                <div class="question-block cst-radio-blk">
+                    <div class="form-group">
+                        <label>Will the main site transmit tax returns?</label>
+                        <span class="cst-tooltip"><a class="ttip" id="ttipa1a79181-113e-425a-b391-1a353dfc2486" style="display:none;" href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="Tooltip on right"><i class="fa fa-info" aria-hidden="true"></i></a></span>
+                        <div class="radio" id="dvFirst">
+                            <label>
+                                <input type="radio" name="rbtaxreturns" id="rbTaxReturnYes" class="yesbox">
+                                Yes
+                            </label>
+                            <label>
+                                <input type="radio" name="rbtaxreturns" id="rbTaxReturnNo" class="nobox">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="sub-question" id="dbsubquestions" style="display:none;">
+                    <div class="question-block">
+                        <div class="form-group">
+                            <label>Will the main site offer Bank Products?</label>
+                            <div class="radio" id="dvSec">
+                                <label>
+                                    <input type="radio" name="sample2" value="option2" id="rbBankProdYes" class="yesbox">
+                                    Yes
+                                </label>
+                                <label>
+                                    <input type="radio" name="sample2" value="option2" id="rbBankProdNo" class="nobox">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-5">
+                            <label for="i5" class="control-label">How many tax professionals are in your office?(1 to 50)</label>
+                            <input type="number" class="form-control digit" id="TaxProfessionals" min="1" max="50" maxlength="2">
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="form-group">
+                        <label>Will the software be installed on a network?</label>
+                        <div class="radio" id="dvThird">
+                            <label>
+                                <input type="radio" name="sample3" value="option4" id="rbsoftwareYes">
+                                Yes
+                            </label>
+                            <label>
+                                <input type="radio" name="sample3" value="option4" id="rbsoftwareNo">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="form-group">
+                        <div class="col-md-5">
+                            <label for="i5" class="control-label">How many computers will run the software?(1 to 99)</label>
+                            <input type="number" class="form-control digit" id="computersoftware" min="1" max="99" maxlength="2">
+                        </div>
+                    </div>
+                </div> <!-- sub-question-end -->
+                <div class="support-language hide" id="dvShareEfinQtn">
+                    <div class="form-group">
+                        <label>Will this site be sharing the EFIN with any other site?</label>
+                        <span class="cst-tooltip"><a class="ttip" id="ttip44401293-5d9e-4468-a387-3709e039277e" style="display:none;" href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="Tooltip on right"><i class="fa fa-info" aria-hidden="true"></i></a></span>
+                        <div class="radio" id="dvSharingEfin">
+                            <label>
+                                <input type="radio" name="shEfin" id="rbseYes">
+                                Yes
+                            </label>
+                            <label>
+                                <input type="radio" name="shEfin" id="rbseNo">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="support-language">
+                    <div class="form-group">
+                        <label>What is your preferred support language?</label>
+                        <div class="radio" id="dvFourth">
+                            <label>
+                                <input type="radio" name="sample4" value="option3" id="rbsupportYes">
+                                English
+                            </label>
+                            <label>
+                                <input type="radio" name="sample4" value="option3" id="rbsupportNo">
+                                Spanish
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="support-language">
+                    <div class="form-group">
+                        <label>Would you like to add Business Software to your main site (additional charges may apply)?</label>
+                        <span class="cst-tooltip"><a class="ttip" id="ttip37ebfd72-d28b-4ec9-9a47-861dc4a174c9" style="display:none;" href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="Tooltip on right"><i class="fa fa-info" aria-hidden="true"></i></a></span>
+                        <div class="radio" id="dvBSW">
+                            <label>
+                                <input type="radio" name="rbBusSw" id="rbBSYes">
+                                Yes
+                            </label>
+                            <label>
+                                <input type="radio" name="rbBusSw" id="rbBSNo">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"> </div>
+        <div class="col-md-10" id="divMainOfficeConfigSave">
+            <a href="javascript:void(0)" class="btn btn-default" onclick="fnSaveMainOfficeConfig(0)">Save</a>
+            <a href="javascript:void(0)" class="btn btn-default" onclick="fnSaveMainOfficeConfig(1)">Save & Next</a>
+        </div>
+    </div>
+
+    @section scripts {
+        @Html.IncludeVersionedJs("/Scripts/app/mainofficeconfig.js")
+    }
+
+    <script>
+        $(document).ready(function () {
+            getTooltip();
+            getMainOfficeInformation();
+            // getIsEnrollmentSubmit();  -- Moved into getMainOfficeInformation();
+        });
+    </script>
+    <script>
+        $(function () {
+            $(".yesbox").each(function () {
+                var isChecked = $(this).is(":checked");
+                if (isChecked) {
+                    $(this).closest('.question-block').siblings(".sub-question").show();
+                }
+            });
+
+            $(".yesbox").change(function () {
+                var isChecked = $(this).is(":checked");
+                if (isChecked) {
+                    $(this).closest('.question-block').siblings(".sub-question").show();
+                }
+            });
+
+            $(".nobox").change(function () {
+                var isChecked = $(this).is(":checked");
+                if (isChecked) {
+                    $(this).closest('.question-block').siblings(".sub-question").hide();
+                }
+            });
+
+            if ($('#hdnEFINStatus').val() == '16') {
+                $('#dvShareEfinQtn').removeClass('hide');
+            }
+        });
+
+    </script>

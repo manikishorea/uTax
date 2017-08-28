@@ -1,0 +1,68 @@
+﻿@using EMPPortal.Filters;
+@model uTax.Transactions.ContactPersonTitle.DTO.ContactPersonTitleDTO
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<script src="~/Scripts/app/common.js"></script>
+<script src="~/Scripts/app/contactpersontitle.js"></script>*@
+@Html.IncludeVersionedJs("/Scripts/app/common.js")
+@Html.IncludeVersionedJs("/Scripts/app/contactpersontitle.js")
+
+@using (Html.BeginForm("CreateUser", "User", FormMethod.Post, new { @id = "CreateUser" }))
+{
+    <div class="page-header">
+        @if (ViewBag.Id == "00000000-0000-0000-0000-000000000000")
+        {
+            <h2>Contact Person Title/Create Contact Person Title</h2>
+        }
+        else
+        {
+            <h2>Contact Person Title/Edit Contact Person Title</h2>
+        }
+    </div>
+
+    @*@Html.AntiForgeryToken()*@
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+    <input type="hidden" id="Id" value="@ViewBag.Id" />
+    <input type="hidden" id="UserId" name="UserId" value="@Session["UserId"].ToString()" />
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-2">
+                <label for="message-text" class="control-label mandatory">Contact Person Title</label>
+            </div>
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.ContactPersonTitle, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <label for="message-text" class="control-label">Description</label>
+            </div>
+            <div class="col-md-4">
+                @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" value="Submit" class="btn btn-default" onclick="fnSaveContactPersonTitle();" />
+                <button type="button" class="btn btn-default" id="btnCancel" onclick="GotoListScreen('@Url.Content("~/contactpersontitle/Index")');">Back</button>
+            </div>
+        </div>
+    </div>
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var Id = $('#Id').val();
+        getContactPersonTitleDetail(Id);
+    });
+
+</script>

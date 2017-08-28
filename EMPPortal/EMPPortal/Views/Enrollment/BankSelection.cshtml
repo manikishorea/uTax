@@ -1,0 +1,74 @@
+﻿@using EMPPortal.Filters;
+
+<input type="hidden" id="formid" name="formid" value="active" formid="sited343b33e-e33b-454a-a7b1-dee6bd0cf86c" sitemapid="d343b33e-e33b-454a-a7b1-dee6bd0cf86c" />
+
+<input type="hidden" id="hdnbankid" />
+
+<div class="col-md-12">
+    <div class="panel panel-default">
+        <div class="panel-body fee-blk">
+
+            <table class="table table-bordered table-striped table-hover bank-selection">
+                <thead>
+                    <tr>
+                        <th>Bank Name</th>
+                        <th>Submission Status</th>
+                        <th>Acceptance Status</th>
+                        <th>Bank Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="tbd_banks"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div id="popupUnlock" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body" style="min-height:300px;">
+                <div class="col-md-12">
+                    <div class="col-md-4">
+                        Reason to Unlock
+                    </div>
+                    <div class="col-md-8">
+                        <textarea id="txt_unlockreason" class="form-control"></textarea>
+                    </div>
+                </div>
+                <div class="col-md-12 text-center">
+                    <p>
+                        By Unlocking this Bank Enrollment, All the data related to Bank Selection and Bank Enrollment will be lost.
+                    </p>
+                    <p>
+                        Are you sure want to Unlock?
+                    </p>
+                </div>
+                <button type="button" class="btn btn-default btn-confirm" onclick="unlockEnrollment()">Unlock</button>
+                <button type="button" class="btn btn-default btn-confirm cancel-btn" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="popupDefaultBank" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body">
+                <p>Are you sure you wish to confirm the details and set as default this bank?</p>
+                <p>
+                    Press YES to proceed to set as default this bank or press NO to review the information again.
+                </p>
+                <button type="button" class="btn btn-default btn-confirm" data-dismiss="modal" onclick="SaveDefaultBankPopup()">YES</button>
+                <button type="button" class="btn btn-default btn-confirm cancel-btn" data-dismiss="modal">NO</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts {
+    @Html.IncludeVersionedJs("/Scripts/app/BankSelection.js")
+}

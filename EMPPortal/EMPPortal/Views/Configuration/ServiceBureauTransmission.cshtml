@@ -1,0 +1,211 @@
+﻿@using EMPPortal.Filters;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<input type="hidden" id="FeeChangeSameToEdit" value="0" />
+<input type="hidden" id="formid" name="formid" value="active" formid="site60025459-7568-4a77-b152-f81904aaaa63" sitemapid="60025459-7568-4a77-b152-f81904aaaa63" />
+<div class="row">
+    <div class="col-md-12" id="divSVBTranFee">
+        <h2 class="page-title">Add-on Fee Reimbursements</h2>
+        <input type="hidden" id="ID" name="ID" />
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1 text-center">
+                        @*<p>All Service Bureau and/or Transmission Fee Add-On amounts, including any amounts collected on behalf of Sub-sites, will be credited to the Main site account. Any fees and/or outstanding balances will be applied against the credit amounts.  To ease the payment of credit balance, they will be sent electronically via ACH directly to your bank account.</p>*@
+                        <p>All Add-on amounts associated with Service Bureau Fees, Transmitter Fees, and/or iProtect Mark-up Fees, and any other credits, including any Add-on amounts collected on behalf of Sub-sites, will be credited to the Main site account per the terms of your License Agreement.  Any charges and/or outstanding balances will be applied against the credit amounts. To ease the payment of credit balances to our partners, payments will be sent electronically via ACH directly to your bank account.</p>
+                        <div class="bank-img"><img src="~/Content/images/bank.jpg" class="img-responsive" /></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5 col-md-offset-1">
+                        <div class="form-group is-empty">
+                            <label for="inputDefault" class="control-label mandatory">Name on Account:</label>
+                            <input type="text" id="txtNameofAccount" class="form-control alpha" maxlength="50">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5 col-md-offset-1">
+                        <div class="form-group is-empty">
+                            <label for="inputDefault" class="control-label mandatory">Bank Name:</label>
+                            <input type="text" id="txtBankName" class="form-control alpha" maxlength="50">
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group is-empty">
+                            <label>Account Type:</label>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="AccountType" value="option3" id="rbAccountTypeYes" checked="">
+                                    Checking
+                                </label>
+                                <label>
+                                    <input type="radio" name="AccountType" value="option3" id="rbAccountTypeNo">
+                                    Savings
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5 col-md-offset-1">
+                        <div class="form-group is-empty">
+                            <label for="inputDefault" class="control-label mandatory">Please enter your 9 digit RTN: </label>
+                            <input type="text" id="txtRTN" class="form-control digit" maxlength="9">
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group is-empty">
+                            <label for="inputDefault" class="control-label">Please confirm your 9 digit RTN:</label>
+                            <input type="text" id="txtConfirmRTN" class="form-control digit" maxlength="9">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5 col-md-offset-1">
+                        <div class="form-group is-empty">
+                            <label for="inputDefault" class="control-label mandatory">Please enter your Bank Account Number: </label>
+                            <input type="text" id="txtBankAccount" class="form-control digit" maxlength="17">
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group is-empty">
+                            <label for="inputDefault" class="control-label">Please confirm your Bank Account Number:</label>
+                            <input type="text" id="txtConfirmBankAccount" class="form-control digit" maxlength="17">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="checkbox authorize">
+                            <label>
+                                <input type="checkbox" id="chkAughorize"><span class="checkbox-material"></span> I authorize uTax, LLC to electronically credit my account (and if necessary, to electronically debit my account to correct erroneous credits).
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="divSVBFeeReimNoteActive" style="display:none;">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div>
+                            <label>
+                                Please note: The bank account changes just made will only change the bank account associated to this section.  If you need to update your Fee Deposit Bank Enrollment account on your bank application or your Payment Options bank account, you must enter the new information in those sections.
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"> </div>
+        <div class="col-md-10 col-md-offset-1">
+            <a href="javascript:void(0)" class="btn btn-default btn-info" onclick="fnSaveFeeReimbursementConfig(0)">Save</a>
+            <span id="spanSaveNext">
+                <a href="javascript:void(0)" class="btn btn-default btn-info" onclick="fnSaveFeeReimbursementConfig(1)" id="btnSaveNextFeeReim">Save & Next</a>
+            </span>
+        </div>
+    </div>
+    <div class="col-md-12" id="divSVBTranFeeNext" style="display:none;">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-10 custom-note">
+                        Please note that this feature is not applicable to you at this time. Please click on NEXT button below to proceed to the final step in the Activation and Setup process.
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+            <div class="col-md-10">
+                <div>
+                    <a id="btnNextFeeReim" href="javascript:void(0)" class="btn btn-default btn-info" onclick="SaveFeeReimForNext(3);">Next</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts {
+    @Html.IncludeVersionedJs("/Scripts/app/feereimbursementconfig.js")
+    @Html.IncludeVersionedJs("/Scripts/app/rtn.js")
+}
+<script>
+        $(document).ready(function () {
+            getServiceBureauTransInformation();
+            //if ($('#entityid').val() != $('#myentityid').val()) {
+            //   // alert(chkFeeSetupConfig()+"4");
+            //    if (chkFeeSetupConfig()) {
+            //        getServiceBureauTransInformation();
+            //    } else {
+            //        $('#divSVBTranFee').hide();
+            //        $('#divSVBTranFeeNext').show();
+            //    }
+
+            //} else {
+            //    getServiceBureauTransInformation();
+            //}
+        });
+
+
+        //function chkFeeSetupConfig() {
+        //    var url = '/api/SubSiteFee/';
+        //    var entitydisplayid = $('#entitydisplayid').val();
+        //    var Id, entityid;
+        //    if ($('#entityid').val() != $('#myentityid').val()) {
+        //        Id = $('#myid').val();
+        //        entityid = localStorage.getItem("spEntityID");
+        //    }
+        //    else {
+        //        Id = $('#UserId').val();
+        //        entityid = $('#entityid').val();
+        //    }
+        //    var uTaxNotCollectingSBFee=true;
+        //    if ($('#uTaxNotCollectingSBFee').val() == 'false' || $('#uTaxNotCollectingSBFee').val() == 'False' || $('#uTaxNotCollectingSBFee').val() == false)
+        //    {
+        //        uTaxNotCollectingSBFee=false;
+        //    }
+        //    var iretval = false;
+        //    if (Id != '' && Id != null && Id != '00000000-0000-0000-0000-000000000000') {
+        //        ajaxHelper(url + '?Id=' + Id, 'GET').done(function (data) {
+        //            $.each(data, function (rowIndex, r) {
+        //                //alert(uTaxNotCollectingSBFee);
+                //        if (!uTaxNotCollectingSBFee) {
+                //         //   alert(r.IsAddOnFeeCharge + "2");
+                //            if (r.IsAddOnFeeCharge == true) {
+                //                iretval = true;
+                //                return true;
+                //            }
+                //            if (!iretval) {
+                //               // alert(r.IsSubSiteAddonFee + "1");
+                //                if (r.IsSubSiteAddonFee == true) {
+                //                    iretval = true;
+                //                    return true;
+                //                } else {
+                //                    iretval = false;
+                //                }
+                //            }
+                //        } else {
+                //            if (r.ServiceorTransmission == 2) {
+                //                if (r.IsAddOnFeeCharge == true) {
+                //                    iretval = true;
+                //                    // return true;
+                //                }
+                //                else {
+                //                    iretval = false;
+                //                    return false;
+                //                }
+                //                if (iretval) {
+                //                    if (r.IsSubSiteAddonFee == true) {
+                //                        iretval = true;
+                //                        return true;
+                //                    }
+                //                    //else {
+                //                    //    var subSideBankFee =
+                //                    //    return subSideBankFee;
+                //                    //}
+                //                }
+                //            }
+                //        }
+                //    });
+                //});
+        //        return iretval;
+        //    }
+        //}
+</script>

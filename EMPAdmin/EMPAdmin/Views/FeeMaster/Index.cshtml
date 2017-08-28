@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+  
+<div class="page-header">
+    <h2>Manage Application Fees</h2>
+</div>
+@if (Session.Count > 0)
+{
+    <input type="hidden" id="UserId" name="UserId" value="@Session["UserId"].ToString()" />
+    <input type="hidden" id="UserRoleId" name="UserRoleId" value="@Session["UserRoleId"].ToString()" />
+    <input type="hidden" id="SiteMapID" name="SiteMapID" value="94f39ec6-cd25-42fa-8d6a-33dc1295e547" />
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                &nbsp;
+                <h2 class="panel-title" id="AddLink"><a href="~/feeMaster/create"><i class="fa fa-plus" aria-hidden="true" title="Add FeeMaster"></i> Add New Fees Entry</a></h2>
+            </div>
+            <div class="panel-body">
+                <div class="row cst-search-table search-table">
+                    <button type="button" class="search_icon"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    <div class="search-block">
+                        Search:
+                        <input id="filter" type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="office-table">
+                    <table id="table_FeeMaster" class="table table-striped toggle-circle-filled" data-filter="#filter">
+                        <thead>
+                            <tr>
+                                <th style="width:20%">Fees Name</th>
+                                <th style="width:18%">Fees Type</th>
+                                <th style="width:18%">Fees For</th>
+                                <th style="width:16%">Activated On</th>
+                                <th style="width:18%">Deactivated On</th>
+                                <th style="width:10%">Status</th>
+                                <th class="no-sort" data-sort-ignore="true"></th>
+                            </tr>
+                        </thead>
+                        <tfoot class="hide-if-no-paging">
+                            <tr>
+                                <td colspan="6" class="text-center">
+                                    <ul class="pagination"></ul>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <!-- books -->
+                </div>
+        </div>
+        </div>
+
+    </div>
+
+
+
+    <!-- ko if:detail() -->
+</div>
+
+@section scripts {
+    <script src="~/Scripts/app/common.js"></script>
+    <script src="~/Scripts/app/feeMaster.js"></script>
+}
+
+<script>
+    $(document).ready(function () {
+        jQuery(".office-table .table").footable();
+        $(".search_icon").click(function () {
+            $(".search-block").slideToggle();
+        });
+        getAllFeeMaster();
+        GridFunctionality();     
+    });
+    
+    function GridFunctionality() {
+        var userId = $("#UserId").val();
+        var roleId = $("#UserRoleId").val();
+
+        ctrlAddLink = $("#AddLink");
+        ctrlEditLink = $("table#table_FeeMaster .EditLink");
+        ctrlActiveInactiveLink = $("table#table_FeeMaster .ActiveInactiveLink");
+        ctrlEditSubQuestionsLink = $("table#table_FeeMaster .EditSubQuestionsLink");
+        getScreenPermissions(ctrlAddLink, ctrlEditLink, ctrlActiveInactiveLink, ctrlEditSubQuestionsLink, userId, roleId);
+    }
+</script>

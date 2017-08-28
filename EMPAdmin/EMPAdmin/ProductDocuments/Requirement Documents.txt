@@ -1,0 +1,59 @@
+Sprint 13
+
+1.	Intent to award and challenge Process Code review  -- Done
+
+Sprint 14
+
+2.	Custom work flow
+
+a)	Custom Work flow – Code review  -- Pending
+
+b)	Custom Work flow – Unit test cases and scenarios  -- Done
+
+c)	Custom Work flow – Defect Analysis -- Done
+
+d)	FSD with DB Tables 
+
+
+3.	Award and Publish 
+
+a)	Award and Bid Publish – Defect Analysis -- Done
+
+b)	Award and Bid Publish – Code review -- Pending
+
+c)	FSD with DB Tables  -- done
+
+
+4.	Publish Bid Document – Understanding Document
+
+
+Sprint 15
+
+
+5.	Agency Bid Management
+
+a)	Agency Bid Management – Release
+
+b)	Agency Bid Management – Bug Fixing 
+
+c)	Agency Bid Management  – Defect Analysis
+
+d)	Agency Bid Management – RTM (Mapping with coding folder path) (Will provide RTM once I receive from Asha)
+
+e)	Agency Bid Management – FSD with DB tables
+
+
+6.	Rollover Bid 
+
+a)	Rollover Bid - Unit test cases and scenarios
+
+b)	Rollover Bid – Release
+
+c)	Rollover Bid – Bug Fixing 
+
+d)	Rollover Bid – Defect Analysis
+
+e)	Rollover Bid – FSD with DB tables
+
+f)	Rollover Bid - RTM (Mapping with coding folder path) (Will provide RTM once I receive from Asha)
+

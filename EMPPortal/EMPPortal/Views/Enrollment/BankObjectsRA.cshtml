@@ -1,0 +1,316 @@
+﻿<h2 class="page-title">Bank Object - Refund Advantage - <span id="spnBankStatus"></span></h2>
+<div class="panel panel-default subsite">
+    <div class="utax-tabs new-label">
+        <div class="bs-component">
+            <ul style="margin-bottom: 15px;" class="nav nav-tabs">
+                <li class="active" id="libOfficeInfo"><a href="#dvefinowner" data-toggle="tab" id="a_efinowner">EFIN Object Information</a></li>
+                <li id="libOfficeConfig"><a href="#dvero" data-toggle="tab" id="a_ooinfo">Office/Owner Information</a></li>
+                <li id="libOfficeConfig"><a href="#dvfee" data-toggle="tab" id="a_feeinfo">Fee Information</a></li>
+                <li id="liaffiliate"><a href="#dv_bankinfo" data-toggle="tab" id="a_bankinfo">Fee Deposit Bank Account Information</a></li>
+                <li><a href="#dvRawxml" data-toggle="tab" id="a_dvRawxml">Raw Data</a></li>
+            </ul>
+            <div class="tab-content tab-tpg" id="myTabContent">
+                <div id="dvefinowner" class="tab-pane fade active in">
+                    <div class="col-md-12 main-office-blk-left">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                @*<h3>Main Office Information</h3>*@
+                                <table class="table table-striped table-bordered table-hover ">
+                                    <tbody>
+                                        <tr>
+                                            <td>EFIN Owner Title (Title)</td>
+                                            <td colspan="2"><span id="spEFINOwnerTitle"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>EFIN Owner first name (FName)</td>
+                                            <td colspan="2"><span id="spEFINFN"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>EFIN Owner last name (LName)</td>
+                                            <td colspan="2"><span id="spEFINLN"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>EFIN Owner SSN (SSN)</td>
+                                            <td colspan="2"><span id="spEFINSSN"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>EFIN Owner Date of birth (DOB)</td>
+                                            <td colspan="2"><span id="spEFINDOB"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>EFIN Owner email address (Email)</td>
+                                            <td colspan="2"><span id="spEFINEmailID"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>EFIN Owner Mobile phone (Mobile)</td>
+                                            <td colspan="2"><span id="spEFINMobile"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>EFIN Owner phone (Phone)</td>
+                                            <td colspan="2"><span id="spEFINPhone"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>EFIN Owner state issued ID number (IDNumber)</td>
+                                            <td colspan="2"><span id="spEFINOwnerIDNo"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>EFIN Owner ID issuing state abbreviation (IDState)</td>
+                                            <td colspan="2"><span id="spEFINIDStateabbrev"></span></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>EFIN Issued to Address (Address)</td>
+                                            <td colspan="2"><span id="spEFINIssuedtoAdd"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>EFIN Issued to City,State,Zip (City, State, Zip)</td>
+                                            <td colspan="2"><span id="spEFICityStateZip"></span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="dvero" class="tab-pane fade">
+                    <div class="col-md-6 main-office-blk-left">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <h3>Main Contact Information</h3>
+                                <table class="table table-striped table-bordered table-hover ">
+                                    <tbody>
+                                        <tr>
+                                            <td>Company Name of the ERO office (Company)</td>
+                                            <td colspan="2"><span id="spEROCompany"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Main Contact First Name (ContactFirstName)</td>
+                                            <td colspan="2"><span id="spMainFN"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Main Contact Last Name (ContactLastName)</td>
+                                            <td colspan="2"><span id="spMainLN"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Main Contact Phone (ContactPhone)</td>
+                                            <td colspan="2"><span id="SPMainPhone"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Office phone (OfficePhone)</td>
+                                            <td colspan="2"><span id="spOfffocePhone"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Office street address (OfficeAddressStreet)</td>
+                                            <td colspan="2"><span id="spOfficeStAdd"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Office City,State,Zip (OfficeAddressCity, OfficeAddressState, OfficeAddressZip)</td>
+                                            <td colspan="2"><span id="spOfficeCityStateZip"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Mailing address (MailingAddressStreet)</td>
+                                            <td colspan="2"><span id="spMailingadd"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Mailing City,State,Zip (MailingAddressCity, MailingAddressState, MailingAddressZip)</td>
+                                            <td colspan="2"><span id="spMailCityStateZip"></span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 main-office-blk-left">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <h3>Other Information</h3>
+                                <table class="table table-striped table-bordered table-hover ">
+                                    <tbody>
+                                        <tr>
+                                            <td>Shipping address (ShippingAddressStreet)</td>
+                                            <td colspan="2"><span id="spShippingAddress"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Shipping City,State,Zip (ShippingAddressCity, ShippingAddressState, ShippingAddressZip)</td>
+                                            <td colspan="2"><span id="spShippingCityStateZip"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Business EIN (EIN)</td>
+                                            <td colspan="2"><span id="spBusineeEIN"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Corporation Type of the business (CorporationType)</td>
+                                            <td colspan="2"><span id="spCorportBusiness"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>State of Incorporation (StateofIncorporation)</td>
+                                            <td colspan="2"><span id="spStateofIncorp"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Previous year volume in whole number (PriorYearVolume)</td>
+                                            <td colspan="2"><span id="spPreviousYear"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Expected current year volume in whole number (CurrentYearVolume)</td>
+                                            <td colspan="2"><span id="spExpectedCurrent"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Previous year bank name (PriorYearBank)</td>
+                                            <td colspan="2"><span id="spPreviousYearBN"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Years EFiling (ExperienceFiling)</td>
+                                            <td colspan="2"><span id="spYearEfiling"></span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 main-office-blk-left" style="padding-left:0;">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <h3>Owner Information</h3>
+                                <table class="table table-striped table-bordered table-hover ">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                Has anyone associated with this business ever been assessed preparer penalties, convicted of a criminal offense under federal revenue laws, or been barred from practice before the IRS or U.S Tax Court? (LegalIssues)
+                                            </td>
+                                            <td>
+                                                <span id="chk_hasassociated"></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                We may be required to issue a 1099 to you at the end of the year.  If you submit a Business Federal ID number, it will be issued to this number.  Otherwise it will be issued to the EFIN owner’s SSN with no dashes (TextMessage)
+                                            </td>
+                                            <td><span id="chk_textmessages"></span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <br />
+                                <div class="col-md-12" id="dvOwners">
+                                    <table id="tbl_EFINOwnerInfo" class="table table-striped footable-loaded footable-tb">
+                                        <thead>
+                                            <tr>
+                                                <th>FirstName</th>
+                                                <th>LastName</th>
+                                                <th>DOB</th>
+                                                <th>SSN</th>
+                                                <th>Phone</th>
+                                                <th>Address</th>
+                                                <th>City</th>
+                                                <th>State</th>
+                                                <th>Zip</th>
+                                                <th>IdNumber</th>
+                                                <th>IdState</th>
+                                                <th>PercentOwned</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="dvfee" class="tab-pane fade">
+                    <div class="col-md-6 main-office-blk-left">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <table class="table table-striped table-bordered table-hover ">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                Do you want to charge a SVB fee on EF Only and Paper Returns too? (SBFeeAll)
+                                            </td>
+                                            <td><span id="chk_feeall"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Transmission Add-On Fee (EROTranFee)</td>
+                                            <td><span id="spTransmission"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Service Bureau Fee (SBFee)</td>
+                                            <td><span id="spServiceBureau"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Electronic Filing Fee (EFilingFee)</td>
+                                            <td><span id="spElectronic"></span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="dv_bankinfo" class="tab-pane fade">
+                    <div class="col-md-6 main-office-blk-left">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <table class="table table-striped table-bordered table-hover ">
+                                    <tbody>
+                                        <tr>
+                                            <td>Bank Name (BankName)</td>
+                                            <td colspan="2"><span id="spBankName"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Account Name (AcctName)</td>
+                                            <td colspan="2"><span id="spAccountName"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Bank Account Type (AcctType)</td>
+                                            <td colspan="2"><span id="spBankAccount"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Bank routing number (ABA rules) (RTN)</td>
+                                            <td colspan="2"><span id="spBankrouting"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Bank account number (DAN)</td>
+                                            <td colspan="2"><span id="spBankAccountNumber"></span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="dvRawxml" class="tab-pane fade">
+                    <div class="col-md-12 main-office-blk-left">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <h3>Latest Bank Object</h3>
+                                <div id="dv_latestxml"><table id="tbl_app" class="table table-striped table-bordered table-hover"></table></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 main-office-blk-left">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <h3>RA Bank Object</h3>
+                                <div id="dv_raxml"><table id="tbl_bank" class="table table-striped table-bordered table-hover"></table></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 main-office-blk-left">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <h3>EFIN Object</h3>
+                                <div id="dv_efinxml"><table id="tbl_efin" class="table table-striped table-bordered table-hover"></table></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 text-right" id="dv_accrej">
+        <a onclick="AcceptBank()" class="btn btn-default btn-info">Approve</a>
+        <a onclick="RejectBank()" class="btn btn-danger-back btn-info">Reject</a>
+    </div>
+</div>

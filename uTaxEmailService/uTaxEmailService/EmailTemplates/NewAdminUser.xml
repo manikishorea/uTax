@@ -1,0 +1,6 @@
+﻿<br/>
+EMP Admin account has been created with the following details: <br/>
+<b>User Id : </b> $empUserId$ <br/>
+<b>Password : </b> $empPassword$ <br/>
+<br/>
+You can login using $url$

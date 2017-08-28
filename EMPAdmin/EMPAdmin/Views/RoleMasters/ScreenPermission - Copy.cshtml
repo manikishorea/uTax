@@ -1,0 +1,145 @@
+﻿@*--------------------------------------------------------------------------------
+    // <copyright file="ScreenPermission.cshtml" company="Kensium">
+    // Copyright (c) Kensium. All rights reserved.
+    // </copyright>
+    //--------------------------------------------------------------------------------
+    //--------------------------------------------------------------------------------
+    // Project Name : FSA Admin
+    // Module Name  : Manage Permission
+    // Description  : This will contain the GUI of the Add / Edit Document
+    // Organization : Kensium
+    // Author       : Murali Krishna N
+    // Created on   : 11 Oct 2015
+    // Revision History : Create the screen functionality
+    // 12 Dec 2015: Implement the back button code
+    //--------------------------------------------------------------------------------*@
+@model uTax.Transactions.Role.DTO.RoleDTO
+@{
+    ViewBag.Title = "ScreenPermission";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //List<int> PermissionList = (List<int>)Session["PermissionList"];
+}
+
+@using (Html.BeginForm("ScreenPermission", "RoleMasters", FormMethod.Post, new { @ID = "frmscreenPermission", @class = "form-horizontal" }))
+{<div class="grid_head">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h2 class="panel-title">
+                            Manage Permissions  - @Model.Name
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            </div>
+    </div>
+    if (TempData["ReturnMessage"] != null)
+    {
+        if (@TempData["ReturnMessage"].ToString().Contains("successfully"))
+        {
+            <div id="lblMessage" class="alert-success margin-top-15">@TempData["ReturnMessage"]</div>
+        }
+        else
+        {
+            <div id="lblMessage" class="alert-danger margin-top-15">@TempData["ReturnMessage"]</div>
+        }
+    }
+    <input type="hidden" id="hdnRoleID" name="hdnRoleID" value="@Model.Id" />
+    <table class="table table-striped tablesaw manag-prmsn">
+        <tr>
+            <td colspan="4" class="each_category even_td">
+                <table class="table table-striped tablesaw">
+                    @{
+                        var siteMaps = Model.SitemapMasterList.Where(s => s.ParentId == null);
+                    }
+                    @foreach (var siteMap in @siteMaps)
+                    {
+                        <tr><td colspan="4" class="label-default"><input class="manage_check" type="checkbox" title="Screen" checked="checked" id="chkRoles" /><b>@siteMap.Name</b></td></tr>
+                        <tr class="sub_check">
+                            @{
+                                var chileNodes = Model.SitemapMasterList.Where(sn => sn.ParentId == @siteMap.Id);
+
+                            }
+                            @foreach (var cNode in chileNodes)
+                            {
+                            <tr class="sub_check">
+                                <td>&nbsp;&nbsp;@cNode.Name </td>
+                                @foreach (var permission in Model.PermissionMasterList)
+                                {
+                                    //if (permission.IsVisisble && @cNode.Id== permission.SiteMapId)
+                                    //{
+                                    //    continue;
+                                    //}
+                                    var IsPermitted = false;
+                                    var permitted = Model.SiteMapRolePermissionList.Where(smrp => smrp.PermissionId == @permission.Id && smrp.SiteMapId == cNode.Id && smrp.RoleId == Model.Id).FirstOrDefault();
+                                    if (permitted != null && permitted.PermissionId == permission.Id) { IsPermitted = true; }
+                                    if (permission.IsVisisble && @cNode.Id == permission.SiteMapId)
+                                    {
+                                    <td>@permission.Name &nbsp;<input class="add_edit_check all_check" type="checkbox" title="@permission.Name" checked="@IsPermitted" name="@string.Format("{0}_{1}_{2}", @cNode.Id, Model.Id, @permission.Id)" /></td>
+                                    }
+                                }
+                            </tr>
+                            }
+                </tr>
+                                }
+                </table>
+                </td>
+                </tr>
+                </table>
+                                <div class="modal-footer validation_text_remove">
+                                    <button type="submit" class="btn btn-default" id="btnSave">Submit</button>
+                                    <button type="button" class="btn btn-default" id="btnCancel" onclick="GotoListScreen('@Url.Content("~/RoleMasters/Index")');">Back</button>
+                                </div>
+                                }
+
+
+<script type="text/javascript">
+    $(document).ready(function (e) {
+        var initial_form_state = $('#frmscreenPermission').serialize();
+        $('#frmscreenPermission').submit(function () {
+            initial_form_state = $('#frmscreenPermission').serialize();
+        });
+        $(window).bind('beforeunload', function (e) {
+            var form_state = $('#frmscreenPermission').serialize();
+            if (initial_form_state != form_state) {
+                var message = "You have unsaved changes on this page. Do you want to leave this page and discard your changes or stay on this page?";
+                e.returnValue = message;
+                return message;
+            }
+        });
+
+        var checkboxes = $(e.target).closest('.t-item').find('> ul > li > div > .t-checkbox :checkbox');
+        $.each(checkboxes, function (index, checkbox) {
+            $(checkbox).attr('checked', isChecked ? true : false);
+        });
+    });
+
+    $('.manage_check').on('change', function () {
+        if ($(this).is(':checked')) {
+            $(this).parents('tr').nextAll('.sub_check').find('input[type="checkbox"]').prop('checked', true);
+        }
+        else {
+            $(this).parents('tr').nextAll('.sub_check').find('input[type="checkbox"]').prop('checked', false);
+        }
+    });
+    $('.add_edit_check').each(function () {
+        $(this).on('change', function () {
+            if ($(this).is(':checked')) {
+                $(this).parents('.sub_check').find('.view_check').prop('checked', true);
+            }
+        });
+    });
+    $('.sub_check .all_check').each(function () {
+        $(this).on('change', function () {
+            var checked_count = $(this).parents('.each_category').find('.all_check:checked').length;
+            var all_check = $(this).parents('.each_category').find('.all_check').length;
+            if (checked_count == all_check) {
+                $(this).parents('.each_category').find('.manage_check').prop('checked', true);
+            }
+            else {
+                $(this).parents('.each_category').find('.manage_check').prop('checked', false);
+            }
+        });
+    });
+</script>

@@ -1,0 +1,112 @@
+﻿@using EMPPortal.Filters;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <h2 class="page-title">Service Bureau and Transmission Fee Add-On Reimbursements</h2>
+        <input type="hidden" id="ID" name="ID" />
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1 text-center"><p>All Service Bureau and/or Transmission Fee Add-On amounts, including any amounts collected on behalf of Sub-sites, will be credited to the Main site account. Any fees and/or outstanding balances will be applied against the credit amounts.  To ease the payment of credit balance, they will be sent electronically via ACH directly to your bank account.</p>
+                        <div class="bank-img"><img src="~/Content/images/bank.jpg" class="img-responsive" /></div>
+                    </div>
+                </div>
+                <div class="row">
+                 <div class="col-md-5 col-md-offset-1">
+                  <div class="form-group is-empty">
+                    <label for="inputDefault" class="control-label">Name on Account:</label>
+                    <input type="text" id="txtNameofAccount" class="form-control">
+                </div>
+                </div>
+               </div>
+                <div class="row">
+                    <div class="col-md-5 col-md-offset-1">
+                        <div class="form-group is-empty">
+                            <label for="inputDefault" class="control-label">Bank Name:</label>
+                            <input type="text" id="txtBankName" class="form-control">
+                        </div>
+
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group is-empty">
+                            <label>Account Type:</label>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="sample3" value="option3" id="rbAccountTypeYes" checked="">
+                                    Checking
+                                </label>
+                                <label>
+                                    <input type="radio" name="sample3" value="option3" id="rbAccountTypeNo">
+                                    Savings
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5 col-md-offset-1">
+                        <div class="form-group is-empty">
+                            <label for="inputDefault" class="control-label">Please enter your 9 digit RTN: </label>
+                            <input type="text" id="txtRTN" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group is-empty">
+                            <label for="inputDefault" class="control-label">Please enter your Bank Account Number: </label>
+                            <input type="text" id="txtBankAccount" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5 col-md-offset-1">
+                        <div class="form-group is-empty">
+                            <label for="inputDefault" class="control-label">Please confirm your 9 digit RTN:</label>
+                            <input type="text" id="txtConfirmRTN" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group is-empty">
+                            <label for="inputDefault" class="control-label">Please confirm your Bank Account Number:</label>
+                            <input type="text" id="txtConfirmBankAccount" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="checkbox authorize">
+                            <label>
+                                <input type="checkbox" id="chkAughorize"><span class="checkbox-material"></span> I authorize uTax, LLC to electronically credit my account (and if necessary, to electronically debit my account to correct erroneous credits).
+                            </label>                         
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"> </div>
+        <div class="col-md-10 col-md-offset-1">
+            <a href="javascript:void(0)" class="btn btn-default btn-info" onclick="fnSaveFeeReimbursementConfig()">Save</a>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    @*<script src="~/Scripts/app/common.js"></script>
+    <script src="~/Scripts/app/feereimbursementconfig.js"></script>
+<script src="~/Scripts/app/rtn.js"></script>*@
+@Html.IncludeVersionedJs("/Scripts/app/common.js")
+@Html.IncludeVersionedJs("/Scripts/app/feereimbursementconfig.js")
+@Html.IncludeVersionedJs("/Scripts/app/rtn.js")
+}
+
+<script>
+    $(document).ready(function () {
+        getFeeReimbursementInformation();
+    });
+</script>

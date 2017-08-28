@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-header">
+    <h2>Integrations Management</h2>
+</div>
+<input type="hidden" id="UserId" name="UserId" value="@Session["UserId"].ToString()" />
+<input type="hidden" id="UserRoleId" name="UserRoleId" value="@Session["UserRoleId"].ToString()" />
+<input type="hidden" id="SiteMapID" name="SiteMapID" value="2b0fd3be-36e7-4fe7-8366-be7f8ca3b897" />
+<div class="row">
+
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                &nbsp;
+                <h2 class="panel-title">Integrations Management</h2>
+            </div>
+            <div class="panel-body">
+                <table id="table_APIIntegration" class="table">
+                    <thead>
+                        <tr>
+                            <th>Application</th>
+                            <th>URL</th>
+                            <th>Username</th>
+                            <th>Status</th>
+                            <th style="width:10%;"></th>
+                        </tr>
+                    </thead>
+
+                </table>
+                <!-- books -->
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <!-- ko if:detail() -->
+</div>
+
+@section scripts {
+    <script src="~/Scripts/app/common.js"></script>
+    <script src="~/Scripts/app/apiintergration.js"></script>
+}
+
+<script>
+
+    $(document).ready(function () {
+        getAllapiintergration();
+        GridFunctionality();
+    });
+    function GridFunctionality() {
+        var userId = $("#UserId").val();
+        var roleId = $("#UserRoleId").val();
+
+        ctrlAddLink = $("#AddLink");
+        ctrlEditLink = $("table#table_APIIntegration .EditLink");
+        ctrlActiveInactiveLink = $("table#table_APIIntegration .ActiveInactiveLink");
+        getScreenPermissions(ctrlAddLink, ctrlEditLink, ctrlActiveInactiveLink, '', userId, roleId);
+    }
+</script>
